@@ -1,0 +1,27 @@
+@use './variables' as *;
+
+// MIXIN BREAKPOINTS
+
+@mixin mid-mobile-tablet {
+    @media screen and (min-width: $breakpoint_mid-mobile-tablet){
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $breakpoint_tablet){
+        @content;
+    }
+}
+
+@mixin mid-tablet-desktop {
+    @media screen and (min-width: $breakpoint_mid-tablet-desktop){
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $breakpoint_desktop) {
+        @content;
+    }
+}

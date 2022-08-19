@@ -1,16 +1,22 @@
-const cors = require('cors')
-const express = require('express');
-const app = express();
+// const axios = require ('axios');
+// const cors = require('cors')
+// const express = require('express');
+
+// const app = express();
+// app.use(cors())
 
 
-app.use(cors())
+// app.get("/", function (_req, res) {
+//     axios.get('http://localhost:8000/conjugate/fr/manger')
+//     .then(result => {
+//         res.send(result)
+//     })
+//     .catch(error =>{
+//         console.log(error)
+//     })
+// });
 
-const word = ["french1"]
-app.get("/", function (_req, res) {
-    res.send(word)
-});
 
-
-app.listen(8080, function() {
-    console.log('Server is running at 8080')
-});
+// app.listen(8080, function() {
+//     console.log('Server is running at 8080')
+// });

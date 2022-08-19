@@ -1,9 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import "./Styles/App.scss";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import FrenchPage from "./Pages/French/FrenchPage";
 import axios from 'axios'
 
 
-axios.get('http://localhost:8080/')
+axios.get('http://localhost:8000/conjugate/fr/manger?mood=indicatif&tense=passé-composé')
 .then(result => {
   console.log(result)
 })
@@ -11,7 +12,7 @@ axios.get('http://localhost:8080/')
   console.log(error)
 })
 
-axios.get('http://localhost:8085/')
+axios.get('http://localhost:8085/french')
 .then(result => {
   console.log(result)
 })
@@ -19,31 +20,14 @@ axios.get('http://localhost:8085/')
   console.log(error)
 })
 
-axios.get('http://localhost:8000/conjugate/fr/manger')
-.then(result => {
-  console.log(result)
-})
-.catch(error =>{
-  console.log(error)
-})
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Switch>
+      {/* <Route path='/' exact component={FrenchPage} />
+      <Route path='/french' component={FrenchPage} /> */}
+    </Switch>
+  </BrowserRouter>
   );
 }
 
