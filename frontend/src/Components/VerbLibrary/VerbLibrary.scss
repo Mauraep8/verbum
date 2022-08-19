@@ -1,0 +1,14 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.verbLibrary{
+    width: 50%;
+    
+    &__container{
+        border: solid black 1px;
+    }
+
+    &__text{
+        font-size: 1rem;
+    }
+}

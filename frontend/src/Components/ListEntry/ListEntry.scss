@@ -1,0 +1,14 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.ListEntry{
+
+    &__container{
+        display: flex;
+        border: solid black 1px;
+    }
+
+    &__text{
+        margin: 0;
+    }
+}

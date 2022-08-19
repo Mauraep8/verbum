@@ -1,0 +1,15 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.verbList{
+
+    &__container{
+        border: solid blue 1px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__text{
+        font-size: 1rem;
+    }
+}

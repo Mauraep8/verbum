@@ -1,0 +1,10 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.database{
+
+    &__container{
+        border: solid red 1px;
+        display: flex;
+    }
+}
