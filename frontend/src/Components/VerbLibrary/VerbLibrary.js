@@ -2,20 +2,18 @@ import "./VerbLibrary.scss";
 import Searchbar from "../Searchbar/Searchbar";
 import VerbList from "../VerbList/VerbList";
 
+export default function VerbLibrary(props)  {
 
-function VerbLibrary()  {
+
 
 return (
-    <>
     <div className="verbLibrary">
         <div className="verbLibrary__container">
             <h1 className="verbLibrary__text">VerbLibrary</h1>
             <Searchbar/>
-            <VerbList/>
+            <VerbList propFunction={props.propFunction}/>
+            {/* <DatabaseButton onclick={selectAll} text={'Select All'}/> */}
         </div>
     </div>
-    </>
     )
 }
-
-export default VerbLibrary;

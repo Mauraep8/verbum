@@ -2,11 +2,15 @@
 
 function Checkbox()  {
 
+    const selectCheckbox = (e) =>{
+        console.log(e.target)
+    }
+
     return (
         <>
         <div className="ListEntry">
             <div className="ListEntry_container">
-                <input type="checkbox" checked/>
+                <input type="checkbox" onChange={selectCheckbox}/>
             </div>
         </div>
         </>
