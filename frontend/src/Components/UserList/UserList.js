@@ -15,7 +15,7 @@ export default function UserList(props)  {
                     return <ListEntry
                     key={singleVerb}
                     verbName={singleVerb}
-                    buttonText={'-'}
+                    buttonAction={'delete'}
                     />
                 })}
             </div>

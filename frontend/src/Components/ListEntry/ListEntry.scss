@@ -11,4 +11,10 @@
     &__text{
         margin: 0;
     }
+
+    &__button-container{
+        &--hidden{
+            display: none;
+        }
+    }
 }

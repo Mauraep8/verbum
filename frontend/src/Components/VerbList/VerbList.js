@@ -17,8 +17,7 @@ export default function VerbList(props)  {
                     return <ListEntry
                     key={singleVerb.id}
                     verbName={singleVerb.verb}
-                    buttonText={'+'}
-                    buttonAction={'()=> dispatch({type: ACTIONS.ADD, payload: {verb: props.verbName'}/>
+                    buttonAction={'add'}/>
                 })}
             </div>
         </div>
