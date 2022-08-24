@@ -9,7 +9,7 @@ return (
         <div className="verbLibrary__container">
             <h1 className="verbLibrary__text">VerbLibrary</h1>
             <Searchbar/>
-            <VerbList/>
+            <VerbList newVerbList={props.newVerbList}/>
         </div>
     </div>
     )

@@ -21,10 +21,7 @@ function reducer(verbs, action){
     }
 }
 
-
-
 export const FunctionContext = React.createContext()
-
 
 const initialState = ['aimer', 'avoir']
 
@@ -37,7 +34,7 @@ export default function Database() {
             <div className="database">
                 <h1>database</h1>
                 <div className="database__container">
-                    <VerbLibrary/>
+                    <VerbLibrary newVerbList={state}/>
                     <UserLibrary verbList={state}/>
                 </div>
             </div>

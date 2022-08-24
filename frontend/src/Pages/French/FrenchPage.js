@@ -1,6 +1,7 @@
 import React, {useState, useEffect}  from "react";
 import axios from 'axios'
 import Database from "../../Components/Database/Database.js";
+import Exercice from "../../Components/Exercice/Exercise.js";
 
 // get conjugatione
 // axios.get('http://localhost:8000/conjugate/fr/manger?mood=indicatif&tense=passé-composé')
@@ -37,6 +38,7 @@ function FrenchPage()  {
   return (
       <ThemeContext.Provider value={verbs}>
         <h1>french</h1>
+        <Exercice/>
         <Database/>
       </ThemeContext.Provider>
   )

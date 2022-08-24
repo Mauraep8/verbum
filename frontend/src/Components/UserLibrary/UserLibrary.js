@@ -3,9 +3,7 @@ import Searchbar from "../Searchbar/Searchbar";
 import UserList from "../UserList/UserList";
 
 
-function UserLibrary(props)  {
-
-console.log(props.verbList)
+export default function UserLibrary(props)  {
 
 return (
     <>
@@ -20,4 +18,3 @@ return (
     )
 }
 
-export default UserLibrary;

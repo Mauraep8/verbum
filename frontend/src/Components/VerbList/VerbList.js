@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import { ThemeContext } from '../../Pages/French/FrenchPage';
 import "./VerbList.scss";
 import ListEntry from "../ListEntry/ListEntry";
@@ -8,7 +8,18 @@ export default function VerbList(props)  {
     // ARRAY OF ALL VERBS
     const verbs = useContext(ThemeContext)
 
- 
+
+    // const [verbList, setVerbList] = useState([])
+
+    // let clickedVerbArray = props.newVerbList
+    // console.log(clickedVerbArray)
+    // let newList
+    // for (let i = 0; i < clickedVerbArray.length; i++) {
+    //     const clickedVerb = clickedVerbArray[i];
+    //     newList = verbs.filter(verb => verb.verb !== clickedVerb)
+    // }
+    // console.log(newList)    
+
     return (
         <div className="verbList">
             <h1 className="verbList__text">VerbList container</h1>
