@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, {useContext} from 'react'
 import { ThemeContext } from '../../Pages/French/FrenchPage';
 import "./VerbList.scss";
 import ListEntry from "../ListEntry/ListEntry";
@@ -6,8 +6,7 @@ import ListEntry from "../ListEntry/ListEntry";
 export default function VerbList(props)  {
 
     // ARRAY OF ALL VERBS
-    const verbs = useContext(ThemeContext)
-
+    const {verbs} = useContext(ThemeContext)
 
     // const [verbList, setVerbList] = useState([])
 

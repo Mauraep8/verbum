@@ -14,8 +14,8 @@ function reducer(verbs, action){
     switch (action.type) {
         case ACTIONS.ADD:
             return Array.from(new Set([...verbs, action.payload.verb]))
-            case ACTIONS.DELETE:
-                return verbs.filter(verb => verb !==action.payload.verb)
+        case ACTIONS.DELETE:
+            return verbs.filter(verb => verb !==action.payload.verb)
         default:
             return verbs
     }
