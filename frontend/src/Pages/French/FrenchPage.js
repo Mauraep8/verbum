@@ -1,7 +1,7 @@
-import React, {useState, useEffect, useReducer}  from "react";
+import React, {useState, useEffect, useReducer, useMemo}  from "react";
 import axios from 'axios'
 import Database from "../../Components/Database/Database.js";
-import Exercice from "../../Components/Exercice/Exercise.js";
+import Exercice from "../../Components/Exercise/Exercise.js";
 import { ACTIONS } from "../../Components/Database/Database";
 import Navbar from "../../Components/Navbar/Navbar";
 
@@ -14,6 +14,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 //   console.log(error)
 // })
 
+//REDUCER TO OPERATE ADD + DELETE BUTTONS FOR DATABASE LISTS
 function reducer(verbList, action){
   switch (action.type) {
     case ACTIONS.ADD:
@@ -25,8 +26,8 @@ function reducer(verbList, action){
 
 export const ThemeContext = React.createContext()
 
+// INITIAL STATE FOR DATABSE LIST + EXERCISE LIST
 const initialState = ['aimer', 'avoir']
-
 
 function FrenchPage()  {
 
@@ -48,20 +49,18 @@ function FrenchPage()  {
       })
   }
 
-  //NEW VERB LIST FOR THE EXERCICE
-  let newVerbList =[]
+  //USEREDUCER TO OPERATE, ADD DELETE BUTTONS FOR DATABASE LISTS
   const [state, dispatch] = useReducer(reducer, initialState)
-  const filteredVerbList = (array) =>{
-    for (let i = 0; i < array.length; i++) {
-      const singleVerb = array[i];
-      const filteredVerb = verbs.filter(verb => verb.verb === singleVerb)
-      newVerbList.push(filteredVerb[0])
-    }
-  }
-  filteredVerbList(state)
+
+  const value = useMemo(
+    ()=>({state}),
+    [state]
+  )
+
+    
 
   return (
-      <ThemeContext.Provider value={{ verbs, dispatch, newVerbList}}>
+      <ThemeContext.Provider value={{ verbs, dispatch, value}}>
         <Navbar/>
         <Exercice/>
         <Database/>

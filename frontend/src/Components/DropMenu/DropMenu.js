@@ -1,24 +1,39 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, {useContext} from 'react'
 import { ThemeContext } from '../../Pages/French/FrenchPage';
 import Option from '../Option/Option'
 import './DropMenu.scss'
 
 export default function DropMenu(props) {
+  const {verbs} = useContext(ThemeContext)
 
-  console.log(props)
-  // if (props.droplist.[0])
+  let newVerbList = ['aimer', 'avoir']
+  const filteredVerbs = (array) =>{
+    newVerbList = []
+    for (let i = 0; i < array.length; i++) {
+      const singleVerb = array[i];
+      // console.log(singleVerb)
+      let filterVerbs = verbs.filter((verb)=>(verb.verb === singleVerb))
+      newVerbList.push(filterVerbs)
+      
+    }
+
+  }
+  filteredVerbs(props.dropList)
+  console.log(newVerbList)
+
+
   return (
     <div className='dropmenu'>
       <h3>verb</h3>
-      {/* <button>{dropList[0].verb}</button>
+      {/* <button>{dropList[0].verb}</button> */}
       <div>
-      {dropList.map((singleVerb) =>{
+      {props.dropList.map((singleVerb) =>{
                     return <Option
-                    key={singleVerb.id}
-                    verbName={singleVerb.verb}
+                
+                    verbName={singleVerb}
       />
                 })}
-      </div> */}
+      </div>
     </div>
   )
 }

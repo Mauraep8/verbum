@@ -5,17 +5,23 @@ import './Verb.scss'
 
 export default function Verb() {
 
-  const [dropList, setDropList] = useState(['aimer', 'avoir'])
-  
-  const {newVerbList} = useContext(ThemeContext)
+  const initialState = ['aimer', 'avoir']
 
-  useEffect (()=>{
-    setDropList(newVerbList)
-  },[newVerbList]);
+  const {value} = useContext(ThemeContext)
+
+  // console.log(value.state)
+
+  const [dropList, setDropList] = useState(initialState)
+ 
+    useEffect(()=>{
+      setDropList(value.state)
+    },[value.state])
+
+    // console.log(dropList)
 
   return (
     <div className='verb'>
-        <DropMenu dropList={newVerbList}/>
+        <DropMenu dropList={dropList}/>
     </div>
   )
 }

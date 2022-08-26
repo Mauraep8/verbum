@@ -6,7 +6,7 @@ export default function Exercice() {
   return (
       <div className='exercise'>
         <h1>EXERCISE</h1>
-        {/* <Verb/> */}
+        <Verb/>
       </div>
     )
 }
