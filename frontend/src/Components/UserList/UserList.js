@@ -10,7 +10,6 @@ export default function UserList(props)  {
 
     return (
         <div className="verbList">
-            <h1 className="verbList__text">UserList container</h1>
             <div className="verbList__container">
                 {props.verbList.map((singleVerb) =>{
                     return <ListEntry
@@ -21,7 +20,7 @@ export default function UserList(props)  {
                 })}
             </div>
             <div className="verbList__button-container">
-                <button onClick={()=> dispatch({type: ACTIONS.ADD, payload: {verbList: props.verbList}})}>submit</button>
+                <button className='verbList__button' onClick={()=> dispatch({type: ACTIONS.ADD, payload: {verbList: props.verbList}})}>submit</button>
             </div>
         </div>
     )

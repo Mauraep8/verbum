@@ -30,11 +30,11 @@ export default function ListEntry(props)  {
                 <div className="ListEntry__button-container ListEntry__button-container--add" ref={buttonAdd}>
                     <button className="ListEntry__button ListEntry__button--add" name={props.verbName} onClick={()=> dispatch({type: ACTIONS.ADD, payload: {verb: props.verbName}})}>+</button>
                 </div>
-                <div className="ListEntry__text-container">
-                    <p className="ListEntry__text">{props.verbName}</p>
-                </div>
                 <div className="ListEntry__button-container ListEntry__button-container--delete" ref={buttonDelete}>
                     <button className="ListEntry__button ListEntry__button--delete" name={props.verbName} onClick={()=> dispatch({type: ACTIONS.DELETE, payload: {verb: props.verbName}})}>-</button>
+                </div>
+                <div className="ListEntry__text-container">
+                    <p className="ListEntry__text">{props.verbName}</p>
                 </div>
             </div>
         </div>

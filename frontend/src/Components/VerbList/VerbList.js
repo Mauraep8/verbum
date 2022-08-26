@@ -21,7 +21,6 @@ export default function VerbList(props)  {
 
     return (
         <div className="verbList">
-            <h1 className="verbList__text">VerbList container</h1>
             <div className="verbList__container">
                 {verbs.map((singleVerb) =>{
                     return <ListEntry

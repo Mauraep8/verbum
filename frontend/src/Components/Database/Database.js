@@ -32,7 +32,7 @@ export default function Database() {
     return (
         <FunctionContext.Provider value={dispatch}>
             <div className="database">
-                <h1>database</h1>
+                <h1 className="database__text">Database</h1>
                 <div className="database__container">
                     <VerbLibrary newVerbList={state}/>
                     <UserLibrary verbList={state}/>
