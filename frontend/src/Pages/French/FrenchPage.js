@@ -3,6 +3,7 @@ import axios from 'axios'
 import Database from "../../Components/Database/Database.js";
 import Exercice from "../../Components/Exercice/Exercise.js";
 import { ACTIONS } from "../../Components/Database/Database";
+import Navbar from "../../Components/Navbar/Navbar";
 
 // get conjugatione
 // axios.get('http://localhost:8000/conjugate/fr/manger?mood=indicatif&tense=passé-composé')
@@ -61,7 +62,7 @@ function FrenchPage()  {
 
   return (
       <ThemeContext.Provider value={{ verbs, dispatch, newVerbList}}>
-        <h1>french</h1>
+        <Navbar/>
         <Exercice/>
         <Database/>
       </ThemeContext.Provider>
