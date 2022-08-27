@@ -13,4 +13,12 @@
             background-color: lightgray;
         }
     }
+
+    &__dropmenu-wrapper--hidden{
+        display: none;
+    }
+
+    &__dropmenu-wrapper--active{
+        display: block;
+    }
 }
