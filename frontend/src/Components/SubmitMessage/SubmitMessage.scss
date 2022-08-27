@@ -1,0 +1,29 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.submitMessage{
+    background-color: white;
+    height: 20%;
+    width: 90%;
+    margin: 25% 1rem;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    position: fixed;
+    z-index: 1;
+
+    &__text{
+        color: green;
+        font-size:2rem ;
+        text-align: center;
+    }
+
+    @include tablet{
+        width: 50%;
+        text-align: center;
+        margin: 20% 30%;
+    }
+
+    @include desktop{
+        margin: 10% 30%;
+    }
+}
