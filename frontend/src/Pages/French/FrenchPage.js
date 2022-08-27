@@ -24,6 +24,7 @@ function reducer(verbList, action){
   }
 }
 
+
 export const ThemeContext = React.createContext()
 
 // INITIAL STATE FOR DATABSE LIST + EXERCISE LIST
@@ -57,7 +58,6 @@ function FrenchPage()  {
     [state]
   )
 
-    
 
   return (
       <ThemeContext.Provider value={{ verbs, dispatch, value}}>

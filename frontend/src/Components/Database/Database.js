@@ -21,7 +21,9 @@ function reducer(verbs, action){
     }
 }
 
-export const FunctionContext = React.createContext()
+
+
+export const DatabaseContext = React.createContext()
 
 const initialState = ['aimer', 'avoir']
 
@@ -30,7 +32,7 @@ export default function Database() {
     const [state, dispatch] = useReducer(reducer, initialState)
 
     return (
-        <FunctionContext.Provider value={dispatch}>
+        <DatabaseContext.Provider value={dispatch}>
             <div className="database">
                 <h1 className="database__text">Database</h1>
                 <div className="database__container">
@@ -38,6 +40,6 @@ export default function Database() {
                     <UserLibrary verbList={state}/>
                 </div>
             </div>
-        </FunctionContext.Provider>
+        </DatabaseContext.Provider>
     )
 };

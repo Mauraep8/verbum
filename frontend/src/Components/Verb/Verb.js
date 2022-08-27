@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react'
 import { ThemeContext } from '../../Pages/French/FrenchPage';
-import DropMenu from '../DropMenu/DropMenu'
+import DropMenuVerb from '../DropMenu/DropMenuVerb';
 import './Verb.scss'
 
 export default function Verb() {
@@ -9,19 +9,16 @@ export default function Verb() {
 
   const {value} = useContext(ThemeContext)
 
-  // console.log(value.state)
-
   const [dropList, setDropList] = useState(initialState)
  
     useEffect(()=>{
       setDropList(value.state)
     },[value.state])
 
-    // console.log(dropList)
 
   return (
     <div className='verb'>
-        <DropMenu dropList={dropList}/>
+        <DropMenuVerb dropList={dropList}/>
     </div>
   )
 }
