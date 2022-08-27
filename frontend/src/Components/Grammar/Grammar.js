@@ -8,7 +8,7 @@ export default function Grammar(props) {
 
   return (
     <div className='grammar'>
-      <button>{props.value[0].option}</button>
+      <button className='grammar__button'>{props.value[0].option}</button>
       <DropMenuGrammar value={props.value}/>
     </div>
   )

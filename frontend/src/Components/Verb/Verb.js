@@ -13,11 +13,12 @@ export default function Verb() {
  
     useEffect(()=>{
       setDropList(value.state)
-    },[value.state])
+    },[value.state]) 
 
 
   return (
     <div className='verb'>
+        <button className='verb__button'>{dropList[0]}</button>
         <DropMenuVerb dropList={dropList}/>
     </div>
   )

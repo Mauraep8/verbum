@@ -2,10 +2,31 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .exercise{
-    border: 1px solid red;
+    background-color: #F5F5F5;
+    padding: .1rem;
 
-    &__wrapper{
-        @include tablet{
+    &__main-container{
+        background-color: white;
+        border-radius: .25rem;
+        box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    &__header{
+        margin: 0 0 1rem;
+        text-align: center;
+    }
+
+    @include tablet{
+        &__main-container{
+            margin: 2rem;
+            padding: 2rem;
+        }
+        &__grammar-container{
+            display: flex;
+        }
+        &__wrapper{
             display: flex;
         }
     }

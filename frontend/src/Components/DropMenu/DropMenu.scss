@@ -1,7 +1,9 @@
 .dropmenu{
-    width: 10%;
 
     &__option-container{
+        margin: .2rem 0;
+        width: 100%;
+        
         &--hidden{
             display: none;
         }
