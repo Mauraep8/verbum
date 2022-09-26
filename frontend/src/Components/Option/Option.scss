@@ -1,0 +1,17 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as *;
+
+.option{
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    width: 100%;
+    display: flex;   
+
+    &__text{
+        margin: 0
+    }
+
+    @include tablet{
+        width: 5rem;
+    }
+}

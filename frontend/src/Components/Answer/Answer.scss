@@ -1,0 +1,42 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.answer{
+    &__input{
+        box-sizing: border-box;
+        width: 100%;
+        border: 1px solid lightgrey;
+        border-radius: 20px;
+        height: 1.5rem;
+        margin: 1rem 0;
+
+        &::placeholder{
+            text-align: center;
+        }
+    }
+
+    &__button{
+        background-color: #254c8a;
+        border-radius: 10px;
+        width: 100%;
+        border: none;
+        color: white;
+        padding: .2rem 0;
+        margin: 0 0 1rem; 
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    @include tablet{
+        &__input{
+            width: 5rem;
+            height: 1.5rem;
+        }
+
+        &__button{
+            width: 5rem;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.ListEntry{
+
+    background-color: white;
+
+    &__container{
+        display: flex;
+        border-bottom: solid lightgray 1px;
+        padding: .1rem;
+    }
+
+    &__text{
+        margin: 0;
+        padding: 0 .5rem;
+    }
+
+    &__button-container{
+        &--hidden{
+            display: none;
+        }
+    }
+
+    &__button{
+        // background-color: #4e80f2;
+        background-color: #254c8a;
+        color: white;
+
+        border: none;
+        border-radius: 50%;
+
+        &:hover{
+            cursor: pointer;
+            background-color: #2E66E5;
+        }
+    }
+}

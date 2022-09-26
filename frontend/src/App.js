@@ -1,49 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-import axios from 'axios'
+import "./Styles/App.scss";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import FrenchPage from "./Pages/French/FrenchPage";
+import AboutPage from "./Pages/About/AboutPage";
+import ContactPage from "./Pages/Contact/ContactPage";
 
 
-axios.get('http://localhost:8080/')
-.then(result => {
-  console.log(result)
-})
-.catch(error =>{
-  console.log(error)
-})
 
-axios.get('http://localhost:8085/')
-.then(result => {
-  console.log(result)
-})
-.catch(error =>{
-  console.log(error)
-})
-
-axios.get('http://localhost:8000/conjugate/fr/manger')
-.then(result => {
-  console.log(result)
-})
-.catch(error =>{
-  console.log(error)
-})
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Switch>
+      <Route path='/' exact component={FrenchPage} />
+      <Route path='/about' component={AboutPage} />
+      <Route path='/french' component={FrenchPage} />
+      <Route path='/contact' component={ContactPage} />
+    </Switch>
+  </BrowserRouter>
   );
 }
 
