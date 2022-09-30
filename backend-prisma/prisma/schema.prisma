@@ -8,7 +8,7 @@ datasource db {
 }
 
 model verbs {
-  id             Int     @id @default(autoincrement())
+  id             Int     @id
   verb           String  @db.Text
   verb_group     String  @db.Text
   bescherelle_id Int

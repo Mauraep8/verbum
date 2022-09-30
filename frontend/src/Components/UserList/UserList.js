@@ -1,26 +1,23 @@
-import React, {useContext} from 'react'
-import { ThemeContext } from '../../Pages/French/FrenchPage';
-// import { FunctionContext } from '../Database/Database';
-import { ACTIONS } from '../Database/Database';
-
 import ListEntry from "../ListEntry/ListEntry";
 
 export default function UserList(props)  {
-    const {dispatch} = useContext(ThemeContext)
+
+    console.log(props.list)
+
 
     return (
         <div className="verbList">
             <div className="verbList__container">
-                {props.verbList.map((singleVerb) =>{
+                {props.list.map((singleVerb) =>{
                     return <ListEntry
-                    key={singleVerb}
-                    verbName={singleVerb}
+                    key={singleVerb.id}
+                    verbName={singleVerb.verbName}
                     buttonAction={'delete'}
                     />
                 })}
             </div>
             <div className="verbList__button-container">
-                <button className='verbList__button' onClick={()=> dispatch({type: ACTIONS.ADD, payload: {verbList: props.verbList}})}>submit</button>
+                <button className='verbList__button'>submit</button>
             </div>
         </div>
     )
