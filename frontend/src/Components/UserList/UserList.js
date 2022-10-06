@@ -2,7 +2,7 @@ import ListEntry from "../ListEntry/ListEntry";
 
 export default function UserList(props)  {
 
-    console.log(props.list)
+    // console.log(props.list)
 
 
     return (

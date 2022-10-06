@@ -1,5 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit'
-import databaseReducer from './database'
+import databaseReducer from './databaseSlice'
 
 export const store = configureStore({
     reducer: {

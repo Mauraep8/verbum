@@ -18,16 +18,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 
 function FrenchPage()  {
 
-  // GET ALL FRENCH VERBS
-  const getVerbList = () =>{
-      axios.get('http://localhost:8085/french')
-      .then(result => {
-          console.log(result.data)
-      })
-      .catch(error =>{
-        console.log(error)
-      })
-  }
+
 
   return (
       <Provider store={store}>

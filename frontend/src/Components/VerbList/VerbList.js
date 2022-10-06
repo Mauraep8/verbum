@@ -3,7 +3,7 @@ import ListEntry from "../ListEntry/ListEntry";
 
 export default function VerbList(props)  {
 
-    console.log(props.list)
+    // console.log(props.list)
 
     return (
         <div className="verbList">
