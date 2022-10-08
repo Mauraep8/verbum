@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux'
 export default function VerbLibrary()  {
 
 const {verbLibrary} = useSelector((state)=> state.database)
+// console.log(verbLibrary)
 
 return (
     <div className="verbLibrary">

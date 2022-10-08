@@ -7,8 +7,6 @@ import "./ListEntry.scss";
 
 export default function ListEntry(props)  {
 
-    // console.log(props)
-
     const dispatch = useDispatch()
 
     return (

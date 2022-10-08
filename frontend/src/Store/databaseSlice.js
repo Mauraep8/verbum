@@ -1,22 +1,18 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
 import  axios from "axios";
 
-// GET ALL FRENCH VERBS
-const getVerbList = () =>{
-    axios.get('http://localhost:8085/french')
-    .then(result => {
-        console.log(result.data)
-    })
-    .catch(error =>{
-      console.log(error)
-    })
-}
-getVerbList()
+
+export const fetchVerbs = createAsyncThunk('databaseSlice/fetchVerbs', async () => {
+    return axios.get('http://localhost:8085/french')
+    .then((result) => result.data)
+    .catch((error) => console.log(error))
+})
 
 // INITIAL STATE OF VERBLIBRARY AND USERLIBRARY
 const initialState = {
-    verbLibrary: [{verbName: 'aller', id: 1}, {verbName: 'bouger', id: 2}, {verbName: 'dormir', id: 3}],
+    isLoading: true,
+    verbLibrary: [],
     userLibrary: [{verbName: 'avoir', id: 4}, {verbName: 'etre', id: 5}, {verbName: 'finir', id: 6}]
 }
 
@@ -39,10 +35,16 @@ const compare = (a,b) => {
 const databaseSlice = createSlice({
     name: 'database',
     initialState,
+    extraReducers:{
+        [fetchVerbs.fulfilled]: (state, action) => {
+            state.verbLibrary = action.payload
+        },
+    },
     reducers: {
         verbAdded: (state, action)=>{
             
             // PUSH NEW VERB INTO USERLIST
+            console.log(action.payload)
             state.userLibrary.push({verbName:action.payload})
             const indexVerb = state.verbLibrary.findIndex(verb =>{
                 return verb.verbName === action.payload

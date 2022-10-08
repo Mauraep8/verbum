@@ -12,7 +12,7 @@ export default function VerbList(props)  {
                     return <ListEntry
                     key={singleVerb.id}
                     id={singleVerb.id}
-                    verbName={singleVerb.verbName}
+                    verbName={singleVerb.verb}
                     buttonAction={'add'}/>
                 })}
             </div>

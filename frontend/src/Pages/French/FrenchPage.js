@@ -4,6 +4,7 @@ import axios from 'axios'
 import Database from "../../Components/Database/Database.js";
 // import Exercice from "../../Components/Exercise/Exercise.js";
 import Navbar from "../../Components/Navbar/Navbar";
+import { fetchVerbs } from "../../Store/databaseSlice";
 
 
 
@@ -16,9 +17,11 @@ import Navbar from "../../Components/Navbar/Navbar";
 //   console.log(error)
 // })
 
+
 function FrenchPage()  {
 
 
+store.dispatch(fetchVerbs())
 
   return (
       <Provider store={store}>
