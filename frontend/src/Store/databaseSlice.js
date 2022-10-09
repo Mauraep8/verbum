@@ -11,7 +11,6 @@ export const fetchVerbs = createAsyncThunk('databaseSlice/fetchVerbs', async () 
 
 // INITIAL STATE OF VERBLIBRARY AND USERLIBRARY
 const initialState = {
-    isLoading: true,
     verbLibrary: [],
     userLibrary: [{verbName: 'avoir', id: 4}, {verbName: 'etre', id: 5}, {verbName: 'finir', id: 6}]
 }
@@ -38,23 +37,27 @@ const databaseSlice = createSlice({
     extraReducers:{
         [fetchVerbs.fulfilled]: (state, action) => {
             state.verbLibrary = action.payload
+            console.log(action.payload);
         },
     },
     reducers: {
         verbAdded: (state, action)=>{
             
             // PUSH NEW VERB INTO USERLIST
-            console.log(action.payload)
             state.userLibrary.push({verbName:action.payload})
-            const indexVerb = state.verbLibrary.findIndex(verb =>{
-                return verb.verbName === action.payload
-            })
 
             // SORT USERLIST ALPHABETICALLY
             state.userLibrary.sort(compare)
 
             // REMOVE ADDED VERB FROM VERBLIBRARY
+            console.log(action.payload)
+            const indexVerb = state.verbLibrary.findIndex(verb =>{
+                return verb.verb === action.payload
+            })
+            console.log(indexVerb)
             state.verbLibrary.splice(indexVerb, 1)
+            // state.verbLibrary = state.verbLibrary.filter((verb) => verb.verb !== action.payload)
+            console.log(state.verbLibrary)
         },
     
         verbDeleted: (state, action)=>{
