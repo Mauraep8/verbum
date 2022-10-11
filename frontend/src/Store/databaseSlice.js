@@ -37,7 +37,6 @@ const databaseSlice = createSlice({
     extraReducers:{
         [fetchVerbs.fulfilled]: (state, action) => {
             state.verbLibrary = action.payload
-            console.log(action.payload);
         },
     },
     reducers: {
@@ -50,14 +49,7 @@ const databaseSlice = createSlice({
             state.userLibrary.sort(compare)
 
             // REMOVE ADDED VERB FROM VERBLIBRARY
-            console.log(action.payload)
-            const indexVerb = state.verbLibrary.findIndex(verb =>{
-                return verb.verb === action.payload
-            })
-            console.log(indexVerb)
-            state.verbLibrary.splice(indexVerb, 1)
-            // state.verbLibrary = state.verbLibrary.filter((verb) => verb.verb !== action.payload)
-            console.log(state.verbLibrary)
+            state.verbLibrary = state.verbLibrary.filter((verb) => verb.verb !== action.payload)
         },
     
         verbDeleted: (state, action)=>{

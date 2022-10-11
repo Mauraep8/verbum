@@ -5,6 +5,7 @@ import Database from "../../Components/Database/Database.js";
 // import Exercice from "../../Components/Exercise/Exercise.js";
 import Navbar from "../../Components/Navbar/Navbar";
 import { fetchVerbs } from "../../Store/databaseSlice";
+import { useEffect } from "react";
 
 
 
@@ -20,8 +21,9 @@ import { fetchVerbs } from "../../Store/databaseSlice";
 
 function FrenchPage()  {
 
-
-store.dispatch(fetchVerbs())
+useEffect(() => {
+    store.dispatch(fetchVerbs());
+}, []);
 
   return (
       <Provider store={store}>
