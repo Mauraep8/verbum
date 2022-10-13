@@ -17,7 +17,12 @@ const initialState = {
 
 // SORT LISTS ALPHABETICALLY AFTER VERB IS ADDED OR DELETED
 const compare = (a,b) => {
+    // console.log(a)
+    // console.log(a.verbName)
+
     const verbA = a.verbName.toUpperCase()
+    
+    // console.log(verbA)
     const verbB = b.verbName.toUpperCase()
 
     let comparison = 0
@@ -35,6 +40,7 @@ const databaseSlice = createSlice({
     name: 'database',
     initialState,
     extraReducers:{
+        //EXTRA REDUCER SETS STATE WITH API CALL
         [fetchVerbs.fulfilled]: (state, action) => {
             state.verbLibrary = action.payload.filter((verb)=> verb.initialVerb === null)
             state.userLibrary = action.payload.filter((verb)=> verb.initialVerb === 'true')
@@ -45,7 +51,6 @@ const databaseSlice = createSlice({
             
             // PUSH NEW VERB INTO USERLIST
             state.userLibrary.push(action.payload)
-            console.log(action.payload)
 
             // SORT USERLIST ALPHABETICALLY
             state.userLibrary.sort(compare)
@@ -57,16 +62,14 @@ const databaseSlice = createSlice({
         verbDeleted: (state, action)=>{
 
             // PUSH NEW VERB INTO VERBLIBRARY
-            state.verbLibrary.push({verbName:action.payload})
-            const indexVerb = state.userLibrary.findIndex(verb =>{
-                return verb.verbName === action.payload
-            })
+            state.verbLibrary.push(action.payload)
 
             // SORT VERBLIBRARY ALPHABETICALLY
             state.verbLibrary.sort(compare)
 
             // REMOVE ADDED VERB FROM USERLIST
-            state.userLibrary.splice(indexVerb, 1)
+            state.userLibrary = state.userLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+
         }
     }
 })
