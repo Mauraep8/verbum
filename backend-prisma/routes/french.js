@@ -8,7 +8,7 @@ router.get("/", async (_req, res) => {
     const allVerbs = await prisma.verbs.findMany({
       orderBy:[
         {
-          verb: 'asc'
+          verbName: 'asc'
         }
       ]
     });

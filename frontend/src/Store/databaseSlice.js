@@ -12,7 +12,7 @@ export const fetchVerbs = createAsyncThunk('databaseSlice/fetchVerbs', async () 
 // INITIAL STATE OF VERBLIBRARY AND USERLIBRARY
 const initialState = {
     verbLibrary: [],
-    userLibrary: [{verbName: 'avoir', id: 4}, {verbName: 'etre', id: 5}, {verbName: 'finir', id: 6}]
+    userLibrary: []
 }
 
 // SORT LISTS ALPHABETICALLY AFTER VERB IS ADDED OR DELETED
@@ -36,20 +36,22 @@ const databaseSlice = createSlice({
     initialState,
     extraReducers:{
         [fetchVerbs.fulfilled]: (state, action) => {
-            state.verbLibrary = action.payload
+            state.verbLibrary = action.payload.filter((verb)=> verb.initialVerb === null)
+            state.userLibrary = action.payload.filter((verb)=> verb.initialVerb === 'true')
         },
     },
     reducers: {
         verbAdded: (state, action)=>{
             
             // PUSH NEW VERB INTO USERLIST
-            state.userLibrary.push({verbName:action.payload})
+            state.userLibrary.push(action.payload)
+            console.log(action.payload)
 
             // SORT USERLIST ALPHABETICALLY
             state.userLibrary.sort(compare)
 
             // REMOVE ADDED VERB FROM VERBLIBRARY
-            state.verbLibrary = state.verbLibrary.filter((verb) => verb.verb !== action.payload)
+            state.verbLibrary = state.verbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
         },
     
         verbDeleted: (state, action)=>{

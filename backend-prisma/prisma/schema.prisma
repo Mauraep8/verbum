@@ -8,11 +8,12 @@ datasource db {
 }
 
 model verbs {
-  id             Int     @id
-  verb           String  @db.Text
-  verb_group     String  @db.Text
-  bescherelle_id Int
-  primary_verb   String  @db.Text
-  special_type   String? @db.Text
-  auxiliary      String? @db.Text
+  id            Int     @id @default(autoincrement())
+  verbName      String  @db.Text
+  verbGroup     String  @db.Text
+  bescherelleId Int
+  primaryVerb   String  @db.Text
+  specialVerb   String? @db.Text
+  auxiliaryVerb String? @db.Text
+  initialVerb   String? @db.Text
 }
