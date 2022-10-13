@@ -17,22 +17,7 @@ const initialState = {
 
 // SORT LISTS ALPHABETICALLY AFTER VERB IS ADDED OR DELETED
 const compare = (a,b) => {
-    // console.log(a)
-    // console.log(a.verbName)
-
-    const verbA = a.verbName.toUpperCase()
-    
-    // console.log(verbA)
-    const verbB = b.verbName.toUpperCase()
-
-    let comparison = 0
-    if (verbA > verbB) {
-        comparison = 1
-
-    } else if (verbA < verbB){
-        comparison = -1
-    }
-    return comparison
+    return a.verbName.localeCompare(b.verbName)
 }
 
 // DATABASE SLICE
