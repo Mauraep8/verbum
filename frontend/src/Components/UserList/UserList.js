@@ -4,7 +4,6 @@ export default function UserList(props)  {
 
     // console.log(props.list)
 
-
     return (
         <div className="verbList">
             <div className="verbList__container">

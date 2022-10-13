@@ -11,7 +11,7 @@ export default function ContactPage() {
 
   const submitHandler = (e) =>{
     e.preventDefault()
-    console.log(subjectInput.current.value)
+    // console.log(subjectInput.current.value)
     if (subjectInput.current.value !== ' ' && messageInput.current.value !== ' '){
       setState(true)
     }

@@ -18,6 +18,12 @@
        display: flex;
     }
 
+    &__popupContainer{
+        border: 1px solid green;
+        position: fixed;
+        z-index: 1;
+    }
+
     @include tablet{
         margin: 2rem;
     }

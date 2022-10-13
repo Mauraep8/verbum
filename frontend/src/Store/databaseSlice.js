@@ -1,8 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-
 import  axios from "axios";
 
-
+// API CALL WITH CREATEASYNCTHUNK FOR VERBS
 export const fetchVerbs = createAsyncThunk('databaseSlice/fetchVerbs', async () => {
     return axios.get('http://localhost:8085/french')
     .then((result) => result.data)
@@ -12,7 +11,8 @@ export const fetchVerbs = createAsyncThunk('databaseSlice/fetchVerbs', async () 
 // INITIAL STATE OF VERBLIBRARY AND USERLIBRARY
 const initialState = {
     verbLibrary: [],
-    userLibrary: []
+    userLibrary: [],
+    popupAction: []
 }
 
 // SORT LISTS ALPHABETICALLY AFTER VERB IS ADDED OR DELETED
@@ -42,6 +42,9 @@ const databaseSlice = createSlice({
 
             // REMOVE ADDED VERB FROM VERBLIBRARY
             state.verbLibrary = state.verbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+
+            //POPUPACTION VERB ADDED
+            state.popupAction = {verbName:action.payload.verbName, popupAction: 'added'}
         },
     
         verbDeleted: (state, action)=>{
@@ -55,6 +58,8 @@ const databaseSlice = createSlice({
             // REMOVE ADDED VERB FROM USERLIST
             state.userLibrary = state.userLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
 
+            //POPUPACTION VERB DELETED
+            state.popupAction = {verbName:action.payload.verbName, popupAction: 'deleted'}
         }
     }
 })
