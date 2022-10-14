@@ -1,8 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-
 import  axios from "axios";
 
-
+// API CALL WITH CREATEASYNCTHUNK FOR VERBS
 export const fetchVerbs = createAsyncThunk('databaseSlice/fetchVerbs', async () => {
     return axios.get('http://localhost:8085/french')
     .then((result) => result.data)
@@ -12,22 +11,13 @@ export const fetchVerbs = createAsyncThunk('databaseSlice/fetchVerbs', async () 
 // INITIAL STATE OF VERBLIBRARY AND USERLIBRARY
 const initialState = {
     verbLibrary: [],
-    userLibrary: []
+    userLibrary: [],
+    popupAction: []
 }
 
 // SORT LISTS ALPHABETICALLY AFTER VERB IS ADDED OR DELETED
 const compare = (a,b) => {
-    const verbA = a.verbName.toUpperCase()
-    const verbB = b.verbName.toUpperCase()
-
-    let comparison = 0
-    if (verbA > verbB) {
-        comparison = 1
-
-    } else if (verbA < verbB){
-        comparison = -1
-    }
-    return comparison
+    return a.verbName.localeCompare(b.verbName)
 }
 
 // DATABASE SLICE
@@ -35,6 +25,7 @@ const databaseSlice = createSlice({
     name: 'database',
     initialState,
     extraReducers:{
+        //EXTRA REDUCER SETS STATE WITH API CALL
         [fetchVerbs.fulfilled]: (state, action) => {
             state.verbLibrary = action.payload.filter((verb)=> verb.initialVerb === null)
             state.userLibrary = action.payload.filter((verb)=> verb.initialVerb === 'true')
@@ -45,28 +36,30 @@ const databaseSlice = createSlice({
             
             // PUSH NEW VERB INTO USERLIST
             state.userLibrary.push(action.payload)
-            console.log(action.payload)
 
             // SORT USERLIST ALPHABETICALLY
             state.userLibrary.sort(compare)
 
             // REMOVE ADDED VERB FROM VERBLIBRARY
             state.verbLibrary = state.verbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+
+            //POPUPACTION VERB ADDED
+            state.popupAction = {verbName:action.payload.verbName, popupAction: 'added'}
         },
     
         verbDeleted: (state, action)=>{
 
             // PUSH NEW VERB INTO VERBLIBRARY
-            state.verbLibrary.push({verbName:action.payload})
-            const indexVerb = state.userLibrary.findIndex(verb =>{
-                return verb.verbName === action.payload
-            })
+            state.verbLibrary.push(action.payload)
 
             // SORT VERBLIBRARY ALPHABETICALLY
             state.verbLibrary.sort(compare)
 
             // REMOVE ADDED VERB FROM USERLIST
-            state.userLibrary.splice(indexVerb, 1)
+            state.userLibrary = state.userLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+
+            //POPUPACTION VERB DELETED
+            state.popupAction = {verbName:action.payload.verbName, popupAction: 'deleted'}
         }
     }
 })
