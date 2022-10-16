@@ -20,6 +20,7 @@ const compare = (a,b) => {
     return a.verbName.localeCompare(b.verbName)
 }
 
+
 // DATABASE SLICE
 const databaseSlice = createSlice({
     name: 'database',

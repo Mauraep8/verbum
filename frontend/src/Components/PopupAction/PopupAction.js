@@ -1,19 +1,32 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
+import "./PopupAction.scss";
+import { useEffect, useRef } from "react";
 
+export default function PopupAction(props) {
+    
+    const popupContainer = useRef([])
+   
 
-export default function PopupAction() {
+    useEffect(()=>{
+        if(props.state.popupAction === 'added'){
+            popupContainer.current.classList.add('popupAction--primary')
+            popupContainer.current.classList.remove('popupAction--secondary')
 
-    const {popupAction} = useSelector((state)=> state.database)
-    console.log(popupAction) 
+        }
+        if(props.state.popupAction  === 'deleted'){
+            popupContainer.current.classList.remove('popupAction--primary')
+            popupContainer.current.classList.add('popupAction--secondary')
+        }
+    })
 
-    if (popupAction.length !== 0){
+    if (props.state.length !== 0 ){
         return(
             <>
-            <div className='popupAction'>
-                <p className="popupAction__text">{popupAction.verbName} has been {popupAction.popupAction}.</p>
+            <div className='popupAction' ref={popupContainer}>
+                <p className="popupAction__text">{props.state.verbName} has been {props.state.popupAction}</p>
             </div>
             </>
         )
     }
+  
 }
