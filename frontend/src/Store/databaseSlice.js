@@ -61,9 +61,14 @@ const databaseSlice = createSlice({
 
             //POPUPACTION VERB DELETED
             state.popupAction = {verbName:action.payload.verbName, popupAction: 'deleted'}
+        },
+
+        verbSearched: (state, action ) =>{
+            // console.log(state.verbLibrary.getState())
+            // state.verbLibrary = state.verbLibrary.filter((verb) => verb.verbName.match(action.payload))
         }
     }
 })
 
-export const {verbAdded, verbDeleted} = databaseSlice.actions
+export const {verbAdded, verbDeleted, verbSearched} = databaseSlice.actions
 export default databaseSlice.reducer
