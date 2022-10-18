@@ -12,7 +12,9 @@ export const fetchVerbs = createAsyncThunk('databaseSlice/fetchVerbs', async () 
 const initialState = {
     verbLibrary: [],
     userLibrary: [],
-    popupAction: []
+    popupAction: [],
+    searchVerbLibrary: [], 
+    searchUserLibrary: []
 }
 
 // SORT LISTS ALPHABETICALLY AFTER VERB IS ADDED OR DELETED
@@ -46,6 +48,12 @@ const databaseSlice = createSlice({
 
             //POPUPACTION VERB ADDED
             state.popupAction = {verbName:action.payload.verbName, popupAction: 'added'}
+
+            // IF VERB IS ADDED WHILE ITS BEING SEARCHED, THEN REMOVE IT FROM SEARCH LIST
+            if (state.searchVerbLibrary.length !==0){
+                state.verbLibrary = state.verbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+                state.searchVerbLibrary = state.searchVerbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+            }
         },
     
         verbDeleted: (state, action)=>{
@@ -61,12 +69,44 @@ const databaseSlice = createSlice({
 
             //POPUPACTION VERB DELETED
             state.popupAction = {verbName:action.payload.verbName, popupAction: 'deleted'}
+
+            // IF VERB IS DELETED WHILE ITS BEING SEARCHED, THEN REMOVE IT FROM SEARCH LIST
+            if (state.searchUserLibrary.length !==0){
+                state.userLibrary = state.userLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+                state.searchUserLibrary = state.searchUserLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+            }
         },
 
-        verbSearched: (state, action ) =>{
-            // console.log(state.verbLibrary.getState())
-            // state.verbLibrary = state.verbLibrary.filter((verb) => verb.verbName.match(action.payload))
-        }
+        verbSearched: (state, action) =>{
+
+            //IF SEARCHBAR OF VERBLIBRARY COMPONENT IS ACTIVE
+            if (action.payload.component=== 'verbLibrary'){
+                if (action.payload.value === ''){
+                    state.searchVerbLibrary = []
+                } else{
+                    const searchedVerb = state.verbLibrary.filter((verb) => verb.verbName.startsWith(action.payload.value))
+                    if (searchedVerb.length === 0 ){
+                        state.searchVerbLibrary = null
+                    } else{
+                        state.searchVerbLibrary = state.verbLibrary.filter((verb) => verb.verbName.startsWith(action.payload.value))
+                    }
+                }
+            }
+
+            //IF SEARCHBAR OF USERLIBRARY COMPONENT IS ACTIVE
+            if (action.payload.component=== 'userLibrary'){
+                if (action.payload.value === ''){
+                    state.searchUserLibrary = []
+                } else{
+                    const searchedVerb = state.userLibrary.filter((verb) => verb.verbName.startsWith(action.payload.value))
+                    if (searchedVerb.length === 0 ){
+                        state.searchUserLibrary = null
+                    } else{
+                        state.searchUserLibrary = state.userLibrary.filter((verb) => verb.verbName.startsWith(action.payload.value))
+                    }
+                }
+            }
+        },
     }
 })
 

@@ -8,7 +8,7 @@ export default function ListEntry(props)  {
 
     const dispatch = useDispatch()
 
-    // console.log(props)
+
     const buttonAdd = useRef([])
     const buttonDelete = useRef([])
 
@@ -19,7 +19,7 @@ export default function ListEntry(props)  {
         if(props.buttonAction === 'delete'){
             buttonAdd.current.classList.add('ListEntry__button-container--hidden')
         }
-    })
+    },[])
 
     return (
         <div className="ListEntry">

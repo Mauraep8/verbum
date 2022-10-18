@@ -5,15 +5,14 @@ import {useSelector} from 'react-redux'
 
 export default function VerbLibrary()  {
 
-const {verbLibrary} = useSelector((state)=> state.database)
-// console.log(verbLibrary)
+const {verbLibrary, searchVerbLibrary} = useSelector((state)=> state.database)
 
 return (
     <div className="verbLibrary">
         <div className="verbLibrary__container">
             <h1 className="verbLibrary__text">Verb Library</h1>
-            <Searchbar/>
-            <VerbList list={verbLibrary}/>
+            <Searchbar type='verbLibrary'/>
+            <VerbList list={verbLibrary} search={searchVerbLibrary}/>
         </div>
     </div>
     )
