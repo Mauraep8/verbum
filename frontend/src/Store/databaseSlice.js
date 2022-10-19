@@ -14,7 +14,9 @@ const initialState = {
     userLibrary: [],
     popupAction: [],
     searchVerbLibrary: [], 
-    searchUserLibrary: []
+    searchUserLibrary: [],
+    searchVerbInput: [],
+    searchUserInput: []
 }
 
 // SORT LISTS ALPHABETICALLY AFTER VERB IS ADDED OR DELETED
@@ -54,6 +56,13 @@ const databaseSlice = createSlice({
                 state.verbLibrary = state.verbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
                 state.searchVerbLibrary = state.searchVerbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
             }
+            
+            //IF VERB IS LAST IN VERBSEARCHLIST AND IS DELETED THEN THE SEARCHBAR INPUT CLEARS
+            if (action.payload.verbSearchList === undefined){
+                return
+            } else if (action.payload.verbSearchList.length === 1) {
+                state.searchVerbInput = null
+            }
         },
     
         verbDeleted: (state, action)=>{
@@ -75,10 +84,22 @@ const databaseSlice = createSlice({
                 state.userLibrary = state.userLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
                 state.searchUserLibrary = state.searchUserLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
             }
+
+            //IF VERB IS LAST IN USERSEARCHLIST AND IS DELETED THEN THE SEARCHBAR INPUT CLEARS
+            if (action.payload.userSearchList === undefined){
+                return
+            } else if (action.payload.userSearchList.length === 1) {
+                state.searchUserInput = null
+            }
         },
 
         verbSearched: (state, action) =>{
 
+            //RESET SEARCHVERBINPUT STATE IF IT WAS PREVIOUSLY NULL
+            if (state.searchVerbInput === null) {
+                state.searchVerbInput = []
+            }
+            
             //IF SEARCHBAR OF VERBLIBRARY COMPONENT IS ACTIVE
             if (action.payload.component=== 'verbLibrary'){
                 if (action.payload.value === ''){
@@ -91,6 +112,11 @@ const databaseSlice = createSlice({
                         state.searchVerbLibrary = state.verbLibrary.filter((verb) => verb.verbName.startsWith(action.payload.value))
                     }
                 }
+            }
+
+            //RESET SEARCHUSERINPUT STATE IF IT WAS PREVIOUSLY NULL
+            if (state.searchUserInput === null) {
+                state.searchUserInput = []
             }
 
             //IF SEARCHBAR OF USERLIBRARY COMPONENT IS ACTIVE

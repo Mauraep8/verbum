@@ -6,14 +6,14 @@ import {useSelector} from "react-redux"
 
 export default function UserLibrary()  {
 
-const {userLibrary, searchUserLibrary} = useSelector((state)=> state.database)
+const {userLibrary, searchUserLibrary, searchUserInput} = useSelector((state)=> state.database)
 
 return (
     <>
     <div className="userLibrary">
         <div className="userLibrary__container">
             <h1 className="userLibrary__text">User List</h1>
-            <Searchbar type='userLibrary'/>
+            <Searchbar type='userLibrary' searchInputState={searchUserInput}/>
             <UserList list={userLibrary} search={searchUserLibrary}/>
         </div>
     </div>
