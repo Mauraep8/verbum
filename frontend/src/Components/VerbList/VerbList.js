@@ -47,7 +47,8 @@ export default function VerbList(props)  {
                         specialVerb={singleVerb.specialVerb}
                         auxiliaryVerb={singleVerb.auxiliaryVerb}
                         initialVerb={singleVerb.initialVerb}
-                        buttonAction={'add'}/>
+                        buttonAction={'add'}
+                        verbSearchList={props.search}/>
                     })}
                 </div>
             </div>

@@ -51,6 +51,7 @@ export default function UserList(props)  {
                         auxiliaryVerb={singleVerb.auxiliaryVerb}
                         initialVerb={singleVerb.initialVerb}
                         buttonAction={'delete'}
+                        verbSearchList={props.search}
                         />
                     })}
                 </div>

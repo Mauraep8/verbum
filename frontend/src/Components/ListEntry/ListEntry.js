@@ -25,10 +25,10 @@ export default function ListEntry(props)  {
         <div className="ListEntry">
             <div className="ListEntry__container">
                 <div className="ListEntry__button-container ListEntry__button-container--add" ref={buttonAdd}>
-                    <button className="ListEntry__button ListEntry__button--add" onClick={()=>{dispatch(verbAdded({verbName:props.verbName,id:props.id,verbGroup:props.verbGroup,bescherelleId:props.bescherelleId,primaryVerb:props.primaryVerb,specialVerb:props.specialVerb,auxiliaryVerb:props.auxiliaryVerb,key:props.id,initialVerb:props.initialVerb}))}}>+</button>
+                    <button className="ListEntry__button ListEntry__button--add" onClick={()=>{dispatch(verbAdded({verbName:props.verbName,id:props.id,verbGroup:props.verbGroup,bescherelleId:props.bescherelleId,primaryVerb:props.primaryVerb,specialVerb:props.specialVerb,auxiliaryVerb:props.auxiliaryVerb,key:props.id,initialVerb:props.initialVerb,verbSearchList:props.verbSearchList}))}}>+</button>
                 </div>
                 <div className="ListEntry__button-container ListEntry__button-container--delete"ref={buttonDelete}>
-                    <button className="ListEntry__button ListEntry__button--delete"onClick={()=>{dispatch(verbDeleted({verbName:props.verbName,id:props.id,verbGroup:props.verbGroup,bescherelleId:props.bescherelleId,primaryVerb:props.primaryVerb,specialVerb:props.specialVerb,auxiliaryVerb:props.auxiliaryVerb,key:props.id,initialVerb:props.initialVerb}))}}>-</button>
+                    <button className="ListEntry__button ListEntry__button--delete"onClick={()=>{dispatch(verbDeleted({verbName:props.verbName,id:props.id,verbGroup:props.verbGroup,bescherelleId:props.bescherelleId,primaryVerb:props.primaryVerb,specialVerb:props.specialVerb,auxiliaryVerb:props.auxiliaryVerb,key:props.id,initialVerb:props.initialVerb,userSearchList:props.verbSearchList}))}}>-</button>
                 </div>
                 <div className="ListEntry__text-container">
                     <p className="ListEntry__text">{props.verbName}</p>
