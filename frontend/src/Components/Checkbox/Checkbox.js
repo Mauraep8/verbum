@@ -1,19 +1,25 @@
 // import "./ListEntry.scss";
+import { useDispatch } from "react-redux";
+import { optionChecked} from "../../Store/exerciseSlice";
+import { useState, useEffect } from "react";
 
-function Checkbox()  {
+function Checkbox(props)  {
 
-    const selectCheckbox = (e) =>{
-        console.log(e.target)
+    const [checked, setChecked] = useState(true)
+    const dispatch = useDispatch()
+
+    function toggle () {
+        setChecked(!checked)
     }
 
+    useEffect(()=>{
+      toggle()
+    },[])
+
     return (
-        <>
-        <div className="ListEntry">
-            <div className="ListEntry_container">
-                <input type="checkbox" onChange={selectCheckbox}/>
-            </div>
+        <div className="ListEntry_container">
+            <input type="checkbox" defaultChecked={true} onClick={toggle} onChange={()=>{dispatch(optionChecked({value:props.optionValue, status:checked, category:props.optionCategory}))}} />
         </div>
-        </>
     ) 
 }
     

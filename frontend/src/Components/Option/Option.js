@@ -1,4 +1,5 @@
 import React from 'react'
+import Checkbox from "../Checkbox/Checkbox";
 import './Option.scss'
 
 export default function Option(props) {
@@ -6,7 +7,7 @@ export default function Option(props) {
 
   return (
     <div className='option'>
-      <input type="checkbox" />
+      <Checkbox optionValue={props.value} optionCategory={props.category}/>
       <p className='option__text'>{props.value}</p>
     </div>
   )
