@@ -1,6 +1,5 @@
 import React, {useRef} from 'react'
-import DropMenuGrammar from '../DropMenu/DropMenuGrammar'
-import DropMenu from '../DropMenu/DropMenuGrammar'
+import DropMenu from '../DropMenu/DropMenu'
 import './Grammar.scss'
 
 
@@ -23,7 +22,7 @@ export default function Grammar(props) {
     <div className='grammar'>
       <button className='grammar__button' onClick={handlerDropmenu}>{props.value[0].option}</button>
       <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-        <DropMenuGrammar value={props.value}/>
+        <DropMenu value={props.value}/>
       </div>
     </div>
   )

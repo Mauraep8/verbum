@@ -2,7 +2,7 @@ import React, {Provider}  from "react-redux";
 import { store } from "../../Store/configureStore";
 import axios from 'axios'
 import Database from "../../Components/Database/Database.js";
-// import Exercice from "../../Components/Exercise/Exercise.js";
+import Exercice from "../../Components/Exercise/Exercise.js";
 import Navbar from "../../Components/Navbar/Navbar";
 import { fetchVerbs } from "../../Store/databaseSlice";
 import { useEffect } from "react";
@@ -28,7 +28,7 @@ useEffect(() => {
   return (
       <Provider store={store}>
         <Navbar/>
-        {/* <Exercice/> */}
+        <Exercice/>
         <Database/>
       </Provider>
   )
