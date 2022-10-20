@@ -6,6 +6,6 @@ App tech
 - Node.js
 - Prisma
 - MySQL
-- Docker (currently not operational)
+- Docker 
 
 
