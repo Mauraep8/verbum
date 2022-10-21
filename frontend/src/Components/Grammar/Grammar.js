@@ -1,9 +1,15 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import DropMenu from '../DropMenu/DropMenu'
 import './Grammar.scss'
 
 
 export default function Grammar(props) {
+
+  // const [buttonText, setButtonText] = useState([])
+
+  // useEffect(() => {
+  //   setButtonText(props.checkedOption[0].value)
+  // }, [props])
 
   const dropmenuWrapper = useRef ([])
 
@@ -20,9 +26,9 @@ export default function Grammar(props) {
 
   return (
     <div className='grammar'>
-      <button className='grammar__button' onClick={handlerDropmenu}>{props.value[0].option}</button>
+      <button className='grammar__button' onClick={handlerDropmenu}>{'buttonText'}</button>
       <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-        <DropMenu value={props.value}/>
+        <DropMenu value={props.option}/>
       </div>
     </div>
   )
