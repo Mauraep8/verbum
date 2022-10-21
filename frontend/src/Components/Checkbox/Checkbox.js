@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 function Checkbox(props)  {
 
-    const [checked, setChecked] = useState(true)
+    const [checked, setChecked] = useState()
     const dispatch = useDispatch()
 
     function toggle () {

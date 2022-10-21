@@ -19,7 +19,48 @@ const exerciseSlice = createSlice({
     },
     reducers: {
         optionChecked: (state, action)=>{
-            console.log(action.payload)
+            // console.log(action.payload)
+            if(action.payload.status === true){
+                switch (action.payload.category) {
+                    case 'person':
+                        state.personArrayChecked.push(action.payload)
+                        break;
+                    case 'gender':
+                        state.genderArrayChecked.push(action.payload)
+                        break;
+                    case 'number':
+                        state.numberArrayChecked.push(action.payload)
+                        break;
+                    case 'tense':
+                        state.tenseArrayChecked.push(action.payload)
+                        break;
+                    case 'mood':
+                        state.moodArrayChecked.push(action.payload)
+                        break
+                    default:
+                        return state;
+                }
+            } else {
+                switch (action.payload.category) {
+                    case 'person':
+                        state.personArrayChecked = state.personArrayChecked.filter((person)=> person.value !== action.payload.value)
+                        break;
+                    case 'gender':
+                        state.genderArrayChecked.push(action.payload)
+                        break;
+                    case 'number':
+                        state.numberArrayChecked.push(action.payload)
+                        break;
+                    case 'tense':
+                        state.tenseArrayChecked.push(action.payload)
+                        break;
+                    case 'mood':
+                        state.moodArrayChecked.push(action.payload)
+                        break
+                    default:
+                        return state;
+                }
+            }
         }
     }
 })

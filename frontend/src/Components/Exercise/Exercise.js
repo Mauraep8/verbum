@@ -3,9 +3,12 @@ import Verb from '../Verb/Verb'
 import Grammar from '../Grammar/Grammar'
 import Answer from '../Answer/Answer'
 import { personArray, genderArray, numberArray, tenseArray, moodArray } from '../../Utils/GrammarArrayValue'
+import {useSelector} from 'react-redux'
+
 import './Exercise.scss'
 
 export default function Exercice() {
+  const {personArrayChecked, genderArrayChecked, numberArrayChecked, tenseArrayChecked, moodArrayChecked} = useSelector((state)=> state.exercise)
 
   return (
       <div className='exercise'>
@@ -13,11 +16,11 @@ export default function Exercice() {
           <h2 className='exercise__header'>Exercise</h2>
           <div className='exercise__wrapper'>
             <div className='exercise__grammar-container'>
-              <Grammar value={personArray}/>
-              <Grammar value={genderArray}/>
-              <Grammar value={numberArray}/>
-              <Grammar value={tenseArray}/>
-              <Grammar value={moodArray}/>
+              <Grammar checkedOption={personArrayChecked} option={personArray}/>
+              <Grammar checkedOption={genderArrayChecked} option={genderArray}/>
+              <Grammar checkedOption={numberArrayChecked} option={numberArray}/>
+              <Grammar checkedOption={tenseArrayChecked} option={tenseArray}/>
+              <Grammar checkedOption={moodArrayChecked} option={moodArray}/>
             </div>
             {/* <Verb/> */}
             <Answer/>
