@@ -13,7 +13,6 @@ export default function Answer() {
         <input className='answer__input' type="text" placeholder='Answer'/>
         <button className='answer__button' onClick={verify}>Verify</button>
       </form>
-      <button className='answer__button'>Shuffle</button>
     </div>
   )
 }

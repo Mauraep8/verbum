@@ -8,6 +8,7 @@ const initialState = {
     numberArrayChecked: [],
     tenseArrayChecked: [],
     moodArrayChecked: [],
+    shuffleState: [],
 }
 
 // EXERCISE SLICE
@@ -19,7 +20,6 @@ const exerciseSlice = createSlice({
     },
     reducers: {
         optionChecked: (state, action)=>{
-            // console.log(action.payload)
             if(action.payload.status === true){
                 switch (action.payload.category) {
                     case 'person':
@@ -46,24 +46,28 @@ const exerciseSlice = createSlice({
                         state.personArrayChecked = state.personArrayChecked.filter((person)=> person.value !== action.payload.value)
                         break;
                     case 'gender':
-                        state.genderArrayChecked.push(action.payload)
+                        state.genderArrayChecked = state.genderArrayChecked.filter((gender)=> gender.value !== action.payload.value)
                         break;
                     case 'number':
-                        state.numberArrayChecked.push(action.payload)
+                        state.numberArrayChecked = state.numberArrayChecked.filter((number)=> number.value !== action.payload.value)
                         break;
                     case 'tense':
-                        state.tenseArrayChecked.push(action.payload)
+                        state.tenseArrayChecked = state.tenseArrayChecked.filter((tense)=> tense.value !== action.payload.value)
                         break;
                     case 'mood':
-                        state.moodArrayChecked.push(action.payload)
+                        state.moodArrayChecked = state.moodArrayChecked.filter((mood)=> mood.value !== action.payload.value)
                         break
                     default:
                         return state;
                 }
             }
+        },
+        exerciseShuffled: (state, action)=>{
+            state.shuffleState = [{personArray:state.personArrayChecked},{genderArray:state.genderArrayChecked},{numberArray:state.numberArrayChecked},{tenseArray:state.tenseArrayChecked},{moodArray:state.moodArrayChecked}]
+            console.log(state.shuffleState)
         }
     }
 })
 
-export const {optionChecked} = exerciseSlice.actions
+export const {optionChecked, exerciseShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer
