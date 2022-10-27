@@ -8,23 +8,12 @@ import { exerciseShuffled} from "../../Store/exerciseSlice";
 
 
 export default function Grammar(props) {
-
-  // const [buttonText, setButtonText] = useState(props.option[0].option)
-  const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   setButtonText(props.checkedOption[0].value)
-  // }, [props])
-
-  // if (props.shuffleState.shuffle === true){
-  //   shuffleArray(props.checkedOption)
-  //   dispatch(exerciseShuffled({shuffle:false}))
-  // }
-  
-
-
   const dropmenuWrapper = useRef ([])
+  // const [buttonText, setButtonText] = useState(props.option[0].option)
 
+  const grammarType = props.type
+ 
+ 
   const handlerDropmenu = () =>{
     if (dropmenuWrapper.current.classList.value === 'grammar__dropmenu-wrapper--hidden'){
       dropmenuWrapper.current.classList.remove('grammar__dropmenu-wrapper--hidden')
