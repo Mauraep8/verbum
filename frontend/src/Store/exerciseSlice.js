@@ -63,8 +63,13 @@ const exerciseSlice = createSlice({
             }
         },
         exerciseShuffled: (state, action)=>{
-            state.shuffleState = [{personArray:state.personArrayChecked},{genderArray:state.genderArrayChecked},{numberArray:state.numberArrayChecked},{tenseArray:state.tenseArrayChecked},{moodArray:state.moodArrayChecked}]
-            console.log(state.shuffleState)
+           
+            // if (action)
+            // state.shuffleState.push(state.personArrayChecked)
+            console.log(action.payload)
+            state.shuffleState = action.payload
+            // getState(state.personArrayChecked)
+            
         }
     }
 })
