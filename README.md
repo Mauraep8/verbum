@@ -1,8 +1,14 @@
-# verbum
+# VERBUM LANGUAGE APP
 
-App tech
+# About the Project
+
+
+# Built With
+- HTML
+- SASS
+- JavaScript
 - React
-- Redux
+- Redux.js
 - Node.js
 - Prisma
 - MySQL
