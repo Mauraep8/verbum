@@ -1,10 +1,10 @@
-## VERBUM
+# VERBUM
 
-# About the Project
+## About the Project
 
 Verbum is an language app that generates conjugation exercices for students learning French. Users can customize their exercices to their level and needs.
 
-# Built With
+## Built With
 - HTML
 - SASS
 - JavaScript
@@ -15,7 +15,7 @@ Verbum is an language app that generates conjugation exercices for students lear
 - MySQL
 - Docker 
 
-# Updates
+## Updates
 
 Currently half-way done integrating the Redux Library in the "develop" branch.
 
