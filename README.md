@@ -4,7 +4,7 @@
 
 ## About the Project
 
-Verbum is an language app that generates conjugation exercices for students learning French. Users can customize their exercices to their level and needs.
+Verbum is a language app that generates conjugation exercices for students learning French. Users can customize their exercices to their level and needs.
 
 ## Built With
 - HTML
