@@ -15,18 +15,23 @@ export default function Exercice() {
  
 const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
 
+let mood
+let tense
+let number
+let gender
+let person
 
 const shuffleOption = () =>{
-
     if (shuffleState.length !== 0){
-    console.log('hello')
-    console.log(shuffleState)
+    mood = shuffleArray(shuffleState.moodArrayChecked)
+    tense = shuffleArray(shuffleState.tenseArrayChecked)
+    number = shuffleArray(shuffleState.numberArrayChecked)
+    gender = shuffleArray(shuffleState.genderArrayChecked)
+    person = shuffleArray(shuffleState.personArrayChecked)
     }
  
   }
-
-shuffleOption()
-
+  shuffleOption()
 
   return (
       <div className='exercise'>
@@ -34,11 +39,11 @@ shuffleOption()
           <h2 className='exercise__header'>Exercise</h2>
           <div className='exercise__wrapper'>
             <div className='exercise__grammar-container'>
-              <Grammar shuffleState={shuffleState} option={personArray} type='person'/>
-              <Grammar shuffleState={shuffleState} option={genderArray} type='gender'/>
-              <Grammar shuffleState={shuffleState} option={numberArray} type='number'/>
-              <Grammar shuffleState={shuffleState} option={tenseArray} type='tense'/>
-              <Grammar shuffleState={shuffleState} option={moodArray} type='mood'/>
+              <Grammar shuffleState={person} option={personArray} type='person'/>
+              <Grammar shuffleState={gender} option={genderArray} type='gender'/>
+              <Grammar shuffleState={number} option={numberArray} type='number'/>
+              <Grammar shuffleState={tense} option={tenseArray} type='tense'/>
+              <Grammar shuffleState={mood} option={moodArray} type='mood'/>
             </div>
             {/* <Verb/> */}
             <Answer/>
