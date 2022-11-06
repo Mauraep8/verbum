@@ -5,37 +5,27 @@ import Answer from '../Answer/Answer'
 import { personArray, genderArray, numberArray, tenseArray, moodArray } from '../../Utils/grammarArrayValue'
 import {useSelector} from 'react-redux'
 
+
+
 import './Exercise.scss'
 import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
 
 export default function Exercice() {
  
-  const {shuffleState} = useSelector((state)=> state.exercise)
+const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
 
-  console.log('exercise-component', shuffleState)
 
-  const shuffleOption = () =>{
-  if (shuffleState.length === 0) return
-  for (let i = 0; i < shuffleState.length; i++) {
-    const singleArray = shuffleState[i];
-    console.log(singleArray.genderArray.length)
-    // console.log(singleArray.personArray.length)
-    // console.log(singleArray.genderArray.length)
-    // console.log(singleArray.numberArray.length)
-    // console.log(singleArray.tenseArray.length)
-    // console.log(singleArray.moodArray.length)
+const shuffleOption = () =>{
 
-    // if (singleArray.personArray.length === 0) {
-    //   return
-    // } else {
-    //   // shuffleArray(singleArray.personArray)
-    // }
-    
+    if (shuffleState.length !== 0){
+    console.log('hello')
+    console.log(shuffleState)
+    }
+ 
   }
 
-  }
-// shuffleOption()
+shuffleOption()
 
 
   return (
