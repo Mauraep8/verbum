@@ -62,17 +62,18 @@ const exerciseSlice = createSlice({
                 }
             }
         },
-        exerciseShuffled: (state, action)=>{
+        shuffleClicked: (state, action)=>{
            
-            // if (action)
-            // state.shuffleState.push(state.personArrayChecked)
-            console.log(action.payload)
-            state.shuffleState = action.payload
-            // getState(state.personArrayChecked)
-            
+            // remove shuffleState from dispatch getState
+            const object = action.payload.exercise
+            const asArray = Object.entries(object)
+            const filtered = asArray.filter(([key])=> key !== 'shuffleState')
+            const newObject = Object.fromEntries(filtered)
+
+            state.shuffleState = newObject
         }
     }
 })
 
-export const {optionChecked, exerciseShuffled} = exerciseSlice.actions
+export const {optionChecked, shuffleClicked} = exerciseSlice.actions
 export default exerciseSlice.reducer
