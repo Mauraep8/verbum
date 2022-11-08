@@ -1,18 +1,32 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, {useRef, useEffect} from 'react'
 import DropMenu from '../DropMenu/DropMenu'
 import './Grammar.scss'
-import { shuffleArray } from "../../Utils/shuffleArray";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { exerciseShuffled} from "../../Store/exerciseSlice";
+
 
 
 export default function Grammar(props) {
-  const dropmenuWrapper = useRef ([])
 
-  // console.log(props.shuffleState)
- 
- 
+  const dropmenuWrapper = useRef ([])
+  const dropmenuButton = useRef ([])
+
+
+  // WHEN SHUFFLE IS CLICKED BUTTONS TURN BLUE MOMENTARILY
+  useEffect(() => {
+    if (props.shuffleState !== undefined){
+      if (props.shuffleState.colorChange === true){
+        dropmenuButton.current.classList.remove('grammar__button--inactive')
+        dropmenuButton.current.classList.add('grammar__button--active')
+
+        setTimeout(() => {
+          dropmenuButton.current.classList.add('grammar__button--inactive')
+          dropmenuButton.current.classList.remove('grammar__button--active')
+
+        }, 400);     
+      }
+    }   
+  })
+  
+  // WHEN BUTTON IS CLICKED, DROPMENU OPENS AND CLOSES
   const handlerDropmenu = () =>{
     if (dropmenuWrapper.current.classList.value === 'grammar__dropmenu-wrapper--hidden'){
       dropmenuWrapper.current.classList.remove('grammar__dropmenu-wrapper--hidden')
@@ -25,18 +39,18 @@ export default function Grammar(props) {
   }
 
   if (props.shuffleState === undefined) {
-  return (
-    <div className='grammar'>
-      <button className='grammar__button' onClick={handlerDropmenu}>{props.option[0].option}</button>
-      <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-        <DropMenu value={props.option}/>
+    return (
+      <div className='grammar'>
+        <button className='grammar__button' onFocus={handlerDropmenu}>{props.option[0].option}</button>
+        <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
+          <DropMenu value={props.option}/>
+        </div>
       </div>
-    </div>
-  )
+    )
   } else {
     return (
       <div className='grammar'>
-        <button className='grammar__button' onClick={handlerDropmenu}>{props.shuffleState.value}</button>
+        <button className='grammar__button' ref={dropmenuButton} onClick={handlerDropmenu}>{props.shuffleState.result.value}</button>
         <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
           <DropMenu value={props.option}/>
         </div>

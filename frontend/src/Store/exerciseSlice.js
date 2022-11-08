@@ -1,5 +1,4 @@
 import {createSlice} from '@reduxjs/toolkit'
-// import  axios from "axios";
 
 // INITIAL STATE 
 const initialState = {
@@ -62,7 +61,7 @@ const exerciseSlice = createSlice({
                 }
             }
         },
-        shuffleClicked: (state, action)=>{
+        shuffleClicked  : (state, action)=>{
            
             // remove shuffleState from dispatch getState
             const object = action.payload.exercise

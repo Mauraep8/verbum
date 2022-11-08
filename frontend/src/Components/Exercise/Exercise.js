@@ -24,6 +24,8 @@ let person
 const shuffleOption = () =>{
     if (shuffleState.length !== 0){
     mood = shuffleArray(shuffleState.moodArrayChecked)
+    // console.log(mood)
+
     tense = shuffleArray(shuffleState.tenseArrayChecked)
     number = shuffleArray(shuffleState.numberArrayChecked)
     gender = shuffleArray(shuffleState.genderArrayChecked)
