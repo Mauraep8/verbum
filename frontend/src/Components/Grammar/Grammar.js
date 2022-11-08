@@ -9,9 +9,8 @@ import { exerciseShuffled} from "../../Store/exerciseSlice";
 
 export default function Grammar(props) {
   const dropmenuWrapper = useRef ([])
-  // const [buttonText, setButtonText] = useState(props.option[0].option)
 
-  const grammarType = props.type
+  // console.log(props.shuffleState)
  
  
   const handlerDropmenu = () =>{
@@ -25,6 +24,7 @@ export default function Grammar(props) {
     }
   }
 
+  if (props.shuffleState === undefined) {
   return (
     <div className='grammar'>
       <button className='grammar__button' onClick={handlerDropmenu}>{props.option[0].option}</button>
@@ -33,4 +33,14 @@ export default function Grammar(props) {
       </div>
     </div>
   )
+  } else {
+    return (
+      <div className='grammar'>
+        <button className='grammar__button' onClick={handlerDropmenu}>{props.shuffleState.value}</button>
+        <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
+          <DropMenu value={props.option}/>
+        </div>
+      </div>
+    )
+  }
 }
