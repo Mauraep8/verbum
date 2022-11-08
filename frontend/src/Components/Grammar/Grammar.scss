@@ -13,6 +13,13 @@
             cursor: pointer;
             background-color: lightgray;
         }
+
+        &--active{
+            color: blue;
+        }
+        &--inactive{
+            color: black;
+        }
     }
 
     &__dropmenu-wrapper--hidden{
