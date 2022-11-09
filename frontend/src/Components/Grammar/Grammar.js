@@ -9,7 +9,6 @@ export default function Grammar(props) {
   const dropmenuWrapper = useRef ([])
   const dropmenuButton = useRef ([])
 
-  console.log(props.shuffleState)
   // WHEN SHUFFLE IS CLICKED BUTTONS TURN BLUE MOMENTARILY
   useEffect(() => {
     if (props.shuffleState !== undefined){
@@ -38,7 +37,7 @@ export default function Grammar(props) {
     }
   }
 
-  if (props.shuffleState === undefined || props.shuffleState.result === null) {
+  if (props.shuffleState === undefined || props.shuffleState.length === 0 || props.shuffleState.result === null) {
     return (
       <div className='grammar'>
         <button className='grammar__button' onFocus={handlerDropmenu}>{props.option[0].option}</button>

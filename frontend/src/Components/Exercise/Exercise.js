@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Verb from '../Verb/Verb'
 import Grammar from '../Grammar/Grammar'
 import Answer from '../Answer/Answer'
@@ -12,32 +12,36 @@ import { exerciseShuffled } from "../../Store/exerciseSlice";
 
 export default function Exercise() {
  
-const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
-const dispatch = useDispatch()
+  const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
+  const dispatch = useDispatch()
 
-let mood
-let tense
-let number
-let gender
-let person
+  const [mood, setMood] = useState(shuffleState)
+  const [tense, setTense] = useState(shuffleState)
+  const [number, setNumber] = useState(shuffleState)
+  const [gender, setGender] = useState(shuffleState)
+  const [person, setPerson] = useState(shuffleState)
 
+  useEffect(() => {
+        if (shuffleState.length !== 0){
 
+        const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)
+        setMood(shuffledMood)
 
-const shuffleOption = () =>{
-    if (shuffleState.length !== 0){
-    mood = shuffleArray(shuffleState.moodArrayChecked)
-    tense = shuffleArray(shuffleState.tenseArrayChecked)
-    number = shuffleArray(shuffleState.numberArrayChecked)
-    gender = shuffleArray(shuffleState.genderArrayChecked)
-    person = shuffleArray(shuffleState.personArrayChecked)
+        const shuffledTense = shuffleArray(shuffleState.tenseArrayChecked)
+        setTense(shuffledTense)
 
-    dispatch(exerciseShuffled({mood:mood.result,tense:tense.result,number:number,gender:gender,person:person}))
+        const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
+        setNumber(shuffledNumber)
 
-    console.log(mood)
-    }
- 
-  }
-  shuffleOption()
+        const shuffledGender = shuffleArray(shuffleState.genderArrayChecked)
+        setGender(shuffledGender)
+
+        const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
+        setPerson(shuffledPerson)
+      
+        dispatch(exerciseShuffled({mood:shuffledMood.result, tense:shuffledTense.result, number:shuffledNumber.result, gender:shuffledGender.result, person:shuffledPerson.result}))
+      }
+  },[shuffleState])
 
   return (
       <div className='exercise'>
