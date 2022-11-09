@@ -32,6 +32,8 @@ const shuffleOption = () =>{
     person = shuffleArray(shuffleState.personArrayChecked)
 
     dispatch(exerciseShuffled({mood:mood.result,tense:tense.result,number:number,gender:gender,person:person}))
+
+    console.log(mood)
     }
  
   }
