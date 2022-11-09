@@ -3,17 +3,17 @@ import Verb from '../Verb/Verb'
 import Grammar from '../Grammar/Grammar'
 import Answer from '../Answer/Answer'
 import { personArray, genderArray, numberArray, tenseArray, moodArray } from '../../Utils/grammarArrayValue'
-import {useSelector} from 'react-redux'
-
-
-
+import {useSelector, useDispatch} from 'react-redux'
 import './Exercise.scss'
 import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
+import { exerciseShuffled } from "../../Store/exerciseSlice";
 
-export default function Exercice() {
+
+export default function Exercise() {
  
 const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
+const dispatch = useDispatch()
 
 let mood
 let tense
@@ -21,15 +21,17 @@ let number
 let gender
 let person
 
+
+
 const shuffleOption = () =>{
     if (shuffleState.length !== 0){
     mood = shuffleArray(shuffleState.moodArrayChecked)
-    // console.log(mood)
-
     tense = shuffleArray(shuffleState.tenseArrayChecked)
     number = shuffleArray(shuffleState.numberArrayChecked)
     gender = shuffleArray(shuffleState.genderArrayChecked)
     person = shuffleArray(shuffleState.personArrayChecked)
+
+    dispatch(exerciseShuffled({mood:mood.result,tense:tense.result,number:number,gender:gender,person:person}))
     }
  
   }
