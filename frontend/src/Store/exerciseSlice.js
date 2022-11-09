@@ -8,6 +8,7 @@ const initialState = {
     tenseArrayChecked: [],
     moodArrayChecked: [],
     shuffleState: [],
+    exerciseState:[]
 }
 
 // EXERCISE SLICE
@@ -62,7 +63,6 @@ const exerciseSlice = createSlice({
             }
         },
         shuffleClicked  : (state, action)=>{
-           
             // remove shuffleState from dispatch getState
             const object = action.payload.exercise
             const asArray = Object.entries(object)
@@ -70,9 +70,13 @@ const exerciseSlice = createSlice({
             const newObject = Object.fromEntries(filtered)
 
             state.shuffleState = newObject
+        },
+        exerciseShuffled : (state, action)=>{
+            console.log(action.payload)
+            state.exerciseState = action.payload
         }
     }
 })
 
-export const {optionChecked, shuffleClicked} = exerciseSlice.actions
+export const {optionChecked, shuffleClicked, exerciseShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer
