@@ -21,25 +21,49 @@ export default function Exercise() {
   const [gender, setGender] = useState(shuffleState)
   const [person, setPerson] = useState(shuffleState)
 
+  let filteredTense
+
   useEffect(() => {
         if (shuffleState.length !== 0){
 
         const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)
         setMood(shuffledMood)
+        // console.log(shuffledMood.result.value)
 
-        const shuffledTense = shuffleArray(shuffleState.tenseArrayChecked)
-        setTense(shuffledTense)
+        if (shuffledMood.result.value === 'indicatif'){
+          filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé')
+          // console.log(filteredTense)
+          const shuffledTense = shuffleArray(filteredTense)
+          setTense(shuffledTense)
+        }
+
+        if (shuffledMood.result.value === 'impératif' || shuffledMood.result.value === 'conditionnel' ){
+          filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
+          // console.log(filteredTense)
+          const shuffledTense = shuffleArray(filteredTense)
+          setTense(shuffledTense)
+        }
+
+        if (shuffledMood.result.value === 'subjonctif'){
+          filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'imparfait' || obj.value === 'plus-que-parfait')
+          // console.log(filteredTense)
+          const shuffledTense = shuffleArray(filteredTense)
+          setTense(shuffledTense)
+        }
+
+        // const shuffledTense = shuffleArray(shuffleState.tenseArrayChecked)
+        // setTense(shuffledTense)
+
+        const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
+        setPerson(shuffledPerson)
 
         const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
         setNumber(shuffledNumber)
 
         const shuffledGender = shuffleArray(shuffleState.genderArrayChecked)
         setGender(shuffledGender)
-
-        const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
-        setPerson(shuffledPerson)
       
-        dispatch(exerciseShuffled({mood:shuffledMood.result, tense:shuffledTense.result, number:shuffledNumber.result, gender:shuffledGender.result, person:shuffledPerson.result}))
+        // dispatch(exerciseShuffled({mood:shuffledMood.result, tense:shuffledTense.result, number:shuffledNumber.result, gender:shuffledGender.result, person:shuffledPerson.result}))
       }
   },[shuffleState])
 
