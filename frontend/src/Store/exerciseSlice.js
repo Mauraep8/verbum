@@ -71,8 +71,8 @@ const exerciseSlice = createSlice({
 
             state.shuffleState = newObject
         },
-        exerciseShuffled : (state, action)=>{
-            console.log(action.payload)
+        exerciseShuffled : (state, action) => {
+        
             state.exerciseState = action.payload
         }
     }
