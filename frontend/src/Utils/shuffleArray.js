@@ -1,5 +1,9 @@
 // FUNCTION SHUFFLES ARRAY AND RETURNS IN AN OBJECT THE RESULT WITH ITS SHUFFLE COLOR STATUS 
 export const shuffleArray = (array) =>{
+        if(array === null){
+                const object = {result: 'none', colorChange: false}
+                return object
+        }
         if (array.length === 0){
                 const object = {result: null, colorChange: false}
                 return object
