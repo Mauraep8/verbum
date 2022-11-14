@@ -8,7 +8,13 @@ const initialState = {
     tenseArrayChecked: [],
     moodArrayChecked: [],
     shuffleState: [],
-    exerciseState:[]
+    exerciseState:[],
+    moodState:[],
+    tenseState:[],
+    personState:[],
+    numberState:[],
+    genderState:[],
+
 }
 
 // EXERCISE SLICE
@@ -74,9 +80,29 @@ const exerciseSlice = createSlice({
         exerciseShuffled : (state, action) => {
         
             state.exerciseState = action.payload
+        },
+        moodShuffled : (state, action)=>{
+            // console.log(action.payload)
+            state.moodState = action.payload
+        },
+        tenseShuffled : (state, action)=>{
+            // console.log(action.payload)
+            state.tenseState = action.payload
+        },
+        personShuffled : (state, action)=>{
+            // console.log(action.payload)
+            state.personState = action.payload
+        },
+        numberShuffled : (state, action)=>{
+            // console.log(action.payload)
+            state.numberState = action.payload
+        },
+        genderShuffled : (state, action)=>{
+            // console.log(action.payload)
+            state.genderState = action.payload
         }
     }
 })
 
-export const {optionChecked, shuffleClicked, exerciseShuffled} = exerciseSlice.actions
+export const {optionChecked, shuffleClicked, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer

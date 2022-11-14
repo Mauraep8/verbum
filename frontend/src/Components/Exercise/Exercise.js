@@ -7,63 +7,84 @@ import {useSelector, useDispatch} from 'react-redux'
 import './Exercise.scss'
 import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
-import { exerciseShuffled } from "../../Store/exerciseSlice";
+import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled } from "../../Store/exerciseSlice";
 
 
 export default function Exercise() {
  
   const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
+  const moodState = useSelector(((state)=> state.exercise.moodState))
+  const tenseState = useSelector(((state) => state.exercise.tenseState))
+  const personState = useSelector(((state) => state.exercise.personState))
+  const numberState = useSelector(((state) => state.exercise.numberState))
+  const genderState = useSelector(((state) => state.exercise.genderState))
+
   const dispatch = useDispatch()
 
-  const [mood, setMood] = useState(shuffleState)
-  const [tense, setTense] = useState(shuffleState)
-  const [number, setNumber] = useState(shuffleState)
-  const [gender, setGender] = useState(shuffleState)
-  const [person, setPerson] = useState(shuffleState)
-
-  let filteredTense
 
   useEffect(() => {
+
         if (shuffleState.length !== 0){
 
+        // MOOD SHUFFLE 
         const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)
-        setMood(shuffledMood)
-        // console.log(shuffledMood.result.value)
+        dispatch(moodShuffled(shuffledMood))
 
+
+        // IF MOOD === INDICATIF
         if (shuffledMood.result.value === 'indicatif'){
-          filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé')
-          // console.log(filteredTense)
+
+          // TENSE
+          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé')
           const shuffledTense = shuffleArray(filteredTense)
-          setTense(shuffledTense)
+          dispatch(tenseShuffled(shuffledTense)) 
         }
 
-        if (shuffledMood.result.value === 'impératif' || shuffledMood.result.value === 'conditionnel' ){
-          filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
-          // console.log(filteredTense)
+
+        // IF MOOD === IMPERATIF
+        if (shuffledMood.result.value === 'impératif'){
+
+          // TENSE
+          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
           const shuffledTense = shuffleArray(filteredTense)
-          setTense(shuffledTense)
+          dispatch(tenseShuffled(shuffledTense)) 
+
+          // PERSON
+          const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème')
+          const shuffledPerson = shuffleArray(filteredPerson)
+          dispatch(personShuffled(shuffledPerson))
+
+          // NUMBER
+          if (shuffledPerson.result.value === '1er'){
+            const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === 'pluriel')
+            const shuffledNumber = shuffleArray(filteredNumber)
+            dispatch(numberShuffled(shuffledNumber))
+          } else{
+            const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
+            dispatch(numberShuffled(shuffledNumber))
+          }
+
+          // GENDER
+          const genderShuffle = shuffleArray(null)
+          dispatch(genderShuffled(genderShuffle))
         }
+
+
 
         if (shuffledMood.result.value === 'subjonctif'){
-          filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'imparfait' || obj.value === 'plus-que-parfait')
+          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'imparfait' || obj.value === 'plus-que-parfait')
           // console.log(filteredTense)
           const shuffledTense = shuffleArray(filteredTense)
-          setTense(shuffledTense)
+          dispatch(tenseShuffled(shuffledTense)) 
         }
 
-        // const shuffledTense = shuffleArray(shuffleState.tenseArrayChecked)
-        // setTense(shuffledTense)
-
-        const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
-        setPerson(shuffledPerson)
-
-        const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
-        setNumber(shuffledNumber)
-
-        const shuffledGender = shuffleArray(shuffleState.genderArrayChecked)
-        setGender(shuffledGender)
+        if (shuffledMood.result.value === 'conditionnel' ){
+          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
+          // console.log(filteredTense)
+          const shuffledTense = shuffleArray(filteredTense)
+          dispatch(tenseShuffled(shuffledTense)) 
+        }
       
-        // dispatch(exerciseShuffled({mood:shuffledMood.result, tense:shuffledTense.result, number:shuffledNumber.result, gender:shuffledGender.result, person:shuffledPerson.result}))
       }
   },[shuffleState])
 
@@ -73,11 +94,11 @@ export default function Exercise() {
           <h2 className='exercise__header'>Exercise</h2>
           <div className='exercise__wrapper'>
             <div className='exercise__grammar-container'>
-              <Grammar shuffleState={person} option={personArray} type='person'/>
-              <Grammar shuffleState={gender} option={genderArray} type='gender'/>
-              <Grammar shuffleState={number} option={numberArray} type='number'/>
-              <Grammar shuffleState={tense} option={tenseArray} type='tense'/>
-              <Grammar shuffleState={mood} option={moodArray} type='mood'/>
+              <Grammar shuffleState={personState} option={personArray} type='person'/>
+              <Grammar shuffleState={genderState} option={genderArray} type='gender'/>
+              <Grammar shuffleState={numberState} option={numberArray} type='number'/>
+              <Grammar shuffleState={tenseState} option={tenseArray} type='tense'/>
+              <Grammar shuffleState={moodState} option={moodArray} type='mood'/>
             </div>
             {/* <Verb/> */}
             <Answer/>
