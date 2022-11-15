@@ -42,7 +42,7 @@ export default function Grammar(props) {
   if(props.shuffleState.result==='none'){
     return (
       <div className='grammar'>
-        <button className='grammar__button' onFocus={handlerDropmenu}>{'-'}</button>
+        <button className='grammar__button' ref={dropmenuButton} onFocus={handlerDropmenu}>{'-'}</button>
         <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
           <DropMenu value={props.option}/>
         </div>

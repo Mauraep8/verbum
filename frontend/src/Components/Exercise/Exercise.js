@@ -28,16 +28,34 @@ export default function Exercise() {
 
         // MOOD SHUFFLE 
         const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)
+        console.log(shuffledMood.result)
         dispatch(moodShuffled(shuffledMood))
 
 
         // IF MOOD === INDICATIF
-        if (shuffledMood.result.value === 'indicatif'){
+        if (shuffledMood.result.value === 'indicatif' || shuffledMood.result === null){
 
           // TENSE
           const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé')
           const shuffledTense = shuffleArray(filteredTense)
           dispatch(tenseShuffled(shuffledTense)) 
+
+          // PERSON
+          const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
+          dispatch(personShuffled(shuffledPerson))
+
+          // NUMBER
+          const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
+          dispatch(numberShuffled(shuffledNumber))
+
+          // GENDER
+          if (shuffledPerson.result.value !== '3ème'){
+            const shuffledGender = shuffleArray(null)
+            dispatch(genderShuffled(shuffledGender))
+          } else{
+            const shuffledGender = shuffleArray(shuffleState.genderArrayChecked)
+            dispatch(genderShuffled(shuffledGender))
+          }
         }
 
 
@@ -65,26 +83,61 @@ export default function Exercise() {
           }
 
           // GENDER
-          const genderShuffle = shuffleArray(null)
-          dispatch(genderShuffled(genderShuffle))
+          const shuffledGender = shuffleArray(null)
+          dispatch(genderShuffled(shuffledGender))
         }
 
 
-
+        // IF MOOD === SUBJONCTIF
         if (shuffledMood.result.value === 'subjonctif'){
-          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'imparfait' || obj.value === 'plus-que-parfait')
-          // console.log(filteredTense)
+
+          //TENSE
+          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'imparfait' || obj.value === 'plus-que-parfait')        
           const shuffledTense = shuffleArray(filteredTense)
           dispatch(tenseShuffled(shuffledTense)) 
+
+          // PERSON
+          const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
+          dispatch(personShuffled(shuffledPerson))
+
+          // NUMBER
+          const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
+          dispatch(numberShuffled(shuffledNumber))
+          
+          // GENDER
+          if (shuffledPerson.result.value !== '3ème'){
+            const shuffledGender = shuffleArray(null)
+            dispatch(genderShuffled(shuffledGender))
+          } else{
+            const shuffledGender = shuffleArray(shuffleState.genderArrayChecked)
+            dispatch(genderShuffled(shuffledGender))
+          }
         }
 
         if (shuffledMood.result.value === 'conditionnel' ){
-          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
-          // console.log(filteredTense)
+
+          //TENSE
+          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' )
           const shuffledTense = shuffleArray(filteredTense)
           dispatch(tenseShuffled(shuffledTense)) 
+
+          // PERSON
+          const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
+          dispatch(personShuffled(shuffledPerson))
+                    
+          // NUMBER
+          const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
+          dispatch(numberShuffled(shuffledNumber))
+                    
+          // GENDER
+          if (shuffledPerson.result.value !== '3ème'){
+            const shuffledGender = shuffleArray(null)
+            dispatch(genderShuffled(shuffledGender))
+          } else{
+            const shuffledGender = shuffleArray(shuffleState.genderArrayChecked)
+            dispatch(genderShuffled(shuffledGender))
+          }
         }
-      
       }
   },[shuffleState])
 
