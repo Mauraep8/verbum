@@ -2,13 +2,12 @@ import {createSlice} from '@reduxjs/toolkit'
 
 // INITIAL STATE 
 const initialState = {
-    personArrayChecked: [],
-    genderArrayChecked: [],
-    numberArrayChecked: [],
-    tenseArrayChecked: [],
-    moodArrayChecked: [],
+    personArrayChecked: [{value: '1er', status: true, category: 'person'},{value: '2ème', status: true, category: 'person'},{value: '3ème', status: true, category: 'person'}],
+    genderArrayChecked: [{value: 'féminin', status: true, category: 'gender'},{value: 'masculin', status: true, category: 'gender'},{value: '-none-', status: true, category: 'gender'}],
+    numberArrayChecked: [{value: 'singulier', status: true, category: 'number'},{value: 'pluriel', status: true, category: 'number'}],
+    tenseArrayChecked: [{value: 'présent', status: true, category: 'tense'},{value: 'passé composé', status: true, category: 'tense'},{value: 'imparfait', status: true, category: 'tense'},{value: 'plus-que-parfait', status: true, category: 'tense'},{value: 'passé', status: true, category: 'tense'},{value: 'passé simple', status: true, category: 'tense'},{value: 'passé antérieur', status: true, category: 'tense'},{value: 'futur simple', status: true, category: 'tense'},{value: 'futur antérieur', status: true, category: 'tense'}],
+    moodArrayChecked: [{value: 'indicatif', status: true, category: 'mood'},{value: 'subjonctif', status: true, category: 'mood'},{value: 'impératif', status: true, category: 'mood'},{value: 'conditionnel', status: true, category: 'mood'},],
     shuffleState: [],
-    exerciseState:[],
     moodState:[],
     tenseState:[],
     personState:[],
@@ -26,22 +25,33 @@ const exerciseSlice = createSlice({
     },
     reducers: {
         optionChecked: (state, action)=>{
+            // console.log(action.payload)
             if(action.payload.status === true){
                 switch (action.payload.category) {
                     case 'person':
+                        if (!state.personArrayChecked.find(element => element.value === action.payload.value)){
                         state.personArrayChecked.push(action.payload)
+                        }
                         break;
                     case 'gender':
+                        if(!state.genderArrayChecked.find(element => element.value === action.payload.value)){
                         state.genderArrayChecked.push(action.payload)
+                        }
                         break;
                     case 'number':
+                        if (!state.numberArrayChecked.find(element => element.value === action.payload.value)){
                         state.numberArrayChecked.push(action.payload)
+                        }
                         break;
                     case 'tense':
+                        if(!state.tenseArrayChecked.find(element => element.value === action.payload.value)){
                         state.tenseArrayChecked.push(action.payload)
+                        }
                         break;
                     case 'mood':
+                        if(!state.moodArrayChecked.find(element => element.value === action.payload.value)){
                         state.moodArrayChecked.push(action.payload)
+                        }
                         break
                     default:
                         return state;
@@ -68,19 +78,22 @@ const exerciseSlice = createSlice({
                 }
             }
         },
-        shuffleClicked  : (state, action)=>{
+        shuffleDenied : (state, action) =>{
+            // console.log(action.payload)
+        },
+
+        shuffleApproved  : (state, action)=>{
+            // console.log(action.payload)
             // remove shuffleState from dispatch getState
-            const object = action.payload.exercise
+            const object = action.payload
+            // console.log(object.personArrayChecked)
             const asArray = Object.entries(object)
             const filtered = asArray.filter(([key])=> key !== 'shuffleState')
             const newObject = Object.fromEntries(filtered)
-
+            // console.log(newObject)
             state.shuffleState = newObject
         },
-        exerciseShuffled : (state, action) => {
-        
-            state.exerciseState = action.payload
-        },
+
         moodShuffled : (state, action)=>{
             // console.log(action.payload)
             state.moodState = action.payload
@@ -104,5 +117,5 @@ const exerciseSlice = createSlice({
     }
 })
 
-export const {optionChecked, shuffleClicked, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
+export const {optionChecked, shuffleApproved, shuffleDenied, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer
