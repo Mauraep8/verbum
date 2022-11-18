@@ -21,19 +21,19 @@ export default function Exercise() {
 
   const dispatch = useDispatch()
 
-
+// console.log(shuffleState)
   useEffect(() => {
-
+      
+        // AT INITIAL RENDER SHUFFLESTATE = [], BEFORE SHUFFLE CLICKED
         if (shuffleState.length !== 0){
 
         // MOOD SHUFFLE 
         const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)
-        console.log(shuffledMood.result)
         dispatch(moodShuffled(shuffledMood))
-
+        // console.log(shuffledMood)
 
         // IF MOOD === INDICATIF
-        if (shuffledMood.result.value === 'indicatif' || shuffledMood.result === null){
+        if (shuffledMood.result.value === 'indicatif'){
 
           // TENSE
           const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé')
@@ -53,14 +53,13 @@ export default function Exercise() {
             const shuffledGender = shuffleArray(null)
             dispatch(genderShuffled(shuffledGender))
           } else{
-            const shuffledGender = shuffleArray(shuffleState.genderArrayChecked)
+            const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value !== '-none-')
+            const shuffledGender = shuffleArray(filteredGender)
             dispatch(genderShuffled(shuffledGender))
           }
-        }
-
 
         // IF MOOD === IMPERATIF
-        if (shuffledMood.result.value === 'impératif'){
+        } else if (shuffledMood.result.value === 'impératif'){
 
           // TENSE
           const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
@@ -68,7 +67,7 @@ export default function Exercise() {
           dispatch(tenseShuffled(shuffledTense)) 
 
           // PERSON
-          const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème')
+          const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème' || obj.value !== null )
           const shuffledPerson = shuffleArray(filteredPerson)
           dispatch(personShuffled(shuffledPerson))
 
@@ -85,11 +84,9 @@ export default function Exercise() {
           // GENDER
           const shuffledGender = shuffleArray(null)
           dispatch(genderShuffled(shuffledGender))
-        }
 
-
-        // IF MOOD === SUBJONCTIF
-        if (shuffledMood.result.value === 'subjonctif'){
+          // IF MOOD === SUBJONCTIF
+        } else if (shuffledMood.result.value === 'subjonctif'){
 
           //TENSE
           const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'imparfait' || obj.value === 'plus-que-parfait')        
@@ -109,12 +106,13 @@ export default function Exercise() {
             const shuffledGender = shuffleArray(null)
             dispatch(genderShuffled(shuffledGender))
           } else{
-            const shuffledGender = shuffleArray(shuffleState.genderArrayChecked)
+            const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value !== '-none-')
+            const shuffledGender = shuffleArray(filteredGender)
             dispatch(genderShuffled(shuffledGender))
           }
-        }
 
-        if (shuffledMood.result.value === 'conditionnel' ){
+          // IF MOOD === CONDITIONNEL
+        } else if (shuffledMood.result.value === 'conditionnel' ){
 
           //TENSE
           const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' )
@@ -134,12 +132,14 @@ export default function Exercise() {
             const shuffledGender = shuffleArray(null)
             dispatch(genderShuffled(shuffledGender))
           } else{
-            const shuffledGender = shuffleArray(shuffleState.genderArrayChecked)
+            const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value !== '-none-')
+            const shuffledGender = shuffleArray(filteredGender)
             dispatch(genderShuffled(shuffledGender))
           }
         }
       }
   },[shuffleState])
+
 
   return (
       <div className='exercise'>

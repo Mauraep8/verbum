@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import Checkbox from "../Checkbox/Checkbox";
 import './Option.scss'
 import { useDispatch } from "react-redux";
 import { optionChecked} from "../../Store/exerciseSlice";
@@ -21,4 +20,5 @@ export default function Option(props) {
       <p className='option__text'>{props.value}</p>
     </div>
   )
+
 }
