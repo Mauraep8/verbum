@@ -37,7 +37,9 @@ export default function Shuffle() {
     if (allDropmenuChecked === true){
         dispatch(shuffleApproved(store.getState().exercise))
     } 
+    allDropmenuChecked = null
   }
+
   
   return (
       <div>
