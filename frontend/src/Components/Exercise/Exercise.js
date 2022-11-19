@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Verb from '../Verb/Verb'
 import Grammar from '../Grammar/Grammar'
 import Answer from '../Answer/Answer'
+import PopupMessage from "../PopupMessage/PopupMessage";
 import { personArray, genderArray, numberArray, tenseArray, moodArray } from '../../Utils/grammarArrayValue'
 import {useSelector, useDispatch} from 'react-redux'
 import './Exercise.scss'
@@ -13,6 +14,7 @@ import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuf
 export default function Exercise() {
  
   const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
+  const messageState = useSelector(((state)=> state.exercise.messageState))
   const moodState = useSelector(((state)=> state.exercise.moodState))
   const tenseState = useSelector(((state) => state.exercise.tenseState))
   const personState = useSelector(((state) => state.exercise.personState))
@@ -74,6 +76,7 @@ export default function Exercise() {
           // NUMBER
           if (shuffledPerson.result.value === '1er'){
             const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === 'pluriel')
+            console.log(filteredNumber)
             const shuffledNumber = shuffleArray(filteredNumber)
             dispatch(numberShuffled(shuffledNumber))
           } else{
@@ -144,6 +147,9 @@ export default function Exercise() {
   return (
       <div className='exercise'>
         <div className='exercise__main-container'>
+        <div className="exercise__popup-container">
+          <PopupMessage message={messageState} />
+        </div>
           <h2 className='exercise__header'>Exercise</h2>
           <div className='exercise__wrapper'>
             <div className='exercise__grammar-container'>

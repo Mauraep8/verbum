@@ -13,6 +13,7 @@ const initialState = {
     personState:[],
     numberState:[],
     genderState:[],
+    messageState:[]
 
 }
 
@@ -80,6 +81,10 @@ const exerciseSlice = createSlice({
         },
         shuffleDenied : (state, action) =>{
             // console.log(action.payload)
+            // console.log(action.payload.slice(0, -12).toUpperCase())
+            state.messageState = {action: true, feature: action.payload.slice(0, -12).toUpperCase(), mood:null}
+            
+
         },
 
         shuffleApproved  : (state, action)=>{
