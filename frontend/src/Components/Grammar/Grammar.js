@@ -1,10 +1,15 @@
 import React, {useRef, useEffect} from 'react'
 import DropMenu from '../DropMenu/DropMenu'
 import './Grammar.scss'
+import {useSelector} from 'react-redux'
+
 
 
 
 export default function Grammar(props) {
+
+  const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
+
 
   const dropmenuWrapper = useRef ([])
   const dropmenuButton = useRef ([])
@@ -13,7 +18,8 @@ export default function Grammar(props) {
 
   // WHEN SHUFFLE IS CLICKED BUTTONS TURN BLUE MOMENTARILY
   useEffect(() => {
-    if (props.shuffleState !== undefined){
+
+    if (shuffleAction === true){
       if (props.shuffleState.colorChange === true){
         dropmenuButton.current.classList.remove('grammar__button--inactive')
         dropmenuButton.current.classList.add('grammar__button--active')
