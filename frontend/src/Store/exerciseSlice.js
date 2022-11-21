@@ -13,7 +13,8 @@ const initialState = {
     personState:[],
     numberState:[],
     genderState:[],
-    messageState:[]
+    messageState:[],
+    shuffleAction:[]
 
 }
 
@@ -79,48 +80,49 @@ const exerciseSlice = createSlice({
                 }
             }
         },
+        messageCleared: (state, action) => {
+            state.messageState = action.payload
+        },
+
         shuffleDenied : (state, action) =>{
-            // console.log(action.payload)
-            // console.log(action.payload.slice(0, -12).toUpperCase())
-            state.messageState = {action: true, feature: action.payload.slice(0, -12).toUpperCase(), mood:null}
-            
+     
+            const filteredText = action.payload.slice(0, -12)
+
+            state.messageState = {action: true, feature: filteredText.charAt(0).toUpperCase() + filteredText.slice(1), mood:null}
+            state.shuffleAction = false
 
         },
 
         shuffleApproved  : (state, action)=>{
-            // console.log(action.payload)
+
             // remove shuffleState from dispatch getState
             const object = action.payload
-            // console.log(object.personArrayChecked)
+ 
             const asArray = Object.entries(object)
             const filtered = asArray.filter(([key])=> key !== 'shuffleState')
             const newObject = Object.fromEntries(filtered)
-            // console.log(newObject)
+    
             state.shuffleState = newObject
+            state.shuffleAction = true
         },
 
         moodShuffled : (state, action)=>{
-            // console.log(action.payload)
             state.moodState = action.payload
         },
         tenseShuffled : (state, action)=>{
-            // console.log(action.payload)
             state.tenseState = action.payload
         },
         personShuffled : (state, action)=>{
-            // console.log(action.payload)
             state.personState = action.payload
         },
         numberShuffled : (state, action)=>{
-            // console.log(action.payload)
             state.numberState = action.payload
         },
         genderShuffled : (state, action)=>{
-            // console.log(action.payload)
             state.genderState = action.payload
         }
     }
 })
 
-export const {optionChecked, shuffleApproved, shuffleDenied, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
+export const {messageCleared, optionChecked, shuffleApproved, shuffleDenied, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer

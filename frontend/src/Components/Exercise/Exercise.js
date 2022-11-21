@@ -13,6 +13,7 @@ import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuf
 
 export default function Exercise() {
  
+  const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
   const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
   const messageState = useSelector(((state)=> state.exercise.messageState))
   const moodState = useSelector(((state)=> state.exercise.moodState))
@@ -23,11 +24,13 @@ export default function Exercise() {
 
   const dispatch = useDispatch()
 
+
 // console.log(shuffleState)
   useEffect(() => {
       
-        // AT INITIAL RENDER SHUFFLESTATE = [], BEFORE SHUFFLE CLICKED
-        if (shuffleState.length !== 0){
+        // AT INITIAL RENDER SHUFFLESTATE = [], BEFORE SHUFFLE CLICKED 
+        // ONLY RUN WHEN SHUFFLE ACTION IS APPROVED
+        if (shuffleState.length !== 0 || shuffleAction === true){
 
         // MOOD SHUFFLE 
         const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)
@@ -76,7 +79,6 @@ export default function Exercise() {
           // NUMBER
           if (shuffledPerson.result.value === '1er'){
             const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === 'pluriel')
-            console.log(filteredNumber)
             const shuffledNumber = shuffleArray(filteredNumber)
             dispatch(numberShuffled(shuffledNumber))
           } else{
@@ -147,9 +149,9 @@ export default function Exercise() {
   return (
       <div className='exercise'>
         <div className='exercise__main-container'>
-        <div className="exercise__popup-container">
+        {/* <div className="exercise__popup-container"> */}
           <PopupMessage message={messageState} />
-        </div>
+        {/* </div> */}
           <h2 className='exercise__header'>Exercise</h2>
           <div className='exercise__wrapper'>
             <div className='exercise__grammar-container'>
