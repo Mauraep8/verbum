@@ -8,7 +8,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import './Exercise.scss'
 import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
-import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled } from "../../Store/exerciseSlice";
+import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled, userSelectionMessage } from "../../Store/exerciseSlice";
 
 
 export default function Exercise() {
@@ -35,7 +35,6 @@ export default function Exercise() {
         // MOOD SHUFFLE 
         const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)
         dispatch(moodShuffled(shuffledMood))
-        // console.log(shuffledMood)
 
         // IF MOOD === INDICATIF
         if (shuffledMood.result.value === 'indicatif'){
@@ -149,9 +148,7 @@ export default function Exercise() {
   return (
       <div className='exercise'>
         <div className='exercise__main-container'>
-        {/* <div className="exercise__popup-container"> */}
-          <PopupMessage message={messageState} />
-        {/* </div> */}
+          <PopupMessage message={messageState} errorSelection={null} />
           <h2 className='exercise__header'>Exercise</h2>
           <div className='exercise__wrapper'>
             <div className='exercise__grammar-container'>
