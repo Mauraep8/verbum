@@ -14,7 +14,8 @@ const initialState = {
     numberState:[],
     genderState:[],
     messageState:[],
-    shuffleAction:[]
+    shuffleAction:[],
+    userSelectionMessage:[]
 
 }
 
@@ -83,16 +84,13 @@ const exerciseSlice = createSlice({
         messageCleared: (state, action) => {
             state.messageState = action.payload
         },
-
         shuffleDenied : (state, action) =>{
      
             const filteredText = action.payload.slice(0, -12)
 
             state.messageState = {action: true, feature: filteredText.charAt(0).toUpperCase() + filteredText.slice(1), mood:null}
             state.shuffleAction = false
-
         },
-
         shuffleApproved  : (state, action)=>{
 
             // remove shuffleState from dispatch getState
@@ -105,7 +103,10 @@ const exerciseSlice = createSlice({
             state.shuffleState = newObject
             state.shuffleAction = true
         },
-
+        userSelectionDenied: (state, action) =>{
+            console.log(action.payload)
+            state.userSelectionMessage = action.payload
+        },
         moodShuffled : (state, action)=>{
             state.moodState = action.payload
         },
@@ -124,5 +125,5 @@ const exerciseSlice = createSlice({
     }
 })
 
-export const {messageCleared, optionChecked, shuffleApproved, shuffleDenied, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
+export const {messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer
