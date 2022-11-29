@@ -158,7 +158,7 @@ export default function Exercise() {
               <Grammar shuffleState={tenseState} option={tenseArray} type='tense'/>
               <Grammar shuffleState={moodState} option={moodArray} type='mood'/>
             </div>
-            {/* <Verb/> */}
+            <Verb/>
             <Answer/>
             <Shuffle/>
           </div>

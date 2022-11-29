@@ -22,13 +22,15 @@ export default function Database() {
     return (
         <>
             <div className="database">
-                <h2 className="database__text">Database</h2>
-                <div className="database__popup-container">
-                    <PopupAction state={state}/>
-                </div>
-                <div className="database__container">
-                    <VerbLibrary />
-                    <UserLibrary />
+                <div className="database__main-container">
+                    <h2 className="database__text">Database</h2>
+                    <div className="database__popup-container">
+                        <PopupAction state={state}/>
+                    </div>
+                    <div className="database__container">
+                        <VerbLibrary />
+                        <UserLibrary />
+                    </div>
                 </div>
             </div>
         </>
