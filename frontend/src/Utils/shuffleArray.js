@@ -2,14 +2,11 @@
 export const shuffleArray = (array) =>{
 
         if (array === null) {
-                const object = {result: null, colorChange: false}
-                return object
+                return {result: null, colorChange: false}
         } else if (array.length === 1) {
-                const object ={result: array[0], colorChange: false}
-                return object      
+                return {result: array[0], colorChange: false}      
         } else if (array.length > 1) {
                 const randomMath = Math.floor(Math.random() * array.length)  
-                const object = {result: array[randomMath], colorChange: true}
-                return object
+                return {result: array[randomMath], colorChange: true}
         }   
 }

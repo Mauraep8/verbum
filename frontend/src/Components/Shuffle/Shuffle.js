@@ -88,7 +88,7 @@ export default function Shuffle() {
 
     // IF ALL DROPMENU CHECKED THEN SHUFFLE IS TRIGGERED
     if (allDropmenuChecked === true){
-        // dispatch(shuffleApproved(store.getState().exercise))
+        dispatch(shuffleApproved(store.getState().exercise))
     } 
     allDropmenuChecked = null
   }
