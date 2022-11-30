@@ -83,6 +83,7 @@ const exerciseSlice = createSlice({
         },
         messageCleared: (state, action) => {
             state.messageState = action.payload
+            state.userSelectionMessage = action.payload
         },
         shuffleDenied : (state, action) =>{
      
@@ -104,7 +105,6 @@ const exerciseSlice = createSlice({
             state.shuffleAction = true
         },
         userSelectionDenied: (state, action) =>{
-            console.log(action.payload)
             state.userSelectionMessage = action.payload
         },
         moodShuffled : (state, action)=>{

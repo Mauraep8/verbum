@@ -16,6 +16,7 @@ export default function Exercise() {
   const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
   const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
   const messageState = useSelector(((state)=> state.exercise.messageState))
+  const messageWarning = useSelector(((state)=> state.exercise.userSelectionMessage))
   const moodState = useSelector(((state)=> state.exercise.moodState))
   const tenseState = useSelector(((state) => state.exercise.tenseState))
   const personState = useSelector(((state) => state.exercise.personState))
@@ -148,7 +149,7 @@ export default function Exercise() {
   return (
       <div className='exercise'>
         <div className='exercise__main-container'>
-          <PopupMessage message={messageState} errorSelection={null} />
+          <PopupMessage messageError={messageState} messageWarning={messageWarning}/>
           <h2 className='exercise__header'>Exercise</h2>
           <div className='exercise__wrapper'>
             <div className='exercise__grammar-container'>
