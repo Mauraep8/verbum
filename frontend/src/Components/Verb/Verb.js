@@ -1,9 +1,11 @@
-import React, {useContext, useState, useEffect, useRef} from 'react'
-import { ThemeContext } from '../../Pages/French/FrenchPage';
+
 import DropMenuVerb from '../DropMenu/DropMenuVerb';
 import './Verb.scss'
 
 export default function Verb() {
+
+
+ 
 
   return (
     <div className='verb'>

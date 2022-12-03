@@ -30,7 +30,7 @@ const databaseSlice = createSlice({
     name: 'database',
     initialState,
     extraReducers:{
-        //EXTRA REDUCER SETS STATE WITH API CALL
+        // //EXTRA REDUCER SETS STATE WITH API CALL
         [fetchVerbs.fulfilled]: (state, action) => {
             state.verbLibrary = action.payload.filter((verb)=> verb.initialVerb === null)
             state.userLibrary = action.payload.filter((verb)=> verb.initialVerb === 'true')

@@ -8,11 +8,17 @@ import {useSelector, useDispatch} from 'react-redux'
 import './Exercise.scss'
 import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
-import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled, userSelectionMessage } from "../../Store/exerciseSlice";
+import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled} from "../../Store/exerciseSlice";
+import { store } from "../../Store/configureStore";
+
 
 
 export default function Exercise() {
  
+  // const userVerbList = userSelector(((state)=> state.exercise.shuffleAction))
+  // const storeDatabaseState = store.getState().database.userLibrary
+
+
   const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
   const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
   const messageState = useSelector(((state)=> state.exercise.messageState))
@@ -26,7 +32,8 @@ export default function Exercise() {
   const dispatch = useDispatch()
 
 
-// console.log(shuffleState)
+
+// console.log(storeDatabaseState)
   useEffect(() => {
       
         // AT INITIAL RENDER SHUFFLESTATE = [], BEFORE SHUFFLE CLICKED 

@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 
+
 // INITIAL STATE 
 const initialState = {
     personArrayChecked: [{value: '1er', status: true, category: 'person'},{value: '2ème', status: true, category: 'person'},{value: '3ème', status: true, category: 'person'}],
@@ -15,7 +16,8 @@ const initialState = {
     genderState:[],
     messageState:[],
     shuffleAction:[],
-    userSelectionMessage:[]
+    userSelectionMessage:[],
+    verbListState: []
 
 }
 
@@ -121,9 +123,13 @@ const exerciseSlice = createSlice({
         },
         genderShuffled : (state, action)=>{
             state.genderState = action.payload
+        },
+        verbListUpdated : (state, action) =>{
+            console.log(action.payload)
+            state.verbListState = action.payload
         }
     }
 })
 
-export const {messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
+export const {verbListUpdated, messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer
