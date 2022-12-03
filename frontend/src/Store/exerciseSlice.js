@@ -1,4 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
+import {fetchVerbs} from './verbAPI'
+
 
 
 // INITIAL STATE 
@@ -26,7 +28,9 @@ const exerciseSlice = createSlice({
     name: 'exercise',
     initialState,
     extraReducers:{
-
+        [fetchVerbs.fulfilled]: (state, action) => {
+            state.verbListState = action.payload.filter((verb)=> verb.initialVerb === 'true')
+        },
     },
     reducers: {
         optionChecked: (state, action)=>{

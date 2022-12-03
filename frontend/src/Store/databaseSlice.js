@@ -1,12 +1,10 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-import  axios from "axios";
+// import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 
-// API CALL WITH CREATEASYNCTHUNK FOR VERBS
-export const fetchVerbs = createAsyncThunk('databaseSlice/fetchVerbs', async () => {
-    return axios.get('http://localhost:8085/french')
-    .then((result) => result.data)
-    .catch((error) => console.log(error))
-})
+// import  axios from "axios";
+import {fetchVerbs} from './verbAPI'
+
+
 
 // INITIAL STATE OF VERBLIBRARY AND USERLIBRARY
 const initialState = {
