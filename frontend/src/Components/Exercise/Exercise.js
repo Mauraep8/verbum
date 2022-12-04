@@ -18,6 +18,8 @@ export default function Exercise() {
   // const userVerbList = userSelector(((state)=> state.exercise.shuffleAction))
   // const storeDatabaseState = store.getState().database.userLibrary
 
+  const verbList = useSelector(((state)=> state.exercise.verbListState))
+
 
   const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
   const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
@@ -166,7 +168,7 @@ export default function Exercise() {
               <Grammar shuffleState={tenseState} option={tenseArray} type='tense'/>
               <Grammar shuffleState={moodState} option={moodArray} type='mood'/>
             </div>
-            <Verb/>
+            <Verb verbList={verbList}/>
             <Answer/>
             <Shuffle/>
           </div>

@@ -50,7 +50,7 @@ export default function Grammar(props) {
       <div className='grammar'>
         <button className='grammar__button' ref={dropmenuButton} onFocus={handlerDropmenu}>{'-none-'}</button>
         <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-          <DropMenu value={props.option}/>
+          <DropMenu value={props.option} verb={null}/>
         </div>
       </div>
     )
@@ -59,7 +59,7 @@ export default function Grammar(props) {
       <div className='grammar'>
         <button className='grammar__button' onFocus={handlerDropmenu}>{props.option[0].option}</button>
         <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-          <DropMenu value={props.option}/>
+          <DropMenu value={props.option} verb={null}/>
         </div>
       </div>
     )
@@ -68,7 +68,7 @@ export default function Grammar(props) {
       <div className='grammar'>
         <button className='grammar__button' ref={dropmenuButton} onClick={handlerDropmenu}>{props.shuffleState.result.value}</button>
         <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-          <DropMenu value={props.option}/>
+          <DropMenu value={props.option} verb={null}/>
         </div>
       </div>
     )
