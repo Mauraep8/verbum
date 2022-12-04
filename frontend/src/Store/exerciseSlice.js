@@ -19,7 +19,8 @@ const initialState = {
     messageState:[],
     shuffleAction:[],
     userSelectionMessage:[],
-    verbListState: []
+    verbListState: [],
+    listSubmitMessage:[]
 
 }
 

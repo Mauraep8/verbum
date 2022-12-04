@@ -131,8 +131,11 @@ const databaseSlice = createSlice({
                 }
             }
         },
+        submitClicked: (state, action)=>{
+            state.popupAction = action.payload
+        }
     }
 })
 
-export const {verbAdded, verbDeleted, verbSearched} = databaseSlice.actions
+export const {submitClicked, verbAdded, verbDeleted, verbSearched} = databaseSlice.actions
 export default databaseSlice.reducer

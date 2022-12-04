@@ -4,6 +4,7 @@ import Searchbar from "../Searchbar/Searchbar";
 import UserList from "../UserList/UserList";
 import {useSelector} from "react-redux"
 import { verbListUpdated} from "../../Store/exerciseSlice";
+import { submitClicked } from "../../Store/databaseSlice";
 
 
 
@@ -16,8 +17,11 @@ const dispatch = useDispatch()
 const clickHandler = () =>{
     if (userLibrary.length === 0) {
         console.log('empty')   
+        dispatch(submitClicked({message: 'User List is empty, please add verbs', popupAction: 'deleted'}))
+
     } else{
         dispatch(verbListUpdated(userLibrary))
+        dispatch(submitClicked({message: 'The verb dropmenu has been updated', popupAction: 'added'}))
     }
 }
 

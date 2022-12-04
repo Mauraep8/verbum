@@ -11,6 +11,7 @@ export default function Database() {
       
    const [state, setState] = useState([])
    const {popupAction} = useSelector((state)=> state.database) 
+//    console.log(popupAction)
     
     useEffect(() => {
         setState(popupAction)

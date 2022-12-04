@@ -19,7 +19,8 @@ export default function Verb(props) {
       dropmenuWrapper.current.classList.add('verb__dropmenu-wrapper--hidden')
     }
   }
-
+  // console.log(props.verbList)
+  if (props.verbList.length !== 0){
   return (
     <div className='verb'>
         <button className='verb__button' onClick={handlerDropmenu} ref={dropmenuButton}>{props.verbList[0].verbName}</button>
@@ -28,4 +29,5 @@ export default function Verb(props) {
         </div>
     </div>
   )
+}
 }
