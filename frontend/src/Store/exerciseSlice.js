@@ -20,7 +20,8 @@ const initialState = {
     shuffleAction:[],
     userSelectionMessage:[],
     verbListState: [],
-    listSubmitMessage:[]
+    listSubmitMessage:[],
+    verbListApprovedUpdate:[] 
 
 }
 
@@ -35,7 +36,6 @@ const exerciseSlice = createSlice({
     },
     reducers: {
         optionChecked: (state, action)=>{
-            // console.log(action.payload)
             if(action.payload.status === true){
                 switch (action.payload.category) {
                     case 'person':
@@ -130,11 +130,14 @@ const exerciseSlice = createSlice({
             state.genderState = action.payload
         },
         verbListUpdated : (state, action) =>{
-            console.log(action.payload)
             state.verbListState = action.payload
+        },
+        verbListUpdateAction : (state, action) =>{
+            state.verbListApprovedUpdate = action.payload
         }
+
     }
 })
 
-export const {verbListUpdated, messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
+export const {verbListUpdateAction, verbListUpdated, messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer
