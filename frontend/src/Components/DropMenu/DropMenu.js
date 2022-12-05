@@ -3,7 +3,7 @@ import './DropMenu.scss'
 
 export default function DropMenu(props) {
 
-  // console.log(props.value)
+  // console.log(props)
 
   if (props.verb === null){
     return (  
@@ -24,7 +24,7 @@ export default function DropMenu(props) {
     return (  
       <div className='dropmenu'>
             <div className='dropmenu__option-container'>
-              {props.verb.map((singleOption) =>{
+              {props.verbList.map((singleOption) =>{
                 return <Option
                 key={singleOption.id}
                 optionType={'verb'}

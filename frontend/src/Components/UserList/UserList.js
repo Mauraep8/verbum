@@ -52,9 +52,9 @@ export default function UserList(props)  {
                         />
                     })}
                 </div>
-                <div className="verbList__button-container">
+                {/* <div className="verbList__button-container">
                     <button className='verbList__button'>submit</button>
-                </div>
+                </div> */}
             </div>
         )
     }

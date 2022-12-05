@@ -12,6 +12,18 @@
             cursor: pointer;
             background-color: lightgray;
         }
+
+        &--active{
+            border: 1px solid green;
+            background-color: #D9F0C8;
+            color: green;
+        }
+
+        &--inactive{
+            border: 1px solid lightgrey;
+            color: black;
+            
+        }
     }
 
     &__dropmenu-wrapper--hidden{

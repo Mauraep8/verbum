@@ -3,24 +3,34 @@ import { useDispatch } from "react-redux";
 import Searchbar from "../Searchbar/Searchbar";
 import UserList from "../UserList/UserList";
 import {useSelector} from "react-redux"
-import { verbListUpdated} from "../../Store/exerciseSlice";
+import { verbListUpdateAction, verbListUpdated} from "../../Store/exerciseSlice";
 import { submitClicked } from "../../Store/databaseSlice";
+import { compareArray } from "../../Utils/compareArray";
 
 
 
 export default function UserLibrary()  {
 
-const {userLibrary, searchUserLibrary, searchUserInput} = useSelector((state)=> state.database)
+const exerciseVerbList = useSelector(((state)=> state.exercise.verbListState))
+const userLibrary = useSelector(((state)=> state.database.userLibrary))
+const searchUserLibrary = useSelector(((state)=> state.database.searchUserLibrary))
+const searchUserInput = useSelector(((state)=> state.database.searchUserInput))
+
 
 const dispatch = useDispatch()
 
 const clickHandler = () =>{
-    if (userLibrary.length === 0) {
-        console.log('empty')   
+
+    const result = compareArray(exerciseVerbList, userLibrary)
+    
+    if (userLibrary.length === 0) { 
         dispatch(submitClicked({message: 'User List is empty, please add verbs', popupAction: 'deleted'}))
 
-    } else{
+
+
+    } else if(result===true){
         dispatch(verbListUpdated(userLibrary))
+        dispatch(verbListUpdateAction(true))
         dispatch(submitClicked({message: 'The verb dropmenu has been updated', popupAction: 'added'}))
     }
 }
