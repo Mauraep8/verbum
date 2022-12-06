@@ -54,6 +54,7 @@ export default function Verb(props) {
   // console.log(props.verbList)
 
   //PROPS IS AN EMPTY ARRAY UPON MOUNT BEFORE INITIAL RENDER
+  // console.log(props.option)
   if (props.option.length !== 0){
   return (
     <div className='verb'>

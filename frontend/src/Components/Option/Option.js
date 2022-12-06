@@ -11,7 +11,7 @@ export default function Option(props) {
  
 
   useEffect(()=>{
-    dispatch(optionChecked({value:props.value, status:checked, category:props.category}))
+    dispatch(optionChecked({value:props.value, status:checked, category:props.category, verbName:props.verbName, verbGroup:props.verbGroup, specialVerb:props.specialVerb, primaryVerb:props.primaryVerb, initialVerb:props.initialVerb, bescherelleId:props.bescherelleId, auxiliaryVerb:props.auxiliaryVerb}))
   },[checked])
 
   if (props.optionType === 'grammar'){
@@ -22,6 +22,7 @@ export default function Option(props) {
     </div>
   )
 } else if (props.optionType === 'verb'){
+  // console.log(props)
   return (
     <div className='option' onClick={()=>{setChecked(!checked)}}>
       <input type="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}} />
