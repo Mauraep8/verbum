@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import Verb from '../Verb/Verb'
 import Grammar from '../Grammar/Grammar'
 import Answer from '../Answer/Answer'
@@ -9,18 +9,14 @@ import './Exercise.scss'
 import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
 import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled} from "../../Store/exerciseSlice";
-import { store } from "../../Store/configureStore";
+
 
 
 
 export default function Exercise() {
- 
-  // const userVerbList = userSelector(((state)=> state.exercise.shuffleAction))
-  // const storeDatabaseState = store.getState().database.userLibrary
+
 
   const verbListState = useSelector(((state)=> state.exercise.verbListState))
-
-
   const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
   const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
   const messageState = useSelector(((state)=> state.exercise.messageState))
@@ -34,8 +30,6 @@ export default function Exercise() {
   const dispatch = useDispatch()
 
 
-
-// console.log(storeDatabaseState)
   useEffect(() => {
       
         // AT INITIAL RENDER SHUFFLESTATE = [], BEFORE SHUFFLE CLICKED 
