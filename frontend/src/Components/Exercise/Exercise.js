@@ -8,7 +8,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import './Exercise.scss'
 import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
-import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled} from "../../Store/exerciseSlice";
+import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled, verbShuffled} from "../../Store/exerciseSlice";
 
 
 
@@ -17,6 +17,8 @@ export default function Exercise() {
 
 
   const verbListState = useSelector(((state)=> state.exercise.verbListState))
+  console.log(verbListState)
+
   const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
   const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
   const messageState = useSelector(((state)=> state.exercise.messageState))
@@ -26,15 +28,22 @@ export default function Exercise() {
   const personState = useSelector(((state) => state.exercise.personState))
   const numberState = useSelector(((state) => state.exercise.numberState))
   const genderState = useSelector(((state) => state.exercise.genderState))
+  const verbState = useSelector(((state) => state.exercise.verbState))
+
 
   const dispatch = useDispatch()
 
-
+  
   useEffect(() => {
       
         // AT INITIAL RENDER SHUFFLESTATE = [], BEFORE SHUFFLE CLICKED 
         // ONLY RUN WHEN SHUFFLE ACTION IS APPROVED
         if (shuffleState.length !== 0 || shuffleAction === true){
+
+        //VERB SHUFFLE
+        const shuffledVerb = shuffleArray(shuffleState.verbArrayChecked)
+        dispatch(verbShuffled(shuffledVerb))
+        // console.log(shuffledVerb)
 
         // MOOD SHUFFLE 
         const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)
@@ -162,7 +171,7 @@ export default function Exercise() {
               <Grammar shuffleState={tenseState} option={tenseArray} type='tense'/>
               <Grammar shuffleState={moodState} option={moodArray} type='mood'/>
             </div>
-            <Verb option={verbListState}/>
+            <Verb shuffleState={verbState} option={verbListState}/>
             <Answer/>
             <Shuffle/>
           </div>

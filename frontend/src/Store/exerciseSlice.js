@@ -18,6 +18,7 @@ const initialState = {
     personState:[],
     numberState:[],
     genderState:[],
+    verbState: [],
     messageState:[],
     shuffleAction:[],
     userSelectionMessage:[],
@@ -34,14 +35,6 @@ const exerciseSlice = createSlice({
   extraReducers: {
     [fetchVerbs.fulfilled]: (state, action) => {
       state.verbListState = action.payload.filter((verb) => verb.initialVerb === "true");
-    //   state.verbArrayChecked = state.verbListState.map((singleObject) => {
-    //     const newProp = {
-    //       value: singleObject.verbName,
-    //       status: true,
-    //       category: "verb",
-    //     };
-    //     Object.assign(singleObject, newProp);
-    //   });
     },
   },
   reducers: {
@@ -95,7 +88,14 @@ const exerciseSlice = createSlice({
             }
             break;
           case "verb":
-            console.log(action.payload)
+            // console.log(action.payload)
+            if (
+              !state.verbArrayChecked.find(
+                (element) => element.value === action.payload.value
+              )
+            ) {
+              state.verbArrayChecked.push(action.payload);
+            }
             break
           default:
             return state;
@@ -127,9 +127,12 @@ const exerciseSlice = createSlice({
               (mood) => mood.value !== action.payload.value
             );
             break;
-            case "verb":
-                console.log(action.payload)
-                break
+          case "verb":
+            // console.log(action.payload)
+             state.verbArrayChecked = state.verbArrayChecked.filter(
+              (verb) => verb.value !== action.payload.value
+            );
+            break
           default:
             return state;
         }
@@ -178,6 +181,10 @@ const exerciseSlice = createSlice({
     genderShuffled: (state, action) => {
       state.genderState = action.payload;
     },
+    verbShuffled: (state, action) => {
+      // console.log(action.payload)
+      state.verbState = action.payload;
+    },
     verbListUpdated: (state, action) => {
       state.verbListState = action.payload;
     },
@@ -187,5 +194,5 @@ const exerciseSlice = createSlice({
   },
 });
 
-export const {verbListUpdateAction, verbListUpdated, messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
+export const {verbListUpdateAction, verbListUpdated, messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, verbShuffled, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer
