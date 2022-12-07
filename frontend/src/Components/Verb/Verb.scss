@@ -13,16 +13,22 @@
             background-color: lightgray;
         }
 
-        &--active{
+        &--active-updated{
             border: 1px solid green;
             background-color: #D9F0C8;
             color: green;
         }
 
-        &--inactive{
+        &--inactive-updated{
             border: 1px solid lightgrey;
             color: black;
             
+        }        
+        &--active-shuffled{
+            color: blue;
+        }
+        &--inactive-shuffled{
+            color: black;
         }
     }
 

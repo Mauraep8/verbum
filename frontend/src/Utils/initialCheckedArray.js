@@ -1,8 +1,3 @@
-import { fetchVerbs } from "../Store/verbAPI";
-
-
-
-
 
 export const personCheckedArray = [
   { value: "1er", status: true, category: "person" },
@@ -37,15 +32,3 @@ export const moodArrayChecked = [
 ];
 
 
-
-// const newthing = personCheckedArray.map(singleObject=> {
-
-//     const newProp = {
-//         value: singleObject.verbName,
-//         status: true,
-//         category: 'verb'
-//     }
-//     return Object.assign(singleObject, newProp)
-// })
-
-// console.log(newthing)

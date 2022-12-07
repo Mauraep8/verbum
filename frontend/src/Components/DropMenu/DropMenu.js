@@ -28,7 +28,7 @@ export default function DropMenu(props) {
       </div>
     )
   } else if (props.value === null){
-    console.log(props)
+    // console.log(props)
     return (  
       <div className='dropmenu'>
             <div className='dropmenu__option-container'>
