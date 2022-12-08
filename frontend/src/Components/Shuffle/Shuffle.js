@@ -18,7 +18,7 @@ export default function Shuffle() {
 
     const filteredArray = asArray.filter(([key])=> key.includes('Checked'))
 
-    // console.log(filteredArray)
+    console.log(filteredArray[5][1])
 
     // STATUS OF DROPMENUS, ONLY WHEN LOOP REMAINS TRUE DOES LOOP CONTINUE AND EVENTUALLY TRIGGER SHUFFLE
     let allDropmenuChecked = true
