@@ -42,8 +42,9 @@ export default function Verb(props) {
           }, 400);     
         dispatch(verbListUpdateAction(false))
       }   
+      console.log(verbListApprovedUpdate)
       // WHEN SHUFFLE IS CLICKED BUTTONS TURN BLUE MOMENTARILY
-      if (shuffleAction === true){
+      if (shuffleAction === true && (verbListApprovedUpdate === false || verbListApprovedUpdate.length === 0)){
         if (props.shuffleState.colorChange === true){
           dropmenuButton.current.classList.remove('verb__button--inactive-shuffled')
           dropmenuButton.current.classList.add('verb__button--active-shuffled')
@@ -57,8 +58,6 @@ export default function Verb(props) {
       }   
     }) 
 
-
-    console.log(props)
     if (props.option.length !== 0 ){
       if (props.shuffleState.length !== 0) {
         return (

@@ -186,7 +186,10 @@ const exerciseSlice = createSlice({
       state.verbState = action.payload;
     },
     verbListUpdated: (state, action) => {
+      console.log(action.payload)
       state.verbListState = action.payload;
+      state.verbArrayChecked = state.verbArrayChecked.filter(({ verbName: verb1 }) => action.payload.some(({ verbName: verb2 }) => verb1 === verb2))
+      // onst results = arrayOne.filter(({ value: id1 }) => !arrayTwo.some(({ value: id2 }) => id2 === id1))      
     },
     verbListUpdateAction: (state, action) => {
       state.verbListApprovedUpdate = action.payload;

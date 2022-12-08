@@ -17,7 +17,7 @@ export default function Exercise() {
 
 
   const verbListState = useSelector(((state)=> state.exercise.verbListState))
-  console.log(verbListState)
+  // console.log('verbListState in exercice',verbListState)
 
   const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
   const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
@@ -41,6 +41,7 @@ export default function Exercise() {
         if (shuffleState.length !== 0 || shuffleAction === true){
 
         //VERB SHUFFLE
+        // console.log('shuffleState.verbArrayChecked',shuffleState.verbArrayChecked)
         const shuffledVerb = shuffleArray(shuffleState.verbArrayChecked)
         dispatch(verbShuffled(shuffledVerb))
         // console.log(shuffledVerb)
