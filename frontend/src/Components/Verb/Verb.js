@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 
 // import DropMenuVerb from '../DropMenu/DropMenuVerb';
 import Dropmenu from "../DropMenu/DropMenu";
@@ -8,10 +8,10 @@ import { verbListUpdateAction } from '../../Store/exerciseSlice';
 
 export default function Verb(props) {
 
-  const verbListApprovedUpdate = useSelector((state)=> state.exercise.verbListApprovedUpdate) 
-  const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
+  const [dropMenuText, setDropMenuText] = useState ([])
 
-  
+  const verbListApprovedUpdate = useSelector((state)=> state.exercise.verbListApprovedUpdate) 
+  const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction)) 
 
   const dropmenuWrapper = useRef ([])
   const dropmenuButton = useRef ([])
@@ -29,62 +29,58 @@ export default function Verb(props) {
       }
     }
    
+ 
     useEffect(() => {
-       // WHEN VERBLIST IS UPDATED BUTTONS TURN GREEN MOMENTARILY
+
+       // WHEN VERBLIST IS UPDATED BUTTONS TURN GREEN MOMENTARILY AND DROPMENU TEXT UPDATED
       if (verbListApprovedUpdate === true){
-          dropmenuButton.current.classList.remove('verb__button--inactive-updated')
+          dropmenuButton.current.classList.remove('verb__button--inactive')
           dropmenuButton.current.classList.add('verb__button--active-updated')
   
           setTimeout(() => {
-            dropmenuButton.current.classList.add('verb__button--inactive-updated')
+            dropmenuButton.current.classList.add('verb__button--inactive')
             dropmenuButton.current.classList.remove('verb__button--active-updated')
   
           }, 400);     
         dispatch(verbListUpdateAction(false))
-      }   
-      console.log(verbListApprovedUpdate)
-      // WHEN SHUFFLE IS CLICKED BUTTONS TURN BLUE MOMENTARILY
+        setDropMenuText(props.option[0].verbName)
+      }
+ 
+      // WHEN SHUFFLE IS CLICKED BUTTONS TURN BLUE MOMENTARILY DROPMENU TEXT UPDATED
       if (shuffleAction === true && (verbListApprovedUpdate === false || verbListApprovedUpdate.length === 0)){
         if (props.shuffleState.colorChange === true){
-          dropmenuButton.current.classList.remove('verb__button--inactive-shuffled')
+          dropmenuButton.current.classList.remove('verb__button--inactive')
           dropmenuButton.current.classList.add('verb__button--active-shuffled')
   
           setTimeout(() => {
-            dropmenuButton.current.classList.add('verb__button--inactive-shuffled')
+            dropmenuButton.current.classList.add('verb__button--inactive')
             dropmenuButton.current.classList.remove('verb__button--active-shuffled')
   
           }, 400);     
         }
+        setDropMenuText(props.shuffleState.result.value)
       }   
-    }) 
-
-    if (props.option.length !== 0 ){
-      if (props.shuffleState.length !== 0) {
-        return (
-          <div className='verb'>
-              <button className='verb__button' onClick={handlerDropmenu} ref={dropmenuButton}>{props.shuffleState.result.value}</button>
-              <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-              <Dropmenu verbList={props.option} value={null}/>
-              </div>
-          </div>
-        )
-      } else {
-        return (
-          <div className='verb'>
-              <button className='verb__button' onClick={handlerDropmenu} ref={dropmenuButton}>{props.option[0].verbName}</button>
-              <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-              <Dropmenu verbList={props.option} value={null}/>
-              </div>
-          </div>
-        )
-      }
-    } 
- 
-
-    
-  
-
+    },[props.option, props.shuffleState]) 
 
   //PROPS IS AN EMPTY ARRAY UPON MOUNT BEFORE INITIAL RENDER
 
+  if (dropMenuText.length === 0 && props.option.length !== 0 ){
+    return (
+      <div className='verb'>
+        <button className='verb__button' onClick={handlerDropmenu} ref={dropmenuButton}>{props.option[0].verbName}</button>
+        <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
+          <Dropmenu verbList={props.option} value={null}/>
+        </div>
+      </div>
+    )
+  } else {
+    return (
+      <div className='verb'>
+        <button className='verb__button' onClick={handlerDropmenu} ref={dropmenuButton}>{dropMenuText}</button>
+        <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
+         <Dropmenu verbList={props.option} value={null}/>
+        </div>
+      </div>
+    )
+  }
 }
