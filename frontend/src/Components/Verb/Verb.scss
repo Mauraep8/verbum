@@ -19,16 +19,13 @@
             color: green;
         }
 
-        &--inactive-updated{
+        &--inactive{
             border: 1px solid lightgrey;
             color: black;
             
         }        
         &--active-shuffled{
             color: blue;
-        }
-        &--inactive-shuffled{
-            color: black;
         }
     }
 
