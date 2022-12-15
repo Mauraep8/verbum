@@ -13,7 +13,7 @@ export default function Answer() {
 
   const verify = (e)=>{
     e.preventDefault()
-    console.log(answerInput.current.value)
+    // console.log(answerInput.current.value)
     if (answerInput.current.value === ''){
       console.error('empty')
     } else {

@@ -194,11 +194,11 @@ const exerciseSlice = createSlice({
       state.verbListApprovedUpdate = action.payload;
     },
     answerWritten: (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       state.answerState = action.payload
     },
     answerFetched: (state, action) =>{
-      console.log(action.payload)
+      // console.log(action.payload)
       state.apiAnswerState = action.payload
     },
   },
