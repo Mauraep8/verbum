@@ -17,7 +17,7 @@ export default function Exercise() {
 
 
   const verbListState = useSelector(((state)=> state.exercise.verbListState))
-  // console.log('verbListState in exercice',verbListState)
+
 
   const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
   const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
@@ -30,6 +30,8 @@ export default function Exercise() {
   const genderState = useSelector(((state) => state.exercise.genderState))
   const verbState = useSelector(((state) => state.exercise.verbState))
 
+  // console.log(tenseState)
+
 
   const dispatch = useDispatch()
 
@@ -41,10 +43,9 @@ export default function Exercise() {
         if (shuffleState.length !== 0 || shuffleAction === true){
 
         //VERB SHUFFLE
-        // console.log('shuffleState.verbArrayChecked',shuffleState.verbArrayChecked)
         const shuffledVerb = shuffleArray(shuffleState.verbArrayChecked)
         dispatch(verbShuffled(shuffledVerb))
-        // console.log(shuffledVerb)
+        // console.log(shuffledVerb.result.bescherelleId)
 
         // MOOD SHUFFLE 
         const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)

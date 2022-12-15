@@ -13,7 +13,7 @@ export default function Shuffle() {
 
     // STATE OF STORE AND TURN INTO ARRAY
     const storeState = store.getState().exercise
-
+    
     const asArray = Object.entries(storeState)
 
     const filteredArray = asArray.filter(([key])=> key.includes('Checked'))
@@ -28,6 +28,7 @@ export default function Shuffle() {
         if (allDropmenuChecked === true){
            if (element[1].length === 0){
               dispatch(shuffleDenied(element[0]))
+              
               allDropmenuChecked = false
             } 
         }

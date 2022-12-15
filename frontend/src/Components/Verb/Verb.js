@@ -63,7 +63,6 @@ export default function Verb(props) {
     },[props.option, props.shuffleState]) 
 
   //PROPS IS AN EMPTY ARRAY UPON MOUNT BEFORE INITIAL RENDER
-
   if (dropMenuText.length === 0 && props.option.length !== 0 ){
     return (
       <div className='verb'>
