@@ -1,8 +1,8 @@
 
 export const personCheckedArray = [
-  { value: "1er", status: true, category: "person" , apiFormat:null},
-  { value: "2ème", status: true, category: "person", apiFormat:null },
-  { value: "3ème", status: true, category: "person", apiFormat:null },
+  { value: "1er", status: true, category: "person" , apiFormat:1},
+  { value: "2ème", status: true, category: "person", apiFormat:2 },
+  { value: "3ème", status: true, category: "person", apiFormat:3 },
 ];
 export const genderArrayChecked = [
   { value: "féminin", status: true, category: "gender", apiFormat:null },
@@ -10,8 +10,8 @@ export const genderArrayChecked = [
   { value: "-none-", status: true, category: "gender", apiFormat:null },
 ];
 export const numberArrayChecked = [
-  { value: "singulier", status: true, category: "number", apiFormat:null },
-  { value: "pluriel", status: true, category: "number", apiFormat:null },
+  { value: "singulier", status: true, category: "number", apiFormat:1 },
+  { value: "pluriel", status: true, category: "number", apiFormat:2 },
 ];
 export const tenseArrayChecked = [
   { value: "présent", status: true, category: "tense", apiFormat:"présent"},

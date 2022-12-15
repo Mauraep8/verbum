@@ -1,7 +1,7 @@
 export const personArray = [
-  { id: 1, option: "1er", category: "person", apiFormat:null },
-  { id: 2, option: "2ème", category: "person", apiFormat:null },
-  { id: 3, option: "3ème", category: "person", apiFormat:null },
+  { id: 1, option: "1er", category: "person", apiFormat:1 },
+  { id: 2, option: "2ème", category: "person", apiFormat:2 },
+  { id: 3, option: "3ème", category: "person", apiFormat:3 },
 ];
 export const genderArray = [
   { id: 1, option: "féminin", category: "gender", apiFormat:null },
@@ -9,8 +9,8 @@ export const genderArray = [
   { id: 3, option: "-none-", category: "gender", apiFormat:null },
 ];
 export const numberArray = [
-  { id: 7, option: "singulier", category: "number", apiFormat:null },
-  { id: 8, option: "pluriel", category: "number", apiFormat:null },
+  { id: 7, option: "singulier", category: "number", apiFormat:1 },
+  { id: 8, option: "pluriel", category: "number", apiFormat:2 },
 ];
 export const tenseArray = [
   { id: 9, option: "présent", category: "tense", apiFormat: "présent" },
