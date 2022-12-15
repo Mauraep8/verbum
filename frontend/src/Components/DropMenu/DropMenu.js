@@ -14,15 +14,17 @@ export default function DropMenu(props) {
                 key={singleOption.id}
                 optionType={'grammar'}
                 value={singleOption.option}
-                category={null}
+                category={singleOption.category}
                 verbName={null}
                 verbGroup={null}
                 specialVerb={null}
                 primaryVerb={null}
                 initialVerb={null}
                 bescherelleId={null}
-                auxiliaryVerb={null}/>
-                
+                auxiliaryVerb={null}
+                apiFormat={singleOption.apiFormat}
+                />
+           
               })}
              </div>   
       </div>
@@ -45,6 +47,7 @@ export default function DropMenu(props) {
                 initialVerb={singleOption.initialVerb}
                 bescherelleId={singleOption.bescherelleId}
                 auxiliaryVerb={singleOption.auxiliaryVerb}
+                apiFormat={null}
                 />
               })}
              </div>   
