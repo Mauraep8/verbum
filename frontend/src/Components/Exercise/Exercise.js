@@ -42,112 +42,119 @@ export default function Exercise() {
         // ONLY RUN WHEN SHUFFLE ACTION IS APPROVED
         if (shuffleState.length !== 0 || shuffleAction === true){
 
-        //VERB SHUFFLE
-        const shuffledVerb = shuffleArray(shuffleState.verbArrayChecked)
-        dispatch(verbShuffled(shuffledVerb))
-        // console.log(shuffledVerb.result.bescherelleId)
+        //VERB SHUFFLE 
+        const shuffleVerb = () =>{
 
-        // MOOD SHUFFLE 
-        const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)
-        dispatch(moodShuffled(shuffledMood))
+          const shuffledVerb = shuffleArray(shuffleState.verbArrayChecked)
+          dispatch(verbShuffled(shuffledVerb))        
+          // console.log(shuffledVerb.result.bescherelleId)
+          return shuffledVerb
+        }
+        const verbResult = shuffleVerb()
+       
+        // MOOD SHUFFLE
+        const shuffleMood = () =>{
 
-        // IF MOOD === INDICATIF
-        if (shuffledMood.result.value === 'indicatif'){
-
-          // TENSE
-          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé')
-          const shuffledTense = shuffleArray(filteredTense)
-          dispatch(tenseShuffled(shuffledTense)) 
-
-          // PERSON
-          const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
-          dispatch(personShuffled(shuffledPerson))
-
-          // NUMBER
-          const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
-          dispatch(numberShuffled(shuffledNumber))
-
-          // GENDER
-          if (shuffledPerson.result.value !== '3ème'){
-            const shuffledGender = shuffleArray(null)
-            dispatch(genderShuffled(shuffledGender))
-          } else{
-            const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value !== '-none-')
-            const shuffledGender = shuffleArray(filteredGender)
-            dispatch(genderShuffled(shuffledGender))
+           //verbs without imperatif
+          if (verbResult.result.bescherelleId === 43 || verbResult.result.bescherelleId === 45 || verbResult.result.bescherelleId === 46){
+            const filteredMood = shuffleState.moodArrayChecked.filter(obj => obj.value !== 'impératif')
+            const shuffledMood = shuffleArray(filteredMood)
+            dispatch(moodShuffled(shuffledMood))
+            return shuffledMood
+          } else {
+            const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)
+            dispatch(moodShuffled(shuffledMood))
+            return shuffledMood
           }
+        }
+        const moodResult = shuffleMood()       
 
-        // IF MOOD === IMPERATIF
-        } else if (shuffledMood.result.value === 'impératif'){
+        // TENSE SHUFFLE
+        const shuffleTense = () =>{
 
-          // TENSE
-          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
-          const shuffledTense = shuffleArray(filteredTense)
-          dispatch(tenseShuffled(shuffledTense)) 
+          // if indicatif
+          if (moodResult.result.value === 'indicatif'){
+            const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé')
+            const shuffledTense = shuffleArray(filteredTense)
+            dispatch(tenseShuffled(shuffledTense)) 
+            return shuffledTense
 
-          // PERSON
-          const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème' || obj.value !== null )
-          const shuffledPerson = shuffleArray(filteredPerson)
-          dispatch(personShuffled(shuffledPerson))
+          // if imperatif
+          } else if (moodResult.result.value === 'impératif') {
+            const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
+            const shuffledTense = shuffleArray(filteredTense)
+            dispatch(tenseShuffled(shuffledTense)) 
+            return shuffledTense
 
-          // NUMBER
-          if (shuffledPerson.result.value === '1er'){
-            const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === 'pluriel')
-            const shuffledNumber = shuffleArray(filteredNumber)
-            dispatch(numberShuffled(shuffledNumber))
+          // if subjonctif
+          } else if (moodResult.result.value === 'subjonctif') {
+            const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'imparfait' || obj.value === 'plus-que-parfait')        
+            const shuffledTense = shuffleArray(filteredTense)
+            dispatch(tenseShuffled(shuffledTense)) 
+            return shuffledTense
+
+          // if conditionnel
+          } else if (moodResult.result.value === 'conditionnel') {
+            const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' )
+            const shuffledTense = shuffleArray(filteredTense)
+            dispatch(tenseShuffled(shuffledTense)) 
+            return shuffledTense
+          }
+        }
+        const tenseResult = shuffleTense()
+
+        //PERSON SHUFFLE 
+        const shufflePerson = () =>{
+
+          // if imperatif
+          if (moodResult.result.value === 'impératif'){
+            const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème' || obj.value !== null )
+            const shuffledPerson = shuffleArray(filteredPerson)
+            dispatch(personShuffled(shuffledPerson))
+            return shuffledPerson
+
+          // all other moods
+          } else {
+            const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
+            dispatch(personShuffled(shuffledPerson))
+            return shuffledPerson
+          }
+        }
+        const personResult = shufflePerson()
+
+        //SHUFFLE NUMBER
+        const shuffleNumber = () =>{
+
+          // if mood imperatif and if person is 1
+          if (moodResult.result.value === 'impératif') {
+            if (personResult.result.value === '1er'){
+              const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === 'pluriel')
+              const shuffledNumber = shuffleArray(filteredNumber)
+              dispatch(numberShuffled(shuffledNumber))
+              return shuffledNumber
+            } 
+          
+          // all other moods and persons
           } else{
             const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
             dispatch(numberShuffled(shuffledNumber))
-          }
+            return shuffledNumber
+          }        
+        }
+        const numberResult = shuffleNumber()
 
-          // GENDER
-          const shuffledGender = shuffleArray(null)
-          dispatch(genderShuffled(shuffledGender))
+        const shuffleGender = () => {
 
-          // IF MOOD === SUBJONCTIF
-        } else if (shuffledMood.result.value === 'subjonctif'){
-
-          //TENSE
-          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'imparfait' || obj.value === 'plus-que-parfait')        
-          const shuffledTense = shuffleArray(filteredTense)
-          dispatch(tenseShuffled(shuffledTense)) 
-
-          // PERSON
-          const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
-          dispatch(personShuffled(shuffledPerson))
-
-          // NUMBER
-          const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
-          dispatch(numberShuffled(shuffledNumber))
-          
-          // GENDER
-          if (shuffledPerson.result.value !== '3ème'){
+          //if mood is imperatif
+          if (moodResult.result.value === 'impératif') {
             const shuffledGender = shuffleArray(null)
             dispatch(genderShuffled(shuffledGender))
-          } else{
-            const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value !== '-none-')
-            const shuffledGender = shuffleArray(filteredGender)
-            dispatch(genderShuffled(shuffledGender))
-          }
 
-          // IF MOOD === CONDITIONNEL
-        } else if (shuffledMood.result.value === 'conditionnel' ){
+          // all other moods  
+          } else {
 
-          //TENSE
-          const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' )
-          const shuffledTense = shuffleArray(filteredTense)
-          dispatch(tenseShuffled(shuffledTense)) 
-
-          // PERSON
-          const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
-          dispatch(personShuffled(shuffledPerson))
-                    
-          // NUMBER
-          const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
-          dispatch(numberShuffled(shuffledNumber))
-                    
-          // GENDER
-          if (shuffledPerson.result.value !== '3ème'){
+          // if person not 3rd = blank gender
+          if (personResult.result.value !== '3ème'){
             const shuffledGender = shuffleArray(null)
             dispatch(genderShuffled(shuffledGender))
           } else{
@@ -156,6 +163,9 @@ export default function Exercise() {
             dispatch(genderShuffled(shuffledGender))
           }
         }
+        }
+        const genderResult = shuffleGender()
+      
       }
   },[shuffleState])
 
