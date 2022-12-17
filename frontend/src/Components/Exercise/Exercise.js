@@ -17,8 +17,6 @@ export default function Exercise() {
 
 
   const verbListState = useSelector(((state)=> state.exercise.verbListState))
-
-
   const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
   const shuffleState = useSelector(((state)=> state.exercise.shuffleState))
   const messageState = useSelector(((state)=> state.exercise.messageState))
@@ -30,11 +28,7 @@ export default function Exercise() {
   const genderState = useSelector(((state) => state.exercise.genderState))
   const verbState = useSelector(((state) => state.exercise.verbState))
 
-  // console.log(tenseState)
-
-
   const dispatch = useDispatch()
-
   
   useEffect(() => {
       
@@ -47,7 +41,6 @@ export default function Exercise() {
 
           const shuffledVerb = shuffleArray(shuffleState.verbArrayChecked)
           dispatch(verbShuffled(shuffledVerb))        
-          // console.log(shuffledVerb.result.bescherelleId)
           return shuffledVerb
         }
         const verbResult = shuffleVerb()
@@ -55,12 +48,20 @@ export default function Exercise() {
         // MOOD SHUFFLE
         const shuffleMood = () =>{
 
-           //verbs without imperatif
+           //verbs without imperatif #45 pleuvoir #46 falloir
           if (verbResult.result.bescherelleId === 43 || verbResult.result.bescherelleId === 45 || verbResult.result.bescherelleId === 46){
             const filteredMood = shuffleState.moodArrayChecked.filter(obj => obj.value !== 'impératif')
             const shuffledMood = shuffleArray(filteredMood)
             dispatch(moodShuffled(shuffledMood))
             return shuffledMood
+
+          // if verb is gesir # 372, only in indicatif
+          } else if (verbResult.result.bescherelleId === 372)  {
+            const filteredMood = shuffleState.moodArrayChecked.filter(obj => obj.value === 'indicatif')
+            const shuffledMood = shuffleArray(filteredMood)
+            dispatch(moodShuffled(shuffledMood))
+            return shuffledMood
+          
           } else {
             const shuffledMood = shuffleArray(shuffleState.moodArrayChecked)
             dispatch(moodShuffled(shuffledMood))
@@ -74,17 +75,36 @@ export default function Exercise() {
 
           // if indicatif
           if (moodResult.result.value === 'indicatif'){
+
+            // if verb is gesir # 372, only in present & imparfait
+            if (verbResult.result.bescherelleId === 372){
+              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'présent' || obj.value === 'imparfait')
+              const shuffledTense = shuffleArray(filteredTense)
+              dispatch(tenseShuffled(shuffledTense)) 
+              return shuffledTense
+
+            } else {
             const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé')
             const shuffledTense = shuffleArray(filteredTense)
             dispatch(tenseShuffled(shuffledTense)) 
             return shuffledTense
-
+            }
+                       
           // if imperatif
           } else if (moodResult.result.value === 'impératif') {
-            const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
-            const shuffledTense = shuffleArray(filteredTense)
-            dispatch(tenseShuffled(shuffledTense)) 
-            return shuffledTense
+
+            // if verb id #3 or #4 and imperatif 
+            if (verbResult.result.bescherelleId === 3 || verbResult.result.bescherelleId === 4){
+              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'présent')
+              const shuffledTense = shuffleArray(filteredTense)
+              dispatch(tenseShuffled(shuffledTense)) 
+              return shuffledTense
+            } else {
+              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
+              const shuffledTense = shuffleArray(filteredTense)
+              dispatch(tenseShuffled(shuffledTense)) 
+              return shuffledTense
+            }
 
           // if subjonctif
           } else if (moodResult.result.value === 'subjonctif') {
@@ -106,9 +126,12 @@ export default function Exercise() {
         //PERSON SHUFFLE 
         const shufflePerson = () =>{
 
+          //verbs #45 pleuvoir #46 falloir only in 3rd person
+
           // if imperatif
-          if (moodResult.result.value === 'impératif'){
-            const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème' || obj.value !== null )
+          if (moodResult.result.value === 'impératif') {
+            const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème')
+            console.log(filteredPerson)
             const shuffledPerson = shuffleArray(filteredPerson)
             dispatch(personShuffled(shuffledPerson))
             return shuffledPerson
@@ -126,16 +149,15 @@ export default function Exercise() {
         const shuffleNumber = () =>{
 
           // if mood imperatif and if person is 1
-          if (moodResult.result.value === 'impératif') {
-            if (personResult.result.value === '1er'){
+          if (moodResult.result.value === 'impératif' && personResult.result.value === '1er' ) {
+          
               const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === 'pluriel')
               const shuffledNumber = shuffleArray(filteredNumber)
               dispatch(numberShuffled(shuffledNumber))
               return shuffledNumber
-            } 
-          
+
           // all other moods and persons
-          } else{
+          } else {
             const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
             dispatch(numberShuffled(shuffledNumber))
             return shuffledNumber
