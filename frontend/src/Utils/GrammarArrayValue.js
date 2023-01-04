@@ -39,8 +39,8 @@ export const tenseArray = [
   { id: 16, option: "futur antérieur", category: "tense", apiFormat: "futur-antérieur",},
 ];
 export const moodArray = [
-  { id: 17, option: "indicatif", category: "mood", apiFormat:null },
-  { id: 18, option: "subjonctif", category: "mood", apiFormat:null },
-  { id: 19, option: "impératif", category: "mood", apiFormat:null },
-  { id: 20, option: "conditionnel", category: "mood", apiFormat:null },
+  { id: 17, option: "indicatif", category: "mood", apiFormat:"indicatif" },
+  { id: 18, option: "subjonctif", category: "mood", apiFormat:"subjonctif"},
+  { id: 19, option: "impératif", category: "mood", apiFormat:"imperatif" },
+  { id: 20, option: "conditionnel", category: "mood", apiFormat: "conditionnel" },
 ];

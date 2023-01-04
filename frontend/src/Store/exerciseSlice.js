@@ -198,7 +198,7 @@ const exerciseSlice = createSlice({
       state.answerState = action.payload
     },
     answerFetched: (state, action) =>{
-      // console.log(action.payload)
+      console.log(action.payload)
       state.apiAnswerState = action.payload
     },
   },

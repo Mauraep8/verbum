@@ -25,10 +25,10 @@ export const tenseArrayChecked = [
   { value: "futur antérieur", status: true, category: "tense", apiFormat:"futur-antérieur"},
 ];
 export const moodArrayChecked = [
-  { value: "indicatif", status: true, category: "mood", apiFormat:null },
-  { value: "subjonctif", status: true, category: "mood", apiFormat:null },
-  { value: "impératif", status: true, category: "mood", apiFormat:null },
-  { value: "conditionnel", status: true, category: "mood", apiFormat:null },
+  { value: "indicatif", status: true, category: "mood", apiFormat:"indicatif" },
+  { value: "subjonctif", status: true, category: "mood", apiFormat:"subjonctif" },
+  { value: "impératif", status: true, category: "mood", apiFormat:"imperatif" },
+  { value: "conditionnel", status: true, category: "mood", apiFormat:"conditionnel"},
 ];
 
 
