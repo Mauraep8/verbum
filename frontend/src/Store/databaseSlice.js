@@ -29,8 +29,9 @@ const databaseSlice = createSlice({
     initialState,
     extraReducers:{
         // //EXTRA REDUCER SETS STATE WITH API CALL
+        // !!! SE MEFIER TAKEN OUT OF LIST, WILL BE ADDED LATER WITH POSTGRES
         [fetchVerbs.fulfilled]: (state, action) => {
-            state.verbLibrary = action.payload.filter((verb)=> verb.initialVerb === null)
+            state.verbLibrary = action.payload.filter((verb)=> verb.initialVerb === null && verb.verbName !== 'se mefier')
             state.userLibrary = action.payload.filter((verb)=> verb.initialVerb === 'true')
         },
     },
