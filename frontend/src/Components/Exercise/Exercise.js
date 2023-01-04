@@ -131,7 +131,6 @@ export default function Exercise() {
           // if imperatif
           if (moodResult.result.value === 'impératif') {
             const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème')
-            console.log(filteredPerson)
             const shuffledPerson = shuffleArray(filteredPerson)
             dispatch(personShuffled(shuffledPerson))
             return shuffledPerson

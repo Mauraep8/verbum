@@ -19,10 +19,9 @@ export default function Answer() {
     } else {
       dispatch(answerWritten(answerInput.current.value))
       const storeState = store.getState().exercise
-      // console.log(storeState)
-
+      
       const verb = storeState.verbState.result.value
-      const mood = storeState.moodState.result.value
+      const mood = storeState.moodState.result.apiFormat
       const tense = storeState.tenseState.result.apiFormat
       const person = storeState.personState.result.apiFormat
       const number = storeState.numberState.result.apiFormat
@@ -34,7 +33,16 @@ export default function Answer() {
 
       // console.log(tense)
       // console.log(verb)
-      
+      if (mood === 'imperatif'){
+        axios.get(`http://localhost:8000/conjugate/fr/${verb}?mood=${mood}`)
+        .then(result => {
+          fetchAnswer(result.data.value[`imperatif-${tense}`])
+        })
+        .catch(error =>{
+          console.log(error)
+        })
+        
+      } else {
       axios.get(`http://localhost:8000/conjugate/fr/${verb}?mood=${mood}&tense=${tense}`)
       .then(result => {
         // console.log(result.data.value)
@@ -43,10 +51,24 @@ export default function Answer() {
       .catch(error =>{
         console.log(error)
       })
+      }
       
       const fetchAnswer = (array) =>{
+     
+        if (mood === 'imperatif'){
+          if (person === 1){
+          dispatch(answerFetched((array[1])))
+          } else if (person === 2){
+            if (number === 1) {
+              dispatch(answerFetched((array[0])))
+            } else if (number === 2){
+              dispatch(answerFetched((array[2])))
+            }
+          }
+        } else {
         const arrayIndex = person * number
         dispatch(answerFetched((array[arrayIndex -1])))
+        }
       }
     } 
   }
