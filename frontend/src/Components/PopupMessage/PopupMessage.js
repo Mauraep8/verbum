@@ -24,6 +24,7 @@ export default function PopupMessage(props) {
         dispatch(messageCleared([]))
     }
 
+    
     if (props.messageError.length !==0) { 
         return (
             <div className='popup-message' ref={popupMessage}>
@@ -32,7 +33,25 @@ export default function PopupMessage(props) {
             </div>
         )
    } else if (props.messageWarning.length !==0) {
-    if (props.messageWarning.mood === 'impératif' && props.messageWarning.missingNumber === 'pluriel') {
+    if (props.messageWarning.verb === 'pleuvoir' || props.messageWarning.verb === 'falloir'){
+        if (props.messageWarning.verb === 'pleuvoir' && props.messageWarning.missingGender !== null){
+            return (
+                <div className='popup-message' ref={popupMessage}>
+                    <p className='popup-message__text'>The verb '{props.messageWarning.verb}' was chosen without the appropriate gender case. Please select the following in the Gender dropmenu to proceed:</p>
+                    <li>{props.messageWarning.missingGender}</li> 
+                    <button className='popup-message__button' onClick={clickHandler}>x</button>
+                </div>
+            )
+        } else if (props.messageWarning.missingPerson !== null){
+            return (
+                <div className='popup-message' ref={popupMessage}>
+                    <p className='popup-message__text'>The verb '{props.messageWarning.verb}' was chosen without the appropriate person case. Please select the following in the Person dropmenu to proceed:</p>
+                    <li>{props.messageWarning.missingPerson}</li> 
+                    <button className='popup-message__button' onClick={clickHandler}>x</button>
+                </div>
+            )
+        }
+    } else if (props.messageWarning.mood === 'impératif' && props.messageWarning.missingNumber === 'pluriel') {
         return (
             <div className='popup-message' ref={popupMessage}>
                 <p className='popup-message__text'>The '{props.messageWarning.mood}' mood and the '{props.messageWarning.person}' person were chosen without the appropriate number case. Please select the following in the Number dropmenu to proceed:</p>
@@ -40,7 +59,7 @@ export default function PopupMessage(props) {
                 <button className='popup-message__button' onClick={clickHandler}>x</button>
             </div>
         )
-    } else if (props.messageWarning.mood === 'impératif' && props.messageWarning.missingPerson.length !== 0) {
+    } else if (props.messageWarning.mood === 'impératif' && props.messageWarning.missingPerson !== null) {
         return (
             <div className='popup-message' ref={popupMessage}>
                 <p className='popup-message__text'>The {props.messageWarning.mood} mood was selected without the appropriate person cases. Please select at least one of the following in the Person dropmenu to proceed:</p>
@@ -51,8 +70,7 @@ export default function PopupMessage(props) {
             
             </div>
         )
-    
-    } else if (props.messageWarning.missingGender.length !== 0){
+    } else if (props.messageWarning.missingGender !== null){
         return (
             <div className='popup-message' ref={popupMessage}>
                 <p className='popup-message__text'>The {props.messageWarning.person} person was selected without the appropriate gender cases. Select at least one of the following in the Gender dropmenu to proceed:</p>
@@ -63,7 +81,7 @@ export default function PopupMessage(props) {
             
             </div>
         )
-    } else {
+    } else if(props.messageWarning.missingTense !== null){
         return (
             <div className='popup-message' ref={popupMessage}>
                 <p className='popup-message__text'>The {props.messageWarning.mood} mood was selected without the appropriate tenses. Please select at least one of the following in the Tense dropmenu to proceed:</p>

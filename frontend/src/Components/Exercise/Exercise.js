@@ -127,19 +127,25 @@ export default function Exercise() {
         const shufflePerson = () =>{
 
           //verbs #45 pleuvoir #46 falloir only in 3rd person
-
-          // if imperatif
-          if (moodResult.result.value === 'impératif') {
-            const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème')
+          if (verbResult.result.bescherelleId === 45 || verbResult.result.bescherelleId === 46){
+            const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value === '3ème')
             const shuffledPerson = shuffleArray(filteredPerson)
             dispatch(personShuffled(shuffledPerson))
             return shuffledPerson
-
-          // all other moods
           } else {
-            const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
-            dispatch(personShuffled(shuffledPerson))
-            return shuffledPerson
+            // if imperatif
+            if (moodResult.result.value === 'impératif') {
+              const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème')
+              const shuffledPerson = shuffleArray(filteredPerson)
+              dispatch(personShuffled(shuffledPerson))
+              return shuffledPerson
+
+            // all other moods
+            } else {
+              const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
+              dispatch(personShuffled(shuffledPerson))
+              return shuffledPerson
+            }
           }
         }
         const personResult = shufflePerson()
@@ -165,25 +171,32 @@ export default function Exercise() {
         const numberResult = shuffleNumber()
 
         const shuffleGender = () => {
+          // if verb is pleuvoir id 45
 
-          //if mood is imperatif
-          if (moodResult.result.value === 'impératif') {
-            const shuffledGender = shuffleArray(null)
-            dispatch(genderShuffled(shuffledGender))
-
-          // all other moods  
-          } else {
-
-          // if person not 3rd = blank gender
-          if (personResult.result.value !== '3ème'){
-            const shuffledGender = shuffleArray(null)
-            dispatch(genderShuffled(shuffledGender))
-          } else{
-            const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value !== '-none-')
+          if (verbResult.result.bescherelleId === 45){
+            const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value === 'masculin')
             const shuffledGender = shuffleArray(filteredGender)
             dispatch(genderShuffled(shuffledGender))
+          } else {
+            //if mood is imperatif
+            if (moodResult.result.value === 'impératif') {
+              const shuffledGender = shuffleArray(null)
+              dispatch(genderShuffled(shuffledGender))
+
+            // all other moods  
+            } else {
+
+              // if person not 3rd = blank gender
+              if (personResult.result.value !== '3ème'){
+                const shuffledGender = shuffleArray(null)
+                dispatch(genderShuffled(shuffledGender))
+              } else{
+                const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value !== '-none-')
+                const shuffledGender = shuffleArray(filteredGender)
+                dispatch(genderShuffled(shuffledGender))
+              }
+            }
           }
-        }
         }
         const genderResult = shuffleGender()
       
