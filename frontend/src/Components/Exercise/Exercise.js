@@ -126,8 +126,8 @@ export default function Exercise() {
         //PERSON SHUFFLE 
         const shufflePerson = () =>{
 
-          //verbs #45 pleuvoir #46 falloir only in 3rd person
-          if (verbResult.result.bescherelleId === 45 || verbResult.result.bescherelleId === 46){
+          //verbs #45 pleuvoir #46 falloir, 50# seoir and messeoir only in 3rd person
+          if (verbResult.result.bescherelleId === 45 || verbResult.result.bescherelleId === 46 || verbResult.result.bescherelleId === 50){
             const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value === '3ème')
             const shuffledPerson = shuffleArray(filteredPerson)
             dispatch(personShuffled(shuffledPerson))

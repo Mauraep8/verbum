@@ -27,12 +27,11 @@ export default function Answer() {
       const number = storeState.numberState.result.apiFormat
       const gender = storeState.genderState.result
 
-      // console.log(person, 'person')
-      // console.log(number, 'number')
-      // console.log(gender, 'gender') if gender is elle or il
-
-      // console.log(tense)
-      // console.log(verb)
+      // todo
+      // if gender is fem need to change answer
+      // if the verb is falloir, pleuvoir are only in the 3rd person sing, so you need to find proper array position
+      // if the verb is messeoir or seoir its only in the 3rd person plural or singular
+      // if verb is choir echoir dechoir #52, also have to refine the getting
       if (mood === 'imperatif'){
         axios.get(`http://localhost:8000/conjugate/fr/${verb}?mood=${mood}`)
         .then(result => {
