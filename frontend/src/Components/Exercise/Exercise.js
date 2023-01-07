@@ -82,6 +82,13 @@ export default function Exercise() {
               const shuffledTense = shuffleArray(filteredTense)
               dispatch(tenseShuffled(shuffledTense)) 
               return shuffledTense
+            
+            // if verb is traire #61, take out passe simple
+            } else if (verbResult.result.bescherelleId === 61){
+              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé simple')
+              const shuffledTense = shuffleArray(filteredTense)
+              dispatch(tenseShuffled(shuffledTense)) 
+              return shuffledTense
 
             } else {
             const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé')
@@ -99,6 +106,7 @@ export default function Exercise() {
               const shuffledTense = shuffleArray(filteredTense)
               dispatch(tenseShuffled(shuffledTense)) 
               return shuffledTense
+
             } else {
               const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
               const shuffledTense = shuffleArray(filteredTense)
@@ -108,10 +116,20 @@ export default function Exercise() {
 
           // if subjonctif
           } else if (moodResult.result.value === 'subjonctif') {
-            const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'imparfait' || obj.value === 'plus-que-parfait')        
-            const shuffledTense = shuffleArray(filteredTense)
-            dispatch(tenseShuffled(shuffledTense)) 
-            return shuffledTense
+            
+            // if verb is traire #61, take out imparfait
+            if (verbResult.result.bescherelleId === 61){
+              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'plus-que-parfait')
+              const shuffledTense = shuffleArray(filteredTense)
+              dispatch(tenseShuffled(shuffledTense)) 
+              return shuffledTense
+
+            } else {
+              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'imparfait' || obj.value === 'plus-que-parfait')        
+              const shuffledTense = shuffleArray(filteredTense)
+              dispatch(tenseShuffled(shuffledTense)) 
+              return shuffledTense
+            }
 
           // if conditionnel
           } else if (moodResult.result.value === 'conditionnel') {
