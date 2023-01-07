@@ -83,8 +83,8 @@ export default function Exercise() {
               dispatch(tenseShuffled(shuffledTense)) 
               return shuffledTense
             
-            // if verb is traire #61, take out passe simple
-            } else if (verbResult.result.bescherelleId === 61){
+            // if verb is traire #61 or absoudre #72, take out passe simple
+            } else if (verbResult.result.bescherelleId === 61 || verbResult.result.bescherelleId === 72){
               const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé simple')
               const shuffledTense = shuffleArray(filteredTense)
               dispatch(tenseShuffled(shuffledTense)) 
@@ -117,8 +117,8 @@ export default function Exercise() {
           // if subjonctif
           } else if (moodResult.result.value === 'subjonctif') {
             
-            // if verb is traire #61 or clore #70, take out imparfait
-            if (verbResult.result.bescherelleId === 61|| verbResult.result.bescherelleId === 70){
+            // if verb is traire #61 or clore #70 or #72, take out imparfait
+            if (verbResult.result.bescherelleId === 61|| verbResult.result.bescherelleId === 70 || verbResult.result.bescherelleId === 72){
               const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'plus-que-parfait')
               const shuffledTense = shuffleArray(filteredTense)
               dispatch(tenseShuffled(shuffledTense)) 
@@ -153,11 +153,20 @@ export default function Exercise() {
           } else {
             // if imperatif
             if (moodResult.result.value === 'impératif') {
+
+              // clore imperatif present
+              if (verbResult.result.bescherelleId ===70 && tenseResult.result.value === 'présent'){
+                const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value === '2ème')
+                const shuffledPerson = shuffleArray(filteredPerson)
+                dispatch(personShuffled(shuffledPerson))
+                return shuffledPerson
+              } else{
+
               const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème')
               const shuffledPerson = shuffleArray(filteredPerson)
               dispatch(personShuffled(shuffledPerson))
               return shuffledPerson
-
+              }  
             // all other moods
             } else {
               const shuffledPerson = shuffleArray(shuffleState.personArrayChecked)
@@ -178,7 +187,14 @@ export default function Exercise() {
               const shuffledNumber = shuffleArray(filteredNumber)
               dispatch(numberShuffled(shuffledNumber))
               return shuffledNumber
-
+            
+            // clore imperatif present only in singulier
+          } else if (verbResult.result.bescherelleId===70 && moodResult.result.value === 'impératif' && tenseResult.result.value === 'présent' ){
+            const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === 'singulier')
+            const shuffledNumber = shuffleArray(filteredNumber)
+            dispatch(numberShuffled(shuffledNumber))
+            return shuffledNumber
+          
           // all other moods and persons
           } else {
             const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
