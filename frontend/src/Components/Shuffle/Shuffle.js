@@ -46,9 +46,7 @@ export default function Shuffle() {
       const personArray = storeState.personArrayChecked.map(element => element.value)
       const numberArray = storeState.numberArrayChecked.map(element => element.value)
       const genderArray = storeState.genderArrayChecked.map(element => element.value)
-
-
-      
+    
       
       //VERIFY CONDITIONS FOR VERB PLEUVOIR #45 AND FALLOIR #46 FOR 3RD PERSON AND FOR MASC GENDER
       if (verbArray.includes('pleuvoir') === true) {
@@ -89,7 +87,7 @@ export default function Shuffle() {
       if (moodArray.includes('indicatif') === true) {
 
         //verify seoir conditions with indicatif
-        if (verbArray.includes("seoir")) {
+        if (verbArray.includes("seoir") === true) {
           if (
             tenseArray.includes("présent") === false &&
             tenseArray.includes("imparfait") === false &&
@@ -110,7 +108,7 @@ export default function Shuffle() {
           }
 
           //verify messeoir conditions with indicatif
-        } else if (verbArray.includes("messeoir")) {
+        } else if (verbArray.includes("messeoir")=== true) {
           if (
             tenseArray.includes("présent") === false &&
             tenseArray.includes("imparfait") === false &&
@@ -131,7 +129,7 @@ export default function Shuffle() {
           }
           
           //verify traire conditions with indicatif
-        } else if (verbArray.includes("traire")) {
+        } else if (verbArray.includes("traire")=== true) {
           if (
             tenseArray.includes("présent") === false &&
             tenseArray.includes("passé composé") === false &&
@@ -161,46 +159,37 @@ export default function Shuffle() {
             );
             selectionApproved = false;
           }
-          //verify échoir conditions with indicatif
-        } else if (verbArray.includes("")) {
+          //verify clore conditions with indicatif
+        } else if (verbArray.includes("clore")===true) {
           if (
             tenseArray.includes("présent") === false &&
-            tenseArray.includes("passé simple") === false &&
-            tenseArray.includes("futur simple") === false
+            tenseArray.includes("passé composé") === false &&
+            tenseArray.includes("plus-que-parfait") === false &&
+            tenseArray.includes("passé antérieur") === false &&
+            tenseArray.includes("futur simple") === false &&
+            tenseArray.includes("futur antérieur") === false
           ) {
             dispatch(
               userSelectionDenied({
-                verb: "échoir",
+                verb: "clore",
                 mood: "indicatif",
                 person: null,
-                missingTense: ["présent", "passé simple", "futur simple"],
+                missingTense: [
+                  "présent",
+                  "passé composé",
+                  "plus-que-parfait",
+                  "passé antérieur",
+                  "futur simple",
+                  "futur antérieur",
+                ],
                 missingPerson: null,
                 missingNumber: null,
                 missingGender: null,
               })
             );
             selectionApproved = false;
-          }
-          //verify déchoir conditions with indicatif
-        } else if (verbArray.includes("déchoir")) {
-          if (
-            tenseArray.includes("présent") === false &&
-            tenseArray.includes("passé simple") === false &&
-            tenseArray.includes("futur simple") === false
-          ) {
-            dispatch(
-              userSelectionDenied({
-                verb: "déchoir",
-                mood: "indicatif",
-                person: null,
-                missingTense: ["présent", "passé simple", "futur simple"],
-                missingPerson: null,
-                missingNumber: null,
-                missingGender: null,
-              })
-            );
-            selectionApproved = false;
-          }
+          }       
+
         } else if (
           tenseArray.includes("présent") === false &&
           tenseArray.includes("passé composé") === false &&
@@ -273,6 +262,13 @@ export default function Shuffle() {
             dispatch(userSelectionDenied({verb: 'traire', mood: 'subjonctif', person: null, missingTense: ['présent','passé','plus-que-parfait'], missingPerson: null, missingNumber: null, missingGender: null}))
             selectionApproved = false 
           }
+        // verify clore conditions with subjonctif
+        }  else if (verbArray.includes('clore')){
+          if (tenseArray.includes('présent') === false  && tenseArray.includes('passé') === false && tenseArray.includes('plus-que-parfait') === false ){
+            dispatch(userSelectionDenied({verb: 'clore', mood: 'subjonctif', person: null, missingTense: ['présent','passé','plus-que-parfait'], missingPerson: null, missingNumber: null, missingGender: null}))
+            selectionApproved = false 
+          }
+        
         } else if (tenseArray.includes('présent') === false && tenseArray.includes('passé') === false && tenseArray.includes('imparfait') === false && tenseArray.includes('plus-que-parfait') === false ){
           dispatch(userSelectionDenied({verb: null, mood: 'subjonctif', person: null, missingTense: ['présent','passé','imparfait','plus-que-parfait'], missingPerson: null, missingNumber: null, missingGender: null}))
           selectionApproved = false
