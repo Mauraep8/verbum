@@ -11,7 +11,21 @@ export default function Option(props) {
  
 
   useEffect(()=>{
-    dispatch(optionChecked({value:props.value, status:checked, category:props.category, verbName:props.verbName, verbGroup:props.verbGroup, specialVerb:props.specialVerb, primaryVerb:props.primaryVerb, initialVerb:props.initialVerb, bescherelleId:props.bescherelleId, auxiliaryVerb:props.auxiliaryVerb}))
+    dispatch(
+      optionChecked({
+        value: props.value,
+        status: checked,
+        category: props.category,
+        apiFormat: props.apiFormat,
+        verbName: props.verbName,
+        verbGroup: props.verbGroup,
+        specialVerb: props.specialVerb,
+        primaryVerb: props.primaryVerb,
+        initialVerb: props.initialVerb,
+        bescherelleId: props.bescherelleId,
+        auxiliaryVerb: props.auxiliaryVerb,
+      })
+    );
   },[checked])
 
   if (props.optionType === 'grammar'){

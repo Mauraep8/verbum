@@ -6,7 +6,7 @@ export const personArray = [
 export const genderArray = [
   { id: 1, option: "féminin", category: "gender", apiFormat:null },
   { id: 2, option: "masculin", category: "gender", apiFormat:null },
-  { id: 3, option: "-none-", category: "gender", apiFormat:null },
+  // { id: 3, option: "-none-", category: "gender", apiFormat:null },
 ];
 export const numberArray = [
   { id: 7, option: "singulier", category: "number", apiFormat:1 },
