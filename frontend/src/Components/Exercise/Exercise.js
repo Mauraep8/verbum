@@ -211,25 +211,11 @@ export default function Exercise() {
             const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value === 'masculin')
             const shuffledGender = shuffleArray(filteredGender)
             dispatch(genderShuffled(shuffledGender))
+            
           } else {
-            //if mood is imperatif
-            if (moodResult.result.value === 'impératif') {
-              const shuffledGender = shuffleArray(null)
-              dispatch(genderShuffled(shuffledGender))
-
-            // all other moods  
-            } else {
-
-              // if person not 3rd = blank gender
-              if (personResult.result.value !== '3ème'){
-                const shuffledGender = shuffleArray(null)
-                dispatch(genderShuffled(shuffledGender))
-              } else{
-                const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value !== '-none-')
-                const shuffledGender = shuffleArray(filteredGender)
-                dispatch(genderShuffled(shuffledGender))
-              }
-            }
+            const shuffledGender = shuffleArray(shuffleState.genderArrayChecked)
+            dispatch(genderShuffled(shuffledGender))
+            return shuffledGender
           }
         }
         const genderResult = shuffleGender()

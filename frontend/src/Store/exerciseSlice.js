@@ -44,58 +44,32 @@ const exerciseSlice = createSlice({
       if (action.payload.status === true) {
         switch (action.payload.category) {
           case "person":
-            // console.log(action.payload)
-            if (
-              !state.personArrayChecked.find(
-                (element) => element.value === action.payload.value
-              )
-            ) {
+            if (!state.personArrayChecked.find((element) => element.value === action.payload.value)) {
               state.personArrayChecked.push(action.payload);
             }
             break;
           case "gender":
-            if (
-              !state.genderArrayChecked.find(
-                (element) => element.value === action.payload.value
-              )
-            ) {
+            if (!state.genderArrayChecked.find((element) => element.value === action.payload.value)) {
               state.genderArrayChecked.push(action.payload);
             }
             break;
           case "number":
-            if (
-              !state.numberArrayChecked.find(
-                (element) => element.value === action.payload.value
-              )
-            ) {
+            if (!state.numberArrayChecked.find((element) => element.value === action.payload.value)) {
               state.numberArrayChecked.push(action.payload);
             }
             break;
           case "tense":
-            if (
-              !state.tenseArrayChecked.find(
-                (element) => element.value === action.payload.value
-              )
-            ) {
+            if (!state.tenseArrayChecked.find((element) => element.value === action.payload.value)) {
               state.tenseArrayChecked.push(action.payload);
             }
             break;
           case "mood":
-            if (
-              !state.moodArrayChecked.find(
-                (element) => element.value === action.payload.value
-              )
-            ) {
+            if (!state.moodArrayChecked.find((element) => element.value === action.payload.value)) {
               state.moodArrayChecked.push(action.payload);
             }
             break;
           case "verb":
-            // console.log(action.payload)
-            if (
-              !state.verbArrayChecked.find(
-                (element) => element.value === action.payload.value
-              )
-            ) {
+            if (!state.verbArrayChecked.find((element) => element.value === action.payload.value)) {
               state.verbArrayChecked.push(action.payload);
             }
             break
