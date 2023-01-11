@@ -1,15 +1,18 @@
 import React from 'react' 
 import '../Answer/Answer.scss';
 import { useDispatch } from "react-redux";
-import { shuffleApproved, shuffleDenied, userSelectionDenied} from "../../Store/exerciseSlice";
+import { answerCleared, shuffleApproved, shuffleDenied, userSelectionDenied} from "../../Store/exerciseSlice";
 import { store } from "../../Store/configureStore";
 
 
 export default function Shuffle() {
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch()  
 
   const getStore = () => {
+
+    //clear previous answers
+    dispatch(answerCleared([]))
 
     // STATE OF STORE AND TURN INTO ARRAY
     const storeState = store.getState().exercise

@@ -8,7 +8,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import './Exercise.scss'
 import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
-import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled, verbShuffled} from "../../Store/exerciseSlice";
+import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled, verbShuffled, answerCompared} from "../../Store/exerciseSlice";
 
 
 
@@ -27,6 +27,11 @@ export default function Exercise() {
   const numberState = useSelector(((state) => state.exercise.numberState))
   const genderState = useSelector(((state) => state.exercise.genderState))
   const verbState = useSelector(((state) => state.exercise.verbState))
+  const userAnswer = useSelector(((state) => state.exercise.userAnswerState))
+  const apiAnswer = useSelector(((state) => state.exercise.apiAnswerState))
+  const resultAnswer = useSelector(((state) => state.exercise.resultAnswerState))
+
+
 
   const dispatch = useDispatch()
   
@@ -223,6 +228,30 @@ export default function Exercise() {
       }
   },[shuffleState])
 
+ useEffect(() => {
+  if (userAnswer.length !== 0 && apiAnswer.length !==0){
+    const compareAnswer = () =>{
+      if (typeof userAnswer === 'string' && typeof apiAnswer === 'string'){
+        if (userAnswer===apiAnswer){
+          // console.log(true)
+          // console.log(userAnswer)
+          return {user: true, answer: userAnswer}
+        } else {
+          // console.log(false)
+          // console.log(apiAnswer)
+          return {user: false, answer: apiAnswer}
+        }
+      }
+
+    }
+    const result = compareAnswer(userAnswer, apiAnswer)
+    dispatch(answerCompared(result))
+  }
+ },[userAnswer, apiAnswer])
+ 
+//  console.log(resultAnswer)
+
+
 
   return (
       <div className='exercise'>
@@ -238,7 +267,7 @@ export default function Exercise() {
               <Grammar shuffleState={moodState} option={moodArray} type='mood'/>
             </div>
             <Verb shuffleState={verbState} option={verbListState}/>
-            <Answer/>
+            <Answer answer={resultAnswer} />
             <Shuffle/>
           </div>
         </div>

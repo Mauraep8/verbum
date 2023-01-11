@@ -2,16 +2,44 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .answer{
+
+    &__input-container{
+        // border: 1px solid black;
+    }
+
     &__input{
         box-sizing: border-box;
         width: 100%;
         border: 1px solid lightgrey;
         border-radius: 20px;
         height: 1.5rem;
-        margin: 1rem 0;
+        margin: 0;
 
         &::placeholder{
             text-align: center;
+        }
+
+        &--error{
+            border: 1px solid red;
+        }
+    }
+    &__input-text{
+        &--error{
+        color: red;
+        }
+        &--correct{
+            color: green;
+        }
+    }
+
+    &__text{
+        
+        &--hidden{
+        visibility: hidden;
+        }
+
+        &--visible{
+        visibility: visible;
         }
     }
 

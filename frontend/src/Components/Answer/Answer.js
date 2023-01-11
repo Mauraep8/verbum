@@ -1,25 +1,42 @@
-import React, {useRef} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import './Answer.scss'
-import { useDispatch} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux'
 import { answerFetched, answerWritten } from '../../Store/exerciseSlice';
 import { store } from "../../Store/configureStore";
 import  axios from "axios";
 
 
-export default function Answer() {
+export default function Answer(props) {
 
   const dispatch = useDispatch()
+
   const answerInput = useRef([])
+  const inputWarning = useRef([])
+  const correctAnswerText = useRef([])
+
+  const [correctAnswer, setCorrectAnswer ] = useState([])
 
   const verify = (e)=>{
-    e.preventDefault()
 
+    e.preventDefault()
+    
+    // if input is empty with no answer
     if (answerInput.current.value === ''){
-      console.error('empty')
+      answerInput.current.classList.add('answer__input--error')
+      inputWarning.current.classList.add('answer__text--visible')
+
+
     } else {
+
+      //remove error if it's there
+      answerInput.current.classList.remove('answer__input--error')
+      inputWarning.current.classList.remove('answer__text--visible')
+
+      //dispatch user's answer
       dispatch(answerWritten(answerInput.current.value))
-      const storeState = store.getState().exercise
-      
+    
+      // get storeState
+      const storeState = store.getState().exercise      
       const verbObject = storeState.verbState.result
       const verb = storeState.verbState.result.value
       const mood = storeState.moodState.result.apiFormat
@@ -30,7 +47,6 @@ export default function Answer() {
 
       // todo
       // add default state, so that should you verify on initial state the web doesnt break
-      // if answer is empty if verify is pressed 
       // if the verb is falloir, pleuvoir are only in the 3rd person sing, so you need to find proper array position
       // if the verb is messeoir or seoir its only in the 3rd person plural or singular
 
@@ -92,7 +108,6 @@ export default function Answer() {
               }
             }
           }
-
 
           // feminizing the 3rd person pronoun qu'il to qu'elle in subjunctif
         } else if (mood === 'subjonctif'){
@@ -240,20 +255,39 @@ export default function Answer() {
             }
 
           }
-        }  
-
-  
-
-      }
-    } 
+        } 
+      }          
+    }   
   }
+
+ useEffect(() => {
+  if (props.answer.length !==0){
+    if(props.answer.user === false){
+      correctAnswerText.current.classList.add('answer__text--visible')
+      answerInput.current.classList.add('answer__input-text--error')
+      setCorrectAnswer(props.answer.answer)
+    } else {
+      answerInput.current.classList.add('answer__input-text--correct')
+    }
+  } else {
+    answerInput.current.classList.remove('answer__input-text--error')
+    correctAnswerText.current.classList.remove('answer__text--visible')
+    answerInput.current.value = ''
+  }
+ }, [props.answer])
+ 
+
 
 
 
   return (
     <div className='answer'>
       <form className='answer__form'>
-        <input className='answer__input' type="text" placeholder='Answer'ref={answerInput}/>
+        <div className='answer__input-container'>
+          <span className='answer__text--hidden' ref={correctAnswerText}>correct answer: {correctAnswer}</span>
+          <input className='answer__input' type="text" placeholder='Answer'ref={answerInput}/>
+          <span className='answer__text--hidden' ref={inputWarning}>! Please enter your answer</span>
+        </div>
         <button className='answer__button' onClick={verify}>Verify</button>
       </form>
     </div>

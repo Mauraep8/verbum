@@ -25,9 +25,9 @@ const initialState = {
     verbListState: [],
     listSubmitMessage:[],
     verbListApprovedUpdate:[],
-    answerState:[],
-    apiAnswerState: [] 
-
+    userAnswerState:[],
+    apiAnswerState: [],
+    resultAnswerState: [],
 }
 
 // EXERCISE SLICE
@@ -168,15 +168,25 @@ const exerciseSlice = createSlice({
       state.verbListApprovedUpdate = action.payload;
     },
     answerWritten: (state, action) => {
-      // console.log(action.payload)
-      state.answerState = action.payload
+      // console.log(action.payload,'exerciceSlice')
+      state.userAnswerState = action.payload
     },
     answerFetched: (state, action) =>{
-      console.log(action.payload)
+      // console.log(action.payload, 'exerciceSlice')
       state.apiAnswerState = action.payload
+    },
+    answerCompared: (state, action) =>{
+      // console.log(action.payload, 'exerciceSlice')
+      state.resultAnswerState = action.payload
+    },
+    answerCleared: (state, action) =>{
+      // console.log(action.payload, 'exerciceSlice')
+      state.resultAnswerState = action.payload
+      state.apiAnswerState = action.payload
+      state.userAnswerState = action.payload
     },
   },
 });
 
-export const {answerFetched, answerWritten,verbListUpdateAction, verbListUpdated, messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, verbShuffled, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
+export const { answerCleared, answerCompared, answerFetched, answerWritten,verbListUpdateAction, verbListUpdated, messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, verbShuffled, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer
