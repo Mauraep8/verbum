@@ -46,7 +46,6 @@ export default function Answer(props) {
       const gender = storeState.genderState.result.value
 
       // todo
-      // add default state, so that should you verify on initial state the web doesnt break
       // if the verb is falloir, pleuvoir are only in the 3rd person sing, so you need to find proper array position
       // if the verb is messeoir or seoir its only in the 3rd person plural or singular
 

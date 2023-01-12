@@ -13,12 +13,12 @@ const initialState = {
     moodArrayChecked: moodArrayChecked,
     verbArrayChecked: [],
     shuffleState: [],
-    moodState:[],
-    tenseState:[],
-    personState:[],
-    numberState:[],
-    genderState:[],
-    verbState: [],
+    moodState:{result:{value: 'indicatif', status: true, category: 'mood', apiFormat: 'indicatif'}},
+    tenseState:{result:{value: 'présent', status: true, category: 'tense', apiFormat: 'présent'}},
+    personState:{result:{value: '1er', status: true, category: 'person', apiFormat: 1}},
+    numberState:{result:{value: 'singulier', status: true, category: 'number', apiFormat: 1}},
+    genderState:{result:{value: 'féminin', status: true, category: 'gender', apiFormat: null}},
+    verbState: {result:{apiFormat:null, auxiliaryVerb:"", bescherelleId: 6, category: "verb", initialVerb: "true", primaryVerb:"true", specialVerb: "", status: true, value: "aimer", verbGroup: "1er groupe", verbName: "aimer"}},
     messageState:[],
     shuffleAction:[],
     userSelectionMessage:[],
@@ -143,21 +143,27 @@ const exerciseSlice = createSlice({
       state.userSelectionMessage = action.payload;
     },
     moodShuffled: (state, action) => {
+      console.log(action.payload)
       state.moodState = action.payload;
     },
     tenseShuffled: (state, action) => {
+      console.log(action.payload)
       state.tenseState = action.payload;
     },
     personShuffled: (state, action) => {
+      console.log(action.payload)
       state.personState = action.payload;
     },
     numberShuffled: (state, action) => {
+      console.log(action.payload)
       state.numberState = action.payload;
     },
     genderShuffled: (state, action) => {
+      console.log(action.payload)
       state.genderState = action.payload;
     },
     verbShuffled: (state, action) => {
+      console.log(action.payload)
       state.verbState = action.payload;
     },
     verbListUpdated: (state, action) => {
