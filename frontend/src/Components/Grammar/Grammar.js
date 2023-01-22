@@ -14,7 +14,7 @@ export default function Grammar(props) {
   const dropmenuWrapper = useRef ([])
   const dropmenuButton = useRef ([])
 
-  // console.log(props.shuffleState)
+  console.log(props.type)
 
   // WHEN SHUFFLE IS CLICKED BUTTONS TURN BLUE MOMENTARILY
   useEffect(() => {
@@ -48,27 +48,27 @@ export default function Grammar(props) {
   if(props.shuffleState.result === null){
     return (
       <div className='grammar'>
-        <button className='grammar__button' ref={dropmenuButton} onFocus={handlerDropmenu}>{'-none-'}</button>
+        <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton} onFocus={handlerDropmenu}>{'-none-'}</button>
         <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-          <DropMenu value={props.option} verb={null}/>
+          <DropMenu value={props.option} verb={null} type={props.type}/>
         </div>
       </div>
     )
   } else if (props.shuffleState === undefined || props.shuffleState.length === 0 ) {
     return (
       <div className='grammar'>
-        <button className='grammar__button' onFocus={handlerDropmenu}>{props.option[0].option}</button>
+        <button className={`grammar__button grammar__button--${props.type}`} onFocus={handlerDropmenu}>{props.option[0].option}</button>
         <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-          <DropMenu value={props.option} verb={null}/>
+          <DropMenu value={props.option} verb={null} type={props.type}/>
         </div>
       </div>
     )
   } else {
     return (
       <div className='grammar'>
-        <button className='grammar__button' ref={dropmenuButton} onClick={handlerDropmenu}>{props.shuffleState.result.value}</button>
+        <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton} onClick={handlerDropmenu}>{props.shuffleState.result.value}</button>
         <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-          <DropMenu value={props.option} verb={null}/>
+          <DropMenu value={props.option} verb={null} type={props.type}/>
         </div>
       </div>
     )

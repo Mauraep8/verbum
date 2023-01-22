@@ -266,7 +266,7 @@ export default function Exercise() {
               <Grammar shuffleState={tenseState} option={tenseArray} type='tense'/>
               <Grammar shuffleState={moodState} option={moodArray} type='mood'/>
             </div>
-            <Verb shuffleState={verbState} option={verbListState}/>
+            <Verb shuffleState={verbState} option={verbListState} type='verb'/>
             <Answer answer={resultAnswer} />
             <Shuffle/>
           </div>

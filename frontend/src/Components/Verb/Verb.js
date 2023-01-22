@@ -68,7 +68,7 @@ export default function Verb(props) {
       <div className='verb'>
         <button className='verb__button' onClick={handlerDropmenu} ref={dropmenuButton}>{props.option[0].verbName}</button>
         <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-          <Dropmenu verbList={props.option} value={null}/>
+          <Dropmenu verbList={props.option} value={null} type={props.type}/>
         </div>
       </div>
     )
@@ -77,7 +77,7 @@ export default function Verb(props) {
       <div className='verb'>
         <button className='verb__button' onClick={handlerDropmenu} ref={dropmenuButton}>{dropMenuText}</button>
         <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-         <Dropmenu verbList={props.option} value={null}/>
+         <Dropmenu verbList={props.option} value={null} type={props.type}/>
         </div>
       </div>
     )
