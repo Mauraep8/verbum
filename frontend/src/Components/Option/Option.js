@@ -7,7 +7,7 @@ export default function Option(props) {
 
   const [checked, setChecked] = useState(true)
   const dispatch = useDispatch()
-  // console.log(props)
+  console.log(props.dropmenuType)
  
 
   useEffect(()=>{
@@ -30,7 +30,7 @@ export default function Option(props) {
 
   if (props.optionType === 'grammar'){
   return (
-    <div className='option' onClick={()=>{setChecked(!checked)}}>
+    <div className={`option option--${props.dropmenuType}`} onClick={()=>{setChecked(!checked)}}>
       <input type="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}} />
       <p className='option__text'>{props.value}</p>
     </div>
@@ -38,7 +38,7 @@ export default function Option(props) {
 } else if (props.optionType === 'verb'){
   // console.log(props)
   return (
-    <div className='option' onClick={()=>{setChecked(!checked)}}>
+    <div className={`option option--${props.dropmenuType}`} onClick={()=>{setChecked(!checked)}}>
       <input type="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}} />
       <p className='option__text'>{props.value}</p>
     </div>

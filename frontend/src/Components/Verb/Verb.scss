@@ -36,4 +36,10 @@
     &__dropmenu-wrapper--active{
         display: block;
     }
+
+    @include tablet{
+        &__button{
+            width: 6rem;
+        }
+    }
 }

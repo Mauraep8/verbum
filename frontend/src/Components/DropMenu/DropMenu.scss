@@ -1,11 +1,58 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as *;
+
 .dropmenu{
 
+
     &__option-container{
+        // border: 1px solid red;
         margin: .2rem 0;
         width: 100%;
+        height: 43px;
+        display: flex;
+        flex-direction: column;
+
         
         &--hidden{
             display: none;
+        }
+    }
+
+    &__scroll{
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    @include tablet{
+
+        &__option-container{
+            align-items: center;
+            height: 5.1rem;
+        }       
+        &__scroll{
+            overflow-y: hidden;
+            overflow-x: hidden;
+
+            &--active{
+                overflow-y: scroll;   
+            }
+
+            &::-webkit-scrollbar{
+                width: .5rem;
+                height: 1rem;
+
+            }
+            &::-webkit-scrollbar-track{
+                background-color: rgba(234, 234, 234, 0.848);
+                // border: 1px solid black;
+
+            }
+            &::-webkit-scrollbar-thumb{
+                background-color:darkgray;
+                width: .3rem;
+                border-radius: 5px;
+                height: 10%;
+            }
         }
     }
 }

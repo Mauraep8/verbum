@@ -23,10 +23,33 @@
     }
 
     &__dropmenu-wrapper--hidden{
-        display: none;
+        visibility: hidden;
     }
 
     &__dropmenu-wrapper--active{
         display: block;
+    }
+
+    @include tablet{
+        &__button{
+
+            &--person{
+                width: 3.9rem;
+            }
+            &--gender{
+                width: 5rem;
+            }
+            &--number{
+                width: 5rem
+            }
+            &--tense{
+                width: 8rem;
+            }
+            &--mood{
+                width: 6rem;
+            }
+        }
+
+
     }
 }
