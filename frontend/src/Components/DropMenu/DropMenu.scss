@@ -1,9 +1,7 @@
 @use '../../Styles/Partials/variables' as *;
 @use '../../Styles/Partials/mixins' as *;
 
-.dropmenu{
-
-
+.dropmenu {
     &__option-container{
         // border: 1px solid red;
         margin: .2rem 0;

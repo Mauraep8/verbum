@@ -143,27 +143,27 @@ const exerciseSlice = createSlice({
       state.userSelectionMessage = action.payload;
     },
     moodShuffled: (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       state.moodState = action.payload;
     },
     tenseShuffled: (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       state.tenseState = action.payload;
     },
     personShuffled: (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       state.personState = action.payload;
     },
     numberShuffled: (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       state.numberState = action.payload;
     },
     genderShuffled: (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       state.genderState = action.payload;
     },
     verbShuffled: (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       state.verbState = action.payload;
     },
     verbListUpdated: (state, action) => {

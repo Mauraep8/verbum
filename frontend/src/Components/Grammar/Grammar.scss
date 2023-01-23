@@ -23,7 +23,7 @@
     }
 
     &__dropmenu-wrapper--hidden{
-        visibility: hidden;
+        display: none;
     }
 
     &__dropmenu-wrapper--active{
@@ -48,6 +48,10 @@
             &--mood{
                 width: 6rem;
             }
+        }
+
+        &__dropmenu-wrapper--hidden{
+            visibility: hidden;
         }
 
 
