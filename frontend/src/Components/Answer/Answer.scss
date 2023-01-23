@@ -14,9 +14,11 @@
         border-radius: 20px;
         height: 1.5rem;
         margin: 0;
+        padding-left: 1rem;
 
         &::placeholder{
             text-align: center;
+            
         }
 
         &--error{
@@ -54,6 +56,7 @@
 
         &:hover{
             cursor: pointer;
+            background-color: #2E66E5;
         }
     }
 

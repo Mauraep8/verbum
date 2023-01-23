@@ -3,13 +3,16 @@
 
 .option{
     border: .3px solid lightgray;
-    width: 96%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     display: flex;   
 
     
 
     &__text{
-        margin: 0
+        margin: 0;
+        padding: 0;
     }
 
     @include tablet{
