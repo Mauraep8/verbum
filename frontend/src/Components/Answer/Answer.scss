@@ -17,7 +17,8 @@
         padding-left: 1rem;
 
         &::placeholder{
-            text-align: center;
+            // text-align: center;
+            // padding: 41%;
             
         }
 
@@ -38,6 +39,10 @@
         
         &--hidden{
         visibility: hidden;
+        }
+
+        &--display-hidden{
+            display: none;
         }
 
         &--visible{
@@ -64,6 +69,13 @@
         &__input{
             width: 5rem;
             height: 1.5rem;
+            padding-left: 1rem;
+
+            &::placeholder{
+     
+                padding: 0;
+                
+            }
         }
 
         &__button{

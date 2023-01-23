@@ -12,7 +12,9 @@ export default function Answer(props) {
 
   const answerInput = useRef([])
   const inputWarning = useRef([])
+  const falseAnswerText = useRef([])
   const correctAnswerText = useRef([])
+
 
   const [correctAnswer, setCorrectAnswer ] = useState([])
 
@@ -260,30 +262,33 @@ export default function Answer(props) {
   }
 
  useEffect(() => {
+  answerInput.current.classList.remove('answer__input-text--correct')
   if (props.answer.length !==0){
     if(props.answer.user === false){
-      correctAnswerText.current.classList.add('answer__text--visible')
+      falseAnswerText.current.classList.add('answer__text--visible')
       answerInput.current.classList.add('answer__input-text--error')
       setCorrectAnswer(props.answer.answer)
     } else {
       answerInput.current.classList.add('answer__input-text--correct')
+      correctAnswerText.current.classList.remove('answer__text--display-hidden')
+      correctAnswerText.current.classList.add('answer__text--visible')
+
     }
   } else {
     answerInput.current.classList.remove('answer__input-text--error')
+    falseAnswerText.current.classList.remove('answer__text--visible')
     correctAnswerText.current.classList.remove('answer__text--visible')
+    correctAnswerText.current.classList.add('answer__text--display-hidden')
     answerInput.current.value = ''
   }
  }, [props.answer])
  
-
-
-
-
   return (
     <div className='answer'>
       <form className='answer__form'>
         <div className='answer__input-container'>
-          <span className='answer__text--hidden' ref={correctAnswerText}>correct answer: {correctAnswer}</span>
+         <span className='answer__text--hidden' ref={correctAnswerText}>Correct!</span>
+          <span className='answer__text--hidden' ref={falseAnswerText}>correct answer: {correctAnswer}</span>
           <input className='answer__input' type="text" placeholder='Answer'ref={answerInput}/>
           <span className='answer__text--hidden' ref={inputWarning}>! Please enter your answer</span>
         </div>
