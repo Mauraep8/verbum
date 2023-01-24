@@ -3,7 +3,7 @@
 
 .database{
     background-color: #F5F5F5;
-    padding: .1rem;
+    padding:  0 0 .1rem;
 
     &__main-container{
     // background-color: #F5F5F5;
@@ -11,12 +11,12 @@
     border-radius: .25rem;
     // box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     box-shadow: 0px 3px 6px rgba(13, 17, 30, 0.1);
-    margin: 1rem;
+    margin: 0 1rem 1rem;
     padding: 1rem 0;
     }
 
     &__text{
-        margin: 0 0 .5rem 0; 
+        margin: 0 0 1rem 0; 
         text-align: center;
     }
 

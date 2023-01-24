@@ -19,14 +19,14 @@ export default function Verb(props) {
   const dispatch = useDispatch()
 
      // WHEN BUTTON IS CLICKED, DROPMENU OPENS AND CLOSES
-     const handlerDropmenu = () =>{
-      if (dropmenuWrapper.current.classList.value === 'verb__dropmenu-wrapper--hidden'){
-        dropmenuWrapper.current.classList.remove('verb__dropmenu-wrapper--hidden')
-        dropmenuWrapper.current.classList.add('verb__dropmenu-wrapper--active')
-      } else {
-        dropmenuWrapper.current.classList.remove('verb__dropmenu-wrapper--active')
-        dropmenuWrapper.current.classList.add('verb__dropmenu-wrapper--hidden')
-      }
+    const onFocusDropmenu = () =>{
+      dropmenuWrapper.current.classList.remove('verb__dropmenu-wrapper--hidden')
+      dropmenuWrapper.current.classList.add('verb__dropmenu-wrapper--active')
+    }
+
+    const onBlurDropmenu = () =>{
+      dropmenuWrapper.current.classList.remove('verb__dropmenu-wrapper--active')
+      dropmenuWrapper.current.classList.add('verb__dropmenu-wrapper--hidden')
     }
    
  
@@ -66,7 +66,7 @@ export default function Verb(props) {
   if (dropMenuText.length === 0 && props.option.length !== 0 ){
     return (
       <div className='verb'>
-        <button className='verb__button' onClick={handlerDropmenu} ref={dropmenuButton}>{props.option[0].verbName}</button>
+        <button className='verb__button' onFocus={onFocusDropmenu} onBlur={onBlurDropmenu} ref={dropmenuButton}>{props.option[0].verbName}</button>
         <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
           <Dropmenu verbList={props.option} value={null} type={props.type}/>
         </div>
@@ -75,7 +75,7 @@ export default function Verb(props) {
   } else {
     return (
       <div className='verb'>
-        <button className='verb__button' onClick={handlerDropmenu} ref={dropmenuButton}>{dropMenuText}</button>
+        <button className='verb__button' onFocus={onFocusDropmenu} onBlur={onBlurDropmenu} ref={dropmenuButton}>{dropMenuText}</button>
         <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
          <Dropmenu verbList={props.option} value={null} type={props.type}/>
         </div>

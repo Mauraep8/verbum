@@ -14,9 +14,12 @@
         border-radius: 20px;
         height: 1.5rem;
         margin: 0;
+        padding-left: 1rem;
 
         &::placeholder{
-            text-align: center;
+            // text-align: center;
+            // padding: 41%;
+            
         }
 
         &--error{
@@ -38,6 +41,10 @@
         visibility: hidden;
         }
 
+        &--display-hidden{
+            display: none;
+        }
+
         &--visible{
         visibility: visible;
         }
@@ -54,6 +61,7 @@
 
         &:hover{
             cursor: pointer;
+            background-color: #2E66E5;
         }
     }
 
@@ -61,6 +69,13 @@
         &__input{
             width: 5rem;
             height: 1.5rem;
+            padding-left: 1rem;
+
+            &::placeholder{
+     
+                padding: 0;
+                
+            }
         }
 
         &__button{

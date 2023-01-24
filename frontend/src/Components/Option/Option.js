@@ -7,8 +7,6 @@ export default function Option(props) {
 
   const [checked, setChecked] = useState(true)
   const dispatch = useDispatch()
-  console.log(props.dropmenuType)
- 
 
   useEffect(()=>{
     dispatch(

@@ -14,8 +14,6 @@ export default function Grammar(props) {
   const dropmenuWrapper = useRef ([])
   const dropmenuButton = useRef ([])
 
-  console.log(props.type)
-
   // WHEN SHUFFLE IS CLICKED BUTTONS TURN BLUE MOMENTARILY
   useEffect(() => {
 
@@ -34,21 +32,21 @@ export default function Grammar(props) {
   })
   
   // WHEN BUTTON IS CLICKED, DROPMENU OPENS AND CLOSES
-  const handlerDropmenu = () =>{
-    if (dropmenuWrapper.current.classList.value === 'grammar__dropmenu-wrapper--hidden'){
-      dropmenuWrapper.current.classList.remove('grammar__dropmenu-wrapper--hidden')
-      dropmenuWrapper.current.classList.add('grammar__dropmenu-wrapper--active')
-    } else {
-      dropmenuWrapper.current.classList.remove('grammar__dropmenu-wrapper--active')
-      dropmenuWrapper.current.classList.add('grammar__dropmenu-wrapper--hidden')
-
-    }
+  const onFocusDropmenu = () =>{
+    dropmenuWrapper.current.classList.remove('grammar__dropmenu-wrapper--hidden')
+    dropmenuWrapper.current.classList.add('grammar__dropmenu-wrapper--active')
   }
+
+  const onBlurDropmenu = () =>{
+    dropmenuWrapper.current.classList.remove('grammar__dropmenu-wrapper--active')
+    dropmenuWrapper.current.classList.add('grammar__dropmenu-wrapper--hidden')
+  }
+  
 
   if(props.shuffleState.result === null){
     return (
       <div className='grammar'>
-        <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton} onFocus={handlerDropmenu}>{'-none-'}</button>
+        <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton} onFocus={onFocusDropmenu} onBlur={onBlurDropmenu}>{'-none-'}</button>
         <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
           <DropMenu value={props.option} verb={null} type={props.type}/>
         </div>
@@ -57,7 +55,7 @@ export default function Grammar(props) {
   } else if (props.shuffleState === undefined || props.shuffleState.length === 0 ) {
     return (
       <div className='grammar'>
-        <button className={`grammar__button grammar__button--${props.type}`} onFocus={handlerDropmenu}>{props.option[0].option}</button>
+        <button className={`grammar__button grammar__button--${props.type}`} onFocus={onFocusDropmenu} onBlur={onBlurDropmenu}>{props.option[0].option}</button>
         <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
           <DropMenu value={props.option} verb={null} type={props.type}/>
         </div>
@@ -66,7 +64,7 @@ export default function Grammar(props) {
   } else {
     return (
       <div className='grammar'>
-        <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton} onClick={handlerDropmenu}>{props.shuffleState.result.value}</button>
+        <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton}  onFocus={onFocusDropmenu} onBlur={onBlurDropmenu}>{props.shuffleState.result.value}</button>
         <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
           <DropMenu value={props.option} verb={null} type={props.type}/>
         </div>
