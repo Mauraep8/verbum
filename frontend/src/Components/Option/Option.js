@@ -29,7 +29,7 @@ export default function Option(props) {
   if (props.optionType === 'grammar'){
   return (
     <div className={`option option--${props.dropmenuType}`} onClick={()=>{setChecked(!checked)}}>
-      <input type="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}} />
+      <input className='option__checkbox' type="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}} />
       <p className='option__text'>{props.value}</p>
     </div>
   )

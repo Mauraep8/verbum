@@ -31,14 +31,14 @@
 
     @include tablet{
         &__main-container{
-        margin: .5rem 2rem 1rem;
+        margin: 0rem 2rem 1rem;
         }
     }
 
     @include desktop{
         
         &__main-container{
-            margin: 1.5rem 10%;
+            margin: 0 10% 1.5rem;
         }
     }
 }

@@ -9,6 +9,15 @@
     display: flex;   
     font-size: .875rem;
 
+    &:hover{
+        cursor: pointer;
+    }
+
+    &__checkbox{
+        &:hover{
+            cursor: pointer;
+        }
+    }
     
 
     &__text{
