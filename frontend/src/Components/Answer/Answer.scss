@@ -119,4 +119,30 @@
             }
         }
     }
+
+    @include desktop{
+
+
+        &__input-container{
+            display: flex;
+            flex-direction: row;
+        }
+
+        &__input{
+            width:70%;
+        }
+        &__button{
+            width: 5rem;
+            margin: 0 0 0 .5rem;
+
+            &--secondary{
+                margin-top: 1.5rem;
+            }
+        }
+        
+        &__text-container{
+            width: 70%;
+        }
+
+    }
 }

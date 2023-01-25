@@ -46,10 +46,15 @@
         right: 25%;
         width: 50%;
 
-        
-    &__text{
-        padding: 0 1rem; 
+        &__text{
+            padding: 0 1rem; 
 
+        }
     }
+
+    @include desktop{
+        top: 34%;
+        width: 35%;
+        right: 32%;
     }
 }

@@ -45,4 +45,8 @@
             width: 6rem;
         }
     }
+
+    @include desktop{
+        margin-right: .5rem;
+    }
 }

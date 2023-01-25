@@ -39,4 +39,17 @@
             justify-content: center;
         }
     }
+
+    
+    @include desktop{
+        
+        &__main-container{
+            margin: 2rem 10%;
+
+        }
+
+        &__answer-container{
+            display: flex;
+        }
+    }
 }

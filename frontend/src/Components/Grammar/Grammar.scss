@@ -66,4 +66,7 @@
         }
 
     }
+    @include desktop{
+        margin-right: .5rem;
+    }
 }
