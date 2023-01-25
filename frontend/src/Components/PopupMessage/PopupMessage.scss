@@ -3,13 +3,14 @@
 
 .popup-message{
     // height: 5rem;
-    border: 1px solid red;
-    background-color:  #F0C8C8;
+    border: 1.5px solid orange;
+    // background-color:  #F0C8C8;
+    background-color: #F8F0E3;
     border-radius: 5px;
-    text-align: center;
     position: absolute;
-    top: 50%;
-    right: 10%;
+    top: 37%;
+    right: 1rem;
+    width: 89%;
     z-index: 1;
 
     &--hidden{
@@ -21,13 +22,34 @@
     }
 
     &__text{
-        // border: 1px solid green;
-        padding:  1rem;
+        padding:  1rem 1rem 0 ; 
+    }
+
+    &__list-item{
+        // border: 1px solid black;
+        padding: .1rem 0;
     }
 
     &__button{
         position: absolute;
         top: 0;
         right: 0;
+
+        &:hover{
+            cursor: pointer;
+            // background-color: lightgray;
+        }
+    }
+
+    @include tablet{
+        top: 35%;
+        right: 25%;
+        width: 50%;
+
+        
+    &__text{
+        padding: 0 1rem; 
+
+    }
     }
 }

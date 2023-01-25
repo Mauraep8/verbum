@@ -27,7 +27,7 @@ export default function PopupMessage(props) {
     if (props.messageError.length !==0) { 
         return (
             <div className='popup-message' ref={popupMessage}>
-                <p className='popup-message__text'>The {props.messageError.feature} dropmenu is missing a checked option. Please check an option to proceed</p>
+                <p className='popup-message__text'>The {props.messageError.feature} dropmenu is missing a checked option.</p>
                 <button className='popup-message__button' onClick={clickHandler}>x</button>
             </div>
         )
@@ -36,16 +36,20 @@ export default function PopupMessage(props) {
         if (props.messageWarning.verb === 'pleuvoir' && props.messageWarning.missingGender !== null){
             return (
                 <div className='popup-message' ref={popupMessage}>
-                    <p className='popup-message__text'>The verb '{props.messageWarning.verb}' was chosen without the appropriate gender case. Please select the following in the Gender dropmenu to proceed:</p>
-                    <li>{props.messageWarning.missingGender}</li> 
+                    <p className='popup-message__text'>The verb {props.messageWarning.verb} was selected, please check the one of the missing genders:</p>
+                    <ul className='popup-message__list'>
+                        <li className='popup-message__list-item'>{props.messageWarning.missingGender}</li> 
+                    </ul>
                     <button className='popup-message__button' onClick={clickHandler}>x</button>
                 </div>
             )
         } else if ( props.messageWarning.missingPerson !== null){
             return (
                 <div className='popup-message' ref={popupMessage}>
-                    <p className='popup-message__text'>The verb '{props.messageWarning.verb}' was chosen without the appropriate person case. Please select the following in the Person dropmenu to proceed:</p>
-                    <li>{props.messageWarning.missingPerson}</li> 
+                    <p className='popup-message__text'>The verb {props.messageWarning.verb} was selected, please check one of the missing persons:</p>
+                    <ul className='popup-message__list'>
+                        <li className='popup-message__list-item'>{props.messageWarning.missingPerson}</li> 
+                    </ul>
                     <button className='popup-message__button' onClick={clickHandler}>x</button>
                 </div>
             )
@@ -56,16 +60,20 @@ export default function PopupMessage(props) {
         if (props.messageWarning.mood !== null){
             return (
                 <div className='popup-message' ref={popupMessage}>
-                    <p className='popup-message__text'>The verb '{props.messageWarning.verb}' and the '{props.messageWarning.mood}' mood were chosen without the appropriate person case. Please select the following in the Person dropmenu to proceed:</p>
-                    <li>{props.messageWarning.missingPerson}</li> 
+                    <p className='popup-message__text'>The verb {props.messageWarning.verb} and the {props.messageWarning.mood} mood were selected, please check one of the missing persons:</p>
+                    <ul className='popup-message__list'>
+                        <li className='popup-message__list-item'>{props.messageWarning.missingPerson}</li> 
+                    </ul>
                     <button className='popup-message__button' onClick={clickHandler}>x</button>
                 </div>
             )
         } else {
         return (
             <div className='popup-message' ref={popupMessage}>
-                <p className='popup-message__text'>The verb '{props.messageWarning.verb}' was chosen without the appropriate person case. Please select the following in the Person dropmenu to proceed:</p>
-                <li>{props.messageWarning.missingPerson}</li> 
+                <p className='popup-message__text'>The verb {props.messageWarning.verb} was selected, please check one of the missing persons:</p>
+                <ul className='popup-message__list'>
+                    <li className='popup-message__list-item'>{props.messageWarning.missingPerson}</li> 
+                </ul>
                 <button className='popup-message__button' onClick={clickHandler}>x</button>
             </div>
         )
@@ -73,10 +81,12 @@ export default function PopupMessage(props) {
     } else if (props.messageWarning.verb !== null && props.messageWarning.missingTense !== null){
         return (
             <div className='popup-message' ref={popupMessage}>
-                <p className='popup-message__text'>The verb '{props.messageWarning.verb}' and the '{props.messageWarning.mood}' mood were chosen without the appropriate tense cases. Please select one of the following in the Tense dropmenu to proceed:</p>
-                {props.messageWarning.missingTense.map((listTense) =>{
-                    return <li>{listTense}</li>
-                })}
+                <p className='popup-message__text'>The verb {props.messageWarning.verb} and the {props.messageWarning.mood} mood were chosen without the appropriate tense cases. Please select one of the following in the Tense dropmenu to proceed:</p>
+                <ul className='popup-message__list'>
+                    {props.messageWarning.missingTense.map((listTense) =>{
+                        return <li className='popup-message__list-item'>{listTense}</li>
+                    })}
+                </ul>
                 <button className='popup-message__button' onClick={clickHandler}>x</button>
             </div>
         )
@@ -84,8 +94,10 @@ export default function PopupMessage(props) {
     else if (props.messageWarning.mood === 'impératif' && props.messageWarning.missingNumber === 'pluriel') {
         return (
             <div className='popup-message' ref={popupMessage}>
-                <p className='popup-message__text'>The '{props.messageWarning.mood}' mood and the '{props.messageWarning.person}' person were chosen without the appropriate number case. Please select the following in the Number dropmenu to proceed:</p>
-                <li>{props.messageWarning.missingNumber}</li> 
+                <p className='popup-message__text'>The {props.messageWarning.mood} mood and the {props.messageWarning.person} person were selected, please check one of the missing numbers:</p>
+                <ul className='popup-message__list'>
+                    <li className='popup-message__list-item'>{props.messageWarning.missingNumber}</li> 
+                </ul>
                 <button className='popup-message__button' onClick={clickHandler}>x</button>
             </div>
         )
@@ -93,18 +105,22 @@ export default function PopupMessage(props) {
     }  else if (props.messageWarning.verb==='clore' && props.messageWarning.mood === 'impératif' && props.messageWarning.missingNumber === 'singulier') {
         return (
             <div className='popup-message' ref={popupMessage}>
-                <p className='popup-message__text'>The verb '{props.messageWarning.verb}', the '{props.messageWarning.mood}' mood and the '{props.messageWarning.person}' person were chosen without the appropriate number case. Please select the following in the Number dropmenu to proceed:</p>
-                <li>{props.messageWarning.missingNumber}</li> 
+                <p className='popup-message__text'>The verb {props.messageWarning.verb}, the {props.messageWarning.mood} mood and the {props.messageWarning.person} person were selected, please check one of the missing numbers:</p>
+                <ul className='popup-message__list'>
+                    <li className='popup-message__list-item'>{props.messageWarning.missingNumber}</li> 
+                </ul>
                 <button className='popup-message__button' onClick={clickHandler}>x</button>
             </div>
         ) 
     }else if (props.messageWarning.mood === 'impératif' && props.messageWarning.missingPerson !== null) {
         return (
             <div className='popup-message' ref={popupMessage}>
-                <p className='popup-message__text'>The {props.messageWarning.mood} mood was selected without the appropriate person cases. Please select at least one of the following in the Person dropmenu to proceed:</p>
+                <p className='popup-message__text'>The {props.messageWarning.mood} mood was selected, please check one of the missing persons:</p>
+                <ul className='popup-message__list'>
                 {props.messageWarning.missingPerson.map((listPerson) =>{
-                    return <li>{listPerson}</li>
+                    return <li className='popup-message__list-item'>{listPerson}</li>
                 })}
+                </ul>
                 <button className='popup-message__button' onClick={clickHandler}>x</button>
             
             </div>
@@ -112,10 +128,12 @@ export default function PopupMessage(props) {
     } else if (props.messageWarning.missingGender !== null){
         return (
             <div className='popup-message' ref={popupMessage}>
-                <p className='popup-message__text'>The {props.messageWarning.person} person was selected without the appropriate gender cases. Select at least one of the following in the Gender dropmenu to proceed:</p>
+                <p className='popup-message__text'>The {props.messageWarning.person} person was selected, please check one of the missing genders:</p>
+                <ul className='popup-message__list'>
                 {props.messageWarning.missingGender.map((listGender) =>{
-                    return <li>{listGender}</li>
+                    return <li className='popup-message__list-item'>{listGender}</li>
                 })}
+                </ul>
                 <button className='popup-message__button' onClick={clickHandler}>x</button>
             
             </div>
@@ -123,10 +141,12 @@ export default function PopupMessage(props) {
     } else if(props.messageWarning.missingTense !== null){
         return (
             <div className='popup-message' ref={popupMessage}>
-                <p className='popup-message__text'>The {props.messageWarning.mood} mood was selected without the appropriate tenses. Please select at least one of the following in the Tense dropmenu to proceed:</p>
+                <p className='popup-message__text'>The {props.messageWarning.mood} mood was selected, please check one of the missing tenses:</p>
+                <ul className='popup-message__list'>
                 {props.messageWarning.missingTense.map((listTense) =>{
-                    return <li>{listTense}</li>
+                    return <li className='popup-message__list-item'>{listTense}</li>
                 })}
+                </ul>
                 <button className='popup-message__button' onClick={clickHandler}>x</button>
             
             </div>
