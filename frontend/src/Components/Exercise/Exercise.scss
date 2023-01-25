@@ -23,9 +23,13 @@
     }
 
     @include tablet{
+        &__header{
+            margin: 0;
+        }
+
         &__main-container{
             margin: 2rem;
-            padding: 2rem;
+            padding: 1rem;
         }
         &__grammar-container{
             display: flex;

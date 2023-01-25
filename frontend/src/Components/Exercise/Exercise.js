@@ -267,8 +267,10 @@ export default function Exercise() {
               <Grammar shuffleState={moodState} option={moodArray} type='mood'/>
             </div>
             <Verb shuffleState={verbState} option={verbListState} type='verb'/>
-            <Answer answer={resultAnswer} />
-            <Shuffle/>
+            <div className='exercise__answer-container'>
+              <Answer answer={resultAnswer} />
+              <Shuffle/>
+            </div>
           </div>
         </div>
       </div>
