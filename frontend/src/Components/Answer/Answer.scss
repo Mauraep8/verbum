@@ -3,10 +3,6 @@
 
 .answer{
 
-    &__input-container{
-        // border: 1px solid black;
-    }
-
     &__input{
         box-sizing: border-box;
         width: 100%;
@@ -19,34 +15,38 @@
         &::placeholder{
             // text-align: center;
             // padding: 41%;
-            
         }
 
         &--error{
             border: 1px solid red;
         }
     }
+
     &__input-text{
+
         &--error{
-        color: red;
+            color: red;
         }
+
         &--correct{
             color: green;
         }
     }
 
+    &__text-container{
+        height: 1.5rem;
+    }
+
     &__text{
+        padding: .2rem 1rem;
+        margin: 0;
         
         &--hidden{
-        visibility: hidden;
-        }
-
-        &--display-hidden{
             display: none;
         }
 
         &--visible{
-        visibility: visible;
+            display: block;
         }
     }
 
@@ -57,7 +57,7 @@
         border: none;
         color: white;
         padding: .2rem 0;
-        margin: 0 0 1rem; 
+        margin: 1rem 0 0; 
 
         &:hover{
             cursor: pointer;
@@ -66,20 +66,53 @@
     }
 
     @include tablet{
+        border: 1px solid black;
+        display: flex;
+
+
+
+        &__text-container{
+            height: 1.5rem;
+        }
+
         &__input{
-            width: 5rem;
+            width: 7rem;
             height: 1.5rem;
             padding-left: 1rem;
 
             &::placeholder{
-     
                 padding: 0;
                 
             }
         }
 
         &__button{
-            width: 5rem;
+            height: 1.5rem;
+            width: 100%;
+            margin: 1rem 0 0;
+
+        }
+
+        &__text-container{
+            // border: 1px solid black;
+            height: 1.5rem;
+            position: relative;
+        }
+
+        &__text{
+            position: absolute;
+
+
+            padding: .2rem 0;
+            
+            &--primary{
+                bottom: 0;
+                left: 1rem;
+            }
+
+            &--secondary{
+                bottom: .2rem;
+            }
         }
     }
 }

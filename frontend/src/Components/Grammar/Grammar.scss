@@ -4,11 +4,12 @@
 .grammar{
     
     &__button{
+        height: 1.2rem;
         width: 100%;
         border: 1px solid lightgrey;
         border-radius: 20px;
         box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-        margin-bottom: .4rem;
+        margin-bottom: .3rem;
 
         &:hover{
             cursor: pointer;
@@ -32,9 +33,12 @@
     }
 
     @include tablet{
-        &__button{
+        margin-right: .2rem;
 
-                    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+        &__button{
+            margin-top: 1.5rem;
+            height: 1.5rem;
+            box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
             &--person{
                 width: 3.9rem;
             }

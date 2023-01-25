@@ -270,7 +270,7 @@ export default function Answer(props) {
       setCorrectAnswer(props.answer.answer)
     } else {
       answerInput.current.classList.add('answer__input-text--correct')
-      correctAnswerText.current.classList.remove('answer__text--display-hidden')
+      correctAnswerText.current.classList.remove('answer__text--hidden')
       correctAnswerText.current.classList.add('answer__text--visible')
 
     }
@@ -278,7 +278,7 @@ export default function Answer(props) {
     answerInput.current.classList.remove('answer__input-text--error')
     falseAnswerText.current.classList.remove('answer__text--visible')
     correctAnswerText.current.classList.remove('answer__text--visible')
-    correctAnswerText.current.classList.add('answer__text--display-hidden')
+    correctAnswerText.current.classList.add('answer__text--hidden')
     answerInput.current.value = ''
   }
  }, [props.answer])
@@ -287,10 +287,12 @@ export default function Answer(props) {
     <div className='answer'>
       <form className='answer__form'>
         <div className='answer__input-container'>
-         <span className='answer__text--hidden' ref={correctAnswerText}>Correct!</span>
-          <span className='answer__text--hidden' ref={falseAnswerText}>correct answer: {correctAnswer}</span>
+          <div className='answer__text-container'>
+            <p className='answer__text answer__text--hidden answer__text--primary' ref={correctAnswerText}>Correct!</p>
+            <p className='answer__text answer__text--hidden answer__text--secondary' ref={falseAnswerText}>correct answer: {correctAnswer}</p>
+            <p className='answer__text answer__text--hidden answer__text--secondary' ref={inputWarning}>Please enter your answer</p>
+          </div>
           <input className='answer__input' type="text" placeholder='Answer'ref={answerInput}/>
-          <span className='answer__text--hidden' ref={inputWarning}>! Please enter your answer</span>
         </div>
         <button className='answer__button' onClick={verify}>Verify</button>
       </form>

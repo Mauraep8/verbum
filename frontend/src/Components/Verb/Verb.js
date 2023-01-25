@@ -66,19 +66,23 @@ export default function Verb(props) {
   if (dropMenuText.length === 0 && props.option.length !== 0 ){
     return (
       <div className='verb'>
-        <button className='verb__button' onFocus={onFocusDropmenu} onBlur={onBlurDropmenu} ref={dropmenuButton}>{props.option[0].verbName}</button>
-        <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-          <Dropmenu verbList={props.option} value={null} type={props.type}/>
+        <div className='verb__container' tabIndex={0} onFocus={onFocusDropmenu} onBlur={onBlurDropmenu}>
+          <button className='verb__button' ref={dropmenuButton}>{props.option[0].verbName}</button>
+          <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
+            <Dropmenu verbList={props.option} value={null} type={props.type}/>
+          </div>
         </div>
       </div>
     )
   } else {
     return (
       <div className='verb'>
-        <button className='verb__button' onFocus={onFocusDropmenu} onBlur={onBlurDropmenu} ref={dropmenuButton}>{dropMenuText}</button>
-        <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
-         <Dropmenu verbList={props.option} value={null} type={props.type}/>
-        </div>
+         <div className='verb__container' tabIndex={0} onFocus={onFocusDropmenu} onBlur={onBlurDropmenu}>
+          <button className='verb__button' ref={dropmenuButton}>{dropMenuText}</button>
+          <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
+          <Dropmenu verbList={props.option} value={null} type={props.type}/>
+          </div>
+         </div>
       </div>
     )
   }
