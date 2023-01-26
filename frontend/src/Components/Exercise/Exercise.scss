@@ -29,12 +29,26 @@
 
         &__main-container{
             margin: 2rem;
-            padding: 1rem;
+            padding: 1rem 1rem 0.3rem;
         }
         &__grammar-container{
             display: flex;
         }
         &__wrapper{
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    
+    @include desktop{
+        
+        &__main-container{
+            margin: 2rem 10%;
+
+        }
+
+        &__answer-container{
             display: flex;
         }
     }

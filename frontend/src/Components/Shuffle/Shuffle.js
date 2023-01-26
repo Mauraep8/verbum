@@ -368,8 +368,8 @@ export default function Shuffle() {
   }
 
   return (
-      <div>
-        <button className='answer__button' onClick={getStore}>Shuffle</button>
+      <div className='shuffle'>
+        <button className='answer__button answer__button--secondary' onClick={getStore}>Shuffle</button>
       </div>
   )
 }

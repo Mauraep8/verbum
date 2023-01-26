@@ -58,8 +58,15 @@
 
         &__dropmenu-wrapper--hidden{
             visibility: hidden;
+            display: block;
         }
 
+        &__dropmenu-wrapper--active{
+            visibility: visible;
+        }
 
+    }
+    @include desktop{
+        margin-right: .5rem;
     }
 }

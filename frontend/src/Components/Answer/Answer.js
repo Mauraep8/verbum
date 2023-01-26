@@ -286,15 +286,16 @@ export default function Answer(props) {
   return (
     <div className='answer'>
       <form className='answer__form'>
-        <div className='answer__input-container'>
-          <div className='answer__text-container'>
+        <div className='answer__text-container'>
             <p className='answer__text answer__text--hidden answer__text--primary' ref={correctAnswerText}>Correct!</p>
-            <p className='answer__text answer__text--hidden answer__text--secondary' ref={falseAnswerText}>correct answer: {correctAnswer}</p>
+            <p className='answer__text answer__text--hidden answer__text--secondary' ref={falseAnswerText}>False! {correctAnswer}</p>
             <p className='answer__text answer__text--hidden answer__text--secondary' ref={inputWarning}>Please enter your answer</p>
           </div>
+        <div className='answer__input-container'>
           <input className='answer__input' type="text" placeholder='Answer'ref={answerInput}/>
+          <button className='answer__button' onClick={verify}>Verify</button>
         </div>
-        <button className='answer__button' onClick={verify}>Verify</button>
+
       </form>
     </div>
   )
