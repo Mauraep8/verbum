@@ -22,10 +22,17 @@
         text-align: center;
     }
 
-    @include tablet{
-        &__header{
-            // margin: 0 ;
+    @include mid-mobile-tablet {
+        
+        &__main-container{
+
+            margin: 2rem;
+            padding: 1rem 3rem 1.5rem;
         }
+
+    }
+
+    @include tablet{
 
         &__main-container{
             margin: 2rem;
@@ -37,6 +44,18 @@
         &__wrapper{
             display: flex;
             justify-content: center;
+        }
+    }
+
+    @include mid-tablet-desktop {
+        &__answer-container{
+            display: flex;
+        }
+    }
+    
+    @include mid-tablet-desktop {
+        &__main-container{
+            margin: 2rem 5%;
         }
     }
 

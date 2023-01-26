@@ -9,8 +9,8 @@
     border-radius: 5px;
     position: absolute;
     top: 37%;
-    right: 1rem;
-    width: 89%;
+    left: 10%;
+    width: 80%;
     z-index: 1;
 
     &--hidden{
@@ -22,7 +22,7 @@
     }
 
     &__text{
-        padding:  1rem 1rem 0 ; 
+        padding:  0 1rem; 
     }
 
     &__list-item{
@@ -34,6 +34,8 @@
         position: absolute;
         top: 0;
         right: 0;
+        background-color: #F8F0E3;
+        border: none;
 
         &:hover{
             cursor: pointer;
@@ -42,8 +44,8 @@
     }
 
     @include tablet{
-        top: 35%;
-        right: 25%;
+        top: 36%;
+        left: 22%;
         width: 50%;
 
         &__text{

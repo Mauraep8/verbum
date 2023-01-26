@@ -46,4 +46,7 @@
             width: 5.9rem
         }
     }
+    @include mid-tablet-desktop{
+        font-size: .9rem;
+    }
 }
