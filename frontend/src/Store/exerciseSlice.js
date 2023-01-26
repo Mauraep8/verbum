@@ -168,18 +168,21 @@ const exerciseSlice = createSlice({
     },
     verbListUpdated: (state, action) => {
       state.verbListState = action.payload;
-      state.verbArrayChecked = state.verbArrayChecked.filter(({ verbName: verb1 }) => action.payload.some(({ verbName: verb2 }) => verb1 === verb2))    
+      state.verbArrayChecked = state.verbArrayChecked.filter(({ verbName: verb1 }) => action.payload.some(({ verbName: verb2 }) => verb1 === verb2))   
+      state.shuffleAction = false; 
     },
     verbListUpdateAction: (state, action) => {
       state.verbListApprovedUpdate = action.payload;
     },
     answerWritten: (state, action) => {
       // console.log(action.payload,'exerciceSlice')
+      state.shuffleAction = false; 
       state.userAnswerState = action.payload
     },
     answerFetched: (state, action) =>{
       // console.log(action.payload, 'exerciceSlice')
       state.apiAnswerState = action.payload
+      state.shuffleAction = false;
     },
     answerCompared: (state, action) =>{
       // console.log(action.payload, 'exerciceSlice')

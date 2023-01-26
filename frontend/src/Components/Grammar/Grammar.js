@@ -47,7 +47,10 @@ export default function Grammar(props) {
     return (
       <div className='grammar'>
         <div className='grammar__container' tabIndex={0}  onBlur={onBlurDropmenu} onFocus={onFocusDropmenu}>
-          <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton}>{'-none-'}</button>
+          <div className='grammar__button-container'>
+            <label className='grammar__button-label'  htmlFor="">{props.type}</label>
+            <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton}>{'-none-'}</button>
+          </div>
           <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
             <DropMenu value={props.option} verb={null} type={props.type}/>
           </div>
@@ -58,7 +61,10 @@ export default function Grammar(props) {
     return (
       <div className='grammar'>
         <div className='grammar__container' tabIndex={0} onBlur={onBlurDropmenu} onFocus={onFocusDropmenu}>
-          <button className={`grammar__button grammar__button--${props.type}`}  >{props.option[0].option}</button>
+          <div className='grammar__button-container'>
+            <label className='grammar__button-label' htmlFor="">{props.type}</label>
+            <button className={`grammar__button grammar__button--${props.type}`}  >{props.option[0].option}</button>
+          </div>
           <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
             <DropMenu value={props.option} verb={null} type={props.type}/>
           </div>
@@ -69,7 +75,10 @@ export default function Grammar(props) {
     return (
       <div className='grammar'>
         <div className='grammar__container'  tabIndex={0} onBlur={onBlurDropmenu} onFocus={onFocusDropmenu}>
-          <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton}>{props.shuffleState.result.value}</button>
+          <div className='grammar__button-container'>
+            <label className='grammar__button-label' htmlFor="">{props.type}</label>
+            <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton}>{props.shuffleState.result.value}</button>
+          </div>
           <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
             <DropMenu value={props.option} verb={null} type={props.type}/>
           </div>

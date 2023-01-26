@@ -39,11 +39,11 @@ return (
     <>
     <div className="userLibrary">
         <div className="userLibrary__container">
-            <h1 className="userLibrary__text">User List</h1>
+            <h1 className="userLibrary__text">User Verb List</h1>
             <Searchbar type='userLibrary' searchInputState={searchUserInput}/>
             <UserList list={userLibrary} search={searchUserLibrary}/>
             <div className="verbList__button-container">
-                <button className='verbList__button'onClick={clickHandler}>Submit</button>
+                <button className='verbList__button'onClick={clickHandler}>Submit Updated List</button>
             </div>
         </div>
     </div>

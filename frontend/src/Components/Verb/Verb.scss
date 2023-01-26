@@ -2,6 +2,16 @@
 @use '../../Styles/Partials/mixins' as *;
 
 .verb{
+    
+    &__button-container{
+        position: relative;
+    }
+
+    &__button-label{
+        position: absolute;
+        left: .5rem;
+    }
+
     &__button{
         width: 100%;
         border: 1px solid lightgrey;
@@ -39,11 +49,23 @@
 
     @include tablet{
         margin-right: .2rem;
-        &__button{
-            margin-top: 1.5rem;
-            height: 1.5rem;
-            width: 6rem;
-        }
+            &__button-container{
+                position: static;
+                // border: 1px solid black;
+                display: flex;
+                flex-direction: column;
+            }
+        
+            &__button-label{
+                position: static;
+                // border: 1px solid red;
+                text-align: center;
+            }
+            &__button{
+                margin-top: .3rem;
+                height: 1.5rem;
+                width: 6rem;
+            }
     }
 
     @include desktop{
