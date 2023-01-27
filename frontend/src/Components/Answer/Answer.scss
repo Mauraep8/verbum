@@ -26,10 +26,12 @@
 
         &--error{
             color: red;
+            border: 1px solid red;
         }
 
         &--correct{
             color: green;
+            border: 1px green solid;
         }
     }
 
@@ -76,7 +78,7 @@
         }
 
         &__input{
-            width: 7rem;
+            width: 100%;
             height: 1.5rem;
             border: 1.5px solid rgb(177, 177, 177);
        
@@ -91,8 +93,7 @@
         &__button{
             height: 1.5rem;
             width: 100%;
-            margin: 1rem 0 0;
-
+            margin: 1.3rem 0 0;
         }
 
         &__text-container{
@@ -109,13 +110,34 @@
             text-align: center;
             
             &--primary{
-                bottom: 0;
+                bottom: .2rem;
 
             }
 
             &--secondary{
-                bottom: 0rem;
+                bottom: .2rem;
                 font-size: .9rem;
+            }
+        }
+    }
+
+    @include mid-tablet-desktop {
+
+        &__text-container{
+            display: flex;
+            justify-content: left;
+        }
+
+        &__input{
+            width: 10rem;
+        }
+
+        &__button{
+            width: 5rem;
+            margin: 0 0 0 .2rem;
+
+            &--secondary{
+                margin-top: 1.5rem;
             }
         }
     }

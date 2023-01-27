@@ -47,9 +47,6 @@ export default function Answer(props) {
       const number = storeState.numberState.result.apiFormat
       const gender = storeState.genderState.result.value
 
-      // todo
-      // if the verb is falloir, pleuvoir are only in the 3rd person sing, so you need to find proper array position
-      // if the verb is messeoir or seoir its only in the 3rd person plural or singular
 
       // GET ANSWER FROM RestAPI
       axios.get(`http://localhost:8000/conjugate/fr/${verb}?mood=${mood}`)
@@ -70,7 +67,8 @@ export default function Answer(props) {
       const fetchAnswer = (array) =>{
         
         const arrayIndex = person * number
-        // Imperatif request comes in array of 3 potential answers
+
+          // Imperatif request comes in array of 3 potential answers
         if (mood === 'imperatif'){
           // 1st person
           if (person === 1){
@@ -115,6 +113,12 @@ export default function Answer(props) {
           
           let answer
 
+          //if verb is pleuvoir or falloir 
+          if(verbObject.bescherelleId === 45 || verbObject.bescherelleId === 46){
+            answer = array[0]
+
+          // ALL OTHER VERBS   
+          } else {
           // nous pronoun index
           if (person === 1 && number === 2){
             answer = array[3]
@@ -127,10 +131,11 @@ export default function Answer(props) {
           } else{
             answer = array[(arrayIndex -1)]
           }
+        }
 
           // singular
           if (number === 1) {
-            if (person === 3 && gender==='féminin'){
+            if (person === 3 && gender==='féminin' && verbObject.bescherelleId!==45){
                 // aller 3rd person change pronoun and add 'e'
               if(verbObject.auxiliaryVerb === "être" && (tense=== 'plus-que-parfait' || tense === "passé")){
                 const feminizedPronoun = answer.replace(/qu'il/,`qu'elle`)
@@ -188,15 +193,23 @@ export default function Answer(props) {
         } else {
           
           let answer
-          // nous pronoun index
-          if (person === 1 && number === 2){
-            answer = array[3]
-            // vous pronoun index
-          } else if(person ===2 && number===2){
-            answer = array[4]
-            // all other pronoun index
-          } else{
-            answer = array[(arrayIndex -1)]
+
+          // if verb is pleuvoir or falloir
+          if(verbObject.bescherelleId === 45 || verbObject.bescherelleId === 46){
+            answer = array[0]
+
+            // all other verbs
+          } else {
+            // nous pronoun index
+            if (person === 1 && number === 2){
+              answer = array[3]
+              // vous pronoun index
+            } else if(person ===2 && number===2){
+              answer = array[4]
+              // all other pronoun index
+            } else{
+              answer = array[(arrayIndex -1)]
+            }
           }
 
           // singular     

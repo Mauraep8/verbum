@@ -12,7 +12,8 @@
     // box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     box-shadow: 0px 3px 6px rgba(13, 17, 30, 0.1);
     margin: 0 1rem 1rem;
-    padding: 1rem 0;
+    padding: 1rem 1rem;
+
     }
 
     &__text{
@@ -26,12 +27,36 @@
     }
 
     &__container{
-       display: flex;
+        display: flex;
+        justify-content: center;
+    }
+
+    
+    @include mid-mobile-tablet {
+        
+        &__main-container{
+            margin: 0 2rem;
+            padding: 1rem 3rem 1.5rem;
+        }
+
+                
+        &__container{
+            display: flex;
+            justify-content: center;
+        }
+
     }
 
     @include tablet{
         &__main-container{
-        margin: 0rem 2rem 1rem;
+            margin: 0rem 2rem 1rem;
+            // padding: 1rem 1rem 1.5rem;
+        }
+    }
+
+    @include mid-tablet-desktop {
+        &__main-container{
+            margin: 0 5% 1.5rem;
         }
     }
 

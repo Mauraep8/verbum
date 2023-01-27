@@ -40,4 +40,10 @@
             background-color: #2E66E5;
         }
     }
+
+    @include tablet {
+        &__container{
+            border-bottom: solid lightgray 1px;
+        }
+    }
 }

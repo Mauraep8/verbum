@@ -53,7 +53,29 @@ export default function PopupMessage(props) {
                     <button className='popup-message__button' onClick={clickHandler}>x</button>
                 </div>
             )
-        } 
+        } else  if (props.messageWarning.missingMood !== null){
+            return (
+                <div className='popup-message' ref={popupMessage}>
+                    <p className='popup-message__text'>The verb {props.messageWarning.verb} was selected, please select one of the following moods:</p>
+                    <ul className='popup-message__list'>
+                        {props.messageWarning.missingMood.map((listMood) =>{
+                            return <li className='popup-message__list-item'>{listMood}</li>
+                        })}
+                    </ul>
+                    <button className='popup-message__button' onClick={clickHandler}>x</button>
+                </div>
+            )
+        } else if (props.messageWarning.missingNumber !== null){
+            return (
+                <div className='popup-message' ref={popupMessage}>
+                    <p className='popup-message__text'>The verb {props.messageWarning.verb} was selected, please check one of the missing numbers:</p>
+                    <ul className='popup-message__list'>
+                        <li className='popup-message__list-item'>{props.messageWarning.missingNumber}</li> 
+                    </ul>
+                    <button className='popup-message__button' onClick={clickHandler}>x</button>
+                </div>
+            )
+        }
     } else if (props.messageWarning.verb !== null && props.messageWarning.missingPerson !== null){
 
         // clore
@@ -81,10 +103,32 @@ export default function PopupMessage(props) {
     } else if (props.messageWarning.verb !== null && props.messageWarning.missingTense !== null){
         return (
             <div className='popup-message' ref={popupMessage}>
-                <p className='popup-message__text'>The verb {props.messageWarning.verb} and the {props.messageWarning.mood} mood were chosen without the appropriate tense cases. Please select one of the following in the Tense dropmenu to proceed:</p>
+                <p className='popup-message__text'>The verb {props.messageWarning.verb} and the {props.messageWarning.mood} mood were selected, please check one of the following tenses:</p>
                 <ul className='popup-message__list'>
                     {props.messageWarning.missingTense.map((listTense) =>{
                         return <li className='popup-message__list-item'>{listTense}</li>
+                    })}
+                </ul>
+                <button className='popup-message__button' onClick={clickHandler}>x</button>
+            </div>
+        )
+    } else if (props.messageWarning.verb !== null && props.messageWarning.missingNumber !== null){
+        return (
+            <div className='popup-message' ref={popupMessage}>
+                <p className='popup-message__text'>The verb {props.messageWarning.verb} was selected, please check one of the missing numbers:</p>
+                <ul className='popup-message__list'>
+                    <li className='popup-message__list-item'>{props.messageWarning.missingNumber}</li> 
+                </ul>
+                <button className='popup-message__button' onClick={clickHandler}>x</button>
+            </div>
+        )
+    } else if (props.messageWarning.verb !== null && props.messageWarning.missingMood !== null){
+        return (
+            <div className='popup-message' ref={popupMessage}>
+                <p className='popup-message__text'>The verb {props.messageWarning.verb} was selected, please select one of the following moods:</p>
+                <ul className='popup-message__list'>
+                    {props.messageWarning.missingMood.map((listMood) =>{
+                        return <li className='popup-message__list-item'>{listMood}</li>
                     })}
                 </ul>
                 <button className='popup-message__button' onClick={clickHandler}>x</button>
