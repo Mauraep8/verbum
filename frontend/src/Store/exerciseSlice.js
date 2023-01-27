@@ -141,6 +141,7 @@ const exerciseSlice = createSlice({
     },
     userSelectionDenied: (state, action) => {
       state.userSelectionMessage = action.payload;
+      state.shuffleAction = false; 
     },
     moodShuffled: (state, action) => {
       // console.log(action.payload)

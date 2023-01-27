@@ -200,7 +200,13 @@ export default function Exercise() {
             dispatch(numberShuffled(shuffledNumber))
             return shuffledNumber
           
-          // all other moods and persons
+          // pleuvoir and falloir only in singulier 
+          } else if (verbResult.result.bescherelleId===45 || verbResult.result.bescherelleId===46  ){
+            const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === 'singulier')
+            const shuffledNumber = shuffleArray(filteredNumber)
+            dispatch(numberShuffled(shuffledNumber))
+            return shuffledNumber
+             // all other moods and persons and verbs
           } else {
             const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked)
             dispatch(numberShuffled(shuffledNumber))
