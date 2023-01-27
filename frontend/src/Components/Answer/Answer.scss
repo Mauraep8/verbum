@@ -11,9 +11,11 @@
         height: 1.5rem;
         margin: 0;
         text-align: center;
+        font-size: 16px;
 
         &::placeholder{
             text-align: center;
+            font-size: 16px;
             // padding: 41%;
         }
 
@@ -40,6 +42,7 @@
     }
 
     &__text{
+        font-size: 16px;
         padding: .2rem 0;
         margin: 0;
         
@@ -53,6 +56,7 @@
     }
 
     &__button{
+        font-size: 16px;
         background-color: #254c8a;
         border-radius: 10px;
         width: 100%;
@@ -105,8 +109,10 @@
         }
 
         &__text{
+            font-size: 15px;
+            font-weight: 500;
             position: absolute;
-            padding: .2rem 0;
+            padding: .2rem 0 .1rem;
             text-align: center;
             
             &--primary{
@@ -125,11 +131,12 @@
 
         &__text-container{
             display: flex;
+            padding-left: .5rem;
             justify-content: left;
         }
 
         &__input{
-            width: 10rem;
+            width: 9rem;
         }
 
         &__button{
@@ -151,7 +158,7 @@
         }
 
         &__input{
-            width:70%;
+            width: 9.5rem;
         }
         &__button{
             width: 5rem;

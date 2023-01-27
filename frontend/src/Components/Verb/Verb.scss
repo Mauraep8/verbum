@@ -10,9 +10,17 @@
     &__button-label{
         position: absolute;
         left: .5rem;
+        font-weight: 300;
+        font-size: 14px;
+        
     }
 
     &__button{
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1rem;
+        height: 1.2rem;
         width: 100%;
         border: 1px solid lightgrey;
         border-radius: 20px;
@@ -60,6 +68,9 @@
                 position: static;
                 // border: 1px solid red;
                 text-align: center;
+                height: 1.2rem;
+                font-size: 15px;
+
             }
             &__button{
                 margin-top: .3rem;

@@ -24,7 +24,7 @@ export default function Database() {
         <>
             <div className="database">
                 <div className="database__main-container">
-                    <h2 className="database__text">Database</h2>
+                    <h2 className="database__header">Database</h2>
                     <div className="database__popup-container">
                         <PopupAction state={state}/>
                     </div>

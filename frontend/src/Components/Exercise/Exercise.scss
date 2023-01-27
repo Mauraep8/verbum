@@ -20,16 +20,18 @@
     &__header{
         margin: 0 0 1rem;
         text-align: center;
+        font-weight: normal;
     }
 
     @include mid-mobile-tablet {
         
         &__main-container{
-
             margin: 2rem;
             padding: 1rem 3rem 1.5rem;
         }
-
+        &__header{
+            margin: .5rem 0 2rem;
+        }
     }
 
     @include tablet{
