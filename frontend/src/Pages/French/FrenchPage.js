@@ -1,70 +1,23 @@
-import React, {useState, useEffect, useReducer, useMemo}  from "react";
-import axios from 'axios'
+import React, {Provider}  from "react-redux";
+import { store } from "../../Store/configureStore";
 import Database from "../../Components/Database/Database.js";
 import Exercice from "../../Components/Exercise/Exercise.js";
-import { ACTIONS } from "../../Components/Database/Database";
 import Navbar from "../../Components/Navbar/Navbar";
-
-// get conjugatione
-// axios.get('http://localhost:8000/conjugate/fr/manger?mood=indicatif&tense=passé-composé')
-// .then(result => {
-//   console.log(result)
-// })
-// .catch(error =>{
-//   console.log(error)
-// })
-
-//REDUCER TO OPERATE ADD + DELETE BUTTONS FOR DATABASE LISTS
-function reducer(verbList, action){
-  switch (action.type) {
-    case ACTIONS.ADD:
-      return verbList = action.payload.verbList
-    default:
-      return verbList
-  }
-}
-
-
-export const ThemeContext = React.createContext()
-
-// INITIAL STATE FOR DATABSE LIST + EXERCISE LIST
-const initialState = ['aimer', 'avoir']
+import { fetchVerbs } from "../../Store/verbAPI";
+import { useEffect } from "react";
 
 function FrenchPage()  {
 
-  // SET STATE ALL FRENCH VERBS
-  const [verbs, setVerbs] = useState([])
- 
-  useEffect(()=>{
-    getVerbList();
-  }, [])
-
-  // GET ALL FRENCH VERBS
-  const getVerbList = () =>{
-      axios.get('http://localhost:8085/french')
-      .then(result => {
-          setVerbs(result.data)
-      })
-      .catch(error =>{
-        console.log(error)
-      })
-  }
-
-  //USEREDUCER TO OPERATE, ADD DELETE BUTTONS FOR DATABASE LISTS
-  const [state, dispatch] = useReducer(reducer, initialState)
-
-  const value = useMemo(
-    ()=>({state}),
-    [state]
-  )
-
+useEffect(() => {
+    store.dispatch(fetchVerbs());
+}, []);
 
   return (
-      <ThemeContext.Provider value={{ verbs, dispatch, value}}>
+      <Provider store={store}>
         <Navbar/>
         <Exercice/>
         <Database/>
-      </ThemeContext.Provider>
+      </Provider>
   )
 }
 

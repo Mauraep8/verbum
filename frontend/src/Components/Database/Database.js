@@ -1,45 +1,39 @@
 import "./Database.scss";
 import VerbLibrary from "../../Components/VerbLibrary/VerbLibrary";
 import UserLibrary from "../../Components/UserLibrary/UserLibrary";
-import React, { useReducer } from "react";
+import PopupAction from "../PopupAction/PopupAction";
+import {useSelector} from 'react-redux'
+import { useState, useEffect } from "react";
 
-
-
-export const ACTIONS = {
-    ADD: 'ADD',
-    DELETE: 'DELETE'
-}
-
-function reducer(verbs, action){
-    switch (action.type) {
-        case ACTIONS.ADD:
-            return Array.from(new Set([...verbs, action.payload.verb]))
-        case ACTIONS.DELETE:
-            return verbs.filter(verb => verb !==action.payload.verb)
-        default:
-            return verbs
-    }
-}
-
-
-
-export const DatabaseContext = React.createContext()
-
-const initialState = ['aimer', 'avoir']
 
 export default function Database() {
 
-    const [state, dispatch] = useReducer(reducer, initialState)
+      
+   const [state, setState] = useState([])
+   const {popupAction} = useSelector((state)=> state.database) 
+//    console.log(popupAction)
+    
+    useEffect(() => {
+        setState(popupAction)
+        setTimeout(() => {
+            setState([])
+        }, 2500);
+    }, [popupAction])
 
     return (
-        <DatabaseContext.Provider value={dispatch}>
+        <>
             <div className="database">
-                <h2 className="database__text">Database</h2>
-                <div className="database__container">
-                    <VerbLibrary newVerbList={state}/>
-                    <UserLibrary verbList={state}/>
+                <div className="database__main-container">
+                    <h2 className="database__header">Database</h2>
+                    <div className="database__popup-container">
+                        <PopupAction state={state}/>
+                    </div>
+                    <div className="database__container">
+                        <VerbLibrary />
+                        <UserLibrary />
+                    </div>
                 </div>
             </div>
-        </DatabaseContext.Provider>
+        </>
     )
 };

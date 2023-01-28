@@ -1,0 +1,62 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.popup-message{
+    // height: 5rem;
+    border: 1.5px solid orange;
+    // background-color:  #F0C8C8;
+    background-color: #F8F0E3;
+    border-radius: 5px;
+    position: absolute;
+    top: 37%;
+    left: 10%;
+    width: 80%;
+    z-index: 1;
+
+    &--hidden{
+        display: none;
+    }
+
+    &--active{
+        display: block;
+    }
+
+    &__text{
+        padding:  0 1rem; 
+    }
+
+    &__list-item{
+        // border: 1px solid black;
+        padding: .1rem 0;
+    }
+
+    &__button{
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #F8F0E3;
+        border: none;
+
+        &:hover{
+            cursor: pointer;
+            // background-color: lightgray;
+        }
+    }
+
+    @include tablet{
+        top: 36%;
+        left: 22%;
+        width: 50%;
+
+        &__text{
+            padding: 0 1rem; 
+
+        }
+    }
+
+    @include desktop{
+        top: 34%;
+        width: 35%;
+        right: 32%;
+    }
+}

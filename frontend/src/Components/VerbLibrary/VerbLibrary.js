@@ -1,15 +1,18 @@
 import "./VerbLibrary.scss";
 import Searchbar from "../Searchbar/Searchbar";
 import VerbList from "../VerbList/VerbList";
+import {useSelector} from 'react-redux'
 
-export default function VerbLibrary(props)  {
+export default function VerbLibrary()  {
+
+const {verbLibrary, searchVerbLibrary, searchVerbInput} = useSelector((state)=> state.database)
 
 return (
     <div className="verbLibrary">
         <div className="verbLibrary__container">
             <h1 className="verbLibrary__text">Verb Library</h1>
-            <Searchbar/>
-            <VerbList newVerbList={props.newVerbList}/>
+            <Searchbar type='verbLibrary' searchInputState={searchVerbInput}/>
+            <VerbList list={verbLibrary} search={searchVerbLibrary}/>
         </div>
     </div>
     )

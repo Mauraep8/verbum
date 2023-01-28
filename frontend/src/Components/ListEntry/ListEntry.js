@@ -1,15 +1,13 @@
-import { useContext, useEffect, useRef} from "react";
-// import useToggle from "../../CustomHooks/useToggle.js";
+import { useDispatch } from "react-redux";
+import { verbAdded, verbDeleted } from "../../Store/databaseSlice";
+import { useEffect, useRef} from "react";
 import "./ListEntry.scss";
-// import Checkbox from "../Checkbox/Checkbox";
-import { DatabaseContext } from '../Database/Database';
-import { ACTIONS } from '../Database/Database';
-
 
 
 export default function ListEntry(props)  {
 
-    const dispatch = useContext(DatabaseContext)
+    const dispatch = useDispatch()
+
 
     const buttonAdd = useRef([])
     const buttonDelete = useRef([])
@@ -21,17 +19,16 @@ export default function ListEntry(props)  {
         if(props.buttonAction === 'delete'){
             buttonAdd.current.classList.add('ListEntry__button-container--hidden')
         }
-    })
-
+    },[])
 
     return (
         <div className="ListEntry">
             <div className="ListEntry__container">
                 <div className="ListEntry__button-container ListEntry__button-container--add" ref={buttonAdd}>
-                    <button className="ListEntry__button ListEntry__button--add" name={props.verbName} onClick={()=> dispatch({type: ACTIONS.ADD, payload: {verb: props.verbName, id: props.id}})}>+</button>
+                    <button className="ListEntry__button ListEntry__button--add" onClick={()=>{dispatch(verbAdded({verbName:props.verbName,id:props.id,verbGroup:props.verbGroup,bescherelleId:props.bescherelleId,primaryVerb:props.primaryVerb,specialVerb:props.specialVerb,auxiliaryVerb:props.auxiliaryVerb,key:props.id,initialVerb:props.initialVerb,verbSearchList:props.verbSearchList}))}}>+</button>
                 </div>
-                <div className="ListEntry__button-container ListEntry__button-container--delete" ref={buttonDelete}>
-                    <button className="ListEntry__button ListEntry__button--delete" name={props.verbName} onClick={()=> dispatch({type: ACTIONS.DELETE, payload: {verb: props.verbName, id: props.id}})}>-</button>
+                <div className="ListEntry__button-container ListEntry__button-container--delete"ref={buttonDelete}>
+                    <button className="ListEntry__button ListEntry__button--delete"onClick={()=>{dispatch(verbDeleted({verbName:props.verbName,id:props.id,verbGroup:props.verbGroup,bescherelleId:props.bescherelleId,primaryVerb:props.primaryVerb,specialVerb:props.specialVerb,auxiliaryVerb:props.auxiliaryVerb,key:props.id,initialVerb:props.initialVerb,userSearchList:props.verbSearchList}))}}>-</button>
                 </div>
                 <div className="ListEntry__text-container">
                     <p className="ListEntry__text">{props.verbName}</p>

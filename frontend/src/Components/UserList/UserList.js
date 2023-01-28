@@ -1,27 +1,61 @@
-import React, {useContext} from 'react'
-import { ThemeContext } from '../../Pages/French/FrenchPage';
-// import { FunctionContext } from '../Database/Database';
-import { ACTIONS } from '../Database/Database';
-
 import ListEntry from "../ListEntry/ListEntry";
 
 export default function UserList(props)  {
-    const {dispatch} = useContext(ThemeContext)
 
-    return (
-        <div className="verbList">
-            <div className="verbList__container">
-                {props.verbList.map((singleVerb) =>{
-                    return <ListEntry
-                    key={singleVerb}
-                    verbName={singleVerb}
-                    buttonAction={'delete'}
-                    />
-                })}
+    // console.log(props.list)
+    if (props.search === null){
+        return (
+            <div className="verbList">
+                <div className="verbList__container">
+                </div>
             </div>
-            <div className="verbList__button-container">
-                <button className='verbList__button' onClick={()=> dispatch({type: ACTIONS.ADD, payload: {verbList: props.verbList}})}>submit</button>
+        )
+    }
+    if (props.search.length === 0){
+        return (
+            <div className="verbList">
+                <div className="verbList__container">
+                    {props.list.map((singleVerb) =>{
+                        return <ListEntry
+                        key={singleVerb.id}
+                        id={singleVerb.id}
+                        verbName={singleVerb.verbName}
+                        verbGroup={singleVerb.verbGroup}
+                        bescherelleId={singleVerb.bescherelleId}
+                        primaryVerb={singleVerb.primaryVerb}
+                        specialVerb={singleVerb.specialVerb}
+                        auxiliaryVerb={singleVerb.auxiliaryVerb}
+                        initialVerb={singleVerb.initialVerb}
+                        buttonAction={'delete'}
+                        />
+                    })}
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div className="verbList">
+                <div className="verbList__container">
+                    {props.search.map((singleVerb) =>{
+                        return <ListEntry
+                        key={singleVerb.id}
+                        id={singleVerb.id}
+                        verbName={singleVerb.verbName}
+                        verbGroup={singleVerb.verbGroup}
+                        bescherelleId={singleVerb.bescherelleId}
+                        primaryVerb={singleVerb.primaryVerb}
+                        specialVerb={singleVerb.specialVerb}
+                        auxiliaryVerb={singleVerb.auxiliaryVerb}
+                        initialVerb={singleVerb.initialVerb}
+                        buttonAction={'delete'}
+                        verbSearchList={props.search}
+                        />
+                    })}
+                </div>
+                {/* <div className="verbList__button-container">
+                    <button className='verbList__button'>submit</button>
+                </div> */}
+            </div>
+        )
+    }
 }
