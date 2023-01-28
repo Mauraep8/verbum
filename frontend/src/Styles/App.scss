@@ -1,10 +1,11 @@
 @use './partials/variables' as *;
 @use './partials/mixins' as*;
-// @use './partials/fonts' as *;
+@use './partials/fonts' as *;
 
 body{
     box-sizing: border-box;
-    // font-family: 'Titillium Web';
+    font-family: 'Roboto';
+    font-weight: normal;
     margin: 0;
     padding: 0;
 }
