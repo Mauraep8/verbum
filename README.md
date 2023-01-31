@@ -19,6 +19,7 @@ Verbum is a language app that generates conjugation exercices for students learn
 
 ## Updates
 
-Currently, in the "develop" branch, I am re-working the entire app to integrate the Redux Library.
+Finished first draft of application, demo video is available on my LinkedIn profile: https://www.linkedin.com/feed/update/urn:li:activity:7025190389129101312/
+Currently refactoring and optimizing code.
 
 
