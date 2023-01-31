@@ -23,4 +23,4 @@ Finished first draft of application, demo video is available on my LinkedIn prof
 
 Currently refactoring and optimizing code.
 
-
+You can access my LinkedIn profile here as well: www.linkedin.com/in/mauraep
