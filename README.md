@@ -8,11 +8,13 @@ Verbum is a language app that generates conjugation exercices for students learn
 
 ## Built With
 - HTML
+- CSS
 - SASS
 - JavaScript
 - React
 - Redux.js
 - Node.js
+- Express.js
 - Prisma
 - MySQL
 - Docker 
