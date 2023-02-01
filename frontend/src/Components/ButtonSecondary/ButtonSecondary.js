@@ -12,7 +12,7 @@ export default function ButtonSecondary(props)  {
     const button = useRef([])
 
     useEffect(() => {
-      if (props.actionType==='add'){
+      if (props.actionType === 'add'){
         button.current.classList.add('buttonSecondary__button--add')
       } else {
         button.current.classList.add('buttonSecondary__button--remove')
@@ -20,8 +20,8 @@ export default function ButtonSecondary(props)  {
     }, [])
     
 
-    const buttonHandler = () =>{
-      if(props.actionType==='add'){
+    const buttonHandler = () => {
+      if(props.actionType === 'add'){
         dispatch(
           verbAdded({
             verbName: props.verbName,

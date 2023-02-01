@@ -30,12 +30,12 @@ export default function ContactPage() {
               <div className='contact__form-container'>
                   <form action="">
                     <div className='contact__input-container'>
-                      <label htmlFor="">Subject</label>
-                      <input type="text" ref={subjectInput}/>
+                      <label className='contact__input-label' htmlFor="">Subject:</label>
+                      <input className='contact__input'  type="text" ref={subjectInput}/>
                     </div>
                     <div className='contact__input-container'>
-                      <label htmlFor="">Message</label>
-                      <textarea type="text" ref={messageInput}/>
+                      <label className='contact__input-label' htmlFor="">Message:</label>
+                      <textarea className='contact__input contact__input--secondary' type="text" ref={messageInput}/>
                     </div>
                       <button className='contact__button' onClick={submitHandler}>Submit</button>
                   </form>
