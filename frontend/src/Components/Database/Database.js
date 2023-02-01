@@ -29,8 +29,8 @@ export default function Database() {
                         <PopupAction state={state}/>
                     </div>
                     <div className="database__container">
-                        <VerbLibrary />
-                        <UserLibrary />
+                        <VerbLibrary actionType={'add'}/>
+                        <UserLibrary actionType={'remove'}/>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,6 @@ import ListEntry from "../ListEntry/ListEntry";
 
 export default function VerbList(props)  {
 
-    // console.log(props.search)
     if (props.search === null){
         return (
             <div className="verbList">
@@ -27,7 +26,7 @@ export default function VerbList(props)  {
                         specialVerb={singleVerb.specialVerb}
                         auxiliaryVerb={singleVerb.auxiliaryVerb}
                         initialVerb={singleVerb.initialVerb}
-                        buttonAction={'add'}/>
+                        actionType={props.actionType}/>
                     })}
                 </div>
             </div>
@@ -47,7 +46,7 @@ export default function VerbList(props)  {
                         specialVerb={singleVerb.specialVerb}
                         auxiliaryVerb={singleVerb.auxiliaryVerb}
                         initialVerb={singleVerb.initialVerb}
-                        buttonAction={'add'}
+                        actionType={props.actionType}
                         verbSearchList={props.search}/>
                     })}
                 </div>
