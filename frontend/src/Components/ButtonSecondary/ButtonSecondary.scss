@@ -4,12 +4,14 @@
 .buttonSecondary{
     // border: 1px solid black;
     display: flex;
+    align-items: center;
 
     &__button{
 
         border-radius: 15px;
         border: none;
         font-size: 10px;
+        height: 1rem;
 
         &--add{
             border: 1px solid $color-green;
@@ -32,6 +34,13 @@
         }
     }
 
+    @include tablet {
 
+        align-items: center;
+
+        &__button{
+            height: 1rem;
+        }
+    }
     
 }

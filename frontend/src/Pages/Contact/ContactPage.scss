@@ -51,7 +51,7 @@
         border-radius: 10px;
         border: 1px solid darkgray;
         width: 93%;
-        padding-left: 1rem;
+        padding-left: .5rem;
 
         &--error{
             border: red;
@@ -59,6 +59,7 @@
 
         &--secondary{
             height: 6rem;
+            padding-top: .5rem;
         }
     }
 
@@ -72,10 +73,52 @@
         padding: .2rem 0;
         margin: 1rem 0 0; 
         box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+
+        &:hover{
+            cursor: pointer;
+            background-color: #2E66E5;
+        }
     }
 
-    &:hover{
-        cursor: pointer;
-        background-color: #2E66E5;
+
+
+    @include tablet{
+        
+        &__background{
+            height: 100%;
+        }
+
+        &__container{
+            margin: 3rem 2rem;
+            padding: 2rem;
+            width: 50%;
+        }
+
+        &__input{
+            width: 95%;
+        }
+    }
+
+    @include mid-tablet-desktop{
+
+        &__background{
+            padding: 4rem 0;
+        }
+        
+        &__container{
+            margin: 3rem 2rem;
+            padding: 3rem 4rem;
+            width: 50%;
+        }
+
+        &__input{
+            width: 97%;
+        }
+    }
+
+    @include desktop{
+        &__background{
+            padding: 11rem 0;
+        }
     }
 }

@@ -2,6 +2,7 @@ import React,{useState, useRef} from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import './ContactPage.scss'
 import SubmitMessage from '../../Components/SubmitMessage/SubmitMessage'
+import Footer from '../../Components/Footer/Footer'
 
 export default function ContactPage() {
 
@@ -26,15 +27,15 @@ export default function ContactPage() {
       <div className='contact__background'>
         <div className='contact__container'>
         <SubmitMessage uploadClicked={state}/>
-              <h2 className='contact__header'>Contact</h2>
+              <h2 className='contact__header'>contact</h2>
               <div className='contact__form-container'>
                   <form action="">
                     <div className='contact__input-container'>
-                      <label className='contact__input-label' htmlFor="">Subject:</label>
+                      <label className='contact__input-label' htmlFor="">subject:</label>
                       <input className='contact__input'  type="text" ref={subjectInput}/>
                     </div>
                     <div className='contact__input-container'>
-                      <label className='contact__input-label' htmlFor="">Message:</label>
+                      <label className='contact__input-label' htmlFor="">message:</label>
                       <textarea className='contact__input contact__input--secondary' type="text" ref={messageInput}/>
                     </div>
                       <button className='contact__button' onClick={submitHandler}>Submit</button>
@@ -42,6 +43,7 @@ export default function ContactPage() {
               </div>
           </div>
       </div>
+      {/* <Footer/> */}
     </div>
   )
 }
