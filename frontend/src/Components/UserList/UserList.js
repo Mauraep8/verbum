@@ -2,7 +2,6 @@ import ListEntry from "../ListEntry/ListEntry";
 
 export default function UserList(props)  {
 
-    // console.log(props.list)
     if (props.search === null){
         return (
             <div className="verbList">
@@ -26,7 +25,7 @@ export default function UserList(props)  {
                         specialVerb={singleVerb.specialVerb}
                         auxiliaryVerb={singleVerb.auxiliaryVerb}
                         initialVerb={singleVerb.initialVerb}
-                        buttonAction={'delete'}
+                        actionType={props.actionType}
                         />
                     })}
                 </div>
@@ -47,14 +46,11 @@ export default function UserList(props)  {
                         specialVerb={singleVerb.specialVerb}
                         auxiliaryVerb={singleVerb.auxiliaryVerb}
                         initialVerb={singleVerb.initialVerb}
-                        buttonAction={'delete'}
+                        actionType={props.actionType}
                         verbSearchList={props.search}
                         />
                     })}
                 </div>
-                {/* <div className="verbList__button-container">
-                    <button className='verbList__button'>submit</button>
-                </div> */}
             </div>
         )
     }

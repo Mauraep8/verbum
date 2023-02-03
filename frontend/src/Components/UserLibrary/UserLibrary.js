@@ -9,7 +9,7 @@ import { compareArray } from "../../Utils/compareArray";
 
 
 
-export default function UserLibrary()  {
+export default function UserLibrary(props)  {
 
 const exerciseVerbList = useSelector(((state)=> state.exercise.verbListState))
 const userLibrary = useSelector(((state)=> state.database.userLibrary))
@@ -41,7 +41,7 @@ return (
         <div className="userLibrary__container">
             <h1 className="userLibrary__text">User Verb List</h1>
             <Searchbar type='userLibrary' searchInputState={searchUserInput}/>
-            <UserList list={userLibrary} search={searchUserLibrary}/>
+            <UserList list={userLibrary} search={searchUserLibrary} actionType={props.actionType}/>
             <div className="verbList__button-container">
                 <button className='verbList__button'onClick={clickHandler}>Submit Updated List</button>
             </div>

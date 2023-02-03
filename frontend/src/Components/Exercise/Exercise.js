@@ -3,7 +3,7 @@ import Verb from '../Verb/Verb'
 import Grammar from '../Grammar/Grammar'
 import Answer from '../Answer/Answer'
 import PopupMessage from "../PopupMessage/PopupMessage";
-import { personArray, genderArray, numberArray, tenseArray, moodArray } from '../../Utils/grammarArrayValue'
+import { personArray, genderArray, numberArray, tenseArray, moodArray } from '../../Utils/GrammarArrayValue'
 import {useSelector, useDispatch} from 'react-redux'
 import './Exercise.scss'
 import Shuffle from '../Shuffle/Shuffle'
