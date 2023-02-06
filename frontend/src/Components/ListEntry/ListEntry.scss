@@ -9,6 +9,11 @@
         display: flex;
         // border-bottom: solid lightgray 1px;
         padding: .1rem;
+
+        &:hover{
+            cursor: pointer;
+            background-color: lightgray;
+        }
     }
 
     &__text{
