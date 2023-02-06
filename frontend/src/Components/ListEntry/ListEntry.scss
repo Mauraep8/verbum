@@ -9,11 +9,17 @@
         display: flex;
         // border-bottom: solid lightgray 1px;
         padding: .1rem;
+
+        &:hover{
+            cursor: pointer;
+            background-color: lightgray;
+        }
     }
 
     &__text{
         margin: 0;
         padding: 0 .5rem;
+        font-size: 14px;
     }
 
     &__button-container{
