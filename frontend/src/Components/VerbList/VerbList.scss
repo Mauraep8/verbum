@@ -2,6 +2,7 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .verbList{
+    border: 1px solid black;
     width: 100%;
 
     &__container{

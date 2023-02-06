@@ -2,9 +2,10 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .verbLibrary{
-    width: 50%;
+    border: 1px solid red;
+    width: 47%;
     // margin: 0 1rem 0 0;
-    padding-right: 1rem;
+    padding-right: .5rem;
     
     &__container{
 
