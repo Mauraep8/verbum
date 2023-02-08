@@ -47,6 +47,9 @@ const searchVerbLibrary = useSelector((state)=> state.database.searchVerbLibrary
                 type={'verbLibrary'}
                 button={false}
               />
+              <div className="database__icon-container">
+                <i class="bi-chevron-double-down"></i>       
+              </div>
               <VerbLibrary
                 headerText={"User List"}
                 searchInput={searchUserInput}

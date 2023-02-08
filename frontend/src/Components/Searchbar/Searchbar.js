@@ -17,11 +17,10 @@ export default function Searchbar(props)  {
     })
 
     return (
-        <>
         <div className="searchbar">
             <input ref={inputValue} className="searchbar__input" type="Search" placeholder="Search..." onChange={(e)=>dispatch(verbSearched({value:e.target.value,component:props.type}))} />
+            <i class="bi-search"></i>
         </div>
-        </>
         )
     }
 
