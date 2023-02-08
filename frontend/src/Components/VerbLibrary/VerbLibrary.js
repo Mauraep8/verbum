@@ -4,6 +4,7 @@ import VerbList from "../VerbList/VerbList";
 import {useDispatch} from "react-redux"
 import { verbListUpdateAction, verbListUpdated} from "../../Store/exerciseSlice";
 import { submitClicked } from "../../Store/databaseSlice";
+// import "../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
 import { compareArray } from "../../Utils/compareArray";
 
 export default function VerbListContainer(props) {

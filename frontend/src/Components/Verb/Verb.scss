@@ -11,16 +11,18 @@
         position: absolute;
         left: .5rem;
         font-weight: 300;
-        font-size: 14px;
+        font-size: .75rem;
+        line-height: 23px;
         
     }
 
-    &__button{
+    &__button{        
+        background-color: #F5F5F5;
         font-family: 'Roboto';
         font-weight: 400;
-        font-size: 16px;
-        line-height: 1rem;
-        height: 1.2rem;
+        font-size: .8125rem;
+        line-height: 10px;
+        height: 1.5rem;
         width: 100%;
         border: 1px solid lightgrey;
         border-radius: 20px;
@@ -82,4 +84,11 @@
     @include desktop{
         margin-right: .5rem;
     }
+}
+
+.bi-caret-down-fill{
+    font-size: 10px;
+    position: absolute;
+    right: .5rem;
+    top: .45rem;
 }

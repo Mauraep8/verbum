@@ -70,6 +70,7 @@ export default function Verb(props) {
           <div className='verb__button-container'>
             <label className='verb__button-label' htmlFor="">{props.type}</label>
             <button className='verb__button' ref={dropmenuButton}>{props.option[0].verbName}</button>
+            <i class="bi-caret-down-fill"></i>
           </div>
           <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
             <Dropmenu verbList={props.option} value={null} type={props.type}/>
@@ -84,6 +85,7 @@ export default function Verb(props) {
           <div className='verb__button-container'>
               <label className='verb__button-label' htmlFor="">{props.type}</label>
               <button className='verb__button' ref={dropmenuButton}>{dropMenuText}</button>
+              <i class="bi-caret-down-fill"></i>
             </div>
           <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
           <Dropmenu verbList={props.option} value={null} type={props.type}/>

@@ -63,7 +63,8 @@ export default function Grammar(props) {
         <div className='grammar__container' tabIndex={0} onBlur={onBlurDropmenu} onFocus={onFocusDropmenu}>
           <div className='grammar__button-container'>
             <label className='grammar__button-label' htmlFor="">{props.type}</label>
-            <button className={`grammar__button grammar__button--${props.type}`}  >{props.option[0].option}</button>
+            <button className={`grammar__button grammar__button--${props.type}`}>{props.option[0].option}</button>
+            <i class="bi-caret-down-fill"></i>
           </div>
           <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
             <DropMenu value={props.option} verb={null} type={props.type}/>
@@ -78,6 +79,7 @@ export default function Grammar(props) {
           <div className='grammar__button-container'>
             <label className='grammar__button-label' htmlFor="">{props.type}</label>
             <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton}>{props.shuffleState.result.value}</button>
+            <i class="bi-caret-down-fill"></i>
           </div>
           <div className='grammar__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
             <DropMenu value={props.option} verb={null} type={props.type}/>

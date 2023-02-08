@@ -5,14 +5,20 @@
     background-color: #254c8a;
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 0;
     padding: 0;   
 
+    &__header-container{
+        display: flex;
+        justify-content: center;
+    }
+
     &__header{
         color: white;
-        padding: 1rem;
+        padding: 1.5rem 0 0;
         margin: 0; 
+        font-size: 1.5rem;
+        line-height: 1.1rem;
 
         &:hover{
             cursor: pointer;
@@ -22,6 +28,7 @@
     &__list{
         display: flex;
         flex-direction: row;
+        justify-content: center;
         color: white;
         list-style-type: none;
         margin: 0;
@@ -29,7 +36,7 @@
     }
 
     &__list-item{
-        padding: 1rem 1.05rem;
+        padding: 1rem;
 
         &:hover{
             background-color: rgba(255, 255, 255, 0.089);
@@ -38,6 +45,7 @@
     }
 
     &__link{
+        font-size: .75rem;
         text-decoration: none;
         color: white;
     }
