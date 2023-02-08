@@ -34,12 +34,14 @@ const searchVerbLibrary = useSelector((state)=> state.database.searchVerbLibrary
         <div className="database">
           <div className="database__main-container">
             <h2 className="database__header">Database</h2>
+            {/* <p className="database__text">Add verbs from the library to your user list.</p> */}
             <div className="database__popup-container">
               <PopupAction state={state} />
             </div>
             <div className="database__container">
               <VerbLibrary
                 headerText={"Verb Library"}
+                text={'Add verbs from the library to your user list.'}
                 searchInput={searchVerbInput}
                 list={verbLibrary}
                 search={searchVerbLibrary}
@@ -50,8 +52,10 @@ const searchVerbLibrary = useSelector((state)=> state.database.searchVerbLibrary
               <div className="database__icon-container">
                 <i class="bi-chevron-double-down"></i>       
               </div>
+              {/* <p className="database__text">Refine study list by removing verbs. Click update to see changes in the exercise.</p> */}
               <VerbLibrary
                 headerText={"User List"}
+                text={'Refine study list by removing verbs. Click submit to see changes in the exercise.'}
                 searchInput={searchUserInput}
                 list={userLibrary}
                 search={searchUserLibrary}
