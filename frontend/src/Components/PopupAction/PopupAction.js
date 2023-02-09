@@ -13,17 +13,17 @@ export default function PopupAction(props) {
             popupContainer.current.classList.remove('popupAction--secondary')
 
         }
-        if(props.state.popupAction  === 'deleted'){
+        if(props.state.popupAction  === 'removed'){
             popupContainer.current.classList.remove('popupAction--primary')
             popupContainer.current.classList.add('popupAction--secondary')
         }
     })
 
-    if (props.state.length !== 0 ){
+    if (props.state.length !== 0 || props.state !== undefined ){
         if (typeof props.state.verbName === 'string' ) {
             return(
                 <div className='popupAction' ref={popupContainer}>
-                    <p className="popupAction__text">{props.state.verbName} has been {props.state.popupAction}</p>
+                    <p className="popupAction__text">{props.state.verbName} {props.state.popupAction}</p>
                 </div>
             )
         } else if (typeof props.state.message === 'string'){

@@ -89,7 +89,7 @@ const databaseSlice = createSlice({
             state.userLibrary = state.userLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
 
             //POPUPACTION VERB DELETED
-            state.popupAction = {verbName:action.payload.verbName, popupAction: 'deleted'}
+            state.popupAction = {verbName:action.payload.verbName, popupAction: 'removed'}
 
             // IF VERB IS DELETED WHILE ITS BEING SEARCHED, THEN REMOVE IT FROM SEARCH LIST
             if (state.searchUserLibrary.length !==0){

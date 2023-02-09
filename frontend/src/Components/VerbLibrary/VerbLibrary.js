@@ -8,9 +8,8 @@ import { submitClicked } from "../../Store/databaseSlice";
 import { compareArray } from "../../Utils/compareArray";
 import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
 
-export default function VerbListContainer(props) {
-    
-    console.log(props)
+export default function VerbLibrary(props) {
+
 
     const dispatch = useDispatch()
 
@@ -20,7 +19,6 @@ export default function VerbListContainer(props) {
     
     if (props.list.length === 0) { 
         dispatch(submitClicked({message: 'User List is empty, please add verbs', popupAction: 'deleted'}))
-
 
 
     } else if(result===true){
@@ -35,11 +33,8 @@ export default function VerbListContainer(props) {
                 <h1 className="verbLibrary__header">{props.headerText}</h1>
                 <p className="verbLibrary__text">{props.text}</p>
                 <Searchbar type={props.type} searchInputState={props.searchInput}/>
-                <VerbList list={props.list} search={props.search} actionType={props.actionType}/>
+                <VerbList list={props.list} search={props.search} actionType={props.actionType} popup={props.popup}/>
                 {props.button===true &&
-                    // <div className="verbList__button-container">
-                    //     <button className='verbList__button'onClick={clickHandler}>Submit Updated List</button>
-                    // </div>
                     <ButtonPrimary function={clickHandler} text={'Submit'}/>
                 }
             </div>
