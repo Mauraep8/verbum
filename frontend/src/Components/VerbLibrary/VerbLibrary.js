@@ -6,6 +6,7 @@ import { verbListUpdateAction, verbListUpdated} from "../../Store/exerciseSlice"
 import { submitClicked } from "../../Store/databaseSlice";
 // import "../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
 import { compareArray } from "../../Utils/compareArray";
+import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
 
 export default function VerbListContainer(props) {
     
@@ -31,13 +32,15 @@ export default function VerbListContainer(props) {
     return (
         <div className="verbLibrary">
             <div className="verbLibrary__container">
-                <h1 className="verbLibrary__text">{props.headerText}</h1>
+                <h1 className="verbLibrary__header">{props.headerText}</h1>
+                <p className="verbLibrary__text">{props.text}</p>
                 <Searchbar type={props.type} searchInputState={props.searchInput}/>
                 <VerbList list={props.list} search={props.search} actionType={props.actionType}/>
                 {props.button===true &&
-                    <div className="verbList__button-container">
-                        <button className='verbList__button'onClick={clickHandler}>Submit Updated List</button>
-                    </div>
+                    // <div className="verbList__button-container">
+                    //     <button className='verbList__button'onClick={clickHandler}>Submit Updated List</button>
+                    // </div>
+                    <ButtonPrimary function={clickHandler} text={'Submit'}/>
                 }
             </div>
         </div>
