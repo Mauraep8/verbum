@@ -6,7 +6,7 @@
     width: 100%;
 
     &__container{
-        background-color: white;
+        // background-color: white;
         border: solid lightgray 1px;
         border-radius: 5px;
         display: flex;
@@ -32,6 +32,14 @@
             border-radius: 5px;
             height: 10%;
         }
+    }
+    
+    &__popup-container{
+        display: flex;
+        justify-content: center;
+        position: relative;
+
+        // border: 1px solid black;
     }
 
     @include tablet{

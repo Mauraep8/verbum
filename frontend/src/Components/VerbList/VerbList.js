@@ -1,7 +1,24 @@
 import "./VerbList.scss";
 import ListEntry from "../ListEntry/ListEntry";
+import { useState, useEffect } from "react";
+import PopupAction from "../PopupAction/PopupAction";
+import {useSelector} from 'react-redux'
 
 export default function VerbList(props)  {
+
+//    const [state, setState] = useState([])
+//    const {popupAction} = useSelector((state)=> state.database) 
+// //    console.log(popupAction)
+    
+//     useEffect(() => {
+//         setState(popupAction)
+//         setTimeout(() => {
+//             setState([])
+//         }, 2500);
+//     }, [popupAction])
+
+
+
 
     if (props.search === null){
         return (
@@ -14,6 +31,9 @@ export default function VerbList(props)  {
     if (props.search.length === 0){
         return (
             <div className="verbList">
+                <div className="verbList__popup-container">
+                    <PopupAction state={props.popup} />
+                </div>
                 <div className="verbList__container">
                     {props.list.map((singleVerb) =>{
                         return <ListEntry
@@ -34,6 +54,9 @@ export default function VerbList(props)  {
     } else {
         return (
             <div className="verbList">
+                <div className="verbList__popup-container">
+                    <PopupAction state={props.popup} />
+                </div>
                 <div className="verbList__container">
                     {props.search.map((singleVerb) =>{
                         return <ListEntry
