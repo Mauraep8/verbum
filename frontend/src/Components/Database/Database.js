@@ -1,8 +1,11 @@
 import "./Database.scss";
 import VerbLibrary from "../../Components/VerbLibrary/VerbLibrary";
 import PopupAction from "../PopupAction/PopupAction";
-import {useSelector} from 'react-redux'
-import { useState, useEffect } from "react";
+import {useSelector, useDispatch} from 'react-redux'
+import { useState, useEffect, useRef } from "react";
+import { popupClosed } from "../../Store/databaseSlice";
+
+
 
 
 export default function Database() {
@@ -18,21 +21,49 @@ export default function Database() {
   const verbLibrary = useSelector((state)=> state.database.verbLibrary)
   const searchVerbLibrary = useSelector((state)=> state.database.searchVerbLibrary)
   
+  // const popupActionAdded = useSelector((state)=> state.database.popupActionAdded) 
+  // const popupActionRemoved = useSelector((state)=> state.database.popupActionRemoved) 
   const popupAction = useSelector((state)=> state.database.popupAction) 
 
-    
+  const dispatch = useDispatch()
+  // console.log(popupAction)
+  let prevPopupState = useRef([])
   useEffect(() => {
+    if (popupAction.length !== 0) {
+      
+ 
+    prevPopupState.current = popupAction
+
+
     if(popupAction.popupAction === 'added')
+
       popupSetStateAdded(popupAction)
+
       setTimeout(() => {
-          popupSetStateAdded([])
-      }, 1000);
+        if (prevPopupState.current === popupAction){
+          dispatch(popupClosed([]))
+        }
+      }, 1500);
+
     if(popupAction.popupAction === 'removed')
+
       popupSetStateRemoved(popupAction)
+      
       setTimeout(() => {
-        popupSetStateRemoved([])
-      }, 1000);
+        if (prevPopupState.current === popupAction){
+          dispatch(popupClosed([]))
+        }
+      }, 1500);
+
+    } else {
+      popupSetStateAdded(popupAction)
+      popupSetStateRemoved(popupAction)
+    }
   }, [popupAction])
+
+
+
+
 
   return (
     <div className="database">
