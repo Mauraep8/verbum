@@ -1,8 +1,11 @@
 import "./Database.scss";
 import VerbLibrary from "../../Components/VerbLibrary/VerbLibrary";
 import PopupAction from "../PopupAction/PopupAction";
-import {useSelector} from 'react-redux'
-import { useState, useEffect } from "react";
+import {useSelector, useDispatch} from 'react-redux'
+import { useState, useEffect, useRef } from "react";
+import { popupClosed } from "../../Store/databaseSlice";
+
+
 
 
 export default function Database() {
@@ -17,22 +20,51 @@ export default function Database() {
   const searchVerbInput = useSelector((state)=> state.database.searchVerbInput)
   const verbLibrary = useSelector((state)=> state.database.verbLibrary)
   const searchVerbLibrary = useSelector((state)=> state.database.searchVerbLibrary)
-  
-  const popupAction = useSelector((state)=> state.database.popupAction) 
+  const popupActionAdded = useSelector((state)=> state.database.popupActionAdded) 
+  const popupActionRemoved = useSelector((state)=> state.database.popupActionRemoved) 
 
-    
+
+  const dispatch = useDispatch()
+
+  let prevPopupState = useRef([])
+
   useEffect(() => {
-    if(popupAction.popupAction === 'added')
-      popupSetStateAdded(popupAction)
+
+    if (popupActionAdded.length !== 0 || popupActionRemoved.length !== 0) {
+      
+      //if Added state is not empty
+      if(popupActionAdded.length !== 0)
+
+      //capture prev state
+      prevPopupState.current = popupActionAdded
+      
+      //set new state of popup prop
+      popupSetStateAdded(popupActionAdded)
+
+      // if after 1.5 sec prevState and currentState are the same (no changes) then close popup
       setTimeout(() => {
-          popupSetStateAdded([])
-      }, 1000);
-    if(popupAction.popupAction === 'removed')
-      popupSetStateRemoved(popupAction)
+        if (prevPopupState.current === popupActionAdded){
+          dispatch(popupClosed({popupType: 'added'}))
+        }
+      }, 1500);
+
+    if(popupActionRemoved.length !== 0)
+      
+      prevPopupState.current = popupActionRemoved
+      popupSetStateRemoved(popupActionRemoved)
+      
       setTimeout(() => {
-        popupSetStateRemoved([])
-      }, 1000);
-  }, [popupAction])
+        if (prevPopupState.current === popupActionRemoved){
+          dispatch(popupClosed({popupType: 'removed'}))
+        }
+      }, 1500);
+
+    } else {
+      popupSetStateAdded(popupActionAdded)
+      popupSetStateRemoved(popupActionAdded)
+    }
+  }, [popupActionAdded, popupActionRemoved])
+
 
   return (
     <div className="database">

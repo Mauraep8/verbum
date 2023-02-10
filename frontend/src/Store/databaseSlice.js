@@ -10,7 +10,8 @@ import {fetchVerbs} from './verbAPI'
 const initialState = {
     verbLibrary: [],
     userLibrary: [],
-    popupAction: [],
+    popupActionAdded: [],
+    popupActionRemoved: [],
     searchVerbLibrary: [], 
     searchUserLibrary: [],
     searchVerbInput: [],
@@ -61,7 +62,8 @@ const databaseSlice = createSlice({
             state.verbLibrary = state.verbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
 
             //POPUPACTION VERB ADDED
-            state.popupAction = {verbName:action.payload.verbName, popupAction: 'added'}
+            state.popupActionAdded = {verbName:action.payload.verbName, popupAction: 'added'}
+            state.popupActionRemoved = []
 
             // IF VERB IS ADDED WHILE ITS BEING SEARCHED, THEN REMOVE IT FROM SEARCH LIST
             if (state.searchVerbLibrary.length !==0){
@@ -89,7 +91,8 @@ const databaseSlice = createSlice({
             state.userLibrary = state.userLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
 
             //POPUPACTION VERB DELETED
-            state.popupAction = {verbName:action.payload.verbName, popupAction: 'removed'}
+            state.popupActionRemoved = {verbName:action.payload.verbName, popupAction: 'removed'}
+            state.popupActionAdded = []
 
             // IF VERB IS DELETED WHILE ITS BEING SEARCHED, THEN REMOVE IT FROM SEARCH LIST
             if (state.searchUserLibrary.length !==0){
@@ -106,6 +109,9 @@ const databaseSlice = createSlice({
         },
 
         verbSearched: (state, action) =>{
+
+            state.popupActionAdded = []
+            state.popupActionRemoved = []
 
             //RESET SEARCHVERBINPUT STATE IF IT WAS PREVIOUSLY NULL
             if (state.searchVerbInput === null) {
@@ -146,10 +152,22 @@ const databaseSlice = createSlice({
             }
         },
         submitClicked: (state, action)=>{
-            state.popupAction = action.payload
+            
+            state.popupActionAdded = []
+            state.popupActionRemoved = []
+
+        },
+        popupClosed: (state, action)=>{
+
+            if (action.payload.popupType === "added"){
+                state.popupActionAdded = []
+
+            } else if (action.payload.popupType === "removed") {
+                state.popupActionRemoved = []
+            }
         }
     }
 })
 
-export const {submitClicked, verbAdded, verbDeleted, verbSearched} = databaseSlice.actions
+export const {popupClosed, submitClicked, verbAdded, verbDeleted, verbSearched} = databaseSlice.actions
 export default databaseSlice.reducer
