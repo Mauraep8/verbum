@@ -10,7 +10,6 @@ import {fetchVerbs} from './verbAPI'
 const initialState = {
     verbLibrary: [],
     userLibrary: [],
-    popupAction: [],
     popupActionAdded: [],
     popupActionRemoved: [],
     searchVerbLibrary: [], 
@@ -63,10 +62,8 @@ const databaseSlice = createSlice({
             state.verbLibrary = state.verbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
 
             //POPUPACTION VERB ADDED
-            state.popupAction = {verbName:action.payload.verbName, popupAction: 'added'}
-
-            // state.popupActionAdded = {verbName:action.payload.verbName, popupAction: 'added'}
-            // state.popupActionRemoved = []
+            state.popupActionAdded = {verbName:action.payload.verbName, popupAction: 'added'}
+            state.popupActionRemoved = []
 
             // IF VERB IS ADDED WHILE ITS BEING SEARCHED, THEN REMOVE IT FROM SEARCH LIST
             if (state.searchVerbLibrary.length !==0){
@@ -94,11 +91,8 @@ const databaseSlice = createSlice({
             state.userLibrary = state.userLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
 
             //POPUPACTION VERB DELETED
-            state.popupAction = {verbName:action.payload.verbName, popupAction: 'removed'}
-
-            // state.popupActionRemoved = {verbName:action.payload.verbName, popupAction: 'removed'}
-
-            // state.popupActionAdded = []
+            state.popupActionRemoved = {verbName:action.payload.verbName, popupAction: 'removed'}
+            state.popupActionAdded = []
 
             // IF VERB IS DELETED WHILE ITS BEING SEARCHED, THEN REMOVE IT FROM SEARCH LIST
             if (state.searchUserLibrary.length !==0){
@@ -158,15 +152,19 @@ const databaseSlice = createSlice({
             }
         },
         submitClicked: (state, action)=>{
-            state.popupAction = action.payload
             
             state.popupActionAdded = []
             state.popupActionRemoved = []
 
         },
         popupClosed: (state, action)=>{
-            console.log(action.payload)
-            state.popupAction = action.payload
+
+            if (action.payload.popupType === "added"){
+                state.popupActionAdded = []
+
+            } else if (action.payload.popupType === "removed") {
+                state.popupActionRemoved = []
+            }
         }
     }
 })

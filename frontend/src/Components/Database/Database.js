@@ -20,49 +20,50 @@ export default function Database() {
   const searchVerbInput = useSelector((state)=> state.database.searchVerbInput)
   const verbLibrary = useSelector((state)=> state.database.verbLibrary)
   const searchVerbLibrary = useSelector((state)=> state.database.searchVerbLibrary)
-  
-  // const popupActionAdded = useSelector((state)=> state.database.popupActionAdded) 
-  // const popupActionRemoved = useSelector((state)=> state.database.popupActionRemoved) 
-  const popupAction = useSelector((state)=> state.database.popupAction) 
+  const popupActionAdded = useSelector((state)=> state.database.popupActionAdded) 
+  const popupActionRemoved = useSelector((state)=> state.database.popupActionRemoved) 
+
 
   const dispatch = useDispatch()
-  // console.log(popupAction)
+
   let prevPopupState = useRef([])
+
   useEffect(() => {
-    if (popupAction.length !== 0) {
+
+    if (popupActionAdded.length !== 0 || popupActionRemoved.length !== 0) {
       
- 
-    prevPopupState.current = popupAction
+      //if Added state is not empty
+      if(popupActionAdded.length !== 0)
 
+      //capture prev state
+      prevPopupState.current = popupActionAdded
+      
+      //set new state of popup prop
+      popupSetStateAdded(popupActionAdded)
 
-    if(popupAction.popupAction === 'added')
-
-      popupSetStateAdded(popupAction)
-
+      // if after 1.5 sec prevState and currentState are the same (no changes) then close popup
       setTimeout(() => {
-        if (prevPopupState.current === popupAction){
-          dispatch(popupClosed([]))
+        if (prevPopupState.current === popupActionAdded){
+          dispatch(popupClosed({popupType: 'added'}))
         }
       }, 1500);
 
-    if(popupAction.popupAction === 'removed')
-
-      popupSetStateRemoved(popupAction)
+    if(popupActionRemoved.length !== 0)
+      
+      prevPopupState.current = popupActionRemoved
+      popupSetStateRemoved(popupActionRemoved)
       
       setTimeout(() => {
-        if (prevPopupState.current === popupAction){
-          dispatch(popupClosed([]))
+        if (prevPopupState.current === popupActionRemoved){
+          dispatch(popupClosed({popupType: 'removed'}))
         }
       }, 1500);
 
     } else {
-      popupSetStateAdded(popupAction)
-      popupSetStateRemoved(popupAction)
+      popupSetStateAdded(popupActionAdded)
+      popupSetStateRemoved(popupActionAdded)
     }
-  }, [popupAction])
-
-
-
+  }, [popupActionAdded, popupActionRemoved])
 
 
   return (
