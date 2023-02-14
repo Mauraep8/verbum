@@ -28,6 +28,22 @@
         text-align: center;
     }
 
+    &__popup-container{
+        height: 1rem;
+        padding: .5rem 0;
+        &--hidden{
+            visibility: hidden;
+         }
+    }
+
+    &__popup-text{
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+
+
+    }
+
     @include tablet{
         width: 50%;
         margin: 1rem 0 1rem 1rem;
