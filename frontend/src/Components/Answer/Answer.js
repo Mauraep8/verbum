@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { answerFetched, answerWritten } from '../../Store/exerciseSlice';
 import { store } from "../../Store/configureStore";
 import  axios from "axios";
+import ButtonPrimary from '../ButtonPrimary/ButtonPrimary';
 
 
 export default function Answer(props) {
@@ -306,9 +307,8 @@ export default function Answer(props) {
           </div>
         <div className='answer__input-container'>
           <input className='answer__input' type="text" placeholder='Answer'ref={answerInput}/>
-          <button className='answer__button' onClick={verify}>Verify</button>
+          <ButtonPrimary function={verify} text={'Verify'}/>
         </div>
-
       </form>
     </div>
   )

@@ -1,6 +1,5 @@
 import "./Database.scss";
 import VerbLibrary from "../../Components/VerbLibrary/VerbLibrary";
-import PopupAction from "../PopupAction/PopupAction";
 import {useSelector, useDispatch} from 'react-redux'
 import { useState, useEffect, useRef } from "react";
 import { popupClosed } from "../../Store/databaseSlice";
