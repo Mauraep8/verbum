@@ -5,7 +5,6 @@ import { useEffect, useRef } from "react";
 export default function PopupAction(props) {
     
     const popupContainer = useRef([])
-//    console.log(props.state)
 
     useEffect(()=>{
         if(props.state.popupAction === 'added'){
@@ -19,21 +18,11 @@ export default function PopupAction(props) {
         }
     })
 
-    if (props.state.length !== 0 || props.state !== undefined ){
-        if (typeof props.state.verbName === 'string' ) {
-            return(
-                <div className='popupAction' ref={popupContainer}>
-                    <p className="popupAction__text">{props.state.verbName} {props.state.popupAction}</p>
-                </div>
-            )
-        } else if (typeof props.state.message === 'string'){
-            return(
-                <div className='popupAction' ref={popupContainer}>
-                    <p className="popupAction__text">{props.state.message}</p>
-                </div>
-            )
-        }
-
+    if (props.state.length !== 0){
+        return(
+            <div className='popupAction' ref={popupContainer}>
+                <p className="popupAction__text">{props.state.verbName} {props.state.popupAction}</p>
+            </div>
+        )       
     }
-  
 }

@@ -1,25 +1,11 @@
 import "./VerbList.scss";
 import ListEntry from "../ListEntry/ListEntry";
-import { useState, useEffect } from "react";
 import PopupAction from "../PopupAction/PopupAction";
-import {useSelector} from 'react-redux'
+
 
 export default function VerbList(props)  {
 
-//    const [state, setState] = useState([])
-//    const {popupAction} = useSelector((state)=> state.database) 
-// //    console.log(popupAction)
-    
-//     useEffect(() => {
-//         setState(popupAction)
-//         setTimeout(() => {
-//             setState([])
-//         }, 2500);
-//     }, [popupAction])
-
-
-
-
+    // if search comes empty, show empty verbList container
     if (props.search === null){
         return (
             <div className="verbList">
@@ -28,6 +14,7 @@ export default function VerbList(props)  {
             </div>
         )
     }
+    // if search comes up with value, show list entry that start with search value charac
     if (props.search.length === 0){
         return (
             <div className="verbList">
@@ -51,6 +38,8 @@ export default function VerbList(props)  {
                 </div>
             </div>
         )
+        
+    // if search isn't being used, show regular list
     } else {
         return (
             <div className="verbList">

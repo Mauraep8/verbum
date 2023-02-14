@@ -3,6 +3,7 @@ import '../Answer/Answer.scss';
 import { useDispatch } from "react-redux";
 import { answerCleared, shuffleApproved, shuffleDenied, userSelectionDenied} from "../../Store/exerciseSlice";
 import { store } from "../../Store/configureStore";
+import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
 
 
 export default function Shuffle() {
@@ -387,7 +388,7 @@ export default function Shuffle() {
 
   return (
       <div className='shuffle'>
-        <button className='answer__button answer__button--secondary' onClick={getStore}>Shuffle</button>
+        <ButtonPrimary function={getStore} text={'Shuffle'}/>
       </div>
   )
 }
