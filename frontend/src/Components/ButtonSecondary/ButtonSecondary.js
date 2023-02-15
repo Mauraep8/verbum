@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { verbAdded, verbDeleted } from "../../Store/databaseSlice";
+import { verbAdded, verbDeleted, submitClicked } from "../../Store/databaseSlice";
 import { useEffect, useRef} from "react";
 import "./ButtonSecondary.scss"
 
@@ -21,6 +21,7 @@ export default function ButtonSecondary(props)  {
     
 
     const buttonHandler = () => {
+      dispatch(submitClicked({message: ''}))
       if(props.actionType === 'add'){
         dispatch(
           verbAdded({

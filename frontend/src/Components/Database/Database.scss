@@ -24,7 +24,7 @@
         padding: 1.5rem 0 1rem;
         text-align: center;
         font-weight: normal;
-        text-decoration-line: underline;
+        border-bottom: 1px solid lightgray;
     }
 
     &__popup-container{
@@ -43,7 +43,8 @@
         // border: 1px solid black;
         display: flex;
         justify-content: center;
-        padding: .5rem 0;
+        padding: 1rem 0 0;
+
     }
 
     

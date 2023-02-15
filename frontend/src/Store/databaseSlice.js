@@ -10,6 +10,7 @@ import {fetchVerbs} from './verbAPI'
 const initialState = {
     verbLibrary: [],
     userLibrary: [],
+    submitMessage: [],
     popupActionAdded: [],
     popupActionRemoved: [],
     searchVerbLibrary: [], 
@@ -152,7 +153,7 @@ const databaseSlice = createSlice({
             }
         },
         submitClicked: (state, action)=>{
-            
+            state.submitMessage = action.payload.message
             state.popupActionAdded = []
             state.popupActionRemoved = []
 
