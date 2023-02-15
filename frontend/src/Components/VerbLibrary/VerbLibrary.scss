@@ -52,6 +52,12 @@
         &__container{
             width: 100%;
         }
+
+        &__text{
+            &--tablet{
+                padding: .55rem 0;
+            }
+        }
     }
 
     @include desktop{

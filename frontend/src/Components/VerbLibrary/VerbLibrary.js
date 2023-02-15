@@ -14,6 +14,13 @@ export default function VerbLibrary(props) {
     const submitMessage = useSelector(((state)=> state.database.submitMessage))
     const dispatch = useDispatch()
 
+    const verbLibraryText = useRef([])
+
+    // VerbLibrary is misaligned bc userlist has more text in tablet mode
+    if(props.button===false){
+        verbLibraryText.current.classList.add("verbLibrary__text--tablet")
+    }
+
 
 
     const clickHandler = () => {
@@ -47,7 +54,7 @@ export default function VerbLibrary(props) {
         <div className="verbLibrary">
             <div className="verbLibrary__container">
                 <h1 className="verbLibrary__header">{props.headerText}</h1>
-                <p className="verbLibrary__text">{props.text}</p>
+                <p className="verbLibrary__text" ref={verbLibraryText}>{props.text}</p>
                 <Searchbar type={props.type} searchInputState={props.searchInput}/>
                 <VerbList list={props.list} search={props.search} actionType={props.actionType} popup={props.popup}/>
                 {props.button === true &&
