@@ -10,6 +10,7 @@
         align-items: center;
         justify-content: center;
         width: 100%;
+        margin-top: 1.5rem;
     }
 
     &__header{
@@ -18,7 +19,6 @@
         // text-decoration: underline;
         font-weight: normal;
         margin: 0;
-        padding-top: .5rem;
     }
 
     &__text{
@@ -51,6 +51,12 @@
 
         &__container{
             width: 100%;
+        }
+
+        &__text{
+            &--tablet{
+                padding: .55rem 0;
+            }
         }
     }
 

@@ -24,7 +24,7 @@
         padding: 1.5rem 0 1rem;
         text-align: center;
         font-weight: normal;
-        text-decoration-line: underline;
+        border-bottom: 1px solid lightgray;
     }
 
     &__popup-container{
@@ -40,10 +40,14 @@
     }
 
     &__icon-container{
-        // border: 1px solid black;
         display: flex;
         justify-content: center;
-        padding: .5rem 0;
+        padding: 1rem 0 0;
+
+        &--tablet{
+            display: none;
+        }
+
     }
 
     
@@ -66,14 +70,34 @@
     }
 
     @include tablet{
+
         &__main-container{
             margin: 0rem 2rem 2rem;
             // padding: 1rem 1rem 1.5rem;
         }
 
+        &__header{
+            margin-bottom: 0;
+        }
+
         &__container{
             display: flex;
             flex-direction: row;
+        }
+
+        &__icon-container{
+            // border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            padding: 5rem 0 0;
+            align-items: center;
+            font-size: 1.5rem;
+            color: gray;
+
+            &--mobile{
+                display: none;
+            }
+    
         }
     }
 
