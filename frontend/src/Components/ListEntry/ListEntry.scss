@@ -17,7 +17,7 @@
         &:hover{
             // cursor: pointer;
             // background-color: lightgray;
-            background-color: #efefef;
+            // background-color: #efefef;
         }
     }
 
@@ -30,6 +30,22 @@
     @include tablet {
         &__container{
             border-bottom: solid lightgray 1px;
+        }
+        
+        &__container{
+            display: flex;
+            border-bottom: solid lightgray 1px;
+            padding: .25rem 0 .25rem .5rem;
+        }
+
+        &__text-container{
+            display: flex;
+            align-items: center;
+
+        }
+
+        &__text{
+            font-size: .875rem;
         }
     }
 }

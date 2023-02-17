@@ -33,4 +33,10 @@
             background-color: #003b83;
         }
     }
+
+    @include tablet {
+        &__button{
+            font-size: 14px;
+        }
+    }
 }

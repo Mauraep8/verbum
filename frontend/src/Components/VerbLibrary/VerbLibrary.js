@@ -17,11 +17,11 @@ export default function VerbLibrary(props) {
     const verbLibraryText = useRef([])
 
     // VerbLibrary is misaligned bc userlist has more text in tablet mode
-    if(props.button===false){
-        verbLibraryText.current.classList.add("verbLibrary__text--tablet")
-    }
-
-
+    useEffect(() => {
+        if(props.button===false){
+            verbLibraryText.current.classList.add('verbLibrary__text--tablet')
+        }
+    }, [props.button])
 
     const clickHandler = () => {
 
