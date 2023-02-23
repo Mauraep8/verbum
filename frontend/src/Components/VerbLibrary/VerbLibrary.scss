@@ -33,7 +33,13 @@
         padding: .5rem 0;
         &--hidden{
             visibility: hidden;
-         }
+        }
+        &--secondary{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;   
+        }
     }
 
     &__popup-text{
@@ -46,8 +52,7 @@
 
     @include tablet{
         width: 50%;
-        margin: 1rem 0 1rem 1rem;
-        padding-right: 1rem;
+        margin: 1rem 0;
 
         &__container{
             width: 100%;
@@ -56,6 +61,16 @@
         &__text{
             &--tablet{
                 padding: .55rem 0;
+            }
+        }
+
+        &__popup-container{
+            &--secondary{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                position: relative;   
+                border: 1px solid black;
             }
         }
     }

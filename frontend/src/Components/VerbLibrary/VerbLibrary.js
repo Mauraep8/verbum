@@ -1,5 +1,6 @@
 import "./VerbLibrary.scss";
 import Searchbar from "../Searchbar/Searchbar";
+import PopupAction from "../PopupAction/PopupAction";
 import VerbList from "../VerbList/VerbList";
 import {useDispatch, useSelector} from "react-redux"
 import { verbListUpdateAction, verbListUpdated} from "../../Store/exerciseSlice";
@@ -56,7 +57,10 @@ export default function VerbLibrary(props) {
                 <h1 className="verbLibrary__header">{props.headerText}</h1>
                 <p className="verbLibrary__text" ref={verbLibraryText}>{props.text}</p>
                 <Searchbar type={props.type} searchInputState={props.searchInput}/>
-                <VerbList list={props.list} search={props.search} actionType={props.actionType} popup={props.popup}/>
+                <VerbList list={props.list} search={props.search} actionType={props.actionType}/>
+                <div className="verbLibrary__popup-container--secondary">
+                    <PopupAction state={props.popup} />
+                </div>
                 {props.button === true &&
                     <div className="verbLibrary__popup-container">
                         <p className="verbLibrary__popup-text">{message}</p>

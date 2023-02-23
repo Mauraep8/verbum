@@ -1,6 +1,5 @@
 import "./VerbList.scss";
 import ListEntry from "../ListEntry/ListEntry";
-import PopupAction from "../PopupAction/PopupAction";
 
 
 export default function VerbList(props)  {
@@ -18,9 +17,6 @@ export default function VerbList(props)  {
     if (props.search.length === 0){
         return (
             <div className="verbList">
-                <div className="verbList__popup-container">
-                    <PopupAction state={props.popup} />
-                </div>
                 <div className="verbList__container">
                     {props.list.map((singleVerb) =>{
                         return <ListEntry
@@ -43,9 +39,6 @@ export default function VerbList(props)  {
     } else {
         return (
             <div className="verbList">
-                <div className="verbList__popup-container">
-                    <PopupAction state={props.popup} />
-                </div>
                 <div className="verbList__container">
                     {props.search.map((singleVerb) =>{
                         return <ListEntry
