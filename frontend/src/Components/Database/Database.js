@@ -85,7 +85,8 @@ export default function Database() {
             <i className="bi-chevron-double-down"></i>       
           </div>
           <div className="database__icon-container database__icon-container--tablet">
-            <i className="bi-chevron-double-right"></i>       
+            <i className="bi-chevron-double-right"></i>     
+            <i className="bi-chevron-double-left"></i>  
           </div>
           <VerbLibrary
             headerText={"User List"}
