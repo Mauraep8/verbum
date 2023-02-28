@@ -59,7 +59,7 @@ export default function VerbLibrary(props) {
                 <Searchbar type={props.type} searchInputState={props.searchInput}/>
                 <VerbList list={props.list} search={props.search} actionType={props.actionType}/>
                 <div className="verbLibrary__popup-container--secondary">
-                    <PopupAction state={props.popup} />
+                    <PopupAction state={props.popup}/>
                 </div>
                 {props.button === true &&
                     <div className="verbLibrary__popup-container">

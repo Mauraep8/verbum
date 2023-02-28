@@ -73,7 +73,6 @@
 
         &__main-container{
             margin: 0rem 2rem 2rem;
-            // padding: 1rem 1rem 1.5rem;
         }
 
         &__header{
@@ -86,13 +85,13 @@
         }
 
         &__icon-container{
-            // border: 1px solid black;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             padding: 5rem 0 0;
             align-items: center;
             font-size: 1.5rem;
             color: gray;
+            margin: 0 2rem;
 
             &--mobile{
                 display: none;
@@ -120,4 +119,16 @@
     height: 1.5rem;
     line-height: 1rem;
     color: darkgray;
+}
+
+.bi-chevron-double-right,.bi-chevron-double-left {
+    font-size: 1.5rem;
+    height: 1.5rem;
+    line-height: 1rem;
+    color: darkgray;
+   
+}
+
+.bi-chevron-double-right{
+    margin-bottom: 1rem;
 }
