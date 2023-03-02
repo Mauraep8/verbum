@@ -31,7 +31,7 @@
         border-radius: 20px;
         box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
         padding: .3rem .5rem;
-        margin-bottom: .5rem;
+        margin-bottom: 0rem;
 
         &:hover{
             cursor: pointer;
@@ -47,11 +47,15 @@
     }
 
     &__dropmenu-wrapper--hidden{
-        display: none;
+        // display: none;
+        display: flex;
+        justify-content: center;
+        align-items: start;
     }
 
     &__dropmenu-wrapper--active{
-        display: block;
+        display: flex;
+        justify-content: center;
     }
 
     @include mid-mobile-tablet {

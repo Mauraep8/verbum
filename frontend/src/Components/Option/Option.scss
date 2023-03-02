@@ -2,12 +2,15 @@
 @use '../../Styles/Partials/mixins' as *;
 
 .option{
-    border: .3px solid lightgray;
+    // border-bottom: .3px solid lightgray;
     width: 100%;
     margin: 0;
     padding: 0;
     display: flex;   
     font-size: .875rem;
+    // border: 1px solid red;
+    height: 1rem;
+
 
     &:hover{
         cursor: pointer;
@@ -23,6 +26,8 @@
     &__text{
         margin: 0;
         padding: 0;
+        font-size: .75rem;
+        line-height: 1rem;
     }
 
     @include tablet{

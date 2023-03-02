@@ -264,6 +264,7 @@ export default function Exercise() {
         <div className='exercise__main-container'>
           <PopupMessage messageError={messageState} messageWarning={messageWarning}/>
           <h2 className='exercise__header'>Exercise</h2>
+          <p className='exercise__text'>Customize, shuffle and answer the conjugation exercise.</p>
           <div className='exercise__wrapper'>
             <div className='exercise__grammar-container'>
               <Grammar shuffleState={personState} option={personArray} type='person'/>
