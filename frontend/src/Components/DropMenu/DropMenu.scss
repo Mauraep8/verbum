@@ -43,6 +43,12 @@
             border-radius: 5px;
             height: 10%;
         }
+
+        &--hidden{
+            &::-webkit-scrollbar{
+                display: none;
+            }
+        }
     }
 
     @include tablet{
