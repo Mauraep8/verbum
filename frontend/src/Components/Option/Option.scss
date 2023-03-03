@@ -9,11 +9,14 @@
     display: flex;   
     font-size: .875rem;
     // border: 1px solid red;
-    height: 1rem;
+    height: 1.25rem;
 
 
     &:hover{
         cursor: pointer;
+        background-color: #eeeeee;
+
+
     }
 
     &__checkbox{
@@ -27,7 +30,7 @@
         margin: 0;
         padding: 0;
         font-size: .75rem;
-        line-height: 1rem;
+        line-height: 1.25rem;
     }
 
     @include tablet{

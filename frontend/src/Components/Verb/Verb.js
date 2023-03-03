@@ -5,6 +5,7 @@ import Dropmenu from "../DropMenu/DropMenu";
 import './Verb.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { verbListUpdateAction } from '../../Store/exerciseSlice';
+import DropMenuButton from '../DropMenuButton/DropMenuButton';
 
 export default function Verb(props) {
 
@@ -72,6 +73,7 @@ export default function Verb(props) {
             <button className='verb__button' ref={dropmenuButton}>{props.option[0].verbName}</button>
             <i className='bi-caret-down-fill'></i>
           </div>
+          {/* <DropMenuButton type={props.type} result={props.option[0].verbName} ref={dropmenuButton}/> */}
           <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
             <Dropmenu verbList={props.option} value={null} type={props.type}/>
           </div>
@@ -87,6 +89,7 @@ export default function Verb(props) {
               <button className='verb__button' ref={dropmenuButton}>{dropMenuText}</button>
               <i className='bi-caret-down-fill'></i>
             </div>
+          {/* <DropMenuButton type={props.type} result={dropMenuText} ref={dropmenuButton}/> */}
           <div className='verb__dropmenu-wrapper--hidden' ref={dropmenuWrapper}>
           <Dropmenu verbList={props.option} value={null} type={props.type}/>
           </div>
