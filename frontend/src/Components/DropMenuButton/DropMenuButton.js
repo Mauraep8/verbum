@@ -1,34 +1,31 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef} from 'react'
 import {useSelector} from 'react-redux'
-import '../Grammar/Grammar.scss'
+import './DropMenuButton.scss'
 
 
 export default function DropMenuButton(props) {
-
+ 
   const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
   const dropmenuButton = useRef ([])
 
   // WHEN SHUFFLE IS CLICKED BUTTONS TURN BLUE MOMENTARILY
-  useEffect(() => {
-
-    if (shuffleAction === true){
-      if (props.colorChange === true){
-        dropmenuButton.current.classList.remove('grammar__button--inactive')
-        dropmenuButton.current.classList.add('grammar__button--active')
-
+  if (shuffleAction === true){
+    if (props.colorChange === true){
+        dropmenuButton.current.classList.remove('dropmenuButton__button--inactive')
+        dropmenuButton.current.classList.add('dropmenuButton__button--active')
+                
         setTimeout(() => {
-          dropmenuButton.current.classList.add('grammar__button--inactive')
-          dropmenuButton.current.classList.remove('grammar__button--active')
-
+          dropmenuButton.current.classList.add('dropmenuButton__button--inactive')
+          dropmenuButton.current.classList.remove('dropmenuButton__button--active')               
         }, 400);     
-      }
-    }   
-  })
+    }
+  }   
+
   return (
-    <div className='grammar__button-container'>
-        <label className='grammar__button-label' htmlFor="">{props.type}</label>
-        <button className={`grammar__button grammar__button--${props.type}`} ref={dropmenuButton}>{props.result}</button>
-        <i class="bi-caret-down-fill"></i>
+    <div className='dropmenuButton'>
+        <label className='dropmenuButton__label' htmlFor="">{props.type}</label>
+        <button className={`dropmenuButton__button dropmenuButton__button--${props.type}`} ref={dropmenuButton}>{props.result}</button>
+        <i className="bi-caret-down-fill"></i>
   </div>
   )
 }

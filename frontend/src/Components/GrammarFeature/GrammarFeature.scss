@@ -1,0 +1,38 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.grammarFeature{
+
+    &__dropmenu-wrapper--hidden{
+        // display: none;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+    }
+
+    &__dropmenu-wrapper--active{
+        display: flex;
+        justify-content: center;
+    }
+
+    @include mid-mobile-tablet {
+
+    }
+
+    @include tablet{
+        margin-right: .2rem;
+
+        &__dropmenu-wrapper--hidden{
+            visibility: hidden;
+            display: block;
+        }
+
+        &__dropmenu-wrapper--active{
+            visibility: visible;
+        }
+
+    }
+    @include desktop{
+        margin-right: .5rem;
+    }
+}

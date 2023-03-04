@@ -1,0 +1,94 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.dropmenuButton{
+    position: relative;
+
+    &__label{
+        position: absolute;
+        left: .5rem;
+        font-weight: 300;
+        font-size: .75rem;
+        line-height: 23px;
+    }
+    
+    &__button{
+        // background-color: #e4e4e4;
+        background-color: #F5F5F5;
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: .8125rem;
+        line-height: 10px;
+        height: 1.5rem;
+        width: 100%;
+        border: 1px solid lightgrey;
+        border-radius: 20px;
+        box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+        padding: .3rem .5rem;
+        margin-bottom: 0rem;
+
+        &:hover{
+            cursor: pointer;
+            // background-color: lightgray;
+            background-color: #eeeeee;
+
+        }
+
+        &--active{
+            color: blue;
+        }
+        &--inactive{
+            color: black;
+        }
+    }
+    
+    @include tablet{
+
+        position: static;
+        // border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        
+    
+        &__label{
+            position: static;
+            // border: 1px solid red;
+            text-align: center;
+            height: 1.2rem;
+            font-size: 15px;            
+        }
+
+        &__button{
+            font-size: 1rem;
+            margin: .3rem 0 0;
+            height: 1.5rem;
+            box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+            &--person{
+                width: 3.9rem;
+            }
+            &--gender{
+                width: 5.3rem;
+            }
+            &--number{
+                width: 5rem
+            }
+            &--tense{
+                width: 8rem;
+            }
+            &--mood{
+                width: 6.3rem;
+            }
+            &--verb{
+                width: 6rem;
+            }
+        }
+
+    }
+
+    .bi-caret-down-fill{
+        font-size: 10px;
+        position: absolute;
+        right: .5rem;
+        top: .45rem;
+    }
+}

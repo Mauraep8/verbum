@@ -3,6 +3,7 @@ import '../Answer/Answer.scss';
 import { useDispatch } from "react-redux";
 import { answerCleared, shuffleApproved, shuffleDenied, userSelectionDenied} from "../../Store/exerciseSlice";
 import { store } from "../../Store/configureStore";
+import { verbListUpdateAction } from '../../Store/exerciseSlice';
 import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
 
 
@@ -11,6 +12,10 @@ export default function Shuffle() {
   const dispatch = useDispatch()  
 
   const getStore = () => {
+
+    // after verblist is updated, must falsify action, to allow shuffling to occur
+    dispatch(verbListUpdateAction(false))
+
 
     //clear previous answers
     dispatch(answerCleared([]))
