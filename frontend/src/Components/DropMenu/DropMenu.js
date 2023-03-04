@@ -17,12 +17,12 @@ export default function DropMenu(props) {
     }
   })
 
-  if (props.verb === null){
+  if (props.type !== 'verb'){
     return (  
       <div className='dropmenu'>
             <div className={`dropmenu__option-container dropmenu__option-container--${props.type}`}>
               <div className='dropmenu__scroll' ref={scroll}>
-                {props.value.map((singleOption) =>{
+                {props.list.map((singleOption) =>{
                   return <Option
                   key={singleOption.id}
                   optionType={'grammar'}
@@ -43,13 +43,13 @@ export default function DropMenu(props) {
              </div>   
       </div>
     )
-  } else if (props.value === null){
+  } else if (props.type === 'verb'){
     // console.log(props)
     return (  
       <div className='dropmenu'>
             <div className='dropmenu__option-container'>
               <div className='dropmenu__scroll' ref={scroll}>
-                  {props.verbList.map((singleOption) =>{
+                  {props.list.map((singleOption) =>{
                     return <Option
                     key={singleOption.id}
                     optionType={'verb'}

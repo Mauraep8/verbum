@@ -2,11 +2,7 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .dropmenuButton{
-
-
-        // border: 1px solid black;r
-        position: relative;
-    
+    position: relative;
 
     &__label{
         position: absolute;
@@ -19,8 +15,6 @@
     &__button{
         // background-color: #e4e4e4;
         background-color: #F5F5F5;
-
-        // background-color: red;
         font-family: 'Roboto';
         font-weight: 400;
         font-size: .8125rem;
@@ -50,11 +44,10 @@
     
     @include tablet{
 
-        
-            position: static;
-            // border: 1px solid black;
-            display: flex;
-            flex-direction: column;
+        position: static;
+        // border: 1px solid black;
+        display: flex;
+        flex-direction: column;
         
     
         &__label{
@@ -84,6 +77,9 @@
             }
             &--mood{
                 width: 6.3rem;
+            }
+            &--verb{
+                width: 6rem;
             }
         }
 

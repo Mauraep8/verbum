@@ -1,6 +1,4 @@
 import React, {useEffect} from 'react'
-import Verb from '../Verb/Verb'
-import Grammar from '../Grammar/Grammar'
 import Answer from '../Answer/Answer'
 import PopupMessage from "../PopupMessage/PopupMessage";
 import { personArray, genderArray, numberArray, tenseArray, moodArray } from '../../Utils/GrammarArrayValue'
@@ -9,6 +7,7 @@ import './Exercise.scss'
 import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
 import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled, verbShuffled, answerCompared} from "../../Store/exerciseSlice";
+import GrammarFeature from '../GrammarFeature/GrammarFeature';
 
 
 
@@ -267,13 +266,13 @@ export default function Exercise() {
           <p className='exercise__text'>Customize, shuffle and answer the conjugation exercise.</p>
           <div className='exercise__wrapper'>
             <div className='exercise__grammar-container'>
-              <Grammar shuffleState={personState} option={personArray} type='person'/>
-              <Grammar shuffleState={genderState} option={genderArray} type='gender'/>
-              <Grammar shuffleState={numberState} option={numberArray} type='number'/>
-              <Grammar shuffleState={tenseState} option={tenseArray} type='tense'/>
-              <Grammar shuffleState={moodState} option={moodArray} type='mood'/>
+              <GrammarFeature shuffleState={personState} option={personArray} type='person'/>
+              <GrammarFeature shuffleState={genderState} option={genderArray} type='gender'/>
+              <GrammarFeature shuffleState={numberState} option={numberArray} type='number'/>
+              <GrammarFeature shuffleState={tenseState} option={tenseArray} type='tense'/>
+              <GrammarFeature shuffleState={moodState} option={moodArray} type='mood'/>
             </div>
-            <Verb shuffleState={verbState} option={verbListState} type='verb'/>
+            <GrammarFeature shuffleState={verbState} option={verbListState} type='verb'/>
             <div className='exercise__answer-container'>
               <Answer answer={resultAnswer} />
               <Shuffle/>
