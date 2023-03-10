@@ -8,6 +8,10 @@ export default function DropMenuButton(props) {
   const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
   const dropmenuButton = useRef ([])
 
+  const clickHandler = (e) =>{
+    props.function(dropmenuButton, e)
+  }
+
   // WHEN SHUFFLE IS CLICKED BUTTONS TURN BLUE MOMENTARILY
   if (shuffleAction === true){
     if (props.colorChange === true){
@@ -24,7 +28,7 @@ export default function DropMenuButton(props) {
   return (
     <div className='dropmenuButton'>
         <label className='dropmenuButton__label' htmlFor="">{props.type}</label>
-        <button className={`dropmenuButton__button dropmenuButton__button--${props.type}`} ref={dropmenuButton}>{props.result}</button>
+        <button className={`dropmenuButton__button dropmenuButton__button--${props.type}`} ref={dropmenuButton} onClick={clickHandler}>{props.result}</button>
         <i className="bi-caret-down-fill"></i>
   </div>
   )

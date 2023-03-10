@@ -3,16 +3,21 @@
 
 .grammarFeature{
 
+    &__container{
+        // border: 1px solid red;
+    }
+
     &__dropmenu-wrapper--hidden{
         // display: none;
+        border: 1px solid black;
         display: flex;
         justify-content: center;
-        align-items: start;
     }
 
     &__dropmenu-wrapper--active{
         display: flex;
         justify-content: center;
+        margin-bottom: .3rem;
     }
 
     @include mid-mobile-tablet {
