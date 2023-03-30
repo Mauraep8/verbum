@@ -16,4 +16,6 @@ model verbs {
   specialVerb   String? @db.Text
   auxiliaryVerb String? @db.Text
   initialVerb   String? @db.Text
+  value         String  @db.Text
+  label         String  @db.Text
 }

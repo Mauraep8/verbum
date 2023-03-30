@@ -22,7 +22,6 @@ export default function Database() {
   const popupActionAdded = useSelector((state)=> state.database.popupActionAdded) 
   const popupActionRemoved = useSelector((state)=> state.database.popupActionRemoved) 
 
-
   const dispatch = useDispatch()
 
   let prevPopupState = useRef([])
