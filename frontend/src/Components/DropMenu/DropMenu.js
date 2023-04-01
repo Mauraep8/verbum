@@ -1,56 +1,52 @@
 import React, {useEffect, useRef, useState} from 'react'
 import DropMenuButton from '../DropMenuButton/DropMenuButton'
 import DropMenuList from '../DropMenuList/DropMenuList'
+import {useDispatch} from 'react-redux'
 import "./DropMenu.scss";
+import { shuffleCleared } from '../../Store/exerciseSlice';
+
 
 
 export default function DropMenu(props) {
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [showDropmenu, setShowDropmenu] = useState(false)
+    const buttonRef = useRef(null)
+    const menuRef = useRef(null)
+    const dispatch = useDispatch()
 
-    
-    const dropmenuWrapper = useRef ([])
+    useEffect(() => {
+      const handler = (e) => {        
+        if (buttonRef.current && !buttonRef.current.contains(e.target)){
+        setShowDropmenu(false)
 
+    }}
 
-    const optionClickHandler = (e) =>{
-        e.stopPropagation()
-        setIsOpen(true)        
+    if (showDropmenu===true){
+        menuRef.current.classList.add('dropmenu__menu--visible')
+        menuRef.current.classList.remove('dropmenu__menu--hidden')
+        dispatch(shuffleCleared())
+    } else {
+        menuRef.current.classList.remove('dropmenu__menu--visible')
+        menuRef.current.classList.add('dropmenu__menu--hidden')
+        dispatch(shuffleCleared())
     }
 
-
+      window.addEventListener('click', handler)
     
-    const clickHandler = (button, e)=>{
-        console.log(button.current)
-        console.log(e.target)
+      return () => {
+        window.removeEventListener('click', handler)
+      }
+    })
 
-        if (button.current && button.current.contains(e.target)){
-            console.log('hello')
-            setIsOpen(false)
-        }
-        setIsOpen(!isOpen)
+    const handleInputClick = () => {
+        setShowDropmenu(!showDropmenu)
     }
-    console.log(isOpen)
     
-    useEffect(() => {    
-        if (isOpen){
-            dropmenuWrapper.current.classList.remove('dropmenu__wrapper--hidden')
-            dropmenuWrapper.current.classList.add('dropmenu__wrapper--visible')
-    
-        } else {
-            dropmenuWrapper.current.classList.add('dropmenu__wrapper--hidden')
-            dropmenuWrapper.current.classList.remove('dropmenu__wrapper--visible')
-        }
-    }, [isOpen])
-
-
-
-
-
     return (
         <div className='dropmenu'>
-            <DropMenuButton type={props.type} result={props.result} colorChange={props.colorChange} function={clickHandler}/>
-            <div className='dropmenu__wrapper dropmenu__wrapper--hidden' ref={dropmenuWrapper} >
-                <DropMenuList list={props.list} type={props.type} function={optionClickHandler}/>
+            <DropMenuButton type={props.type} result={props.result} ref={buttonRef} colorChange={props.colorChange} function={handleInputClick}/>
+            <div className='dropmenu__menu' ref={menuRef}>
+                <DropMenuList list={props.list} type={props.type}/>
             </div>
         </div>
   )

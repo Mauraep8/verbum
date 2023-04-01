@@ -3,12 +3,12 @@
 
 .dropmenu{
 
-    &__wrapper{
+    &__menu{
 
         &--hidden{
             display: none;
         }
-        &--visible{
+        &--visible{            
             display: flex;
             justify-content: center;
             margin-bottom: .3rem;

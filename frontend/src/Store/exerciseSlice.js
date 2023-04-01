@@ -139,6 +139,9 @@ const exerciseSlice = createSlice({
       state.shuffleState = newObject;
       state.shuffleAction = true;
     },
+    shuffleCleared: (state, action) => {
+      state.shuffleAction = false;
+    },
     userSelectionDenied: (state, action) => {
       state.userSelectionMessage = action.payload;
       state.shuffleAction = false; 
@@ -198,5 +201,5 @@ const exerciseSlice = createSlice({
   },
 });
 
-export const { answerCleared, answerCompared, answerFetched, answerWritten,verbListUpdateAction, verbListUpdated, messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, verbShuffled, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
+export const { shuffleCleared,answerCleared, answerCompared, answerFetched, answerWritten,verbListUpdateAction, verbListUpdated, messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, verbShuffled, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer
