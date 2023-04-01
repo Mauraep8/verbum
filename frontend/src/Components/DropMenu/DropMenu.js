@@ -4,54 +4,35 @@ import DropMenuList from '../DropMenuList/DropMenuList'
 import "./DropMenu.scss";
 
 
+
 export default function DropMenu(props) {
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [showDropmenu, setShowDropmenu] = useState(false)
+    const buttonRef = useRef(null)
 
+    useEffect(() => {
+      const handler = (e) => {        
+        if (buttonRef.current && !buttonRef.current.contains(e.target)){
+        setShowDropmenu(false)
+    }}
+
+      window.addEventListener('click', handler)
     
-    const dropmenuWrapper = useRef ([])
+      return () => {
+        window.removeEventListener('click', handler)
+      }
+    })
 
-
-    const optionClickHandler = (e) =>{
-        e.stopPropagation()
-        setIsOpen(true)        
+    const handleInputClick = () => {
+        setShowDropmenu(!showDropmenu)
     }
-
-
     
-    const clickHandler = (button, e)=>{
-        console.log(button.current)
-        console.log(e.target)
-
-        if (button.current && button.current.contains(e.target)){
-            console.log('hello')
-            setIsOpen(false)
-        }
-        setIsOpen(!isOpen)
-    }
-    console.log(isOpen)
-    
-    useEffect(() => {    
-        if (isOpen){
-            dropmenuWrapper.current.classList.remove('dropmenu__wrapper--hidden')
-            dropmenuWrapper.current.classList.add('dropmenu__wrapper--visible')
-    
-        } else {
-            dropmenuWrapper.current.classList.add('dropmenu__wrapper--hidden')
-            dropmenuWrapper.current.classList.remove('dropmenu__wrapper--visible')
-        }
-    }, [isOpen])
-
-
-
-
-
     return (
         <div className='dropmenu'>
-            <DropMenuButton type={props.type} result={props.result} colorChange={props.colorChange} function={clickHandler}/>
-            <div className='dropmenu__wrapper dropmenu__wrapper--hidden' ref={dropmenuWrapper} >
-                <DropMenuList list={props.list} type={props.type} function={optionClickHandler}/>
-            </div>
+            <DropMenuButton type={props.type} result={props.result} ref={buttonRef} colorChange={props.colorChange} function={handleInputClick}/>
+            {showDropmenu && <div className='dropmenu__menu'>
+                <DropMenuList list={props.list} type={props.type}/>
+            </div>}
         </div>
   )
 }

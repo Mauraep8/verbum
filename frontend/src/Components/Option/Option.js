@@ -11,8 +11,8 @@ export default function Option(props) {
   const dispatch = useDispatch()
   const input = useRef([])
 
-  function clickHandler() {
-    props.function()
+  function clickHandler(e) {
+    e.stopPropagation()
     setChecked(!checked)
   }
 
@@ -40,7 +40,6 @@ export default function Option(props) {
     <div className={`option option--${props.dropmenuType}`} onClick={clickHandler}>
           <input className='option__checkbox' type="checkbox" checked={checked}  onClick={clickHandler} onChange={()=>{setChecked(!checked)}} ref={input}/>
           <label className='option__text'>{props.value}</label>
-
     </div>
   )
 }
