@@ -38,8 +38,8 @@ export default function Option(props) {
 
   return (
     <div className={`option option--${props.dropmenuType}`} onClick={clickHandler}>
-          <input className='option__checkbox' type="checkbox" checked={checked}  onClick={clickHandler} onChange={()=>{setChecked(!checked)}} ref={input}/>
-          <label className='option__text'>{props.value}</label>
+      <input className='option__checkbox' type="checkbox" checked={checked}  onClick={clickHandler} onChange={()=>{setChecked(!checked)}} ref={input}/>
+      <label className='option__text'>{props.value}</label>
     </div>
   )
 }
