@@ -5,27 +5,25 @@ import React, {useRef, useEffect} from 'react'
 
 export default function DropMenu(props) {
 
-  // console.log(props)
   const scroll = useRef([])
 
   useEffect(()=>{
     if (props.type === 'tense' || props.type ==='verb'){
-      scroll.current.classList.add('dropmenu__scroll--active')
+      scroll.current.classList.add('dropMenuList__scroll--active')
     }
     if(props.type === 'gender' || props.type === 'number'){
-      scroll.current.classList.add('dropmenu__scroll--hidden')
+      scroll.current.classList.add('dropMenuList__scroll--hidden')
     }
   })
 
   if (props.type !== 'verb'){
     return (  
-      <div className='dropmenu'>
-            <div className={`dropmenu__option-container dropmenu__option-container--${props.type}`}>
-              <div className='dropmenu__scroll' ref={scroll}>
+      <div className='dropMenuList'>
+            <div className={`dropMenuList__container dropMenuList__container--${props.type}`}>
+              <div className='dropMenuList__scroll' ref={scroll}>
                 {props.list.map((singleOption) =>{
                   return <Option
                   key={singleOption.id}
-                  optionType={'grammar'}
                   value={singleOption.option}
                   category={singleOption.category}
                   verbName={null}
@@ -37,7 +35,6 @@ export default function DropMenu(props) {
                   auxiliaryVerb={null}
                   apiFormat={singleOption.apiFormat}
                   dropmenuType={props.type}
-                  function={props.function}
                   />                
                 })}
                 </div>
@@ -47,13 +44,12 @@ export default function DropMenu(props) {
   } else if (props.type === 'verb'){
     // console.log(props)
     return (  
-      <div className='dropmenu'>
-            <div className='dropmenu__option-container'>
-              <div className='dropmenu__scroll' ref={scroll}>
+      <div className='dropMenuList'>
+            <div className={`dropMenuList__container dropMenuList__container--${props.type}`}>
+              <div className='dropMenuList__scroll' ref={scroll}>
                   {props.list.map((singleOption) =>{
                     return <Option
                     key={singleOption.id}
-                    optionType={'verb'}
                     value={singleOption.verbName}
                     category={'verb'}
                     verbName={singleOption.verbName}
@@ -65,7 +61,6 @@ export default function DropMenu(props) {
                     auxiliaryVerb={singleOption.auxiliaryVerb}
                     apiFormat={null}
                     dropmenuType={props.type}
-                    function={props.function}
                     />
                   })}
                 </div>

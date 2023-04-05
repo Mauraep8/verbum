@@ -265,14 +265,14 @@ export default function Exercise() {
           <h2 className='exercise__header'>Exercise</h2>
           <p className='exercise__text'>Customize, shuffle and answer the conjugation exercise.</p>
           <div className='exercise__wrapper'>
-            <div className='exercise__grammar-container'>
+            <div className='exercise__container'>
               <GrammarFeature shuffleState={personState} option={personArray} type='person'/>
               <GrammarFeature shuffleState={genderState} option={genderArray} type='gender'/>
               <GrammarFeature shuffleState={numberState} option={numberArray} type='number'/>
               <GrammarFeature shuffleState={tenseState} option={tenseArray} type='tense'/>
               <GrammarFeature shuffleState={moodState} option={moodArray} type='mood'/>
+              <GrammarFeature shuffleState={verbState} option={verbListState} type='verb'/>
             </div>
-            <GrammarFeature shuffleState={verbState} option={verbListState} type='verb'/>
             <div className='exercise__answer-container'>
               <Answer answer={resultAnswer} />
               <Shuffle/>

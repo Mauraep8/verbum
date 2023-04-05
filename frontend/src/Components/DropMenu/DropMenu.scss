@@ -14,4 +14,22 @@
             margin-bottom: .3rem;
         }
     }
+
+    @include tablet{
+        &__menu{
+
+            &--hidden{
+                display: block;
+                visibility: hidden;
+            }
+            &--visible{            
+                display: flex;
+                justify-content: center;
+                margin-bottom: .3rem;
+              
+
+            }
+        }
+
+    }
 }
