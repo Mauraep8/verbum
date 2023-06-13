@@ -19,11 +19,14 @@
         &__menu{
 
             &--hidden{
-                display: block;
+                display: flex;
                 visibility: hidden;
+                margin-bottom: .3rem;
+
             }
             &--visible{            
                 display: flex;
+                visibility: visible;
                 justify-content: center;
                 margin-bottom: .3rem;
               

@@ -42,12 +42,13 @@
     }
 
     @include tablet{
-        position: static;
 
+        position: static;
+        
         &__container{
             margin-top: .3rem;
             position: static;
-            align-items: center;
+            align-content: flex-start;
             height: 100%;
             border: none;
             z-index: 0;
