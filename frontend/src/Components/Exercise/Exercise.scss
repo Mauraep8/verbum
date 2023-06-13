@@ -57,17 +57,28 @@
         }
         &__container{
             display: flex;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            height: 90%;
         }
         &__wrapper{
             display: flex;
+            flex-direction: column;
             justify-content: center;
+            margin: 0 1rem;
+
+        }
+
+        &__answer-container{
+            display: flex;
+            flex-direction: row;
+
         }
     }
 
     @include mid-tablet-desktop {
         &__answer-container{
             display: flex;
+            
         }
     }
     

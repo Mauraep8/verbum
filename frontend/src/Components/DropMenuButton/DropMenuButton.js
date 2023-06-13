@@ -27,7 +27,9 @@ const DropMenuButton = forwardRef(function DropMenuButton(props, ref) {
   return (
     <div className='dropmenuButton'>
         <label className='dropmenuButton__label'>{props.type}</label>
-        <button className={`dropmenuButton__button dropmenuButton__button--${props.type}`} ref={ref} onClick={clickHandler}>{props.result}</button>
+        <button className={`dropmenuButton__button dropmenuButton__button--${props.type}`} ref={ref} onClick={clickHandler}>
+          <label className={'dropmenuButton__button-label'}>{props.result}</label>
+        </button>
         <i className="bi-caret-down-fill"></i>
   </div>
   )
