@@ -44,6 +44,8 @@
     @include tablet{
 
         position: static;
+
+        // height: 100%;
         
         &__container{
             margin-top: .3rem;
@@ -54,12 +56,16 @@
             z-index: 0;
             width: 100%;
             border: .3px solid lightgray;
+            height: fit-content;
 
             &--tense{
                 height: 5.1rem;
             }
-            &--verb{
+            &--verb-long{
                 height: 5.1rem;
+            }
+            &--verb-short{
+                height: fit-content;
             }
 
 
@@ -67,6 +73,7 @@
         &__scroll{
             overflow-y: hidden;
             overflow-x: hidden;
+            background-color: #fcfcfc;
 
             &--active{
                 overflow-y: scroll;   
