@@ -16,7 +16,14 @@
     }
 
     @include tablet{
+
+        position: relative;
+
         &__menu{
+
+            position: absolute;
+            
+            z-index: 1;
 
             &--hidden{
                 display: flex;

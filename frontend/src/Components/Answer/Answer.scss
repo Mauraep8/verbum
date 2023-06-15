@@ -95,6 +95,11 @@
             }
         }
 
+        &__input-container{
+            display: flex;
+            flex-direction: row;
+        }
+
         &__button{
             height: 1.5rem;
             width: 100%;
