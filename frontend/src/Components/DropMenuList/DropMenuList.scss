@@ -43,33 +43,25 @@
 
     @include tablet{
 
-        position: static;
-
-        // height: 100%;
+        width: 100%;
         
         &__container{
             margin-top: .3rem;
-            position: static;
-            align-content: flex-start;
-            height: 100%;
-            border: none;
-            z-index: 0;
-            width: 100%;
-            border: .3px solid lightgray;
             height: fit-content;
+            border: 1px solid lightgray;
+            border-radius: inherit;
 
             &--tense{
                 height: 5.1rem;
             }
             &--verb-long{
-                height: 5.1rem;
+                height: 5rem;
             }
             &--verb-short{
                 height: fit-content;
             }
-
-
         }       
+
         &__scroll{
             overflow-y: hidden;
             overflow-x: hidden;

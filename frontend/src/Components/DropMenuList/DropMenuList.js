@@ -15,7 +15,7 @@ export default function DropMenu(props) {
     if(props.type === 'gender' || props.type === 'number'){
       scroll.current.classList.add('dropMenuList__scroll--hidden')
     }
-    if(props.type === 'verb' && props.list.length < 4){
+    if(props.type === 'verb' && props.list.length <= 4){
       verbList.current.classList.add('dropMenuList__container--verb-short')
       verbList.current.classList.remove('dropMenuList__container--verb-long')   
       scroll.current.classList.add('dropMenuList__scroll--hidden')

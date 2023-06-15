@@ -19,11 +19,12 @@
 
         position: relative;
 
-        &__menu{
 
+        &__menu{
+            width: 98%;
             position: absolute;
-            
             z-index: 1;
+
 
             &--hidden{
                 display: flex;
