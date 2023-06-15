@@ -36,27 +36,13 @@
         }
     }
 
-    @include tablet{
-        width: 5rem;
+    @include tablet {
+         
         margin: 0;
         font-size: .8rem;
         line-height: 19px;
 
-        &--person{
-            width: 3.5rem;
-        }
-        &--gender{
-            width: 4.8rem
-        }
-        &--number{
-            width: 4.7rem;
-        }
-        &--tense{
-            width: 7rem;
-        }
-        &--mood {
-            width: 5.9rem
-        }
+
     }
     @include mid-tablet-desktop{
         // font-size: .9rem;
