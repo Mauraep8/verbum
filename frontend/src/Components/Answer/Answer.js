@@ -16,6 +16,8 @@ export default function Answer(props) {
   const inputWarning = useRef([])
   const falseAnswerText = useRef([])
   const correctAnswerText = useRef([])
+  const correctCheckmark = useRef([])
+  const falseX = useRef([])
 
 
   const [correctAnswer, setCorrectAnswer ] = useState([])
@@ -283,10 +285,14 @@ export default function Answer(props) {
       falseAnswerText.current.classList.add('answer__text--visible')
       answerInput.current.classList.add('answer__input-text--error')
       setCorrectAnswer(props.answer.answer)
+      falseX.current.classList.add('bi-x--visible')
+
     } else {
       answerInput.current.classList.add('answer__input-text--correct')
       correctAnswerText.current.classList.remove('answer__text--hidden')
       correctAnswerText.current.classList.add('answer__text--visible')
+      correctCheckmark.current.classList.add('bi-check--visible')
+
 
     }
   } else {
@@ -295,6 +301,9 @@ export default function Answer(props) {
     correctAnswerText.current.classList.remove('answer__text--visible')
     correctAnswerText.current.classList.add('answer__text--hidden')
     answerInput.current.value = ''
+    correctCheckmark.current.classList.remove('bi-check--visible')
+    falseX.current.classList.remove('bi-x--visible')
+
   }
  }, [props.answer])
  
@@ -303,11 +312,13 @@ export default function Answer(props) {
       <form className='answer__form'>
         <div className='answer__text-container'>
             <p className='answer__text answer__text--hidden answer__text--primary' ref={correctAnswerText}>Correct!</p>
-            <p className='answer__text answer__text--hidden answer__text--secondary' ref={falseAnswerText}>False! {correctAnswer}</p>
+            <p className='answer__text answer__text--hidden answer__text--secondary' ref={falseAnswerText}>Answer: {correctAnswer}</p>
             <p className='answer__text answer__text--hidden answer__text--secondary' ref={inputWarning}>Please enter your answer</p>
           </div>
         <div className='answer__input-container'>
           <input className='answer__input' type="text" placeholder='Answer'ref={answerInput}/>
+          <i class="bi bi-check" ref={correctCheckmark}></i>
+          <i class="bi bi-x" ref={falseX}></i>
         </div>
         <div className='answer__button-container'>
           <ButtonPrimary function={verify} text={'Verify'}/>
