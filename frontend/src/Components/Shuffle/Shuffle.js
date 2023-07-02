@@ -5,6 +5,7 @@ import { answerCleared, shuffleApproved, shuffleDenied, userSelectionDenied} fro
 import { store } from "../../Store/configureStore";
 import { verbListUpdateAction } from '../../Store/exerciseSlice';
 import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
+import './Shuffle.scss'
 
 
 export default function Shuffle() {
