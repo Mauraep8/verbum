@@ -58,7 +58,12 @@
     @include tablet{
         flex-direction: row;
         justify-content: space-between;
+
         padding: 0 1.5rem;
+
+        &__header-container{
+            align-items: center;
+        }
 
         &__header{
             padding: 0 1rem;

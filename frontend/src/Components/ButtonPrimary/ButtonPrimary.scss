@@ -35,9 +35,14 @@
     }
 
     @include tablet {
+
+        width: 7.4rem;
+        margin: 0;
         &__button{
             font-size: 15px;
-            width: 100%;
+            width: 7.4rem;    
+            margin-left: .5rem;
+
         }
     }
 }
