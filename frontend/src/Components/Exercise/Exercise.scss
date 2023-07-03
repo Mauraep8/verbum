@@ -97,6 +97,8 @@
     @include mid-tablet-desktop {
         &__main-container{
             margin: 2rem 5%;
+            padding: 1rem 2.5rem 2rem;
+            
         }
     }
 
@@ -105,6 +107,7 @@
         
         &__main-container{
             margin: 2rem 10%;
+
 
         }
 
