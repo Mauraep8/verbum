@@ -46,11 +46,9 @@
 
         display: flex;
         flex-direction: column;
-        
     
         &__label{
             position: static;
-            // border: 1px solid red;
             text-align: center;
             height: 1.2rem;
             font-size: 15px;            
@@ -91,6 +89,24 @@
 
         }
 
+    }
+
+    @include mid-tablet-desktop{
+        &__button{
+            width: 8rem;
+            text-align: center;
+
+            &--tense{
+                width: 10rem;
+            }
+        }
+
+        &__button-label{
+            position: static;
+            text-align: center;
+
+
+        }
     }
 
     .bi-caret-down-fill{

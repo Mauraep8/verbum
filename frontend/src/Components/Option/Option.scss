@@ -7,7 +7,7 @@
     margin: 0;
     padding: 0;
     display: flex;   
-    font-size: .875rem;
+
     // border: 1px solid red;
     height: 1.25rem;
 
@@ -45,6 +45,18 @@
 
     }
     @include mid-tablet-desktop{
-        // font-size: .9rem;
+        height: 1.5rem;
+
+        &__text{
+            font-size: 1rem;
+            line-height: 1.5rem;
+            margin-left: .3rem;
+        }
+
+        &__checkbox{
+
+            transform: scale(1.2);
+
+        }
     }
 }
