@@ -7,7 +7,6 @@ export const personCheckedArray = [
 export const genderArrayChecked = [
   { value: "féminin", status: true, category: "gender", apiFormat:null },
   { value: "masculin", status: true, category: "gender", apiFormat:null },
-  // { value: "-none-", status: true, category: "gender", apiFormat:null },
 ];
 export const numberArrayChecked = [
   { value: "singulier", status: true, category: "number", apiFormat:1 },
