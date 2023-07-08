@@ -129,15 +129,28 @@
     }
 
     @include mid-tablet-desktop {
+        width: 50%;
+        margin-top: 1rem;
+        &__form{
+            justify-content: center;
+            width:100%;
+        }
 
         &__text-container{
             display: flex;
             padding-left: .5rem;
             justify-content: left;
+            // border: 1px solid blue;
+            width: 100%;
+        }
+
+        &__input-container{
+            width: 70%;
+            // border: 1px solid red;
         }
 
         &__input{
-            width: 9rem;
+            // width: 75%;
         }
     }
 

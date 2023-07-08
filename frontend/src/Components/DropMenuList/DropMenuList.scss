@@ -89,4 +89,17 @@
             }
         }
     }
+
+    @include mid-tablet-desktop{
+
+        &__container{
+            &--tense{
+                height: 6rem;
+            }
+            &--verb-long{
+                height: 6rem;
+            }
+        }
+
+    }
 }
