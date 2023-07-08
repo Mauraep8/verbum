@@ -70,6 +70,11 @@
         }
 
     }
+    @include mid-tablet-desktop{
+        &__list-item{
+            font-size: 1rem;
+        }
+    }
 
     @include desktop{
         padding: 0 10%;
