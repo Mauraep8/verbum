@@ -8,8 +8,8 @@ import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
 import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled, verbShuffled, answerCompared} from "../../Store/exerciseSlice";
 import GrammarFeature from '../GrammarFeature/GrammarFeature';
-import {present,passeCompose,imparfait,plusQueParfait,passe,passeSimple,passeAnterieur,futurSimple,futurAnterieur, thirdPerson, secondPerson, firstPerson, plural, singular, masculin} from '../../Utils/grammarTerms'
-import {indicative,imperative,subjonctive,conditional} from '../../Utils/grammarTerms'
+import {indicative,imperative,subjunctive,conditional,present,passeCompose,imparfait,plusQueParfait,passe,passeSimple,passeAnterieur,futurSimple,futurAnterieur, thirdPerson, secondPerson, firstPerson, plural, singular, masculin} from '../../Utils/grammarTerms'
+
 
 
 
@@ -121,7 +121,7 @@ export default function Exercise() {
             }
 
           // if subjonctif
-          } else if (moodResult.result.value === subjonctive) {
+          } else if (moodResult.result.value === subjunctive) {
             
             // if verb is traire #61 or clore #70 or #72, take out imparfait
             if (verbResult.result.bescherelleId === 61|| verbResult.result.bescherelleId === 70 || verbResult.result.bescherelleId === 72){
