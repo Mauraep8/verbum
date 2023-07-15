@@ -19,6 +19,6 @@ export const futurSimple = "futur simple"
 export const futurAnterieur = "futur antérieur"
 
 export const indicative = 'indicatif'
-export const subjonctive = 'subjonctif'
+export const subjunctive = 'subjonctif'
 export const imperative = "impératif"
 export const conditional = 'conditionnel'
