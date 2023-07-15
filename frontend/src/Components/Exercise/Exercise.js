@@ -8,6 +8,8 @@ import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
 import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled, verbShuffled, answerCompared} from "../../Store/exerciseSlice";
 import GrammarFeature from '../GrammarFeature/GrammarFeature';
+import {present,passeCompose,imparfait,plusQueParfait,passe,passeSimple,passeAnterieur,futurSimple,futurAnterieur, thirdPerson, secondPerson, firstPerson, plural, singular, masculin} from '../../Utils/grammarTerms'
+import {indicative,imperative,subjonctive,conditional} from '../../Utils/grammarTerms'
 
 
 
@@ -54,7 +56,7 @@ export default function Exercise() {
 
            //verbs without imperatif #45 pleuvoir #46 falloir
           if (verbResult.result.bescherelleId === 43 || verbResult.result.bescherelleId === 45 || verbResult.result.bescherelleId === 46){
-            const filteredMood = shuffleState.moodArrayChecked.filter(obj => obj.value !== 'impératif')
+            const filteredMood = shuffleState.moodArrayChecked.filter(obj => obj.value !== imperative)
             const shuffledMood = shuffleArray(filteredMood)
             dispatch(moodShuffled(shuffledMood))
             return shuffledMood
@@ -71,17 +73,17 @@ export default function Exercise() {
         const shuffleTense = () =>{
 
           // if indicatif
-          if (moodResult.result.value === 'indicatif'){
+          if (moodResult.result.value === indicative){
 
             // if verb is clore #70, take out imparfait and passe simple
             if (verbResult.result.bescherelleId === 70){
               const filteredTense = shuffleState.tenseArrayChecked.filter((obj) =>
-                  obj.value === "présent" || 
-                  obj.value === "passé composé"||
-                  obj.value === "plus-que-parfait" || 
-                  obj.value === "passé antérieur" || 
-                  obj.value === "futur simple" || 
-                  obj.value === "futur antérieur"
+                  obj.value === present || 
+                  obj.value === passeCompose ||
+                  obj.value === plusQueParfait || 
+                  obj.value === passeAnterieur || 
+                  obj.value === futurSimple || 
+                  obj.value === futurAnterieur
               );
               const shuffledTense = shuffleArray(filteredTense)
               dispatch(tenseShuffled(shuffledTense)) 
@@ -89,55 +91,55 @@ export default function Exercise() {
             
             // if verb is traire #61 or absoudre #72, take out passe simple
             } else if (verbResult.result.bescherelleId === 61 || verbResult.result.bescherelleId === 72){
-              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé simple')
+              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== passeSimple)
               const shuffledTense = shuffleArray(filteredTense)
               dispatch(tenseShuffled(shuffledTense)) 
               return shuffledTense
 
             } else {
-            const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== 'passé')
+            const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value !== passe)
             const shuffledTense = shuffleArray(filteredTense)
             dispatch(tenseShuffled(shuffledTense)) 
             return shuffledTense
             }
                        
           // if imperatif
-          } else if (moodResult.result.value === 'impératif') {
+          } else if (moodResult.result.value === imperative) {
 
             // if verb id #3 or #4 and imperatif 
             if (verbResult.result.bescherelleId === 3 || verbResult.result.bescherelleId === 4){
-              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'présent')
+              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === present)
               const shuffledTense = shuffleArray(filteredTense)
               dispatch(tenseShuffled(shuffledTense)) 
               return shuffledTense
 
             } else {
-              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent')
+              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === passe || obj.value === present)
               const shuffledTense = shuffleArray(filteredTense)
               dispatch(tenseShuffled(shuffledTense)) 
               return shuffledTense
             }
 
           // if subjonctif
-          } else if (moodResult.result.value === 'subjonctif') {
+          } else if (moodResult.result.value === subjonctive) {
             
             // if verb is traire #61 or clore #70 or #72, take out imparfait
             if (verbResult.result.bescherelleId === 61|| verbResult.result.bescherelleId === 70 || verbResult.result.bescherelleId === 72){
-              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'plus-que-parfait')
+              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === passe || obj.value === present || obj.value === plusQueParfait)
               const shuffledTense = shuffleArray(filteredTense)
               dispatch(tenseShuffled(shuffledTense)) 
               return shuffledTense
 
             } else {
-              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' || obj.value === 'imparfait' || obj.value === 'plus-que-parfait')        
+              const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === passe || obj.value === present || obj.value === imparfait || obj.value === plusQueParfait)        
               const shuffledTense = shuffleArray(filteredTense)
               dispatch(tenseShuffled(shuffledTense)) 
               return shuffledTense
             }
 
           // if conditionnel
-          } else if (moodResult.result.value === 'conditionnel') {
-            const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === 'passé' || obj.value === 'présent' )
+          } else if (moodResult.result.value === conditional) {
+            const filteredTense = shuffleState.tenseArrayChecked.filter(obj => obj.value === passe || obj.value === present)
             const shuffledTense = shuffleArray(filteredTense)
             dispatch(tenseShuffled(shuffledTense)) 
             return shuffledTense
@@ -150,23 +152,23 @@ export default function Exercise() {
 
           //verbs #45 pleuvoir #46 falloir, 50# seoir and messeoir only in 3rd person
           if (verbResult.result.bescherelleId === 45 || verbResult.result.bescherelleId === 46 || verbResult.result.bescherelleId === 50){
-            const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value === '3ème')
+            const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value === thirdPerson)
             const shuffledPerson = shuffleArray(filteredPerson)
             dispatch(personShuffled(shuffledPerson))
             return shuffledPerson
           } else {
             // if imperatif
-            if (moodResult.result.value === 'impératif') {
+            if (moodResult.result.value === imperative) {
 
               // clore imperatif present
-              if (verbResult.result.bescherelleId ===70 && tenseResult.result.value === 'présent'){
-                const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value === '2ème')
+              if (verbResult.result.bescherelleId ===70 && tenseResult.result.value === present){
+                const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value === secondPerson)
                 const shuffledPerson = shuffleArray(filteredPerson)
                 dispatch(personShuffled(shuffledPerson))
                 return shuffledPerson
               } else{
 
-              const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== '3ème')
+              const filteredPerson = shuffleState.personArrayChecked.filter(obj => obj.value !== thirdPerson)
               const shuffledPerson = shuffleArray(filteredPerson)
               dispatch(personShuffled(shuffledPerson))
               return shuffledPerson
@@ -185,23 +187,23 @@ export default function Exercise() {
         const shuffleNumber = () =>{
 
           // if mood imperatif and if person is 1
-          if (moodResult.result.value === 'impératif' && personResult.result.value === '1er' ) {
+          if (moodResult.result.value === imperative && personResult.result.value === firstPerson ) {
           
-              const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === 'pluriel')
+              const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === plural)
               const shuffledNumber = shuffleArray(filteredNumber)
               dispatch(numberShuffled(shuffledNumber))
               return shuffledNumber
             
             // clore imperatif present only in singulier
-          } else if (verbResult.result.bescherelleId===70 && moodResult.result.value === 'impératif' && tenseResult.result.value === 'présent' ){
-            const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === 'singulier')
+          } else if (verbResult.result.bescherelleId===70 && moodResult.result.value === imperative && tenseResult.result.value === present){
+            const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === singular)
             const shuffledNumber = shuffleArray(filteredNumber)
             dispatch(numberShuffled(shuffledNumber))
             return shuffledNumber
           
           // pleuvoir and falloir only in singulier 
           } else if (verbResult.result.bescherelleId===45 || verbResult.result.bescherelleId===46  ){
-            const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === 'singulier')
+            const filteredNumber = shuffleState.numberArrayChecked.filter(obj => obj.value === singular)
             const shuffledNumber = shuffleArray(filteredNumber)
             dispatch(numberShuffled(shuffledNumber))
             return shuffledNumber
@@ -218,7 +220,7 @@ export default function Exercise() {
           // if verb is pleuvoir id 45
 
           if (verbResult.result.bescherelleId === 45){
-            const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value === 'masculin')
+            const filteredGender = shuffleState.genderArrayChecked.filter(obj => obj.value === masculin)
             const shuffledGender = shuffleArray(filteredGender)
             dispatch(genderShuffled(shuffledGender))
             
