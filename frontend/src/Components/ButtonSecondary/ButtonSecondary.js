@@ -25,10 +25,11 @@ export default function ButtonSecondary(props)  {
       if(props.actionType === 'add'){
         dispatch(
           verbAdded({
-            verbName: props.verbName,
+            value: props.value,
+            label: props.label,
             id: props.id,
             verbGroup: props.verbGroup,
-            bescherelleId: props.bescherelleId,
+            verbID: props.verbID,
             primaryVerb: props.primaryVerb,
             specialVerb: props.specialVerb,
             auxiliaryVerb: props.auxiliaryVerb,
@@ -40,10 +41,11 @@ export default function ButtonSecondary(props)  {
       } else {
         dispatch(
           verbDeleted({
-            verbName: props.verbName,
+            value: props.value,
+            label: props.label,
             id: props.id,
             verbGroup: props.verbGroup,
-            bescherelleId: props.bescherelleId,
+            verbID: props.verbID,
             primaryVerb: props.primaryVerb,
             specialVerb: props.specialVerb,
             auxiliaryVerb: props.auxiliaryVerb,
