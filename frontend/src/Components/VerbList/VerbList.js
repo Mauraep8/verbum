@@ -22,9 +22,10 @@ export default function VerbList(props)  {
                         return <ListEntry
                         key={singleVerb.id}
                         id={singleVerb.id}
-                        verbName={singleVerb.verbName}
+                        value={singleVerb.value}
+                        label={singleVerb.label}
                         verbGroup={singleVerb.verbGroup}
-                        bescherelleId={singleVerb.bescherelleId}
+                        verbID={singleVerb.verbID}
                         primaryVerb={singleVerb.primaryVerb}
                         specialVerb={singleVerb.specialVerb}
                         auxiliaryVerb={singleVerb.auxiliaryVerb}
@@ -44,9 +45,10 @@ export default function VerbList(props)  {
                         return <ListEntry
                         key={singleVerb.id}
                         id={singleVerb.id}
-                        verbName={singleVerb.verbName}
+                        value={singleVerb.value}
+                        label={singleVerb.label}
                         verbGroup={singleVerb.verbGroup}
-                        bescherelleId={singleVerb.bescherelleId}
+                        verbID={singleVerb.verbID}
                         primaryVerb={singleVerb.primaryVerb}
                         specialVerb={singleVerb.specialVerb}
                         auxiliaryVerb={singleVerb.auxiliaryVerb}

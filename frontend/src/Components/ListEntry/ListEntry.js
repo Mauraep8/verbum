@@ -10,9 +10,10 @@ export default function ListEntry(props)  {
                 <ButtonSecondary 
                 actionType={props.actionType}
                 id={props.id}
-                verbName={props.verbName}
+                value={props.value}
+                label={props.label}
                 verbGroup={props.verbGroup}
-                bescherelleId={props.bescherelleId}
+                verbID={props.verbID}
                 primaryVerb={props.primaryVerb}
                 specialVerb={props.specialVerb}
                 auxiliaryVerb={props.auxiliaryVerb}
@@ -21,7 +22,7 @@ export default function ListEntry(props)  {
                 userSearchList={props.verbSearchList}
                 />
                 <div className="ListEntry__text-container">
-                    <p className="ListEntry__text">{props.verbName}</p>
+                    <p className="ListEntry__text">{props.label}</p>
                 </div>
             </div>
         </div>

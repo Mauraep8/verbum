@@ -14,6 +14,8 @@ export default function Database() {
 
   const exerciseVerbList = useSelector(((state)=> state.exercise.verbListState))
   const userLibrary = useSelector(((state)=> state.database.userLibrary))
+
+  console.log(userLibrary)
   const searchUserLibrary = useSelector(((state)=> state.database.searchUserLibrary))
   const searchUserInput = useSelector(((state)=> state.database.searchUserInput))
   const searchVerbInput = useSelector((state)=> state.database.searchVerbInput)
