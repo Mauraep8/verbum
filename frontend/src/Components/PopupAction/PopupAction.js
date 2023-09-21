@@ -21,7 +21,7 @@ export default function PopupAction(props) {
     if (props.state.length !== 0){
         return(
             <div className='popupAction' ref={popupContainer}>
-                <p className="popupAction__text">{props.state.verbName} {props.state.popupAction}</p>
+                <p className="popupAction__text">{props.state.value} {props.state.popupAction}</p>
             </div>
         )       
     }

@@ -24,12 +24,12 @@ export default function Option(props) {
         status: checked,
         category: props.category,
         apiFormat: props.apiFormat,
-        verbName: props.verbName,
+        label: props.label,
         verbGroup: props.verbGroup,
         specialVerb: props.specialVerb,
         primaryVerb: props.primaryVerb,
         initialVerb: props.initialVerb,
-        bescherelleId: props.bescherelleId,
+        verbID: props.verbID,
         auxiliaryVerb: props.auxiliaryVerb,
       })
     );

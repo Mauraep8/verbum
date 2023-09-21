@@ -18,7 +18,7 @@ const initialState = {
     personState:{result:{value: '1er', status: true, category: 'person', apiFormat: 1}},
     numberState:{result:{value: 'singulier', status: true, category: 'number', apiFormat: 1}},
     genderState:{result:{value: 'féminin', status: true, category: 'gender', apiFormat: null}},
-    verbState: {result:{apiFormat:null, auxiliaryVerb:"", bescherelleId: 6, category: "verb", initialVerb: "true", primaryVerb:"true", specialVerb: "", status: true, value: "aimer", verbGroup: "1er groupe", verbName: "aimer"}},
+    verbState: {result:{apiFormat:null, auxiliaryVerb:"", verbID: 3, category: "verb", initialVerb: "t", primaryVerb:"t", specialVerb: "", status: true, value: "aimer", verbGroup: "group 1", label: "aimer"}},
     messageState:[],
     shuffleAction:[],
     userSelectionMessage:[],
@@ -36,7 +36,7 @@ const exerciseSlice = createSlice({
   initialState,
   extraReducers: {
     [fetchVerbs.fulfilled]: (state, action) => {
-      state.verbListState = action.payload.filter((verb) => verb.initialVerb === "true");
+      state.verbListState = action.payload.filter((verb) => verb.initialVerb === "t");
     },
   },
   reducers: {
@@ -169,7 +169,7 @@ const exerciseSlice = createSlice({
     },
     verbListUpdated: (state, action) => {
       state.verbListState = action.payload;
-      state.verbArrayChecked = state.verbArrayChecked.filter(({ verbName: verb1 }) => action.payload.some(({ verbName: verb2 }) => verb1 === verb2))   
+      state.verbArrayChecked = state.verbArrayChecked.filter(({ value: verb1 }) => action.payload.some(({ value: verb2 }) => verb1 === verb2))   
       state.shuffleAction = false; 
     },
     verbListUpdateAction: (state, action) => {

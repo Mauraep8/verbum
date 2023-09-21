@@ -3,19 +3,18 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model verbs {
   id            Int     @id @default(autoincrement())
-  verbName      String  @db.Text
-  verbGroup     String  @db.Text
-  bescherelleId Int
-  primaryVerb   String  @db.Text
-  specialVerb   String? @db.Text
-  auxiliaryVerb String? @db.Text
-  initialVerb   String? @db.Text
-  value         String  @db.Text
-  label         String  @db.Text
+  value         String
+  label         String
+  verbID        Int
+  verbGroup     String
+  primaryVerb   String
+  specialVerb   String?
+  auxiliaryVerb String?
+  initialVerb   String?
 }
