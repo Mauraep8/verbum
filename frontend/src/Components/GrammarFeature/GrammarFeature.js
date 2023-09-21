@@ -14,7 +14,7 @@ export default function GrammarFeature(props) {
 
     // initial render, shuffle has not occurred or verbList has been updated
     if((props.shuffleState === undefined || props.shuffleState.length === 0) || verbListApprovedUpdate === true ){
-      setButtonText(props.option[0].verbName)    
+      setButtonText(props.option[0].value)    
 
       // shuffle has occurred
     } else {

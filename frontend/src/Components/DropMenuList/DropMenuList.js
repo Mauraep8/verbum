@@ -41,12 +41,12 @@ export default function DropMenu(props) {
                   key={singleOption.id}
                   value={singleOption.option}
                   category={singleOption.category}
-                  verbName={null}
+                  label={null}
                   verbGroup={null}
                   specialVerb={null}
                   primaryVerb={null}
                   initialVerb={null}
-                  bescherelleId={null}
+                  verbID={null}
                   auxiliaryVerb={null}
                   apiFormat={singleOption.apiFormat}
                   dropmenuType={props.type}
@@ -64,14 +64,14 @@ export default function DropMenu(props) {
                   {props.list.map((singleOption) =>{
                     return <Option
                     key={singleOption.id}
-                    value={singleOption.verbName}
+                    value={singleOption.value}
                     category={'verb'}
-                    verbName={singleOption.verbName}
+                    label={singleOption.label}
                     verbGroup={singleOption.verbGroup}
                     specialVerb={singleOption.specialVerb}
                     primaryVerb={singleOption.primaryVerb}
                     initialVerb={singleOption.initialVerb}
-                    bescherelleId={singleOption.bescherelleId}
+                    verbID={singleOption.bescherelleId}
                     auxiliaryVerb={singleOption.auxiliaryVerb}
                     apiFormat={null}
                     dropmenuType={props.type}
