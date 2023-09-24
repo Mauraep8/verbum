@@ -72,28 +72,41 @@ export default function Shuffle() {
     let selectionApproved = true;
 
     const verifyUserSelection = () => {
-      const verbArray = storeState.verbArrayChecked.map((element) => element.value);
-      const moodArray = storeState.moodArrayChecked.map(
-        (element) => element.value
-      );
-      const tenseArray = storeState.tenseArrayChecked.map(
-        (element) => element.value
-      );
-      const personArray = storeState.personArrayChecked.map(
-        (element) => element.value
-      );
-      const numberArray = storeState.numberArrayChecked.map(
-        (element) => element.value
-      );
-      const genderArray = storeState.genderArrayChecked.map(
-        (element) => element.value
-      );
+      // const verbArray = storeState.verbArrayChecked.map((element) => element.verbID);
+      const verbArray = storeState.verbArrayChecked.map(({ value, verbID}) => ({value, verbID}))
 
-      //VERIFY CONDITIONS FOR VERB PLEUVOIR #45 AND FALLOIR #46 FOR 3RD PERSON AND FOR MASC GENDER
-      // if (verbArray.includes('pleuvoir') === true) {
-      //   if(personArray.includes(thirdPerson) === false) {
-      //   dispatch(userSelectionDenied({verb: 'pleuvoir', mood: indicative, person: null, missingMood:null, missingTense: null , missingPerson: thirdPerson, missingNumber: null, missingGender: null}))
-      //   selectionApproved = false
+      const moodArray = storeState.moodArrayChecked.map((element) => element.value);
+      const tenseArray = storeState.tenseArrayChecked.map((element) => element.value);
+      const personArray = storeState.personArrayChecked.map((element) => element.value);
+      const numberArray = storeState.numberArrayChecked.map((element) => element.value);
+      const genderArray = storeState.genderArrayChecked.map((element) => element.value);
+
+      //VERIFY CONDITIONS FOR VERB PLEUVOIR #75 3RD PERSON sing and plural AND FOR MASC GENDER
+
+      if (verbArray.filter((verb) => verb.verbID === 75)) {
+        const filteredVerb = verbArray.filter((verb) => verb.verbID === 75)
+        if(personArray.includes(thirdPerson) === false) {
+          dispatch(userSelectionDenied({
+            element: 'verb ' + filteredVerb[0].value,
+            missingType: "person",
+            missing: [
+              thirdPerson
+            ],
+          }))
+          selectionApproved = false
+        }
+        if(genderArray.includes(masculin) === false) {
+          dispatch(userSelectionDenied({
+              element: 'verb ' + filteredVerb[0].value,
+              missingType: "gender",
+              missing: [
+                masculin
+              ],
+          }))
+          selectionApproved = false        
+        } 
+      }
+    
       //   } else if(genderArray.includes(masculin) === false) {
       //     dispatch(userSelectionDenied({verb: 'pleuvoir', mood: indicative, person: null, missingMood:null, missingTense: null , missingPerson: null, missingNumber: null, missingGender: masculin}))
       //     selectionApproved = false
@@ -103,8 +116,8 @@ export default function Shuffle() {
       //   } else if (numberArray.includes(singular)===false){
       //     dispatch(userSelectionDenied({verb: 'pleuvoir', mood: null, person: null, missingMood:null, missingTense: null , missingPerson:null, missingNumber: singular, missingGender: null}))
       //     selectionApproved = false
-      //   }
-      // }
+        
+   
 
       //VERIFY CONDITIONS FOR FALLOIR #46 FOR 3RD PERSON
       // if (verbArray.includes('falloir') === true) {
@@ -249,6 +262,7 @@ export default function Shuffle() {
         }
       }
     };
+    
     verifyUserSelection();
 
     if (

@@ -71,7 +71,7 @@ export default function DropMenu(props) {
                     specialVerb={singleOption.specialVerb}
                     primaryVerb={singleOption.primaryVerb}
                     initialVerb={singleOption.initialVerb}
-                    verbID={singleOption.bescherelleId}
+                    verbID={singleOption.verbID}
                     auxiliaryVerb={singleOption.auxiliaryVerb}
                     apiFormat={null}
                     dropmenuType={props.type}
