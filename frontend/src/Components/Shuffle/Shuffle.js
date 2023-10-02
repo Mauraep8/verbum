@@ -11,6 +11,7 @@ import { store } from "../../Store/configureStore";
 import { verbListUpdateAction } from "../../Store/exerciseSlice";
 import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
 import "./Shuffle.scss";
+
 import {
   conditional,
   feminin,
@@ -33,6 +34,16 @@ import {
   subjunctive,
   thirdPerson,
 } from "../../Utils/grammarTerms";
+import pleuvoirConditions from "../../Utils/verbLogic/pleuvoirConditions";
+import falloirConditions from "../../Utils/verbLogic/falloirConditions";
+import seoirConditions from "../../Utils/verbLogic/seoirConditions";
+import indicativeConditions from "../../Utils/grammarLogic/indicativeConditions";
+import imperativeConditions from "../../Utils/grammarLogic/imperativeConditions";
+import subjunctiveConditions from "../../Utils/grammarLogic/subjunctiveConditions";
+import conditionalConditions from "../../Utils/grammarLogic/conditionalConditions";
+
+
+
 
 export default function Shuffle() {
   const dispatch = useDispatch();
@@ -72,6 +83,8 @@ export default function Shuffle() {
     let selectionApproved = true;
 
     const verifyUserSelection = () => {
+
+
       const verbArray = storeState.verbArrayChecked.map(({value, verbID}) => ({value, verbID}))
       const moodArray = storeState.moodArrayChecked.map((element) => element.value);
       const tenseArray = storeState.tenseArrayChecked.map((element) => element.value);
@@ -79,265 +92,66 @@ export default function Shuffle() {
       const numberArray = storeState.numberArrayChecked.map((element) => element.value);
       const genderArray = storeState.genderArrayChecked.map((element) => element.value);
 
-      //VERIFY CONDITIONS FOR VERB PLEUVOIR #75 = 3rd person + masc gender + never in IMPERATIF
-
-      if (verbArray.some((verb) => verb.verbID === 75)) {
-        const filteredVerb = verbArray.filter((verb) => verb.verbID === 75)
-        if(personArray.includes(thirdPerson) === false) {
-          dispatch(userSelectionDenied({
-            element: 'verb ' + filteredVerb[0].value,
-            missingType: "person",
-            missing: [
-              thirdPerson
-            ],
-          }))
+      // PLEUVOIR CONDITIONS VERIFICATION
+      if (verbArray.some((verb) => verb.verbID === 75)){
+        const pleuvoirVerified = pleuvoirConditions(verbArray,moodArray,genderArray,personArray,)
+        if (pleuvoirVerified !== null){
+          dispatch(userSelectionDenied(pleuvoirVerified))
           selectionApproved = false
         }
-        if(genderArray.includes(masculin) === false) {
-          dispatch(userSelectionDenied({
-              element: 'verb ' + filteredVerb[0].value,
-              missingType: "gender",
-              missing: [
-                masculin
-              ],
-          }))
-          selectionApproved = false        
-        } 
-        if(moodArray.includes(indicative) === false && moodArray.includes(subjunctive) === false && moodArray.includes(conditional) === false) {
-          dispatch(userSelectionDenied({
-              element: 'verb ' + filteredVerb[0].value,
-              missingType: "mood",
-              missing: [
-                indicative,
-                subjunctive,
-                conditional
-              ],
-          }))
-          selectionApproved = false        
-        } 
+      }
+
+      // FALLOIR CONDITIONS VERIFICATION
+      if (verbArray.some((verb) => verb.verbID === 66)) {
+        const falloirVerified = falloirConditions(verbArray,moodArray,numberArray,personArray)
+        if (falloirVerified !== null){
+          dispatch(userSelectionDenied(falloirVerified))
+          selectionApproved = false
+        }
       }
       
-      //VERIFY CONDITIONS FOR FALLOIR #66 = 3rd person + singular + never in IMPERATIF
-
-     if (verbArray.some((verb) => verb.verbID === 66)) {
-      const filteredVerb = verbArray.filter((verb) => verb.verbID === 66)
-        if(personArray.includes(thirdPerson) === false) {
-          dispatch(userSelectionDenied({
-            element: 'verb ' + filteredVerb[0].value,
-            missingType: "person",
-            missing: [
-              thirdPerson
-            ],
-          }))
-          selectionApproved = false
-        }
-        if(numberArray.includes(singular) === false) {
-          dispatch(userSelectionDenied({
-              element: 'verb ' + filteredVerb[0].value,
-              missingType: "number",
-              missing: [
-                singular
-              ],
-          }))
-          selectionApproved = false        
-        }
-        if(moodArray.includes(indicative) === false && moodArray.includes(subjunctive) === false && moodArray.includes(conditional) === false) {
-          dispatch(userSelectionDenied({
-              element: 'verb ' + filteredVerb[0].value,
-              missingType: "mood",
-              missing: [
-                indicative,
-                subjunctive,
-                conditional
-              ],
-          }))
-          selectionApproved = false        
-        } 
-     }
-        
-      //VERIFY CONDITIONS FOR SEOIR #79 = never imperatif mood, indicative (only present, imparfait, futur), subjunctive and conditional (only present)
-      // 3rd person only
-
+      //SEOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 79)) {
-        const filteredVerb = verbArray.filter((verb) => verb.verbID === 79)
-
-        //verify mood
-        if(moodArray.includes(indicative) === false && moodArray.includes(subjunctive) === false && moodArray.includes(conditional) === false) {
-          dispatch(userSelectionDenied({
-              element: 'verb ' + filteredVerb[0].value,
-              missingType: "mood",
-              missing: [
-                indicative,
-                subjunctive,
-                conditional
-              ],
-          }))
-          selectionApproved = false        
-        } 
-        //verify indicative tenses
-        if (moodArray.includes(indicative)){ 
-          if(tenseArray.includes(present) === false && tenseArray.includes(imparfait) === false && tenseArray.includes(futurSimple) === false) {
-            dispatch(userSelectionDenied({
-              element: ['verb ' + filteredVerb[0].value, indicative], 
-              missingType: "tense",
-              missing: [
-                present,
-                imparfait,
-                futurSimple
-              ],
-            }))
-            selectionApproved = false        
-          } 
-        }
-        //verify subjunctive tenses
-        if (moodArray.includes(subjunctive)){ 
-          if(tenseArray.includes(present) === false) {
-            dispatch(userSelectionDenied({
-              element: ['verb ' + filteredVerb[0].value, subjunctive], 
-              missingType: "tense",
-              missing: [
-                present,
-              ],
-            }))
-            selectionApproved = false        
-          } 
-        }
-        //verify conditional tenses
-        if (moodArray.includes(conditional)){ 
-          if(tenseArray.includes(present) === false) {
-            dispatch(userSelectionDenied({
-              element: ['verb ' + filteredVerb[0].value, conditional], 
-              missingType: "tense",
-              missing: [
-                present,
-              ],
-            }))
-            selectionApproved = false        
-          } 
-        }    
-        //verify 3rd person  
-        if(personArray.includes(thirdPerson) === false) {
-          dispatch(userSelectionDenied({
-            element: 'verb ' + filteredVerb[0].value,
-            missingType: "person",
-            missing: [
-              thirdPerson
-            ],
-          }))
+        const seoirVerified = seoirConditions(verbArray,moodArray,tenseArray,personArray)
+        if (seoirVerified !== null){
+          dispatch(userSelectionDenied(seoirVerified))
           selectionApproved = false
         }
       }
 
-      // VERIFY CONDITIONS FOR INDICATIF
-      if (moodArray.includes(indicative) === true) {
-        if (
-          tenseArray.includes(present) === false &&
-          tenseArray.includes(passeCompose) === false &&
-          tenseArray.includes(imparfait) === false &&
-          tenseArray.includes(plusQueParfait) === false &&
-          tenseArray.includes(passeSimple) === false &&
-          tenseArray.includes(passeAnterieur) === false &&
-          tenseArray.includes(futurSimple) === false &&
-          tenseArray.includes(futurAnterieur) === false
-        ) {
-          dispatch(
-            userSelectionDenied({
-              element: indicative,
-              missingType: "tense",
-              missing: [
-                present,
-                passeCompose,
-                imparfait,
-                plusQueParfait,
-                passeSimple,
-                passeAnterieur,
-                futurSimple,
-                futurAnterieur,
-              ],
-            })
-          );
-          selectionApproved = false;
+      // INDICATIVE CONDITIONS VERIFICATION
+      if(moodArray.includes(indicative)=== true){
+        const indicativeVerified = indicativeConditions(tenseArray)
+        if (indicativeVerified !== null){
+          dispatch(userSelectionDenied(indicativeVerified))
+          selectionApproved = false
         }
       }
 
-      // VERIFY CONDITIONS FOR IMPERATIF
+      // IMPERATIVE CONDITIONS VERIFICATION
       if (moodArray.includes(imperative) === true) {
-        if (
-          tenseArray.includes(present) === false &&
-          tenseArray.includes(passe) === false
-        ) {
-          dispatch(
-            userSelectionDenied({
-              element: imperative,
-              missingType: 'tense',
-              missing: [present, passe],
-            })
-          );
-          selectionApproved = false;
-        }
-
-        if (
-          personArray.includes(firstPerson) === true &&
-          numberArray.includes(plural) === false
-        ) {
-          dispatch(
-            userSelectionDenied({
-              element: [imperative, 'first person'],
-              missingType: "elements",
-              missing: [plural],
-            })
-          );
-          selectionApproved = false;
-        }
-        if (
-          personArray.includes(firstPerson) === false &&
-          personArray.includes(secondPerson) === false
-        ) {
-          dispatch(
-            userSelectionDenied({
-              element: imperative,
-              missingType: 'person',
-              missing: [firstPerson, secondPerson],
-            })
-          );
-          selectionApproved = false;
+        const imperativeVerified = imperativeConditions(tenseArray,numberArray,genderArray)
+        if(imperativeVerified !== null){
+          dispatch(userSelectionDenied(imperativeVerified))
+          selectionApproved = false
         }
       }
 
-      // VERIFY CONDITIONS FOR SUBJONCTIF
+      // SUBJUNCTIVE CONDITIONS VERIFICATION
       if (moodArray.includes(subjunctive) === true) {
-        if (
-          tenseArray.includes(present) === false &&
-          tenseArray.includes(passe) === false &&
-          tenseArray.includes(imparfait) === false &&
-          tenseArray.includes(plusQueParfait) === false
-        ) {
-          dispatch(
-            userSelectionDenied({
-              element: subjunctive,
-              missingType: 'tense',
-              missing: [present, passe, imparfait, plusQueParfait],
-            })
-          );
-          selectionApproved = false;
+        const subjunctiveVerified = subjunctiveConditions(tenseArray)
+        if(subjunctiveVerified !== null){
+          dispatch(userSelectionDenied(subjunctiveVerified))
+          selectionApproved = false
         }
       }
 
-      // VERIFY CONDITIONS FOR CONDITIONNEL
+      // CONDITIONAL CONDITIONS VERIFICATION
       if (moodArray.includes(conditional) === true) {
-        if (
-          tenseArray.includes(present) === false &&
-          tenseArray.includes(passe) === false
-        ) {
-          dispatch(
-            userSelectionDenied({
-              element: conditional,
-              missingType: 'tense',
-              missing: [present, passe],
- 
-            })
-          );
-          selectionApproved = false;
+        const conditionalVerified = conditionalConditions(tenseArray)
+        if(conditionalVerified !== null){
+          dispatch(userSelectionDenied(conditionalVerified))
+          selectionApproved = false
         }
       }
     };
