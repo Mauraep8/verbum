@@ -72,18 +72,16 @@ export default function Shuffle() {
     let selectionApproved = true;
 
     const verifyUserSelection = () => {
-      // const verbArray = storeState.verbArrayChecked.map((element) => element.verbID);
-      const verbArray = storeState.verbArrayChecked.map(({ value, verbID}) => ({value, verbID}))
-
+      const verbArray = storeState.verbArrayChecked.map(({value, verbID}) => ({value, verbID}))
       const moodArray = storeState.moodArrayChecked.map((element) => element.value);
       const tenseArray = storeState.tenseArrayChecked.map((element) => element.value);
       const personArray = storeState.personArrayChecked.map((element) => element.value);
       const numberArray = storeState.numberArrayChecked.map((element) => element.value);
       const genderArray = storeState.genderArrayChecked.map((element) => element.value);
 
-      //VERIFY CONDITIONS FOR VERB PLEUVOIR #75 3RD PERSON sing and plural AND FOR MASC GENDER
+      //VERIFY CONDITIONS FOR VERB PLEUVOIR #75 = 3rd person + masc gender + never in IMPERATIF
 
-      if (verbArray.filter((verb) => verb.verbID === 75)) {
+      if (verbArray.some((verb) => verb.verbID === 75)) {
         const filteredVerb = verbArray.filter((verb) => verb.verbID === 75)
         if(personArray.includes(thirdPerson) === false) {
           dispatch(userSelectionDenied({
@@ -105,49 +103,130 @@ export default function Shuffle() {
           }))
           selectionApproved = false        
         } 
+        if(moodArray.includes(indicative) === false && moodArray.includes(subjunctive) === false && moodArray.includes(conditional) === false) {
+          dispatch(userSelectionDenied({
+              element: 'verb ' + filteredVerb[0].value,
+              missingType: "mood",
+              missing: [
+                indicative,
+                subjunctive,
+                conditional
+              ],
+          }))
+          selectionApproved = false        
+        } 
       }
-    
-      //   } else if(genderArray.includes(masculin) === false) {
-      //     dispatch(userSelectionDenied({verb: 'pleuvoir', mood: indicative, person: null, missingMood:null, missingTense: null , missingPerson: null, missingNumber: null, missingGender: masculin}))
-      //     selectionApproved = false
-      //   } else  if (moodArray.includes(indicative)===false && moodArray.includes(subjunctive)===false && moodArray.includes(conditional)===false){
-      //     dispatch(userSelectionDenied({verb: 'pleuvoir', mood: null, person: null, missingMood: [indicative, subjunctive, conditional], missingTense: null , missingPerson:null, missingNumber: null, missingGender: null}))
-      //     selectionApproved = false
-      //   } else if (numberArray.includes(singular)===false){
-      //     dispatch(userSelectionDenied({verb: 'pleuvoir', mood: null, person: null, missingMood:null, missingTense: null , missingPerson:null, missingNumber: singular, missingGender: null}))
-      //     selectionApproved = false
+      
+      //VERIFY CONDITIONS FOR FALLOIR #66 = 3rd person + singular + never in IMPERATIF
+
+     if (verbArray.some((verb) => verb.verbID === 66)) {
+      const filteredVerb = verbArray.filter((verb) => verb.verbID === 66)
+        if(personArray.includes(thirdPerson) === false) {
+          dispatch(userSelectionDenied({
+            element: 'verb ' + filteredVerb[0].value,
+            missingType: "person",
+            missing: [
+              thirdPerson
+            ],
+          }))
+          selectionApproved = false
+        }
+        if(numberArray.includes(singular) === false) {
+          dispatch(userSelectionDenied({
+              element: 'verb ' + filteredVerb[0].value,
+              missingType: "number",
+              missing: [
+                singular
+              ],
+          }))
+          selectionApproved = false        
+        }
+        if(moodArray.includes(indicative) === false && moodArray.includes(subjunctive) === false && moodArray.includes(conditional) === false) {
+          dispatch(userSelectionDenied({
+              element: 'verb ' + filteredVerb[0].value,
+              missingType: "mood",
+              missing: [
+                indicative,
+                subjunctive,
+                conditional
+              ],
+          }))
+          selectionApproved = false        
+        } 
+     }
         
-   
+      //VERIFY CONDITIONS FOR SEOIR #79 = never imperatif mood, indicative (only present, imparfait, futur), subjunctive and conditional (only present)
+      // 3rd person only
 
-      //VERIFY CONDITIONS FOR FALLOIR #46 FOR 3RD PERSON
-      // if (verbArray.includes('falloir') === true) {
-      //   if(personArray.includes(thirdPerson) === false) {
-      //   dispatch(userSelectionDenied({verb: 'falloir', mood: null, person: null, missingMood:null,  missingTense: null , missingPerson:thirdPerson, missingNumber: null, missingGender: null}))
-      //   selectionApproved = false
-      //   } else if (moodArray.includes(indicative)===false && moodArray.includes(subjunctive)===false && moodArray.includes(conditional)===false){
-      //     dispatch(userSelectionDenied({verb: 'falloir', mood: null, person: null, missingMood: [indicative, subjunctive, conditional], missingTense: null , missingPerson:null, missingNumber: null, missingGender: null}))
-      //     selectionApproved = false
-      //   } else if (numberArray.includes(singular)===false){
-      //     dispatch(userSelectionDenied({verb: 'falloir', mood: null, person: null, missingMood:null, missingTense: null , missingPerson:null, missingNumber: singular, missingGender: null}))
-      //     selectionApproved = false
-      //   }
-      // }
+      if (verbArray.some((verb) => verb.verbID === 79)) {
+        const filteredVerb = verbArray.filter((verb) => verb.verbID === 79)
 
-      //VERIFY CONDITIONS FOR SEOIR #50 FOR 3RD PERSON for all moods
-      // if (verbArray.includes('seoir') === true) {
-      //   if(personArray.includes(thirdPerson) === false) {
-      //   dispatch(userSelectionDenied({verb: 'seoir', mood: null, person: null, missingMood:null, missingTense: null , missingPerson:thirdPerson, missingNumber: null, missingGender: null}))
-      //   selectionApproved = false
-      //   }
-      // }
-
-      //VERIFY CONDITIONS FOR MESSEOIR #50 FOR 3RD PERSON for all moods
-      // if (verbArray.includes('messeoir') === true) {
-      //   if(personArray.includes(thirdPerson) === false) {
-      //   dispatch(userSelectionDenied({verb: 'messeoir', mood: null, person: null, missingMood:null, missingTense: null , missingPerson:thirdPerson, missingNumber: null, missingGender: null}))
-      //   selectionApproved = false
-      //   }
-      // }
+        //verify mood
+        if(moodArray.includes(indicative) === false && moodArray.includes(subjunctive) === false && moodArray.includes(conditional) === false) {
+          dispatch(userSelectionDenied({
+              element: 'verb ' + filteredVerb[0].value,
+              missingType: "mood",
+              missing: [
+                indicative,
+                subjunctive,
+                conditional
+              ],
+          }))
+          selectionApproved = false        
+        } 
+        //verify indicative tenses
+        if (moodArray.includes(indicative)){ 
+          if(tenseArray.includes(present) === false && tenseArray.includes(imparfait) === false && tenseArray.includes(futurSimple) === false) {
+            dispatch(userSelectionDenied({
+              element: ['verb ' + filteredVerb[0].value, indicative], 
+              missingType: "tense",
+              missing: [
+                present,
+                imparfait,
+                futurSimple
+              ],
+            }))
+            selectionApproved = false        
+          } 
+        }
+        //verify subjunctive tenses
+        if (moodArray.includes(subjunctive)){ 
+          if(tenseArray.includes(present) === false) {
+            dispatch(userSelectionDenied({
+              element: ['verb ' + filteredVerb[0].value, subjunctive], 
+              missingType: "tense",
+              missing: [
+                present,
+              ],
+            }))
+            selectionApproved = false        
+          } 
+        }
+        //verify conditional tenses
+        if (moodArray.includes(conditional)){ 
+          if(tenseArray.includes(present) === false) {
+            dispatch(userSelectionDenied({
+              element: ['verb ' + filteredVerb[0].value, conditional], 
+              missingType: "tense",
+              missing: [
+                present,
+              ],
+            }))
+            selectionApproved = false        
+          } 
+        }    
+        //verify 3rd person  
+        if(personArray.includes(thirdPerson) === false) {
+          dispatch(userSelectionDenied({
+            element: 'verb ' + filteredVerb[0].value,
+            missingType: "person",
+            missing: [
+              thirdPerson
+            ],
+          }))
+          selectionApproved = false
+        }
+      }
 
       // VERIFY CONDITIONS FOR INDICATIF
       if (moodArray.includes(indicative) === true) {

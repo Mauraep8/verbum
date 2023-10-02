@@ -22,7 +22,7 @@ export default function PopupMessage(props) {
         dispatch(messageCleared([]))
     }
 
-    //drop menu missing an element
+    //drop menu missing all elements
     if (props.messageError.length !==0) { 
         return (
             <div className='popup-message' ref={popupMessage}>
