@@ -42,9 +42,6 @@ const databaseSlice = createSlice({
                 verb.value !== "faillir" &&
                 verb.value !== "gésir" &&
                 verb.value !== "ouir" &&
-                verb.value !== "choir" &&
-                verb.value !== "échoir" &&
-                verb.value !== "déchoir" &&
                 verb.value !== "paître" &&
                 verb.value !== "repaître"
             );

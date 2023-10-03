@@ -11,28 +11,11 @@ import { store } from "../../Store/configureStore";
 import { verbListUpdateAction } from "../../Store/exerciseSlice";
 import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
 import "./Shuffle.scss";
-
 import {
   conditional,
-  feminin,
-  firstPerson,
-  futurAnterieur,
-  futurSimple,
-  imparfait,
   imperative,
   indicative,
-  masculin,
-  passe,
-  passeAnterieur,
-  passeCompose,
-  passeSimple,
-  plural,
-  plusQueParfait,
-  present,
-  secondPerson,
-  singular,
   subjunctive,
-  thirdPerson,
 } from "../../Utils/grammarTerms";
 import pleuvoirConditions from "../../Utils/verbLogic/pleuvoirConditions";
 import falloirConditions from "../../Utils/verbLogic/falloirConditions";
@@ -41,9 +24,12 @@ import indicativeConditions from "../../Utils/grammarLogic/indicativeConditions"
 import imperativeConditions from "../../Utils/grammarLogic/imperativeConditions";
 import subjunctiveConditions from "../../Utils/grammarLogic/subjunctiveConditions";
 import conditionalConditions from "../../Utils/grammarLogic/conditionalConditions";
-
-
-
+import faseyerConditions from "../../Utils/verbLogic/faseyerConditions";
+import pouvoirConditions from "../../Utils/verbLogic/pouvoirConditions";
+import choirConditions from "../../Utils/verbLogic/choirConditions";
+import echoirConditions from "../../Utils/verbLogic/echoirConditions";
+import dechoirConditions from "../../Utils/verbLogic/dechoirConditions";
+import absoudreConditions from "../../Utils/verbLogic/absoudreConditions";
 
 export default function Shuffle() {
   const dispatch = useDispatch();
@@ -78,12 +64,12 @@ export default function Shuffle() {
         }
       }
     };
+
     verifyDropmenuStatus();
 
     let selectionApproved = true;
 
     const verifyUserSelection = () => {
-
 
       const verbArray = storeState.verbArrayChecked.map(({value, verbID}) => ({value, verbID}))
       const moodArray = storeState.moodArrayChecked.map((element) => element.value);
@@ -92,9 +78,11 @@ export default function Shuffle() {
       const numberArray = storeState.numberArrayChecked.map((element) => element.value);
       const genderArray = storeState.genderArrayChecked.map((element) => element.value);
 
+      //VERB CONDITIONS
+
       // PLEUVOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 75)){
-        const pleuvoirVerified = pleuvoirConditions(verbArray,moodArray,genderArray,personArray,)
+        const pleuvoirVerified = pleuvoirConditions(verbArray,moodArray,genderArray,personArray)
         if (pleuvoirVerified !== null){
           dispatch(userSelectionDenied(pleuvoirVerified))
           selectionApproved = false
@@ -119,6 +107,61 @@ export default function Shuffle() {
         }
       }
 
+      //FASEYER CONDITIONS VERIFICATION
+      if (verbArray.some((verb) => verb.verbID === 30)) {
+        const faseyerVerified = faseyerConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        if (faseyerVerified !== null){
+          dispatch(userSelectionDenied(faseyerVerified))
+          selectionApproved = false
+        }
+      }
+      
+      //POUVOIR CONDITIONS VERIFICATION
+      if (verbArray.some((verb) => verb.verbID === 78)) {
+        const pouvoirVerified = pouvoirConditions(verbArray,moodArray)
+        if (pouvoirVerified !== null){
+          dispatch(userSelectionDenied(pouvoirVerified))
+          selectionApproved = false
+        }
+      }
+
+      //CHOIR CONDITIONS VERIFICATION
+      if (verbArray.some((verb) => verb.verbID === 82)) {
+        const choirVerified = choirConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        if (choirVerified !== null){
+          dispatch(userSelectionDenied(choirVerified))
+          selectionApproved = false
+        }
+      }
+
+      //ECHOIR CONDITIONS VERIFICATION
+      if (verbArray.some((verb) => verb.verbID === 83)) {
+        const echoirVerified = echoirConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        if (echoirVerified !== null){
+          dispatch(userSelectionDenied(echoirVerified))
+          selectionApproved = false
+        }
+      }
+      //DECHOIR CONDITIONS VERIFICATION
+      if (verbArray.some((verb) => verb.verbID === 84)) {
+        const dechoirVerified = dechoirConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        if (dechoirVerified !== null){
+          dispatch(userSelectionDenied(dechoirVerified))
+          selectionApproved = false
+        }
+      }
+
+      //ABSOUDRE CONDITIONS VERIFICATION
+      if (verbArray.some((verb) => verb.verbID === 92)) {
+        const absoudreVerified = absoudreConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        if (absoudreVerified !== null){
+          dispatch(userSelectionDenied(absoudreVerified))
+          selectionApproved = false
+        }
+      }
+
+      //GRAMMAR CONDITIONS
+
       // INDICATIVE CONDITIONS VERIFICATION
       if(moodArray.includes(indicative)=== true){
         const indicativeVerified = indicativeConditions(tenseArray)
@@ -130,7 +173,7 @@ export default function Shuffle() {
 
       // IMPERATIVE CONDITIONS VERIFICATION
       if (moodArray.includes(imperative) === true) {
-        const imperativeVerified = imperativeConditions(tenseArray,numberArray,genderArray)
+        const imperativeVerified = imperativeConditions(tenseArray,numberArray,personArray)
         if(imperativeVerified !== null){
           dispatch(userSelectionDenied(imperativeVerified))
           selectionApproved = false
