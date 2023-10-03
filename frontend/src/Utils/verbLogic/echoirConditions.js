@@ -21,18 +21,10 @@ import {
     thirdPerson,
   } from "../grammarTerms";
 
-
- export default function pleuvoirConditions(
-   verbArray,
-   moodArray,
-   genderArray,
-   personArray,
- ) {
-
-   //VERIFY CONDITIONS FOR VERB PLEUVOIR #75 = 3rd person + masc gender + never in IMPERATIF
+  export default function echoirConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray){
+    const filteredVerb = verbArray.filter((verb) => verb.verbID === 83);
 
    // ALWAYS 3RD PERSON
-   const filteredVerb = verbArray.filter((verb) => verb.verbID === 75);
    if (personArray.includes(thirdPerson) === false) {
      return {
        element: "verb " + filteredVerb[0].value,
@@ -41,16 +33,7 @@ import {
      };
    }
 
-   // ALWAYS MASC GENDER
-   if (genderArray.includes(masculin) === false) {
-     return {
-       element: "verb " + filteredVerb[0].value,
-       missingType: "gender",
-       missing: [masculin],
-     };
-   }
-
-   // NEVER IN IMPERATIVE
+   // ALWAYS IN INDICATIVE, OR SUBJUNCTIVE OR CONDITIONAL
    if (
      moodArray.includes(indicative) === false &&
      moodArray.includes(subjunctive) === false &&
@@ -63,6 +46,4 @@ import {
      };
    }
    return null
- }
-      
-  
+}

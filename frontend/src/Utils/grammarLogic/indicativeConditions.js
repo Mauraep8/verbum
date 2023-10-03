@@ -19,7 +19,8 @@ import {
     singular,
     subjunctive,
     thirdPerson,
-  } from "../grammarTerms";
+} from "../grammarTerms";
+
 export default function indicativeConditions (tenseArray){
     
     if (
