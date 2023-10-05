@@ -32,16 +32,9 @@ const databaseSlice = createSlice({
     extraReducers:{
         // //EXTRA REDUCER SETS STATE WITH API CALL
         // !!! SE MEFIER TAKEN OUT OF LIST, WILL BE ADDED LATER WITH POSTGRES
-        // !!! FAILLIR, ouir, gesir, choir, echoir, dechoir paître repaître TAKEN OUT
         
         [fetchVerbs.fulfilled]: (state, action) => {
-            state.verbLibrary = action.payload.filter(
-              (verb) =>
-                verb.initialVerb === 'f' &&
-                verb.value !== "faillir" &&
-                verb.value !== "ouir" &&
-                verb.value !== "repaître"
-            );
+            state.verbLibrary = action.payload.filter((verb) => verb.initialVerb === 'f');
             state.userLibrary = action.payload.filter((verb)=> verb.initialVerb === "t")
         },
     },

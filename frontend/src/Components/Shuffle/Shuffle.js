@@ -34,6 +34,7 @@ import frireConditions from "../../Utils/verbLogic/frireConditions";
 import cloreConditions from "../../Utils/verbLogic/cloreConditions";
 import traireConditions from "../../Utils/verbLogic/traireConditions";
 import paitreConditions from "../../Utils/verbLogic/paitreConditions";
+import faillirConditions from "../../Utils/verbLogic/faillirConditions";
 
 
 export default function Shuffle() {
@@ -197,6 +198,15 @@ export default function Shuffle() {
         const paitreVerified = paitreConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
         if (paitreVerified !== null){
           dispatch(userSelectionDenied(paitreVerified))
+          selectionApproved = false
+        }
+      }
+
+      //FAILLIR CONDITIONS VERIFICATION
+      if (verbArray.some((verb) => verb.verbID === 59)) {
+        const faillirVerified = faillirConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        if (faillirVerified !== null){
+          dispatch(userSelectionDenied(faillirVerified))
           selectionApproved = false
         }
       }
