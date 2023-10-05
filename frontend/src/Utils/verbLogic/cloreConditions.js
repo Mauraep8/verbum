@@ -22,7 +22,7 @@ import {
   } from "../grammarTerms";
 
    
-  export default function frireConditions(
+  export default function cloreConditions(
     verbArray,
     moodArray,
     tenseArray,
@@ -30,7 +30,7 @@ import {
     genderArray,
     personArray
   ) {
-    const filteredVerb = verbArray.filter((verb) => verb.verbID === 108);
+    const filteredVerb = verbArray.filter((verb) => verb.verbID === 112);
     //IF INDICATIVE
     if (moodArray.includes(indicative) === true) {
       //ALWAYS IN PRESENT, OR passeCompose OR plusQueParfait OR passeAnterieur OR futurSimple OR futurAnterieur [never passeSimple or imparfait]
@@ -55,22 +55,14 @@ import {
           ],
         };
       }
-      //IF INDICATIVE PRESENT, ALWAYS IN SINGULAR NUMBER
-      if(tenseArray.includes(present)===true&& numberArray.includes(singular)===false){
-        return {
-            element: ["verb " + filteredVerb[0].value, 'present indicative'],
-            missingType: "number",
-            missing: [singular],
-          };
-      }
     }
     //IF SUBJUNCTIVE
-    // TENSES ALWAYS IN plusQueParfait OR passe [never imparfait or present]
-    if (moodArray.includes(subjunctive) === true && tenseArray.includes(plusQueParfait) === false && tenseArray.includes(passe) === false ) {
+    // TENSES ALWAYS IN plusQueParfait OR passe OR present [never imparfait]
+    if (moodArray.includes(subjunctive) === true && tenseArray.includes(plusQueParfait) === false && tenseArray.includes(passe) === false && tenseArray.includes(present) === false ) {
       return {
         element: ["verb " + filteredVerb[0].value, subjunctive],
         missingType: "tense",
-        missing: [passe, plusQueParfait],
+        missing: [passe, plusQueParfait, present],
       };
     }
 

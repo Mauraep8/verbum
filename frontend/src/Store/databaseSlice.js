@@ -38,11 +38,8 @@ const databaseSlice = createSlice({
             state.verbLibrary = action.payload.filter(
               (verb) =>
                 verb.initialVerb === 'f' &&
-                verb.value !== "se mefier" &&
                 verb.value !== "faillir" &&
-                verb.value !== "gésir" &&
                 verb.value !== "ouir" &&
-                verb.value !== "paître" &&
                 verb.value !== "repaître"
             );
             state.userLibrary = action.payload.filter((verb)=> verb.initialVerb === "t")
