@@ -30,6 +30,7 @@ import choirConditions from "../../Utils/verbLogic/choirConditions";
 import echoirConditions from "../../Utils/verbLogic/echoirConditions";
 import dechoirConditions from "../../Utils/verbLogic/dechoirConditions";
 import absoudreConditions from "../../Utils/verbLogic/absoudreConditions";
+import frireConditions from "../../Utils/verbLogic/frireConditions";
 
 export default function Shuffle() {
   const dispatch = useDispatch();
@@ -156,6 +157,15 @@ export default function Shuffle() {
         const absoudreVerified = absoudreConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
         if (absoudreVerified !== null){
           dispatch(userSelectionDenied(absoudreVerified))
+          selectionApproved = false
+        }
+      }
+
+      //FRIRE CONDITIONS VERIFICATION
+      if (verbArray.some((verb) => verb.verbID === 108)) {
+        const frireVerified = frireConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        if (frireVerified !== null){
+          dispatch(userSelectionDenied(frireVerified))
           selectionApproved = false
         }
       }
