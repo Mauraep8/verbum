@@ -1,24 +1,15 @@
 import {
-    conditional,
-    feminin,
-    firstPerson,
     futurAnterieur,
     futurSimple,
-    imparfait,
     imperative,
     indicative,
-    masculin,
     passe,
     passeAnterieur,
     passeCompose,
-    passeSimple,
-    plural,
     plusQueParfait,
     present,
-    secondPerson,
     singular,
     subjunctive,
-    thirdPerson,
   } from "../grammarTerms";
 
    
@@ -27,8 +18,6 @@ import {
     moodArray,
     tenseArray,
     numberArray,
-    genderArray,
-    personArray
   ) {
     const filteredVerb = verbArray.filter((verb) => verb.verbID === 108);
     //IF INDICATIVE
@@ -43,7 +32,7 @@ import {
         tenseArray.includes(futurAnterieur) === false
       ) {
         return {
-          element: ["verb " + filteredVerb[0].value, indicative],
+          element: ["verb " + filteredVerb[0].value, `l'${indicative}`],
           missingType: "tense",
           missing: [
             present,
@@ -58,7 +47,7 @@ import {
       //IF INDICATIVE PRESENT, ALWAYS IN SINGULAR NUMBER
       if(tenseArray.includes(present)===true&& numberArray.includes(singular)===false){
         return {
-            element: ["verb " + filteredVerb[0].value, 'present indicative'],
+            element: ["verb " + filteredVerb[0].value, `l'${indicative} ${present}`],
             missingType: "number",
             missing: [singular],
           };
@@ -68,7 +57,7 @@ import {
     // TENSES ALWAYS IN plusQueParfait OR passe [never imparfait or present]
     if (moodArray.includes(subjunctive) === true && tenseArray.includes(plusQueParfait) === false && tenseArray.includes(passe) === false ) {
       return {
-        element: ["verb " + filteredVerb[0].value, subjunctive],
+        element: ["verb " + filteredVerb[0].value, `le ${subjunctive}`],
         missingType: "tense",
         missing: [passe, plusQueParfait],
       };
@@ -78,7 +67,7 @@ import {
     //PRESENT ALWAYS IN SINGULAR
     if (moodArray.includes(imperative)===true && tenseArray.includes(present)===true && numberArray.includes(singular)===false){
         return {
-            element: ["verb " + filteredVerb[0].value, 'present imperative'],
+            element: ["verb " + filteredVerb[0].value, `l'${imperative} ${present}` ],
             missingType: "number",
             missing: [
               singular,

@@ -1,21 +1,15 @@
 import {
   conditional,
-  feminin,
-  firstPerson,
   futurAnterieur,
   futurSimple,
   imparfait,
-  imperative,
   indicative,
-  masculin,
-  passe,
   passeAnterieur,
   passeCompose,
   passeSimple,
   plural,
   plusQueParfait,
   present,
-  secondPerson,
   singular,
   subjunctive,
   thirdPerson,
@@ -26,7 +20,6 @@ export default function choirConditions(
   moodArray,
   tenseArray,
   numberArray,
-  genderArray,
   personArray
 ) {
   const filteredVerb = verbArray.filter((verb) => verb.verbID === 82);
@@ -56,7 +49,7 @@ export default function choirConditions(
       tenseArray.includes(futurAnterieur) === false
     ) {
       return {
-        element: "verb " + filteredVerb[0].value,
+        element: ["verb " + filteredVerb[0].value, `l'${indicative}`],
         missingType: "tense",
         missing: [
           present,
@@ -78,7 +71,8 @@ export default function choirConditions(
         return {
           element: [
             "verb " + filteredVerb[0].value,
-            "plural present indicative",
+            // "plural present indicative",
+            `l'${indicative} ${present} au ${plural}`
           ],
           missingType: "person",
           missing: [thirdPerson],
@@ -97,7 +91,7 @@ export default function choirConditions(
         return {
           element: [
             "verb " + filteredVerb[0].value,
-            "plural imperfect subjunctive",
+            `le ${subjunctive} ${imparfait}`,
           ],
           missingType: "number",
           missing: [singular],
@@ -113,7 +107,7 @@ export default function choirConditions(
       return {
         element: [
           "verb " + filteredVerb[0].value,
-          "plural present subjunctive",
+          `l'${subjunctive} ${present} au ${plural}`
         ],
         missingType: "person",
         missing: [thirdPerson],

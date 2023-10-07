@@ -50,7 +50,7 @@ export default function PopupMessage(props) {
             // grammar rule, two elements missing other conditions
             return (
                 <div className='popup-message' ref={popupMessage}>
-                    <p className='popup-message__text'>The {props.messageWarning.element[0]} and the {props.messageWarning.element[1]} were selected, please check one of the missing {props.messageWarning.missingType}s:</p>
+                    <p className='popup-message__text'>The {props.messageWarning.element[0]} and {props.messageWarning.element[1]} were selected, please check one of the missing {props.messageWarning.missingType}s:</p>
                     <ul className='popup-message__list'>
                         {props.messageWarning.missing.map((listItem) =>{
                             return <li className='popup-message__list-item'>{listItem}</li>
