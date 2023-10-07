@@ -13,7 +13,7 @@ export default function seoir (verbArray,moodArray,tenseArray,personArray){
       
         const filteredVerb = verbArray.filter((verb) => verb.verbID === 79);
 
-        //verify mood
+        //verify mood never in imperatif
         if (
           moodArray.includes(indicative) === false &&
           moodArray.includes(subjunctive) === false &&

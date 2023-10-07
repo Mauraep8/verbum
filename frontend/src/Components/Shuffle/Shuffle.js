@@ -86,7 +86,7 @@ export default function Shuffle() {
 
       //VERB CONDITIONS
 
-      // PLEUVOIR CONDITIONS VERIFICATION
+      // 75 PLEUVOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 75)){
         const pleuvoirVerified = pleuvoirConditions(verbArray,moodArray,genderArray,personArray)
         if (pleuvoirVerified !== null){
@@ -95,7 +95,7 @@ export default function Shuffle() {
         }
       }
 
-      // FALLOIR CONDITIONS VERIFICATION
+      // 66 FALLOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 66)) {
         const falloirVerified = falloirConditions(verbArray,moodArray,numberArray,personArray)
         if (falloirVerified !== null){
@@ -104,7 +104,7 @@ export default function Shuffle() {
         }
       }
       
-      //SEOIR CONDITIONS VERIFICATION
+      // 79 SEOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 79)) {
         const seoirVerified = seoirConditions(verbArray,moodArray,tenseArray,personArray)
         if (seoirVerified !== null){
@@ -113,7 +113,7 @@ export default function Shuffle() {
         }
       }
 
-      //FASEYER CONDITIONS VERIFICATION
+      // 30 FASEYER CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 30)) {
         const faseyerVerified = faseyerConditions(verbArray,moodArray,personArray)
         if (faseyerVerified !== null){
@@ -122,7 +122,7 @@ export default function Shuffle() {
         }
       }
       
-      //POUVOIR CONDITIONS VERIFICATION
+      // 78 POUVOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 78)) {
         const pouvoirVerified = pouvoirConditions(verbArray,moodArray)
         if (pouvoirVerified !== null){
@@ -131,7 +131,7 @@ export default function Shuffle() {
         }
       }
 
-      //CHOIR CONDITIONS VERIFICATION
+      // 82 CHOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 82)) {
         const choirVerified = choirConditions(verbArray,moodArray,tenseArray,numberArray,personArray)
         if (choirVerified !== null){
@@ -140,7 +140,7 @@ export default function Shuffle() {
         }
       }
 
-      //ECHOIR CONDITIONS VERIFICATION
+      // 83 ECHOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 83)) {
         const echoirVerified = echoirConditions(verbArray,moodArray,personArray)
         if (echoirVerified !== null){
@@ -148,7 +148,7 @@ export default function Shuffle() {
           selectionApproved = false
         }
       }
-      //DECHOIR CONDITIONS VERIFICATION
+      // 84 DECHOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 84)) {
         const dechoirVerified = dechoirConditions(verbArray,moodArray,tenseArray)
         if (dechoirVerified !== null){
@@ -157,7 +157,7 @@ export default function Shuffle() {
         }
       }
 
-      //ABSOUDRE CONDITIONS VERIFICATION
+      // 92 ABSOUDRE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 92)) {
         const absoudreVerified = absoudreConditions(verbArray,moodArray,tenseArray)
         if (absoudreVerified !== null){
@@ -166,7 +166,7 @@ export default function Shuffle() {
         }
       }
 
-      //FRIRE CONDITIONS VERIFICATION
+      //108 FRIRE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 108)) {
         const frireVerified = frireConditions(verbArray,moodArray,tenseArray,numberArray)
         if (frireVerified !== null){
@@ -175,7 +175,7 @@ export default function Shuffle() {
         }
       }
 
-      //CLORE CONDITIONS VERIFICATION
+      // 112 CLORE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 112)) {
         const cloreVerified = cloreConditions(verbArray,moodArray,tenseArray,numberArray)
         if (cloreVerified !== null){
@@ -184,7 +184,7 @@ export default function Shuffle() {
         }
       }
       
-      //TRAIRE CONDITIONS VERIFICATION
+      // 121 TRAIRE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 121)) {
         const traireVerified = traireConditions(verbArray,moodArray,tenseArray)
         if (traireVerified !== null){
@@ -193,7 +193,7 @@ export default function Shuffle() {
         }
       }
 
-      //PAITRE CONDITIONS VERIFICATION
+      // 127 PAITRE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 127)) {
         const paitreVerified = paitreConditions(verbArray,moodArray,tenseArray,personArray)
         if (paitreVerified !== null){
@@ -202,7 +202,7 @@ export default function Shuffle() {
         }
       }
 
-      //FAILLIR CONDITIONS VERIFICATION
+      // 59 FAILLIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 59)) {
         const faillirVerified = faillirConditions(verbArray,moodArray)
         if (faillirVerified !== null){
