@@ -4,11 +4,14 @@ import {
     subjunctive,
   } from "../grammarTerms";
 
-export default function pouvoirConditions(verbArray,moodArray){
-
-const filteredVerb = verbArray.filter((verb) => verb.verbID === 78);
-// ALWAYS IN INDICATIVE, OR SUBJUNCTIVE OR CONDITIONAL
-   if (
+   
+  export default function faillirConditions(
+    verbArray,
+    moodArray,
+  ) {
+    const filteredVerb = verbArray.filter((verb) => verb.verbID === 59);
+  // NEVER IN IMPERATIVE
+  if (
     moodArray.includes(indicative) === false &&
     moodArray.includes(subjunctive) === false &&
     moodArray.includes(conditional) === false
@@ -19,5 +22,7 @@ const filteredVerb = verbArray.filter((verb) => verb.verbID === 78);
       missing: [indicative, subjunctive, conditional],
     };
   }
-  return null
-}
+    return null;
+  }
+  
+ 

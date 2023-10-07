@@ -1,27 +1,17 @@
 import {
     conditional,
-    feminin,
-    firstPerson,
     futurAnterieur,
     futurSimple,
-    imparfait,
-    imperative,
     indicative,
-    masculin,
-    passe,
     passeAnterieur,
     passeCompose,
     passeSimple,
-    plural,
     plusQueParfait,
     present,
-    secondPerson,
-    singular,
     subjunctive,
-    thirdPerson,
   } from "../grammarTerms";
 
-  export default function dechoirConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray){
+  export default function dechoirConditions(verbArray,moodArray,tenseArray){
     const filteredVerb = verbArray.filter((verb) => verb.verbID === 84);
 
    // ALWAYS IN INDICATIVE, OR SUBJUNCTIVE OR CONDITIONAL
@@ -49,7 +39,7 @@ import {
       tenseArray.includes(futurAnterieur) === false
     ) {
       return {
-        element: "verb " + filteredVerb[0].value,
+        element: ["verb " + filteredVerb[0].value,`l'${indicative}`],
         missingType: "tense",
         missing: [
           present,

@@ -1,24 +1,12 @@
 import {
     conditional,
-    feminin,
-    firstPerson,
-    futurAnterieur,
     futurSimple,
     imparfait,
     imperative,
     indicative,
-    masculin,
-    passe,
-    passeAnterieur,
-    passeCompose,
-    passeSimple,
-    plural,
-    plusQueParfait,
     present,
     secondPerson,
-    singular,
     subjunctive,
-    thirdPerson,
   } from "../grammarTerms";
 
    
@@ -26,8 +14,6 @@ import {
     verbArray,
     moodArray,
     tenseArray,
-    numberArray,
-    genderArray,
     personArray
   ) {
     const filteredVerb = verbArray.filter((verb) => verb.verbID === 127);
@@ -40,7 +26,7 @@ import {
         tenseArray.includes(imparfait) === false
       ) {
         return {
-          element: ["verb " + filteredVerb[0].value, indicative],
+          element: ["verb " + filteredVerb[0].value, `l'${indicative}`],
           missingType: "tense",
           missing: [
             present,
@@ -54,21 +40,44 @@ import {
     // TENSES ALWAYS IN  OR present [never imparfait plusQueParfait OR passe]
     if (moodArray.includes(subjunctive) === true && tenseArray.includes(present) === false ) {
       return {
-        element: ["verb " + filteredVerb[0].value, subjunctive],
+        element: ["verb " + filteredVerb[0].value, `le ${subjunctive}`],
         missingType: "tense",
         missing: [present],
       };
     }
-    //IF IMPERATIVE 
-    //PRESENT ALWAYS IN PRESENT
-    if (moodArray.includes(imperative)===true && tenseArray.includes(present)===false ){
+    //IF IMPERATIVE     
+    if (moodArray.includes(imperative)===true){
+      //ALWAYS IN PRESENT
+      if(tenseArray.includes(present)===false){
         return {
-            element: ["verb " + filteredVerb[0].value, 'imperative'],
+            element: ["verb " + filteredVerb[0].value, `l'${imperative}`],
             missingType: "tense",
             missing: [
               present,
             ],
         };
+      }
+      //ALWAYS IN 2ND PERSON, NEVER 1ST PERSON  
+      if(personArray.includes(secondPerson)===false){
+        return {
+            element: ["verb " + filteredVerb[0].value, `l'${imperative}`],
+            missingType: "person",
+            missing: [
+              secondPerson,
+            ],
+        };
+      }
+    }
+    //IF CONDITIONAL
+    //ALWAYS IN PRESENT NEVER IN PASSE
+    if(moodArray.includes(conditional)===true && tenseArray.includes(present)===false){
+      return {
+        element: ["verb " + filteredVerb[0].value, `le ${conditional}`],
+        missingType: "tense",
+        missing: [
+          present,
+        ],
+    };
     }
     return null;
   }

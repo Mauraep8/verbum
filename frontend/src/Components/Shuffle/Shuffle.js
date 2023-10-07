@@ -34,6 +34,7 @@ import frireConditions from "../../Utils/verbLogic/frireConditions";
 import cloreConditions from "../../Utils/verbLogic/cloreConditions";
 import traireConditions from "../../Utils/verbLogic/traireConditions";
 import paitreConditions from "../../Utils/verbLogic/paitreConditions";
+import faillirConditions from "../../Utils/verbLogic/faillirConditions";
 
 
 export default function Shuffle() {
@@ -114,7 +115,7 @@ export default function Shuffle() {
 
       //FASEYER CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 30)) {
-        const faseyerVerified = faseyerConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        const faseyerVerified = faseyerConditions(verbArray,moodArray,personArray)
         if (faseyerVerified !== null){
           dispatch(userSelectionDenied(faseyerVerified))
           selectionApproved = false
@@ -132,7 +133,7 @@ export default function Shuffle() {
 
       //CHOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 82)) {
-        const choirVerified = choirConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        const choirVerified = choirConditions(verbArray,moodArray,tenseArray,numberArray,personArray)
         if (choirVerified !== null){
           dispatch(userSelectionDenied(choirVerified))
           selectionApproved = false
@@ -141,7 +142,7 @@ export default function Shuffle() {
 
       //ECHOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 83)) {
-        const echoirVerified = echoirConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        const echoirVerified = echoirConditions(verbArray,moodArray,personArray)
         if (echoirVerified !== null){
           dispatch(userSelectionDenied(echoirVerified))
           selectionApproved = false
@@ -149,7 +150,7 @@ export default function Shuffle() {
       }
       //DECHOIR CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 84)) {
-        const dechoirVerified = dechoirConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        const dechoirVerified = dechoirConditions(verbArray,moodArray,tenseArray)
         if (dechoirVerified !== null){
           dispatch(userSelectionDenied(dechoirVerified))
           selectionApproved = false
@@ -158,7 +159,7 @@ export default function Shuffle() {
 
       //ABSOUDRE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 92)) {
-        const absoudreVerified = absoudreConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        const absoudreVerified = absoudreConditions(verbArray,moodArray,tenseArray)
         if (absoudreVerified !== null){
           dispatch(userSelectionDenied(absoudreVerified))
           selectionApproved = false
@@ -167,7 +168,7 @@ export default function Shuffle() {
 
       //FRIRE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 108)) {
-        const frireVerified = frireConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        const frireVerified = frireConditions(verbArray,moodArray,tenseArray,numberArray)
         if (frireVerified !== null){
           dispatch(userSelectionDenied(frireVerified))
           selectionApproved = false
@@ -176,7 +177,7 @@ export default function Shuffle() {
 
       //CLORE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 112)) {
-        const cloreVerified = cloreConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        const cloreVerified = cloreConditions(verbArray,moodArray,tenseArray,numberArray)
         if (cloreVerified !== null){
           dispatch(userSelectionDenied(cloreVerified))
           selectionApproved = false
@@ -185,7 +186,7 @@ export default function Shuffle() {
       
       //TRAIRE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 121)) {
-        const traireVerified = traireConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        const traireVerified = traireConditions(verbArray,moodArray,tenseArray)
         if (traireVerified !== null){
           dispatch(userSelectionDenied(traireVerified))
           selectionApproved = false
@@ -194,9 +195,18 @@ export default function Shuffle() {
 
       //PAITRE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 127)) {
-        const paitreVerified = paitreConditions(verbArray,moodArray,tenseArray,numberArray,genderArray,personArray)
+        const paitreVerified = paitreConditions(verbArray,moodArray,tenseArray,personArray)
         if (paitreVerified !== null){
           dispatch(userSelectionDenied(paitreVerified))
+          selectionApproved = false
+        }
+      }
+
+      //FAILLIR CONDITIONS VERIFICATION
+      if (verbArray.some((verb) => verb.verbID === 59)) {
+        const faillirVerified = faillirConditions(verbArray,moodArray)
+        if (faillirVerified !== null){
+          dispatch(userSelectionDenied(faillirVerified))
           selectionApproved = false
         }
       }

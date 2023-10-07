@@ -1,22 +1,9 @@
 import {
     conditional,
-    feminin,
-    firstPerson,
-    futurAnterieur,
     futurSimple,
     imparfait,
-    imperative,
     indicative,
-    masculin,
-    passe,
-    passeAnterieur,
-    passeCompose,
-    passeSimple,
-    plural,
-    plusQueParfait,
     present,
-    secondPerson,
-    singular,
     subjunctive,
     thirdPerson,
   } from "../grammarTerms";
@@ -46,7 +33,7 @@ export default function seoir (verbArray,moodArray,tenseArray,personArray){
             tenseArray.includes(futurSimple) === false
           ) {
             return {
-              element: ["verb " + filteredVerb[0].value, indicative],
+              element: ["verb " + filteredVerb[0].value, `l'${indicative}`],
               missingType: "tense",
               missing: [present, imparfait, futurSimple],
             };
@@ -56,7 +43,7 @@ export default function seoir (verbArray,moodArray,tenseArray,personArray){
         if (moodArray.includes(subjunctive)) {
           if (tenseArray.includes(present) === false) {
             return {
-              element: ["verb " + filteredVerb[0].value, subjunctive],
+              element: ["verb " + filteredVerb[0].value, `le ${subjunctive}`],
               missingType: "tense",
               missing: [present],
             };
@@ -66,7 +53,7 @@ export default function seoir (verbArray,moodArray,tenseArray,personArray){
         if (moodArray.includes(conditional)) {
           if (tenseArray.includes(present) === false) {
             return {
-              element: ["verb " + filteredVerb[0].value, conditional],
+              element: ["verb " + filteredVerb[0].value, `le ${conditional}`],
               missingType: "tense",
               missing: [present],
             };

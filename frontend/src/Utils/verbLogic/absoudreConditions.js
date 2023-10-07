@@ -1,24 +1,14 @@
 import {
-    conditional,
-    feminin,
-    firstPerson,
     futurAnterieur,
     futurSimple,
     imparfait,
-    imperative,
     indicative,
-    masculin,
     passe,
     passeAnterieur,
     passeCompose,
-    passeSimple,
-    plural,
     plusQueParfait,
     present,
-    secondPerson,
-    singular,
     subjunctive,
-    thirdPerson,
   } from "../grammarTerms";
 
    
@@ -26,9 +16,6 @@ import {
     verbArray,
     moodArray,
     tenseArray,
-    numberArray,
-    genderArray,
-    personArray
   ) {
     const filteredVerb = verbArray.filter((verb) => verb.verbID === 92);
   
@@ -45,7 +32,7 @@ import {
       tenseArray.includes(futurAnterieur) === false
     ) {
       return {
-        element: ["verb " + filteredVerb[0].value, indicative],
+        element: ["verb " + filteredVerb[0].value, `l'${indicative}`],
         missingType: "tense",
         missing: [
           present,
@@ -67,7 +54,7 @@ import {
       tenseArray.includes(passe) === false
     ) {
       return {
-        element: ["verb " + filteredVerb[0].value, subjunctive],
+        element: ["verb " + filteredVerb[0].value, `le ${subjunctive}`],
         missingType: "tense",
         missing: [present, passe, plusQueParfait],
       };
