@@ -8,10 +8,14 @@ import Shuffle from '../Shuffle/Shuffle'
 import { shuffleArray } from '../../Utils/shuffleArray'
 import { genderShuffled, moodShuffled, personShuffled, tenseShuffled, numberShuffled, verbShuffled, answerCompared} from "../../Store/exerciseSlice";
 import GrammarFeature from '../GrammarFeature/GrammarFeature';
-import {imperative,present, thirdPerson, secondPerson, firstPerson, plural, singular, masculin} from '../../Utils/grammarTerms'
+import {imperative,present, thirdPerson, secondPerson, firstPerson, plural, singular, masculin, indicative, subjunctive, conditional} from '../../Utils/grammarTerms'
 import shuffleVerb from '../../Utils/grammarLogic/shuffleVerb';
 import shuffleMood from '../../Utils/grammarLogic/shuffleMood';
-import shuffleTense from '../../Utils/grammarLogic/shuffleTense';
+import shuffleTense from '../../Utils/grammarLogic/indicative/shuffleIndicativeTenses';
+import shuffleIndicativeTenses from '../../Utils/grammarLogic/indicative/shuffleIndicativeTenses';
+import shuffleImperativeTenses from '../../Utils/grammarLogic/imperative/shuffleImperativeTenses';
+import shuffleSubjunctiveTenses from '../../Utils/grammarLogic/subjunctive/shuffleSubjunctiveTenses';
+import shuffleConditionalTenses from '../../Utils/grammarLogic/conditional/shuffleConditionalTenses';
 
 export default function Exercise() {
 
@@ -47,8 +51,36 @@ export default function Exercise() {
 
 
         // TENSE SHUFFLE
-        const tenseResult = shuffleTense(shuffleState, verbResult, moodResult)
-        dispatch(tenseShuffled(tenseResult))
+        function shuffleTense (){ 
+
+        // if indicative
+        if (moodResult.result.value === indicative){
+          const indicativeTenseResult = shuffleIndicativeTenses(shuffleState, verbResult)
+          dispatch(tenseShuffled(indicativeTenseResult))
+          return indicativeTenseResult
+        }
+
+        // if imperative
+        if (moodResult.result.value === imperative){
+          const imperativeTenseResult = shuffleImperativeTenses(shuffleState, verbResult)
+          dispatch(tenseShuffled(imperativeTenseResult))
+          return imperativeTenseResult
+        } 
+
+        // if subjunctive
+        if (moodResult.result.value === subjunctive){
+          const subjunctiveTenseResult = shuffleSubjunctiveTenses(shuffleState, verbResult)
+          dispatch(tenseShuffled(subjunctiveTenseResult))
+          return subjunctiveTenseResult
+        }
+        
+        // if conditional
+        if (moodResult.result.value === conditional){
+          const conditionalTenseResult = shuffleConditionalTenses(shuffleState, verbResult)
+          dispatch(tenseShuffled(conditionalTenseResult))
+          return conditionalTenseResult
+        } 
+      }
         // const shuffleTense = () =>{
 
         //   // if indicatif
@@ -110,7 +142,7 @@ export default function Exercise() {
       
         //   }
         // }
-        // const tenseResult = shuffleTense()
+        const tenseResult = shuffleTense()
         // dispatch(tenseShuffled(tenseResult))
 
         //PERSON SHUFFLE 

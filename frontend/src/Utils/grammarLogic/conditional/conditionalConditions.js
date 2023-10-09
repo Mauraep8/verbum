@@ -19,7 +19,7 @@ import {
   singular,
   subjunctive,
   thirdPerson,
-} from "../grammarTerms";
+} from "../../grammarTerms";
 
 export default function conditionalConditions(tenseArray) {
   if (

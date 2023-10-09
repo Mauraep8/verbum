@@ -20,10 +20,10 @@ import {
 import pleuvoirConditions from "../../Utils/verbLogic/pleuvoirConditions";
 import falloirConditions from "../../Utils/verbLogic/falloirConditions";
 import seoirConditions from "../../Utils/verbLogic/seoirConditions";
-import indicativeConditions from "../../Utils/grammarLogic/indicativeConditions";
-import imperativeConditions from "../../Utils/grammarLogic/imperativeConditions";
-import subjunctiveConditions from "../../Utils/grammarLogic/subjunctiveConditions";
-import conditionalConditions from "../../Utils/grammarLogic/conditionalConditions";
+import indicativeConditions from "../../Utils/grammarLogic/indicative/indicativeConditions";
+import imperativeConditions from "../../Utils/grammarLogic/imperative/imperativeConditions";
+import subjunctiveConditions from "../../Utils/grammarLogic/subjunctive/subjunctiveConditions";
+import conditionalConditions from "../../Utils/grammarLogic/conditional/conditionalConditions";
 import faseyerConditions from "../../Utils/verbLogic/faseyerConditions";
 import pouvoirConditions from "../../Utils/verbLogic/pouvoirConditions";
 import choirConditions from "../../Utils/verbLogic/choirConditions";
