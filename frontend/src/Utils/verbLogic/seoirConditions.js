@@ -8,7 +8,7 @@ import {
     thirdPerson,
   } from "../grammarTerms";
 
-//never imperatif mood, indicative (only present, imparfait, futur), subjunctive and conditional (only present)3rd person only
+// subjunctive and conditional (only present)3rd person only
 export default function seoir (verbArray,moodArray,tenseArray,personArray){
       
         const filteredVerb = verbArray.filter((verb) => verb.verbID === 79);
@@ -25,7 +25,8 @@ export default function seoir (verbArray,moodArray,tenseArray,personArray){
             missing: [indicative, subjunctive, conditional],
           };
         }
-        //verify indicative tenses
+        //verify indicative tenses 
+        //ALWAYS IN present, imparfait and futurSimple (never in passeCompose,plusQueParfait,passeSimple, futurAnterieur,passeAnterieur)
         if (moodArray.includes(indicative)) {
           if (
             tenseArray.includes(present) === false &&

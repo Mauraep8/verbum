@@ -38,7 +38,7 @@ export default function choirConditions(
   }
   //IF INDICATIVE
   if (moodArray.includes(indicative) === true) {
-    //ALWAYS IN PRESENT, OR passeCompose OR plusQueParfait OR passeSimple OR passeAnterieur OR futurSimple OR futurAnterieur
+    //ALWAYS IN PRESENT, OR passeCompose OR plusQueParfait OR passeSimple OR passeAnterieur OR futurSimple OR futurAnterieur (never imparfait)
     if (
       tenseArray.includes(present) === false &&
       tenseArray.includes(passeCompose) === false &&

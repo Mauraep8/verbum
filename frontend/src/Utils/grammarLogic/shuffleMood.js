@@ -14,7 +14,7 @@ import {  imperative } from "../grammarTerms";
 
 
 
-export default function shuffleMood(verbResult, shuffleState) {
+export default function shuffleMood(shuffleState,verbResult) {
   if (
     verbResult.result.verbID === 82 ||
     verbResult.result.verbID === 84 ||
