@@ -5,7 +5,7 @@ import {
     plural,
     present,
     secondPerson,
-} from "../grammarTerms";
+} from "../../grammarTerms";
 
 export default function imperativeConditions (tenseArray,numberArray,personArray) {
     if (

@@ -17,7 +17,7 @@ import {
      };
    }
 
-   // ALWAYS IN INDICATIVE, OR SUBJUNCTIVE OR CONDITIONAL
+   // ALWAYS IN INDICATIVE, OR SUBJUNCTIVE OR CONDITIONAL (never in imperatif)
    if (
      moodArray.includes(indicative) === false &&
      moodArray.includes(subjunctive) === false &&

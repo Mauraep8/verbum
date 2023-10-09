@@ -7,7 +7,7 @@ import {
 export default function pouvoirConditions(verbArray,moodArray){
 
 const filteredVerb = verbArray.filter((verb) => verb.verbID === 78);
-// ALWAYS IN INDICATIVE, OR SUBJUNCTIVE OR CONDITIONAL
+// ALWAYS IN INDICATIVE, OR SUBJUNCTIVE OR CONDITIONAL (never in imperatif)
    if (
     moodArray.includes(indicative) === false &&
     moodArray.includes(subjunctive) === false &&

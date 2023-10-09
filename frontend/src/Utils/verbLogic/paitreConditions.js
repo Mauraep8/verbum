@@ -37,7 +37,7 @@ import {
       }
     }
     //IF SUBJUNCTIVE
-    // TENSES ALWAYS IN  OR present [never imparfait plusQueParfait OR passe]
+    // TENSES ALWAYS IN present [never imparfait plusQueParfait OR passe]
     if (moodArray.includes(subjunctive) === true && tenseArray.includes(present) === false ) {
       return {
         element: ["verb " + filteredVerb[0].value, `le ${subjunctive}`],

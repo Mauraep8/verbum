@@ -14,7 +14,7 @@ import {
   export default function dechoirConditions(verbArray,moodArray,tenseArray){
     const filteredVerb = verbArray.filter((verb) => verb.verbID === 84);
 
-   // ALWAYS IN INDICATIVE, OR SUBJUNCTIVE OR CONDITIONAL
+   // ALWAYS IN INDICATIVE, OR SUBJUNCTIVE OR CONDITIONAL (never in imperatif)
    if (
      moodArray.includes(indicative) === false &&
      moodArray.includes(subjunctive) === false &&
@@ -28,7 +28,7 @@ import {
    }
    //IF INDICATIVE
   if (moodArray.includes(indicative) === true) {
-    //ALWAYS IN PRESENT, OR passeCompose OR plusQueParfait OR passeSimple OR passeAnterieur OR futurSimple OR futurAnterieur
+    //ALWAYS IN PRESENT, OR passeCompose OR plusQueParfait OR passeSimple OR passeAnterieur OR futurSimple OR futurAnterieur (never imparfait)
     if (
       tenseArray.includes(present) === false &&
       tenseArray.includes(passeCompose) === false &&

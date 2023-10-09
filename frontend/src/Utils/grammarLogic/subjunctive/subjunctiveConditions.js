@@ -4,7 +4,7 @@ import {
     plusQueParfait,
     present,
     subjunctive,
-  } from "../grammarTerms";
+  } from "../../grammarTerms";
 
 
 export default function subjunctiveConditions (tenseArray) {
