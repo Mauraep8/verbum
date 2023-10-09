@@ -40,7 +40,7 @@ export default function seoir (verbArray,moodArray,tenseArray,personArray){
             };
           }
         }
-        //verify subjunctive tenses
+        //verify subjunctive tenses always in present
         if (moodArray.includes(subjunctive)) {
           if (tenseArray.includes(present) === false) {
             return {
