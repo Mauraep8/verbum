@@ -50,7 +50,7 @@ export default function seoir (verbArray,moodArray,tenseArray,personArray){
             };
           }
         }
-        //verify conditional tenses
+        //verify conditional tenses always in present
         if (moodArray.includes(conditional)) {
           if (tenseArray.includes(present) === false) {
             return {
