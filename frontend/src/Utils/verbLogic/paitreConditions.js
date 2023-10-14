@@ -57,17 +57,6 @@ import {
             ],
         };
       }
-      //ALWAYS IN 2ND PERSON, NEVER 1ST PERSON  
-      if(personArray.includes(secondPerson)===false){
-        return {
-            element: ["verb " + filteredVerb[0].value, `l'${imperative}`],
-            missingType: "person",
-            missing: [
-              secondPerson,
-            ],
-        };
-      }
-    }
     //IF CONDITIONAL
     //ALWAYS IN PRESENT NEVER IN PASSE
     if(moodArray.includes(conditional)===true && tenseArray.includes(present)===false){
@@ -81,5 +70,4 @@ import {
     }
     return null;
   }
-  
- 
+} 

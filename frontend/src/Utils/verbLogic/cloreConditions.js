@@ -10,6 +10,7 @@ import {
     present,
     singular,
     subjunctive,
+    secondPerson
   } from "../grammarTerms";
 
    
@@ -17,6 +18,7 @@ import {
     verbArray,
     moodArray,
     tenseArray,
+    personArray,
     numberArray,
   ) {
     const filteredVerb = verbArray.filter((verb) => verb.verbID === 112);
@@ -56,17 +58,31 @@ import {
     }
 
     //IF IMPERATIVE 
-    //PRESENT ALWAYS IN SINGULAR
-    if (moodArray.includes(imperative)===true && tenseArray.includes(present)===true && numberArray.includes(singular)===false){
+    
+    if (moodArray.includes(imperative)===true){
+
+      //IF PRESENT ALWAYS IN SINGULAR
+      if(tenseArray.includes(present)===true && numberArray.includes(singular)===false){
+            return {
+                element: ["verb " + filteredVerb[0].value, `l'${imperative} ${present}`],
+                missingType: "number",
+                missing: [
+                  singular,
+                ],
+            };
+      // if present ALWAYS IN 2ND PERSON, NEVER 1ST PERSON 
+      } else if(tenseArray.includes(present)===true & personArray.includes(secondPerson)===false){
         return {
             element: ["verb " + filteredVerb[0].value, `l'${imperative} ${present}`],
-            missingType: "number",
+            missingType: "person",
             missing: [
-              singular,
+              secondPerson,
             ],
         };
-    }
-    return null;
+      }
+    
+        return null;
   }
+}
   
  

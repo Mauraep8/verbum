@@ -177,7 +177,7 @@ export default function Shuffle() {
 
       // 112 CLORE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 112)) {
-        const cloreVerified = cloreConditions(verbArray,moodArray,tenseArray,numberArray)
+        const cloreVerified = cloreConditions(verbArray,moodArray,tenseArray,personArray,numberArray)
         if (cloreVerified !== null){
           dispatch(userSelectionDenied(cloreVerified))
           selectionApproved = false

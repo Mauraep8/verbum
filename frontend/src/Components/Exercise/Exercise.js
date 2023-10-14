@@ -37,6 +37,7 @@ import {
 } from "../../Utils/grammarTerms";
 import shuffleVerb from "../../Utils/grammarLogic/shuffleVerb";
 import shuffleMood from "../../Utils/grammarLogic/shuffleMood";
+import shufflePerson from "../../Utils/grammarLogic/shufflePerson";
 import shuffleIndicativeTenses from "../../Utils/grammarLogic/indicative/shuffleIndicativeTenses";
 import shuffleImperativeTenses from "../../Utils/grammarLogic/imperative/shuffleImperativeTenses";
 import shuffleSubjunctiveTenses from "../../Utils/grammarLogic/subjunctive/shuffleSubjunctiveTenses";
@@ -107,52 +108,53 @@ export default function Exercise() {
       const tenseResult = shuffleTense();
 
       //PERSON SHUFFLE
-      const shufflePerson = () => {
-        //verbs #45 pleuvoir #46 falloir, 50# seoir and messeoir only in 3rd person
-        if (
-          verbResult.result.verbID === 45 ||
-          verbResult.result.verbID === 46 ||
-          verbResult.result.verbID === 50
-        ) {
-          const filteredPerson = shuffleState.personArrayChecked.filter(
-            (obj) => obj.value === thirdPerson
-          );
-          const shuffledPerson = shuffleArray(filteredPerson);
-          dispatch(personShuffled(shuffledPerson));
-          return shuffledPerson;
-        } else {
-          // if imperatif
-          if (moodResult.result.value === imperative) {
-            // clore imperatif present
-            if (
-              verbResult.result.verbID === 70 &&
-              tenseResult.result.value === present
-            ) {
-              const filteredPerson = shuffleState.personArrayChecked.filter(
-                (obj) => obj.value === secondPerson
-              );
-              const shuffledPerson = shuffleArray(filteredPerson);
-              dispatch(personShuffled(shuffledPerson));
-              return shuffledPerson;
-            } else {
-              const filteredPerson = shuffleState.personArrayChecked.filter(
-                (obj) => obj.value !== thirdPerson
-              );
-              const shuffledPerson = shuffleArray(filteredPerson);
-              dispatch(personShuffled(shuffledPerson));
-              return shuffledPerson;
-            }
-            // all other moods
-          } else {
-            const shuffledPerson = shuffleArray(
-              shuffleState.personArrayChecked
-            );
-            dispatch(personShuffled(shuffledPerson));
-            return shuffledPerson;
-          }
-        }
-      };
-      const personResult = shufflePerson();
+      // const shufflePerson = () => {
+      //   //verbs #45 pleuvoir #46 falloir, 50# seoir and messeoir only in 3rd person
+      //   if (
+      //     verbResult.result.verbID === 45 ||
+      //     verbResult.result.verbID === 46 ||
+      //     verbResult.result.verbID === 50
+      //   ) {
+      //     const filteredPerson = shuffleState.personArrayChecked.filter(
+      //       (obj) => obj.value === thirdPerson
+      //     );
+      //     const shuffledPerson = shuffleArray(filteredPerson);
+      //     dispatch(personShuffled(shuffledPerson));
+      //     return shuffledPerson;
+      //   } else {
+      //     // if imperatif
+      //     if (moodResult.result.value === imperative) {
+      //       // clore imperatif present
+      //       if (
+      //         verbResult.result.verbID === 70 &&
+      //         tenseResult.result.value === present
+      //       ) {
+      //         const filteredPerson = shuffleState.personArrayChecked.filter(
+      //           (obj) => obj.value === secondPerson
+      //         );
+      //         const shuffledPerson = shuffleArray(filteredPerson);
+      //         dispatch(personShuffled(shuffledPerson));
+      //         return shuffledPerson;
+      //       } else {
+      //         const filteredPerson = shuffleState.personArrayChecked.filter(
+      //           (obj) => obj.value !== thirdPerson
+      //         );
+      //         const shuffledPerson = shuffleArray(filteredPerson);
+      //         dispatch(personShuffled(shuffledPerson));
+      //         return shuffledPerson;
+      //       }
+      //       // all other moods
+      //     } else {
+      //       const shuffledPerson = shuffleArray(
+      //         shuffleState.personArrayChecked
+      //       );
+      //       dispatch(personShuffled(shuffledPerson));
+      //       return shuffledPerson;
+      //     }
+      //   }
+      // };
+      const personResult = shufflePerson(shuffleState, verbResult, moodResult, tenseResult);
+      dispatch(personShuffled(personResult));
 
       //SHUFFLE NUMBER
       const shuffleNumber = () => {
