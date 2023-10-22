@@ -38,6 +38,8 @@ import {
 import shuffleVerb from "../../Utils/grammarLogic/shuffleVerb";
 import shuffleMood from "../../Utils/grammarLogic/shuffleMood";
 import shufflePerson from "../../Utils/grammarLogic/shufflePerson";
+import shuffleNumber from "../../Utils/grammarLogic/shuffleNumber";
+import shuffleGender from "../../Utils/grammarLogic/shuffleGender";
 import shuffleIndicativeTenses from "../../Utils/grammarLogic/indicative/shuffleIndicativeTenses";
 import shuffleImperativeTenses from "../../Utils/grammarLogic/imperative/shuffleImperativeTenses";
 import shuffleSubjunctiveTenses from "../../Utils/grammarLogic/subjunctive/shuffleSubjunctiveTenses";
@@ -48,9 +50,7 @@ export default function Exercise() {
   const shuffleAction = useSelector((state) => state.exercise.shuffleAction);
   const shuffleState = useSelector((state) => state.exercise.shuffleState);
   const messageState = useSelector((state) => state.exercise.messageState);
-  const messageWarning = useSelector(
-    (state) => state.exercise.userSelectionMessage
-  );
+  const messageWarning = useSelector((state) => state.exercise.userSelectionMessage);
   const moodState = useSelector((state) => state.exercise.moodState);
   const tenseState = useSelector((state) => state.exercise.tenseState);
   const personState = useSelector((state) => state.exercise.personState);
@@ -108,117 +108,16 @@ export default function Exercise() {
       const tenseResult = shuffleTense();
 
       //PERSON SHUFFLE
-      // const shufflePerson = () => {
-      //   //verbs #45 pleuvoir #46 falloir, 50# seoir and messeoir only in 3rd person
-      //   if (
-      //     verbResult.result.verbID === 45 ||
-      //     verbResult.result.verbID === 46 ||
-      //     verbResult.result.verbID === 50
-      //   ) {
-      //     const filteredPerson = shuffleState.personArrayChecked.filter(
-      //       (obj) => obj.value === thirdPerson
-      //     );
-      //     const shuffledPerson = shuffleArray(filteredPerson);
-      //     dispatch(personShuffled(shuffledPerson));
-      //     return shuffledPerson;
-      //   } else {
-      //     // if imperatif
-      //     if (moodResult.result.value === imperative) {
-      //       // clore imperatif present
-      //       if (
-      //         verbResult.result.verbID === 70 &&
-      //         tenseResult.result.value === present
-      //       ) {
-      //         const filteredPerson = shuffleState.personArrayChecked.filter(
-      //           (obj) => obj.value === secondPerson
-      //         );
-      //         const shuffledPerson = shuffleArray(filteredPerson);
-      //         dispatch(personShuffled(shuffledPerson));
-      //         return shuffledPerson;
-      //       } else {
-      //         const filteredPerson = shuffleState.personArrayChecked.filter(
-      //           (obj) => obj.value !== thirdPerson
-      //         );
-      //         const shuffledPerson = shuffleArray(filteredPerson);
-      //         dispatch(personShuffled(shuffledPerson));
-      //         return shuffledPerson;
-      //       }
-      //       // all other moods
-      //     } else {
-      //       const shuffledPerson = shuffleArray(
-      //         shuffleState.personArrayChecked
-      //       );
-      //       dispatch(personShuffled(shuffledPerson));
-      //       return shuffledPerson;
-      //     }
-      //   }
-      // };
       const personResult = shufflePerson(shuffleState, verbResult, moodResult, tenseResult);
       dispatch(personShuffled(personResult));
 
       //SHUFFLE NUMBER
-      const shuffleNumber = () => {
-        // if mood imperatif and if person is 1
-        if (
-          moodResult.result.value === imperative &&
-          personResult.result.value === firstPerson
-        ) {
-          const filteredNumber = shuffleState.numberArrayChecked.filter(
-            (obj) => obj.value === plural
-          );
-          const shuffledNumber = shuffleArray(filteredNumber);
-          dispatch(numberShuffled(shuffledNumber));
-          return shuffledNumber;
+      const numberResult = shuffleNumber(shuffleState, verbResult, moodResult, tenseResult, personResult);
+      dispatch(numberShuffled(numberResult));
 
-          // clore imperatif present only in singulier
-        } else if (
-          verbResult.result.verbID === 70 &&
-          moodResult.result.value === imperative &&
-          tenseResult.result.value === present
-        ) {
-          const filteredNumber = shuffleState.numberArrayChecked.filter(
-            (obj) => obj.value === singular
-          );
-          const shuffledNumber = shuffleArray(filteredNumber);
-          dispatch(numberShuffled(shuffledNumber));
-          return shuffledNumber;
-
-          // pleuvoir and falloir only in singulier
-        } else if (
-          verbResult.result.verbID === 45 ||
-          verbResult.result.verbID === 46
-        ) {
-          const filteredNumber = shuffleState.numberArrayChecked.filter(
-            (obj) => obj.value === singular
-          );
-          const shuffledNumber = shuffleArray(filteredNumber);
-          dispatch(numberShuffled(shuffledNumber));
-          return shuffledNumber;
-          // all other moods and persons and verbs
-        } else {
-          const shuffledNumber = shuffleArray(shuffleState.numberArrayChecked);
-          dispatch(numberShuffled(shuffledNumber));
-          return shuffledNumber;
-        }
-      };
-      const numberResult = shuffleNumber();
-
-      const shuffleGender = () => {
-        // if verb is pleuvoir id 45
-
-        if (verbResult.result.verbID === 45) {
-          const filteredGender = shuffleState.genderArrayChecked.filter(
-            (obj) => obj.value === masculin
-          );
-          const shuffledGender = shuffleArray(filteredGender);
-          dispatch(genderShuffled(shuffledGender));
-        } else {
-          const shuffledGender = shuffleArray(shuffleState.genderArrayChecked);
-          dispatch(genderShuffled(shuffledGender));
-          return shuffledGender;
-        }
-      };
-      const genderResult = shuffleGender();
+      //SHUFFLE GENDER
+      const genderResult = shuffleGender(shuffleState, verbResult);
+      dispatch(genderShuffled(genderResult));
     }
   }, [shuffleState]);
 
