@@ -20,8 +20,8 @@ export default function shufflePerson (shuffleState, verbResult, moodResult, ten
       // if imperatif (general rule never in 3rd)
       if (moodResult.result.value === imperative) {
 
-        // clore imperatif present always in 2nd person
-        if (verbResult.result.verbID === 112 && tenseResult.result.value === present) {
+        // clore and frire imperatif present always in 2nd person
+        if ((verbResult.result.verbID === 112||verbResult.result.verbID===108) && tenseResult.result.value === present) {
           const filteredPerson = shuffleState.personArrayChecked.filter(
             (obj) => obj.value === secondPerson
           );

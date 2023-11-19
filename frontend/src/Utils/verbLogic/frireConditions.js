@@ -8,6 +8,7 @@ import {
     passeCompose,
     plusQueParfait,
     present,
+    secondPerson,
     singular,
     subjunctive,
   } from "../grammarTerms";
@@ -17,6 +18,7 @@ import {
     verbArray,
     moodArray,
     tenseArray,
+    personArray,
     numberArray,
   ) {
     const filteredVerb = verbArray.filter((verb) => verb.verbID === 108);
@@ -67,12 +69,19 @@ import {
     //PRESENT ALWAYS IN SINGULAR
     if (moodArray.includes(imperative)===true && tenseArray.includes(present)===true && numberArray.includes(singular)===false){
         return {
-            element: ["verb " + filteredVerb[0].value, `l'${imperative} ${present}` ],
+            element: ["verb " + filteredVerb[0].value, `l'${imperative} ${present}`],
             missingType: "number",
             missing: [
               singular,
             ],
         };
+    //present always in second person
+    } else if (moodArray.includes(imperative)===true && tenseArray.includes(present)===true && personArray.includes(secondPerson)===false){
+      return {
+          element: ["verb " + filteredVerb[0].value, `l'${imperative} ${present}`],
+          missingType: "person",
+          missing: [secondPerson,],
+      };
     }
     return null;
   }
