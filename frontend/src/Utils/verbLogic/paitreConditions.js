@@ -5,7 +5,6 @@ import {
     imperative,
     indicative,
     present,
-    secondPerson,
     subjunctive,
   } from "../grammarTerms";
 
@@ -14,17 +13,16 @@ import {
     verbArray,
     moodArray,
     tenseArray,
-    personArray
   ) {
     const filteredVerb = verbArray.filter((verb) => verb.verbID === 127);
+
     //IF INDICATIVE
-    if (moodArray.includes(indicative) === true) {
-      //ALWAYS IN PRESENT OR futurSimple or imparfait [never passeSimple passeCompose plusQueParfait passeAnterieur, futurAnterieur]
-      if (
-        tenseArray.includes(present) === false &&
-        tenseArray.includes(futurSimple) === false &&
-        tenseArray.includes(imparfait) === false
-      ) {
+    //ALWAYS IN PRESENT OR futurSimple or imparfait [never passeSimple passeCompose plusQueParfait passeAnterieur, futurAnterieur]
+    if (moodArray.includes(indicative) === true && 
+    tenseArray.includes(present) === false &&
+    tenseArray.includes(futurSimple) === false &&
+    tenseArray.includes(imparfait) === false
+    ) {       
         return {
           element: ["verb " + filteredVerb[0].value, `l'${indicative}`],
           missingType: "tense",
@@ -33,8 +31,7 @@ import {
             imparfait,
             futurSimple,
           ],
-        };
-      }
+      };
     }
     //IF SUBJUNCTIVE
     // TENSES ALWAYS IN present [never imparfait plusQueParfait OR passe]
@@ -45,18 +42,18 @@ import {
         missing: [present],
       };
     }
-    //IF IMPERATIVE     
-    if (moodArray.includes(imperative)===true){
-      //ALWAYS IN PRESENT
-      if(tenseArray.includes(present)===false){
-        return {
+    //IF IMPERATIVE    
+      //ALWAYS IN PRESENT 
+    if (moodArray.includes(imperative)===true && tenseArray.includes(present)===false){
+     return {
             element: ["verb " + filteredVerb[0].value, `l'${imperative}`],
             missingType: "tense",
             missing: [
               present,
             ],
         };
-      }
+    }
+      
     //IF CONDITIONAL
     //ALWAYS IN PRESENT NEVER IN PASSE
     if(moodArray.includes(conditional)===true && tenseArray.includes(present)===false){
@@ -66,8 +63,8 @@ import {
         missing: [
           present,
         ],
-    };
-    }
-    return null;
-  }
+      };
+    }   
+  
+  return null;
 } 

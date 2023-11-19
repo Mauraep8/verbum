@@ -1,5 +1,6 @@
 import {
   conditional,
+  firstPerson,
   futurAnterieur,
   futurSimple,
   imparfait,
@@ -10,6 +11,7 @@ import {
   plural,
   plusQueParfait,
   present,
+  secondPerson,
   singular,
   subjunctive,
   thirdPerson,
@@ -72,22 +74,30 @@ export default function choirConditions(
           element: [
             "verb " + filteredVerb[0].value,
             // "plural present indicative",
-            `l'${indicative} ${present} au ${plural}`
+            `l'${indicative} ${present} au ${plural}`,
           ],
           missingType: "person",
           missing: [thirdPerson],
         };
+      } else if ((personArray.includes(firstPerson)===true||personArray.includes(secondPerson)===true) && numberArray.includes(singular)===false
+        ){
+          return {
+            element: [
+              "verb " + filteredVerb[0].value,
+              // "plural present indicative",
+              `l'${indicative} ${present} à la ${firstPerson} ou ${secondPerson} personne`,
+            ],
+            missingType: "number",
+            missing: [singular],
+          };
       }
     }
   }
   //IF SUBJUNCTIVE
   if (moodArray.includes(subjunctive) === true) {
-
     //IF IMPERFECT SUBJUNCTIVE, ALWAYS SINGULAR
     if (tenseArray.includes(imparfait) === true) {
-      if (
-        numberArray.includes(singular) === false
-      ) {
+      if (numberArray.includes(singular) === false) {
         return {
           element: [
             "verb " + filteredVerb[0].value,
@@ -98,23 +108,33 @@ export default function choirConditions(
         };
       }
     }
-      // IF PRESENT PLURAL SUBJUNCTIVE, ALWAYS IN 3RD PERSON
-  if (tenseArray.includes(present) === true) {
-    if (
-      numberArray.includes(plural) === true &&
-      personArray.includes(thirdPerson) === false
-    ) {
-      return {
-        element: [
-          "verb " + filteredVerb[0].value,
-          `l'${subjunctive} ${present} au ${plural}`
-        ],
-        missingType: "person",
-        missing: [thirdPerson],
-      };
+    // IF PRESENT PLURAL SUBJUNCTIVE, ALWAYS IN 3RD PERSON
+    if (tenseArray.includes(present) === true) {
+      if (
+        numberArray.includes(plural) === true &&
+        personArray.includes(thirdPerson) === false
+      ) {
+        return {
+          element: [
+            "verb " + filteredVerb[0].value,
+            `le ${subjunctive} ${present} au ${plural}`,
+          ],
+          missingType: "person",
+          missing: [thirdPerson],
+        };
+      } else if ((personArray.includes(firstPerson)===true||personArray.includes(secondPerson)===true) && numberArray.includes(singular)===false
+      ){
+        return {
+          element: [
+            "verb " + filteredVerb[0].value,
+            // "plural present indicative",
+            `le ${subjunctive} ${present} à la ${firstPerson} ou ${secondPerson} personne`,
+          ],
+          missingType: "number",
+          missing: [singular],
+        };
+      }
     }
   }
-  }
-
   return null;
 }

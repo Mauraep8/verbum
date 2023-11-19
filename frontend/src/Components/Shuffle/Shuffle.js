@@ -168,7 +168,7 @@ export default function Shuffle() {
 
       //108 FRIRE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 108)) {
-        const frireVerified = frireConditions(verbArray,moodArray,tenseArray,numberArray)
+        const frireVerified = frireConditions(verbArray,moodArray,tenseArray,personArray,numberArray)
         if (frireVerified !== null){
           dispatch(userSelectionDenied(frireVerified))
           selectionApproved = false
@@ -195,7 +195,7 @@ export default function Shuffle() {
 
       // 127 PAITRE CONDITIONS VERIFICATION
       if (verbArray.some((verb) => verb.verbID === 127)) {
-        const paitreVerified = paitreConditions(verbArray,moodArray,tenseArray,personArray)
+        const paitreVerified = paitreConditions(verbArray,moodArray,tenseArray)
         if (paitreVerified !== null){
           dispatch(userSelectionDenied(paitreVerified))
           selectionApproved = false
