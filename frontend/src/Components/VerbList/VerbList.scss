@@ -11,11 +11,13 @@
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-
+        height: 6.67rem;
+    }
+    
+    &__scroll {
         overflow-y: scroll;
-        overflow-x: hidden;
-        height: 63px;
-
+        overflow-x: hidden; 
+        
         &::-webkit-scrollbar{
             width: .5rem;
             height: 1rem;
@@ -32,6 +34,9 @@
             border-radius: 5px;
             height: 10%;
         }
+        &--hidden{
+            overflow-y: hidden;
+        }
     }
     
 
@@ -40,6 +45,28 @@
         
         &__container{
             height: 10.2rem;
+        }
+        &__scroll{
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background-color: #fcfcfc;
+
+            &::-webkit-scrollbar{
+                width: .5rem;
+                height: 1rem;
+
+            }
+            &::-webkit-scrollbar-track{
+                background-color: rgba(234, 234, 234, 0.848);
+                // border: 1px solid black;
+
+            }
+            &::-webkit-scrollbar-thumb{
+                background-color:darkgray;
+                width: .3rem;
+                border-radius: 5px;
+                height: 10%;
+            }
         }
     }
 }
