@@ -11,7 +11,7 @@
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-        height: 63px;
+        height: 6.67rem;
     }
     
     &__scroll {
@@ -34,6 +34,9 @@
             border-radius: 5px;
             height: 10%;
         }
+        &--hidden{
+            overflow-y: hidden;
+        }
     }
     
 
@@ -44,13 +47,9 @@
             height: 10.2rem;
         }
         &__scroll{
-            overflow-y: hidden;
+            overflow-y: scroll;
             overflow-x: hidden;
             background-color: #fcfcfc;
-
-            &--active{
-                overflow-y: scroll;   
-            }
 
             &::-webkit-scrollbar{
                 width: .5rem;
@@ -67,12 +66,6 @@
                 width: .3rem;
                 border-radius: 5px;
                 height: 10%;
-            }
-
-            &--hidden{
-                &::-webkit-scrollbar{
-                    display: none;
-                }
             }
         }
     }

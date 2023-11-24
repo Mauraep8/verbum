@@ -6,15 +6,20 @@ import React, {useRef, useEffect} from 'react'
 export default function VerbList(props)  {
 
     const scroll = useRef([])
-    console.log(props.list.length)
+
     useEffect(()=>{
-        if(props.list.length <= 5){
-            scroll.current.classList.add('verbList__scroll--hidden')
-            scroll.current.classList.remove('verbList__scroll--active')
-        }
-        if(props.list.length > 5){
-            scroll.current.classList.remove('verbList__scroll--hidden')
-            scroll.current.classList.add('verbList__scroll--active')
+        if(props.search != null){
+            if(props.search.length !== 0){
+                if (props.search.length <= 5){
+                    scroll.current.classList.add('verbList__scroll--hidden')
+                } else{
+                    scroll.current.classList.remove('verbList__scroll--hidden')
+                }
+            } else if (props.list.length <= 5){
+                scroll.current.classList.add('verbList__scroll--hidden')
+            } else {
+                scroll.current.classList.remove('verbList__scroll--hidden')
+            }
         }
     })
 
@@ -28,7 +33,7 @@ export default function VerbList(props)  {
             </div>
         )
     }
-    // if search comes up with value, show list entry that start with search value charac
+    // if search isn't being used, show regular list
     if (props.search.length === 0){
         return (
             <div className="verbList">
@@ -53,7 +58,7 @@ export default function VerbList(props)  {
             </div>
         )
         
-    // if search isn't being used, show regular list
+    // if search comes up with value, show list entry that start with search value charac
     } else {
         return (
             <div className="verbList">
