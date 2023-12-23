@@ -1,36 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react'
 import './Answer.scss'
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { answerFetched, answerWritten } from '../../Store/exerciseSlice';
 import { store } from "../../Store/configureStore";
 import  axios from "axios";
-import Shuffle from '../Shuffle/Shuffle'
 import ButtonPrimary from '../ButtonPrimary/ButtonPrimary';
-import { imperativeAnswerFetch } from '../../Utils/grammarLogic/imperative/imperativeAnswerFetch';
-
-import {
-  conditional,
-  feminin,
-  firstPerson,
-  futurAnterieur,
-  futurSimple,
-  imparfait,
-  imperative,
-  indicative,
-  masculin,
-  passe,
-  passeAnterieur,
-  passeCompose,
-  passeSimple,
-  plural,
-  plusQueParfait,
-  present,
-  secondPerson,
-  singular,
-  subjunctive,
-  thirdPerson,
-} from "../../Utils/grammarTerms";
-
+import { imperativeAnswerFeminization } from '../../Utils/grammarLogic/imperative/imperativeAnswerFeminization';
+import { subjunctiveAnswerFeminization } from '../../Utils/grammarLogic/subjunctive/subjunctiveAnswerFeminization';
+import { otherMoodAnswerFeminization } from '../../Utils/grammarLogic/otherMoodAnswerFeminization';
+import { subjunctive } from "../../Utils/grammarTerms";
 
 export default function Answer(props) {
 
@@ -43,7 +21,6 @@ export default function Answer(props) {
   const correctCheckmark = useRef([])
   const falseX = useRef([])
 
-
   const [correctAnswer, setCorrectAnswer ] = useState([])
 
   const verify = (e)=>{
@@ -54,7 +31,6 @@ export default function Answer(props) {
     if (answerInput.current.value === ''){
       answerInput.current.classList.add('answer__input--error')
       inputWarning.current.classList.add('answer__text--visible')
-
 
     } else {
 
@@ -75,9 +51,6 @@ export default function Answer(props) {
       const number = storeState.numberState.result.apiFormat
       const gender = storeState.genderState.result.value
 
-      console.log(mood)
-
-      console.log(verbObject)
       // GET ANSWER FROM RestAPI
       axios.get(`http://localhost:8000/conjugate/fr/${verb}?mood=${mood}`)
       .then(result => {
@@ -104,171 +77,22 @@ export default function Answer(props) {
           //**imperatif here is in the apiformat**//
         if (mood === 'imperatif'){
 
-          const imperativeAnswer = imperativeAnswerFetch (array, verbObject, tense, number, gender, person)
+          const imperativeAnswer = imperativeAnswerFeminization (array, verbObject, tense, number, gender, person)
           dispatch(answerFetched(imperativeAnswer))
 
           
           // feminizing the 3rd person pronoun qu'il to qu'elle in subjunctif
         } else if (mood === subjunctive){
-          
-          let answer
 
-          //if verb is pleuvoir or falloir 
-          if(verbObject.value === 45 || verbObject.value === 46){
-            answer = array[0]
+          const subjunctiveAnswer = subjunctiveAnswerFeminization (array,arrayIndex,verbObject,tense,number,gender,person)
+          dispatch(answerFetched(subjunctiveAnswer))
 
-          // ALL OTHER VERBS   
-          } else {
-          // nous pronoun index
-          if (person === 1 && number === 2){
-            answer = array[3]
-
-            // vous pronoun index
-          } else if(person ===2 && number===2){
-            answer = array[4]
-
-            // all other pronoun index
-          } else{
-            answer = array[(arrayIndex -1)]
-          }
-        }
-
-          // singular
-          if (number === 1) {
-            if (person === 3 && gender===feminin && verbObject.value!==45){
-                // aller 3rd person change pronoun and add 'e'
-              if(verbObject.auxiliaryVerb === "être" && (tense=== plusQueParfait || tense === passe)){
-                const feminizedPronoun = answer.replace(/qu'il/,`qu'elle`)
-                const feminizedAnswer = feminizedPronoun + 'e'
-                dispatch(answerFetched((feminizedAnswer)))
-                // regular verbs in 3rd person
-              } else{
-                const feminizedAnswer = answer.replace(/qu'il/,`qu'elle`)
-                dispatch(answerFetched(feminizedAnswer))
-              }
-            } else if((person===2 || person===1) &&  gender===feminin){
-              // aller add e for person 1,2
-              if(verbObject.auxiliaryVerb === "être" && (tense=== plusQueParfait || tense === passe)){
-                const feminizedAnswer = answer + 'e'
-                dispatch(answerFetched((feminizedAnswer)))
-                // regular verbs no e
-              } else{
-                dispatch(answerFetched(answer))
-              }
-            } else { 
-              dispatch(answerFetched(answer))
-            }
-
-          //plural
-          } else if(number===2) {
-
-            if (person===3 && gender===feminin){
-              // aller 3rd person change pronoun and add 'e'
-              if(verbObject.auxiliaryVerb === "être" && (tense=== plusQueParfait || tense === passe)){
-                const feminizedPronoun = answer.replace(/qu'ils/,`qu'elles`) 
-                const feminizedAnswer = feminizedPronoun.slice(0,-1) + 'es'
-                dispatch(answerFetched(feminizedAnswer))
-
-              } else{
-                const feminizedAnswer = answer.replace(/qu'ils/,`qu'elles`) 
-                dispatch(answerFetched(feminizedAnswer))                
-              }
-
-            } else if((person===1||person===2) && gender===feminin){
-              // aller add an e
-              if(verbObject.auxiliaryVerb === "être" && (tense=== plusQueParfait || tense === passe)){
-                const feminizedAnswer = answer.slice(0,-1) + 'es'
-                dispatch(answerFetched(feminizedAnswer))
-  
-              }else{
-                dispatch(answerFetched(answer))
-              }
-            } else{
-              dispatch(answerFetched(answer))
-            }
-
-          }
-
-          // ALL OTHER MOODS, feminizing the 3rd person pronoun il to elle 
+        //ALL OTHER MOODS, feminizing the 3rd person pronoun il to elle 
         } else {
-          
-          let answer
 
-          // if verb is pleuvoir or falloir
-          if(verbObject.value === 45 || verbObject.value === 46){
-            answer = array[0]
+          const otherMoodAnswer = otherMoodAnswerFeminization (array,arrayIndex,verbObject,tense,number,gender,person)
+          dispatch(answerFetched(otherMoodAnswer))
 
-            // all other verbs
-          } else {
-            // nous pronoun index
-            if (person === 1 && number === 2){
-              answer = array[3]
-              // vous pronoun index
-            } else if(person ===2 && number===2){
-              answer = array[4]
-              // all other pronoun index
-            } else{
-              answer = array[(arrayIndex -1)]
-            }
-          }
-
-          // singular     
-          if (number === 1) {
-
-            if (person===3 && gender===feminin){
-              // aller 3rd person change pronoun and add 'e'
-              if(verbObject.auxiliaryVerb === "être" && (tense=== plusQueParfait || tense === passe)){
-              const feminizedPronoun = answer.replace(/il/,'elle')
-              const feminizedAnswer = feminizedPronoun + 'e'
-              dispatch(answerFetched((feminizedAnswer)))
-                
-              // regular verbs in 3rd person
-              } else {
-                const feminizedAnswer = answer.replace(/il/,'elle')
-                dispatch(answerFetched(feminizedAnswer))
-              }
-            } else if((person===2 || person===1) &&  gender===feminin){
-              // aller add 'e' to person 1, 2
-              if(verbObject.auxiliaryVerb === "être" && (tense===plusQueParfait || tense === passe)){
-                const feminizedAnswer = answer + 'e'
-                dispatch(answerFetched((feminizedAnswer)))
-                // regular verbs no e
-              } else{
-                dispatch(answerFetched(answer))
-              }
-            } else { 
-              dispatch(answerFetched(answer))
-            }
-          //plural
-          } else if(number===2) {
-
-            if (person===3 && gender===feminin){
-              // aller 3rd person change pronoun and add 'e'
-              if(verbObject.auxiliaryVerb === "être" && (tense=== plusQueParfait || tense === passe || tense === passeCompose || tense === passeAnterieur || tense === futurAnterieur)){
-                const feminizedPronoun = answer.replace(/ils/,`elles`) 
-                const feminizedAnswer = feminizedPronoun.slice(0,-1) + 'es'
-                dispatch(answerFetched(feminizedAnswer))
-                // regular verbs change pronoun
-              } else{
-                const feminizedAnswer = answer.replace(/ils/,`elles`) 
-                dispatch(answerFetched(feminizedAnswer))                
-              }
-
-            } else if((person===1||person===2) && gender===feminin){
-              // aller add an es
-              if(verbObject.auxiliaryVerb === "être" && (tense=== plusQueParfait || tense === passe || tense === passeCompose || tense === passeAnterieur || tense === futurAnterieur)){
-                const feminizedAnswer = answer.slice(0,-1) + 'es'
-                dispatch(answerFetched(feminizedAnswer))
-              // regular verbs
-              }else{
-                dispatch(answerFetched(answer))
-              }
-            // all other persons or genders
-            } else{
-              dispatch(answerFetched(answer))
-            }
-
-          }
         } 
       }          
     }   
@@ -288,8 +112,6 @@ export default function Answer(props) {
       correctAnswerText.current.classList.remove('answer__text--hidden')
       correctAnswerText.current.classList.add('answer__text--visible')
       correctCheckmark.current.classList.add('bi-check--visible')
-
-
     }
   } else {
     answerInput.current.classList.remove('answer__input-text--error')

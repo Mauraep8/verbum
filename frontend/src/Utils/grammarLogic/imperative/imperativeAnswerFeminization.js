@@ -1,6 +1,6 @@
 import { passe, feminin } from "../../grammarTerms";
 
-export function imperativeAnswerFetch(array,verbObject,tense,number,gender,person) {
+export function imperativeAnswerFeminization(array,verbObject,tense,number,gender,person) {
   // Imperatif request comes in array of 3 potential answers (tu, nous, vous)
 
   // 1st person

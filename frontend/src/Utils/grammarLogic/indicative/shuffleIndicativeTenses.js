@@ -1,5 +1,5 @@
 import { shuffleArray } from '../../shuffleArray'
-import {present,passeCompose, plusQueParfait,passeAnterieur,futurAnterieur,passeSimple,passe,imperative,subjunctive,imparfait,conditional } from "../../grammarTerms";
+import {passeCompose, plusQueParfait,passeAnterieur,futurAnterieur,passeSimple,passe,imparfait,} from "../../grammarTerms";
 
 export default function shuffleIndicativeTenses (shuffleState, verbResult) {
   
