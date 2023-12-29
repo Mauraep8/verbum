@@ -7,6 +7,10 @@
     // background-color: #0375ff;
     // background-color: #0069e9;
     background-color: #0052b6;
+    // background-color: #fcfcfc;
+    // background-color: #eeeeee;
+
+    
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -19,6 +23,8 @@
 
     &__header{
         color: white;
+        // color: #0052b6;
+
         padding: 1.5rem 0 0;
         margin: 0; 
         font-size: 1.5rem;
@@ -35,6 +41,7 @@
         justify-content: center;
         // color: white;
         color: #fcfcfc;
+        // color: #0052b6;
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -52,6 +59,7 @@
     &__link{
         font-size: .75rem;
         text-decoration: none;
+        // color: #0052b6;
         color: white;
     }
 

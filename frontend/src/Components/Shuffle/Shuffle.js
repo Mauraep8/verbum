@@ -265,8 +265,6 @@ export default function Shuffle() {
   };
 
   return (
-    <div className="shuffle">
       <ButtonPrimary function={getStore} text={"Shuffle"} />
-    </div>
   );
 }
