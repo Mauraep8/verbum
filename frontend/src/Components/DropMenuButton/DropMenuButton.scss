@@ -84,11 +84,8 @@
         }
 
         &__button-label{
-            position: absolute;
-            left: .5rem;
-            top: .35rem;
-
-
+           position: static;
+           text-align: center;
         }
 
     }
@@ -118,7 +115,7 @@
         top: .45rem;
 
         @include tablet{
-            top: 2rem;
+            top: 2.5rem;
         }
     }
 }

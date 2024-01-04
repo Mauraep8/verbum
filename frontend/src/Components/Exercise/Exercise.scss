@@ -38,6 +38,10 @@
         border-bottom: 1px solid lightgray;        
     }
 
+    &__container{
+        display: flex;
+    }
+
     @include mid-mobile-tablet {
         
         &__main-container{

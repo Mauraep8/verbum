@@ -38,6 +38,25 @@
 
         }
 
+        &__verb{
+            order: 1;
+        }        
+        &__person{
+            order: 2;
+        }
+        &__number{
+            order: 3;
+        }
+        &__tense{
+            order: 4;
+        }
+        &__mood{
+            order:5;
+        }
+        &__gender{
+            order:6;
+        }
+
     }
     @include desktop{
         margin-right: .5rem;
