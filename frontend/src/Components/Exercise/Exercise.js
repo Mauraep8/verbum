@@ -143,15 +143,15 @@ export default function Exercise() {
         </p> */}
         <div className="exercise__wrapper">
           <div className="exercise__container">
+                      <GrammarFeature
+              shuffleState={verbState}
+              option={verbListState}
+              type="verb"
+            />
             <GrammarFeature
               shuffleState={personState}
               option={personArray}
               type="person"
-            />
-            <GrammarFeature
-              shuffleState={genderState}
-              option={genderArray}
-              type="gender"
             />
             <GrammarFeature
               shuffleState={numberState}
@@ -163,16 +163,20 @@ export default function Exercise() {
               option={tenseArray}
               type="tense"
             />
+              <fieldset>
+                <legend>Default</legend>
             <GrammarFeature
               shuffleState={moodState}
               option={moodArray}
               type="mood"
             />
+
             <GrammarFeature
-              shuffleState={verbState}
-              option={verbListState}
-              type="verb"
-            />
+              shuffleState={genderState}
+              option={genderArray}
+              type="gender"
+              />  
+              </fieldset>
           </div>
           <div className="exercise__answer-container">
             <Answer answer={resultAnswer} />

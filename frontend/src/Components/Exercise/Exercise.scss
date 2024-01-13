@@ -40,6 +40,7 @@
 
     &__container{
         display: flex;
+        flex-direction: column;
     }
 
     @include mid-mobile-tablet {
@@ -66,8 +67,12 @@
 
         &__container{
             display: flex;
-            justify-content: space-between;
+            flex-direction: row;
+            justify-content: space-evenly;
             height: 90%;
+            width: 75%;
+            position: relative;
+            align-items: center;
         }
 
         &__text{
