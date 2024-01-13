@@ -24,13 +24,6 @@ import {
 import GrammarFeature from "../GrammarFeature/GrammarFeature";
 import {
   imperative,
-  present,
-  thirdPerson,
-  secondPerson,
-  firstPerson,
-  plural,
-  singular,
-  masculin,
   indicative,
   subjunctive,
   conditional,
@@ -144,10 +137,10 @@ export default function Exercise() {
           messageError={messageState}
           messageWarning={messageWarning}
         />
-        <h2 className="exercise__header">Exercise</h2>
-        <p className="exercise__text">
+        <h2 className="exercise__header">Verb Exercise</h2>
+        {/* <p className="exercise__text">
           Customize, shuffle and answer the conjugation exercise.
-        </p>
+        </p> */}
         <div className="exercise__wrapper">
           <div className="exercise__container">
             <GrammarFeature
@@ -183,7 +176,6 @@ export default function Exercise() {
           </div>
           <div className="exercise__answer-container">
             <Answer answer={resultAnswer} />
-            <Shuffle />
           </div>
         </div>
       </div>

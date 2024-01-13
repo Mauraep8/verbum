@@ -38,9 +38,14 @@ import faillirConditions from "../../Utils/verbLogic/faillirConditions";
 
 
 export default function Shuffle() {
+
   const dispatch = useDispatch();
 
-  const getStore = () => {
+  const getStore = (e) => {
+
+    // stop refreshing page when button clicked
+    e.preventDefault()
+
     // after verblist is updated, must falsify action, to allow shuffling to occur
     dispatch(verbListUpdateAction(false));
 
@@ -265,7 +270,7 @@ export default function Shuffle() {
   };
 
   return (
-    <div className="shuffle">
+    <div>
       <ButtonPrimary function={getStore} text={"Shuffle"} />
     </div>
   );

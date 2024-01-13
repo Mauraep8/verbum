@@ -24,8 +24,8 @@ export default function GrammarFeature(props) {
   }, [props.option, props.shuffleState])
 
   return (
-    <div className='GrammarFeature'>
-      <div className='grammarFeature__container' >
+    <div className={`grammarFeature grammarFeature__${props.type}`}>
+      <div className={`grammarFeature__container `} >
         <DropMenu type={props.type} result={buttonText} colorChange={props.shuffleState.colorChange} list={props.option}/>
       </div>
     </div>

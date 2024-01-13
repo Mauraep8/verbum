@@ -9,6 +9,8 @@ import { imperativeAnswerFeminization } from '../../Utils/grammarLogic/imperativ
 import { subjunctiveAnswerFeminization } from '../../Utils/grammarLogic/subjunctive/subjunctiveAnswerFeminization';
 import { otherMoodAnswerFeminization } from '../../Utils/grammarLogic/otherMoodAnswerFeminization';
 import { subjunctive } from "../../Utils/grammarTerms";
+import Shuffle from "../Shuffle/Shuffle";
+
 
 export default function Answer(props) {
 
@@ -133,13 +135,19 @@ export default function Answer(props) {
             <p className='answer__text answer__text--hidden answer__text--secondary' ref={falseAnswerText}>Answer: {correctAnswer}</p>
             <p className='answer__text answer__text--hidden answer__text--secondary' ref={inputWarning}>Please enter your answer</p>
           </div>
+        
         <div className='answer__input-container'>
           <input className='answer__input' type="text" placeholder='Answer'ref={answerInput}/>
           <i className="bi bi-check" ref={correctCheckmark}></i>
           <i className="bi bi-x" ref={falseX}></i>
         </div>
-        <div className='answer__button-container'>
-          <ButtonPrimary function={verify} text={'Verify'}/>
+        <div className='answer__main-button-container'>
+          <div className='answer__button-container'>
+            <ButtonPrimary function={verify} text={'Verify'}/>
+          </div>
+          <div className='answer__button-container'>
+            <Shuffle />
+          </div>
         </div>
       </form>
     </div>

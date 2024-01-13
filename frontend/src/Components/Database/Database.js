@@ -67,7 +67,7 @@ export default function Database() {
   return (
     <div className="database">
       <div className="database__main-container">
-        <h2 className="database__header">Database</h2>
+        <h2 className="database__header"> Verb Database</h2>
         <div className="database__container">
           <VerbLibrary
             headerText={"Verb Library"}
