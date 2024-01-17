@@ -20,6 +20,26 @@
         margin-bottom: .3rem;
     }
 
+    &__verb{
+        width: 50%;
+        margin: 0 20%;
+    }        
+    &__person{
+        width: 30%;
+    }
+    &__number{
+        width: 30%;
+    }
+    &__tense{
+        width: 30%;
+    }
+    &__mood{
+        width: 50%;
+    }
+    &__gender{
+        width: 50%;
+    }
+
     @include mid-mobile-tablet {
 
     }
@@ -38,26 +58,12 @@
 
         }
 
-        &__verb{
-            order: 1;
-        }        
-        &__person{
-            order: 2;
-        }
-        &__number{
-            order: 3;
-        }
-        &__tense{
-            order: 4;
-        }
         &__mood{
-            order:5;
             position: absolute;
             top: -2rem;
             right: -9rem;
         }
         &__gender{
-            order:6;
             position: absolute;
             top: 2rem;
             right: -8.5rem;
