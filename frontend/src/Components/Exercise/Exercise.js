@@ -164,7 +164,7 @@ export default function Exercise() {
               type="tense"
             />
             <fieldset className="exercise__fieldset">
-              <legend>Default</legend>
+              <legend className="exercise__legend">Default</legend>
               <GrammarFeature
                 shuffleState={moodState}
                 option={moodArray}

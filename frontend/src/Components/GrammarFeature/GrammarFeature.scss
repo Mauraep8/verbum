@@ -34,10 +34,10 @@
         width: 30%;
     }
     &__mood{
-        width: 50%;
+        width: 45%;
     }
     &__gender{
-        width: 50%;
+        width: 45%;
     }
 
     @include mid-mobile-tablet {
@@ -58,16 +58,16 @@
 
         }
 
-        &__mood{
-            position: absolute;
-            top: -2rem;
-            right: -9rem;
-        }
-        &__gender{
-            position: absolute;
-            top: 2rem;
-            right: -8.5rem;
-        }
+        // &__mood{
+        //     position: absolute;
+        //     top: -2rem;
+        //     right: -9rem;
+        // }
+        // &__gender{
+        //     position: absolute;
+        //     top: 2rem;
+        //     right: -8.5rem;
+        // }
 
     }
     @include desktop{

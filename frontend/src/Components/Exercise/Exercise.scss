@@ -47,11 +47,16 @@
 
     &__fieldset{
         display: flex;
-        width: 100%;
+        justify-content: space-evenly;
+        width: 90%;
         margin: 0;
-        color: lightgray;
-        border: darkgray 1px solid;
+        border: lightgray .1px solid;
         font-size: .5rem;
+        margin-top: .5rem;
+    }
+
+    &__legend{
+        color: darkgrey;
     }
 
     @include mid-mobile-tablet {
