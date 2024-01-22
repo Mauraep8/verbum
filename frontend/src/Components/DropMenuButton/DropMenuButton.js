@@ -22,9 +22,7 @@ const DropMenuButton = forwardRef(function DropMenuButton(props, ref) {
           ref.current.classList.remove('dropmenuButton__button--active')               
         }, 400);     
     }
-  } else if (shuffleAction === false){
-    console.log('hello')
-  }  
+  }
 
   return (
     <div className='dropmenuButton'>

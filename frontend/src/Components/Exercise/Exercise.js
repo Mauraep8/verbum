@@ -159,23 +159,24 @@ export default function Exercise() {
               type="number"
             />
             <GrammarFeature
+                shuffleState={genderState}
+                option={genderArray}
+                type="gender"
+              />
+            <GrammarFeature
               shuffleState={tenseState}
               option={tenseArray}
               type="tense"
             />
-            <fieldset className="exercise__fieldset">
-              <legend className="exercise__legend">Default</legend>
+            {/* <fieldset className="exercise__fieldset">
+              <legend className="exercise__legend">Default</legend> */}
               <GrammarFeature
                 shuffleState={moodState}
                 option={moodArray}
                 type="mood"
               />
-              <GrammarFeature
-                shuffleState={genderState}
-                option={genderArray}
-                type="gender"
-              />
-            </fieldset>
+
+            {/* </fieldset> */}
           </div>
           <div className="exercise__answer-container">
             <Answer answer={resultAnswer} />

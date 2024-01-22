@@ -37,7 +37,7 @@
         font-weight: normal;
         border-bottom: 1px solid lightgray;        
     }
-
+    
     &__container{
         display: flex;
         flex-direction: row;
@@ -48,7 +48,7 @@
     &__fieldset{
         display: flex;
         justify-content: space-evenly;
-        width: 90%;
+        width: 70%;
         margin: 0;
         border: lightgray .1px solid;
         font-size: .5rem;

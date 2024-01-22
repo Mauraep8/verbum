@@ -22,7 +22,8 @@
 
     &__verb{
         width: 50%;
-        margin: 0 20%;
+        margin: 0 20% 5%;
+
     }        
     &__person{
         width: 30%;
@@ -31,13 +32,15 @@
         width: 30%;
     }
     &__tense{
-        width: 30%;
+        width: 46%;
     }
     &__mood{
-        width: 45%;
+        width: 46%;
+        // width: 40%;
     }
     &__gender{
-        width: 45%;
+        width: 30%;
+        // width: 30%;
     }
 
     @include mid-mobile-tablet {

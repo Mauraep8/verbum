@@ -271,7 +271,7 @@ export default function Shuffle() {
 
   return (
     <div>
-      <ButtonPrimary function={getStore} text={"Shuffle"} />
+      <ButtonPrimary function={getStore} text={"Shuffle"} icon={'shuffle'} />
     </div>
   );
 }

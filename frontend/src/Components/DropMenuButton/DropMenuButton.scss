@@ -48,10 +48,15 @@
             color: black;
         }       
         &--tense{
-            line-height: 12px;
-            padding: 0 .5rem;
+            // line-height: 12px;
+            // padding: 0 .5rem;
         }
-        
+    }
+
+    &__button-label{
+        // width:93.5%;
+        // display: block;
+        white-space: normal;
     }
     
     @include tablet{

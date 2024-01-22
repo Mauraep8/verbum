@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    position: relative;
 
 
     &__button{
@@ -34,6 +35,34 @@
             background-color: #003b83;
         }
     }
+
+    .bi{
+        position: absolute;
+        top: .4rem;
+        left: 1rem;
+    }
+
+    .bi-check2-circle{
+        color: red;
+        &--hidden{
+            color: purple;
+        }
+    }
+    .bi-check{
+        color: green;
+
+        &--hidden{
+            color: purple;
+        }
+    }
+    .bi-shuffle{
+        color: black;
+
+        &--hidden{
+            color: purple;
+        }
+    }
+
 
     @include tablet {
         margin: 0;

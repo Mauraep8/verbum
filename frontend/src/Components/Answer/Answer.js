@@ -143,7 +143,7 @@ export default function Answer(props) {
         </div>
         <div className='answer__main-button-container'>
           <div className='answer__button-container'>
-            <ButtonPrimary function={verify} text={'Verify'}/>
+            <ButtonPrimary function={verify} text={'Verify'} icon={'verify'}/>
           </div>
           <div className='answer__button-container'>
             <Shuffle />
