@@ -36,30 +36,39 @@
         }
     }
 
-    .bi{
+  
+
+    .bi-check2-circle{
+        display: none;
         position: absolute;
         top: .4rem;
         left: 1rem;
-    }
-
-    .bi-check2-circle{
-        color: red;
-        &--hidden{
-            color: purple;
+        color: white;
+        font-size: 1rem;
+        &--visible{
+            display: block;
         }
     }
-    .bi-check{
-        color: green;
-
-        &--hidden{
-            color: purple;
+    .bi-check2{
+        display: none;
+        position: absolute;
+        top: .4rem;
+        left: 1rem;
+        color: white;
+        font-size: 1rem;
+        &--visible{
+            display: block;
         }
     }
     .bi-shuffle{
-        color: black;
-
-        &--hidden{
-            color: purple;
+        display: none;
+        position: absolute;
+        top: .4rem;
+        left: 1rem;
+        color: white;
+        font-size: 1rem;
+        &--visible{
+            display: block;
         }
     }
 

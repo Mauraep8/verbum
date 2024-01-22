@@ -10,33 +10,24 @@ export default function ButtonPrimary(props) {
   const checkmarkIcon = useRef([])
 
 
-  // useEffect(() => {
-  //   if (props.icon === 'verify'){
-  //     console.log('hey')
-  //     verifyIcon.current.classList.add(`bi-check2-circle--visible`)
-  //     shuffleIcon.current.classList.remove('bi-shuffle--visible')
-  //     checkmarkIcon.current.classList.remove('bi-check--visible')
+  useEffect(() => {
+    if (props.icon === 'verify'){
+      verifyIcon.current.classList.add(`bi-check2-circle--visible`)
 
-  //   } else if (props.icon === 'shuffle') {
-  //     console.log('no')
-  //     shuffleIcon.current.classList.add('bi-shuffle--visible')
-  //     verifyIcon.current.classList.remove(`bi-check2-circle--visible`)
-  //     checkmarkIcon.current.classList.remove('bi-check--visible')
+    } else if (props.icon === 'shuffle') {
+      shuffleIcon.current.classList.add('bi-shuffle--visible')
 
-  //   } else if (props.icon === 'submit'){
-  //     console.log('blabla')
-  //     checkmarkIcon.current.classList.add('bi-checkmark--visible')
-  //     verifyIcon.current.classList.remove(`bi-check2-circle--visible`)
-  //     shuffleIcon.current.classList.remove('bi-shuffle--visible')
-  //   } 
-  // })
+    } else if (props.icon === 'submit'){
+      checkmarkIcon.current.classList.add('bi-check2--visible')
+    } 
+  })
 
   return (
     <div className='buttonPrimary'>
         <button className='buttonPrimary__button' onClick={props.function}>{props.text}</button>
-        <i className='bi bi-check2-circle'ref={verifyIcon}></i>
-        <i className="bi bi-shuffle" ref={shuffleIcon}></i>   
-        <i className="bi bi-check" ref={checkmarkIcon}></i>
+        <i className='bi-check2-circle' ref={verifyIcon}>{}</i>
+        <i className="bi-shuffle" ref={shuffleIcon}></i>   
+        <i className="bi-check2" ref={checkmarkIcon}></i>
     </div>
     
   )
