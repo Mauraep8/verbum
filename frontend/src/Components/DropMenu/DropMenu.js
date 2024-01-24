@@ -18,6 +18,12 @@ export default function DropMenu(props) {
       const handler = (e) => {        
         if (buttonRef.current && !buttonRef.current.contains(e.target)){
         setShowDropmenu(false)
+        // if (buttonRef.current.classList.contains('dropmenuButton__button--clicked')===false){
+        //   buttonRef.current.classList.add('dropmenuButton__button--clicked')
+        //   } else{
+        //   buttonRef.current.classList.remove('dropmenuButton__button--clicked')
+      
+        //   }
 
     }}
 

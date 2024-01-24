@@ -2,16 +2,24 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .dropmenu{
+    // width: 100%;
 
     &__menu{
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        background-color: white;
+        width: 100%;
+        box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.5);
+        border-radius: 5px;
+
 
         &--hidden{
             display: none;
         }
         &--visible{            
-            display: flex;
-            justify-content: center;
-            margin-bottom: .3rem;
+            display: block;
         }
     }
 

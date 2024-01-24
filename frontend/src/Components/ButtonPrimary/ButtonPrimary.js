@@ -3,8 +3,6 @@ import './ButtonPrimary.scss'
 import { useEffect, useRef} from "react";
 
 export default function ButtonPrimary(props) {
-  console.log(props.icon)
-
   const verifyIcon = useRef([])
   const shuffleIcon = useRef([])
   const checkmarkIcon = useRef([])
