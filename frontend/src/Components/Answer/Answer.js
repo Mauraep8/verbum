@@ -25,80 +25,6 @@ export default function Answer(props) {
 
   const [correctAnswer, setCorrectAnswer ] = useState([])
 
-  const verify = (e)=>{
-
-    e.preventDefault()
-    
-    // if input is empty with no answer
-    if (answerInput.current.value === ''){
-      answerInput.current.classList.add('answer__input--error')
-      inputWarning.current.classList.add('answer__text--visible')
-
-    } else {
-
-      //remove error if it's there
-      answerInput.current.classList.remove('answer__input--error')
-      inputWarning.current.classList.remove('answer__text--visible')
-
-      //dispatch user's answer
-      dispatch(answerWritten(answerInput.current.value))
-    
-      // get storeState
-      const storeState = store.getState().exercise      
-      const verbObject = storeState.verbState.result
-      const verb = storeState.verbState.result.value
-      const mood = storeState.moodState.result.apiFormat
-      const tense = storeState.tenseState.result.apiFormat
-      const person = storeState.personState.result.apiFormat
-      const number = storeState.numberState.result.apiFormat
-      const gender = storeState.genderState.result.value
-
-      // GET ANSWER FROM RestAPI
-      axios.get(`http://localhost:8000/conjugate/fr/${verb}?mood=${mood}`)
-      .then(result => {
-
-          //**imperatif here is in the apiformat**//
-        if (mood==='imperatif'){
-          fetchAnswer(result.data.value[`imperatif-${tense}`])
-          
-          // all other moods
-        } else{
-          fetchAnswer(result.data.value[`${tense}`]) 
-        }
-      })
-      .catch(error =>{
-        console.log(error)
-      })
-
-      // FETCHANSWER FUNCTION REFINES ANSWER REQUEST FROM OBJECT TO STRING
-      const fetchAnswer = (array) =>{
-        
-        const arrayIndex = person * number
-
-          // Imperatif request comes in array of 3 potential answers
-          //**imperatif here is in the apiformat**//
-        if (mood === 'imperatif'){
-
-          const imperativeAnswer = imperativeAnswerFeminization (array, verbObject, tense, number, gender, person)
-          dispatch(answerFetched(imperativeAnswer))
-
-          
-          // feminizing the 3rd person pronoun qu'il to qu'elle in subjunctif
-        } else if (mood === subjunctive){
-
-          const subjunctiveAnswer = subjunctiveAnswerFeminization (array,arrayIndex,verbObject,tense,number,gender,person)
-          dispatch(answerFetched(subjunctiveAnswer))
-
-        //ALL OTHER MOODS, feminizing the 3rd person pronoun il to elle 
-        } else {
-
-          const otherMoodAnswer = otherMoodAnswerFeminization (array,arrayIndex,verbObject,tense,number,gender,person)
-          dispatch(answerFetched(otherMoodAnswer))
-
-        } 
-      }          
-    }   
-  }
 
  useEffect(() => {
   answerInput.current.classList.remove('answer__input-text--correct')
@@ -126,6 +52,81 @@ export default function Answer(props) {
 
   }
  }, [props.answer])
+
+ const verify = (e)=>{
+
+  e.preventDefault()
+  
+  // if input is empty with no answer
+  if (answerInput.current.value === ''){
+    answerInput.current.classList.add('answer__input--error')
+    inputWarning.current.classList.add('answer__text--visible')
+
+  } else {
+
+    //remove error if it's there
+    answerInput.current.classList.remove('answer__input--error')
+    inputWarning.current.classList.remove('answer__text--visible')
+
+    //dispatch user's answer
+    dispatch(answerWritten(answerInput.current.value))
+  
+    // get storeState
+    const storeState = store.getState().exercise      
+    const verbObject = storeState.verbState.result
+    const verb = storeState.verbState.result.value
+    const mood = storeState.moodState.result.apiFormat
+    const tense = storeState.tenseState.result.apiFormat
+    const person = storeState.personState.result.apiFormat
+    const number = storeState.numberState.result.apiFormat
+    const gender = storeState.genderState.result.value
+
+    // GET ANSWER FROM RestAPI
+    axios.get(`http://localhost:8000/conjugate/fr/${verb}?mood=${mood}`)
+    .then(result => {
+
+        //**imperatif here is in the apiformat**//
+      if (mood==='imperatif'){
+        fetchAnswer(result.data.value[`imperatif-${tense}`])
+        
+        // all other moods
+      } else{
+        fetchAnswer(result.data.value[`${tense}`]) 
+      }
+    })
+    .catch(error =>{
+      console.log(error)
+    })
+
+    // FETCHANSWER FUNCTION REFINES ANSWER REQUEST FROM OBJECT TO STRING
+    const fetchAnswer = (array) =>{
+      
+      const arrayIndex = person * number
+
+        // Imperatif request comes in array of 3 potential answers
+        //**imperatif here is in the apiformat**//
+      if (mood === 'imperatif'){
+
+        const imperativeAnswer = imperativeAnswerFeminization (array, verbObject, tense, number, gender, person)
+        dispatch(answerFetched(imperativeAnswer))
+
+        
+        // feminizing the 3rd person pronoun qu'il to qu'elle in subjunctif
+      } else if (mood === subjunctive){
+
+        const subjunctiveAnswer = subjunctiveAnswerFeminization (array,arrayIndex,verbObject,tense,number,gender,person)
+        dispatch(answerFetched(subjunctiveAnswer))
+
+      //ALL OTHER MOODS, feminizing the 3rd person pronoun il to elle 
+      } else {
+
+        const otherMoodAnswer = otherMoodAnswerFeminization (array,arrayIndex,verbObject,tense,number,gender,person)
+        dispatch(answerFetched(otherMoodAnswer))
+
+      } 
+    }          
+  }   
+}
  
   return (
     <div className='answer'>
@@ -143,7 +144,7 @@ export default function Answer(props) {
         </div>
         <div className='answer__main-button-container'>
           <div className='answer__button-container'>
-            <ButtonPrimary function={verify} text={'Verify'}/>
+            <ButtonPrimary function={verify} text={'Verify'} icon={'verify'}/>
           </div>
           <div className='answer__button-container'>
             <Shuffle />

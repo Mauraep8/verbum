@@ -5,6 +5,9 @@
 
     &__container{
         // border: 1px solid red;
+        width: 100%;
+        position: relative;
+
     }
 
     &__dropmenu-wrapper--hidden{
@@ -18,6 +21,29 @@
         display: flex;
         justify-content: center;
         margin-bottom: .3rem;
+    }
+
+    &__verb{
+        width: 50%;
+        margin: 0 20% 5%;
+
+    }        
+    &__person{
+        width: 30%;
+    }
+    &__number{
+        width: 30%;
+    }
+    &__tense{
+        width: 46%;
+    }
+    &__mood{
+        width: 46%;
+        // width: 40%;
+    }
+    &__gender{
+        width: 30%;
+        // width: 30%;
     }
 
     @include mid-mobile-tablet {
@@ -38,24 +64,16 @@
 
         }
 
-        &__verb{
-            order: 1;
-        }        
-        &__person{
-            order: 2;
-        }
-        &__number{
-            order: 3;
-        }
-        &__tense{
-            order: 4;
-        }
-        &__mood{
-            order:5;
-        }
-        &__gender{
-            order:6;
-        }
+        // &__mood{
+        //     position: absolute;
+        //     top: -2rem;
+        //     right: -9rem;
+        // }
+        // &__gender{
+        //     position: absolute;
+        //     top: 2rem;
+        //     right: -8.5rem;
+        // }
 
     }
     @include desktop{

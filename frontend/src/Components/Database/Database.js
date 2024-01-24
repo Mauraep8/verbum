@@ -70,8 +70,8 @@ export default function Database() {
         <h2 className="database__header"> Verb Database</h2>
         <div className="database__container">
           <VerbLibrary
-            headerText={"Verb Library"}
-            text={'Add verbs from the library to your user list.'}
+            headerText={"Available Verbs"}
+            // text={'Add verbs from the library to your user list.'}
             searchInput={searchVerbInput}
             list={verbLibrary}
             search={searchVerbLibrary}
@@ -88,8 +88,8 @@ export default function Database() {
             <i className="bi-chevron-double-left"></i>  
           </div>
           <VerbLibrary
-            headerText={"User List"}
-            text={'Refine study list by removing verbs. Click submit to see changes in the exercise.'}
+            headerText={"Selected Verbs"}
+            // text={'Refine study list by removing verbs. Click submit to see changes in the exercise.'}
             searchInput={searchUserInput}
             list={userLibrary}
             search={searchUserLibrary}

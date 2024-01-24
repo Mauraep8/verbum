@@ -7,15 +7,18 @@
         position: relative;
         // border: 1px red solid;
         margin-bottom: .5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
     }
 
     &__input{
         box-sizing: border-box;
-        width: 100%;
-        border: 1px solid lightgrey;
+        width: 95%;
+        border: 1px solid #0052b689;
         border-radius: 20px;
-        height: 1.5rem;
+        height: 2rem;
         margin: 0;
         text-align: center;
         font-size: 13px;
@@ -47,7 +50,10 @@
     }
 
     &__text-container{
-        height: 1.5rem;
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center
     }
 
     &__text{
@@ -63,7 +69,14 @@
             display: block;
         }
     }
+    &__main-button-container{
+        display: flex;
+        width: 100%;
+    }
 
+    &__button-container{
+        width: 100%;
+    }
     @include tablet{
         // border: 1px solid blue;
         display: flex;

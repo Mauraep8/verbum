@@ -9,6 +9,13 @@ const DropMenuButton = forwardRef(function DropMenuButton(props, ref) {
 
   const clickHandler = () =>{
     props.function()
+    console.log(ref.current.classList)
+    // if (ref.current.classList.contains('dropmenuButton__button--clicked')===false){
+    // ref.current.classList.add('dropmenuButton__button--clicked')
+    // } else{
+    // ref.current.classList.remove('dropmenuButton__button--clicked')
+
+    // }
   }
 
   // WHEN SHUFFLE IS CLICKED BUTTONS TURN BLUE MOMENTARILY
@@ -22,7 +29,7 @@ const DropMenuButton = forwardRef(function DropMenuButton(props, ref) {
           ref.current.classList.remove('dropmenuButton__button--active')               
         }, 400);     
     }
-  }   
+  }
 
   return (
     <div className='dropmenuButton'>

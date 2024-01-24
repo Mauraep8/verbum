@@ -6,15 +6,15 @@
     // background-color: #ebebeb;
     background-color: #eeeeee;
     // background-color: #e4e4e4;
-    padding: .1rem;
+    // padding: .1rem;
 
     &__main-container{
         // background-color: white;
         background-color: #fcfcfc;
         border-radius: .25rem;
         box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-        margin: 1rem;
-        padding: 0 1rem 1rem;
+        // margin: 1rem;
+        padding: 0 .5rem 1rem;
         // border: 1px solid red;
     }
 
@@ -37,9 +37,26 @@
         font-weight: normal;
         border-bottom: 1px solid lightgray;        
     }
-
+    
     &__container{
         display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    &__fieldset{
+        display: flex;
+        justify-content: space-evenly;
+        width: 70%;
+        margin: 0;
+        border: lightgray .1px solid;
+        font-size: .5rem;
+        margin-top: .5rem;
+    }
+
+    &__legend{
+        color: darkgrey;
     }
 
     @include mid-mobile-tablet {
@@ -54,6 +71,7 @@
     }
 
     @include tablet{
+        padding: .1rem;
 
         &__header{
             margin: .5rem 0 1rem;
@@ -66,8 +84,13 @@
 
         &__container{
             display: flex;
-            justify-content: space-between;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
             height: 90%;
+            width: 75%;
+            position: relative;
+            align-items: center;
         }
 
         &__text{
