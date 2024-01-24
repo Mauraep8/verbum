@@ -15,34 +15,31 @@ export default function DropMenu(props) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-      const handler = (e) => {        
-        if (buttonRef.current && !buttonRef.current.contains(e.target)){
-        setShowDropmenu(false)
-        // if (buttonRef.current.classList.contains('dropmenuButton__button--clicked')===false){
-        //   buttonRef.current.classList.add('dropmenuButton__button--clicked')
-        //   } else{
-        //   buttonRef.current.classList.remove('dropmenuButton__button--clicked')
-      
-        //   }
+      const handler = (e) => {
+        if (buttonRef.current && !buttonRef.current.contains(e.target)) {
+          setShowDropmenu(false);
+          buttonRef.current.classList.remove("dropmenuButton__button--clicked");
+        } else {
+          buttonRef.current.classList.add("dropmenuButton__button--clicked");
+        }
+      };
 
-    }}
-
-    if (showDropmenu===true){
-        menuRef.current.classList.add('dropmenu__menu--visible')
-        menuRef.current.classList.remove('dropmenu__menu--hidden')
-        dispatch(shuffleCleared())
-    } else {
-        menuRef.current.classList.remove('dropmenu__menu--visible')
-        menuRef.current.classList.add('dropmenu__menu--hidden')
-        dispatch(shuffleCleared())
-    }
-
-      window.addEventListener('click', handler)
-    
-      return () => {
-        window.removeEventListener('click', handler)
+      if (showDropmenu === true) {
+        menuRef.current.classList.add("dropmenu__menu--visible");
+        menuRef.current.classList.remove("dropmenu__menu--hidden");
+        dispatch(shuffleCleared());
+      } else {
+        menuRef.current.classList.remove("dropmenu__menu--visible");
+        menuRef.current.classList.add("dropmenu__menu--hidden");
+        dispatch(shuffleCleared());
       }
-    })
+
+      window.addEventListener("click", handler);
+
+      return () => {
+        window.removeEventListener("click", handler);
+      };
+    });
 
     const handleInputClick = () => {
         setShowDropmenu(!showDropmenu)

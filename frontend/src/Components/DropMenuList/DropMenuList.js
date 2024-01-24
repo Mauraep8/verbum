@@ -12,7 +12,7 @@ export default function DropMenu(props) {
     if (props.type === 'tense'){
       scroll.current.classList.add('dropMenuList__scroll--active')
     }
-    if(props.type === 'gender' || props.type === 'number'){
+    if(props.type === 'gender' || props.type === 'number' || props.type === 'mood'|| props.type === 'person'){
       scroll.current.classList.add('dropMenuList__scroll--hidden')
     }
     if(props.type === 'verb' && props.list.length <= 4){

@@ -34,6 +34,15 @@
             // background-color: #00479b;
             background-color: #003b83;
         }
+
+        &--grey{
+        background-color: #F5F5F5;
+        color: darkgreen;
+        border: 1px solid #0052b689;
+        border: 1px solid darkgreen;
+
+                    
+        }
     }
 
   
@@ -43,7 +52,10 @@
         position: absolute;
         top: .4rem;
         left: 1rem;
-        color: white;
+        // color: #003b83;
+        color: darkgreen;
+
+
         font-size: 1rem;
         &--visible{
             display: block;

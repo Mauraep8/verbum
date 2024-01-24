@@ -9,10 +9,23 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 3rem;
+        height: fit-content;
+        background-color: #ffffff;
+
         // border: .3px solid lightgray;
         // border: 1px solid #0052b689;
         border-radius: 5px;
+
+        &--tense{
+            height: 9rem;
+        }
+        &--verb-long{
+            height: 9rem;
+        }
+        &--verb-short{
+            height: fit-content;
+        }
+
     }
 
     &__scroll{

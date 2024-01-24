@@ -6,11 +6,14 @@ export default function ButtonPrimary(props) {
   const verifyIcon = useRef([])
   const shuffleIcon = useRef([])
   const checkmarkIcon = useRef([])
+  const button =useRef([])
 
 
   useEffect(() => {
     if (props.icon === 'verify'){
       verifyIcon.current.classList.add(`bi-check2-circle--visible`)
+      button.current.classList.add(`buttonPrimary__button--grey`)
+
 
     } else if (props.icon === 'shuffle') {
       shuffleIcon.current.classList.add('bi-shuffle--visible')
@@ -22,7 +25,7 @@ export default function ButtonPrimary(props) {
 
   return (
     <div className='buttonPrimary'>
-        <button className='buttonPrimary__button' onClick={props.function}>{props.text}</button>
+        <button className='buttonPrimary__button' ref={button} onClick={props.function}>{props.text}</button>
         <i className='bi-check2-circle' ref={verifyIcon}>{}</i>
         <i className="bi-shuffle" ref={shuffleIcon}></i>   
         <i className="bi-check2" ref={checkmarkIcon}></i>
