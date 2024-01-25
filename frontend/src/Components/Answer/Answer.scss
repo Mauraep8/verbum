@@ -24,6 +24,7 @@
         margin: 0;
         text-align: center;
         font-size: 13px;
+        margin: 0 0 .5rem ;
 
         &::placeholder{
             text-align: center;
@@ -200,7 +201,8 @@
         font-size: 1.5rem;
         display: none;
         position: absolute;
-        bottom: -.2rem;
+        bottom: .5rem;
+        left: 1rem;
     }
 
     .bi-check{

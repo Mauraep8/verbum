@@ -138,7 +138,7 @@ export default function Answer(props) {
           </div>
         
         <div className='answer__input-container'>
-          <input className='answer__input' type="text" placeholder='Answer'ref={answerInput}/>
+          <input className='answer__input' type="text" placeholder="Answer e.g., j'aime"ref={answerInput}/>
           <i className="bi bi-check" ref={correctCheckmark}></i>
           <i className="bi bi-x" ref={falseX}></i>
         </div>
