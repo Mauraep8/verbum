@@ -80,9 +80,9 @@ export default function Database() {
             button={false}
             popup={popupStateAdded}
           />
-          <div className="database__icon-container database__icon-container--mobile">
+          {/* <div className="database__icon-container database__icon-container--mobile">
             <i className="bi-chevron-double-down"></i>       
-          </div>
+          </div> */}
           <div className="database__icon-container database__icon-container--tablet">
             <i className="bi-chevron-double-right"></i>     
             <i className="bi-chevron-double-left"></i>  

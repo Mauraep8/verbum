@@ -137,10 +137,10 @@ export default function Exercise() {
           messageError={messageState}
           messageWarning={messageWarning}
         />
-        <h2 className="exercise__header">Verb Exercise</h2>
-        {/* <p className="exercise__text">
-          Customize, shuffle and answer the conjugation exercise.
-        </p> */}
+        <h2 className="exercise__header">French Verb Exercise</h2>
+        <p className="exercise__text">
+          Practice your french conjugation, enter and verify your answer to the following exercise. When ready, click shuffle for a new exercise!
+        </p>
         <div className="exercise__wrapper">
           <div className="exercise__container">
             <GrammarFeature
