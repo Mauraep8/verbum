@@ -10,8 +10,6 @@ import {
 } from "../../Utils/GrammarArrayValue";
 import { useSelector, useDispatch } from "react-redux";
 import "./Exercise.scss";
-import Shuffle from "../Shuffle/Shuffle";
-import { shuffleArray } from "../../Utils/shuffleArray";
 import {
   genderShuffled,
   moodShuffled,
@@ -137,10 +135,14 @@ export default function Exercise() {
           messageError={messageState}
           messageWarning={messageWarning}
         />
-        <h2 className="exercise__header">French Verb Exercise</h2>
-        <p className="exercise__text">
-          Practice your french conjugation, enter and verify your answer to the following exercise. When ready, click shuffle for a new exercise!
-        </p>
+        <h2 className="exercise__header">Practice French Conjugation</h2>
+        <p>instructions:</p>
+        <ul>
+          <li>Write your answer for the following exercise and click Verify</li>
+          <li>Click Shuffle to generate new exercise</li>
+          <li>Customize exercise shuffle by clicking on dropmenus and selecting or unselecting checkboxes</li>
+          <li>Customize practice verbs at the bottom of page and select new set of verbs </li>
+        </ul>
         <div className="exercise__wrapper">
           <div className="exercise__container">
             <GrammarFeature

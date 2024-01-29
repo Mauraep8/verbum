@@ -40,7 +40,7 @@ export default function VerbLibrary(props) {
             } else if(comparisonResult === true){
                 dispatch(verbListUpdated(props.list))
                 dispatch(verbListUpdateAction(true))
-                dispatch(submitClicked({message: 'The verb dropmenu has been updated!'}))
+                dispatch(submitClicked({message: 'Updated!'}))
                 setTimeout(() => {
                     dispatch(submitClicked({message: ''}))
                 }, 2000);

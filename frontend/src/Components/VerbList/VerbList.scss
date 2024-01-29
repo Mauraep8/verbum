@@ -3,7 +3,7 @@
 
 .verbList{
 
-    width: 100%;
+    width: 8rem;
 
     &__container{
         // background-color: white;
@@ -11,7 +11,7 @@
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-        height: 6.67rem;
+        height: 9rem;
     }
     
     &__scroll {
@@ -26,8 +26,6 @@
         }
         &::-webkit-scrollbar-track{
             background-color: rgba(234, 234, 234, 0.848);
-            // border: 1px solid black;
-
         }
         &::-webkit-scrollbar-thumb{
             background-color:darkgray;
