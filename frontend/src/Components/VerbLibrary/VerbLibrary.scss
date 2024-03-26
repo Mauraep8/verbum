@@ -2,7 +2,7 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .verbLibrary{
-    width: 100%;
+    width: 9rem;
 
     &__container{
         display: flex;
@@ -17,8 +17,9 @@
         font-size: 1rem;
         line-height: 1rem;
         // text-decoration: underline;
+
         font-weight: normal;
-        margin: 0;
+        margin: 0 0 .5rem;
     }
 
     &__text{
@@ -26,6 +27,7 @@
         line-height: 1.1rem;
         margin: 1rem 0;
         text-align: center;
+        display: none;
     }
 
     &__popup-container{

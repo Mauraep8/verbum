@@ -10,8 +10,6 @@ import {
 } from "../../Utils/GrammarArrayValue";
 import { useSelector, useDispatch } from "react-redux";
 import "./Exercise.scss";
-import Shuffle from "../Shuffle/Shuffle";
-import { shuffleArray } from "../../Utils/shuffleArray";
 import {
   genderShuffled,
   moodShuffled,
@@ -137,10 +135,14 @@ export default function Exercise() {
           messageError={messageState}
           messageWarning={messageWarning}
         />
-        <h2 className="exercise__header">French Verb Exercise</h2>
-        <p className="exercise__text">
-          Practice your french conjugation, enter and verify your answer to the following exercise. When ready, click shuffle for a new exercise!
-        </p>
+        <h2 className="exercise__header">Practice French Conjugation</h2>
+        <p className="exercise__title">How to use:</p>
+        <ul className="exercise__list">
+          <li className="exercise__list-item"><span className="exercise__list-item--underlined">Write your answer</span> to the following exercise and click <span className="exercise__list-item--bold">Verify</span>.</li>
+          <li className="exercise__list-item">Click <span className="exercise__list-item--bold">Shuffle</span> to generate new exercise.</li>
+          <li className="exercise__list-item">To customize the next exercise, click on the <span className="exercise__list-item--bold">dropdown menus</span>, and <span className="exercise__list-item--bold">select</span>/<span className="exercise__list-item--bold">unselect</span> grammar elements for shuffle.</li>
+          <li className="exercise__list-item">Customize exercise verbs at the bottom of the page. Click <span className="exercise__list-item--bold">add</span>/<span className="exercise__list-item--bold">remove</span> to edit the list of Selected Verbs and click <span className="exercise__list-item--bold">Apply</span>.</li>
+        </ul>
         <div className="exercise__wrapper">
           <div className="exercise__container">
             <GrammarFeature
