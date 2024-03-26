@@ -136,12 +136,12 @@ export default function Exercise() {
           messageWarning={messageWarning}
         />
         <h2 className="exercise__header">Practice French Conjugation</h2>
-        <p>instructions:</p>
-        <ul>
-          <li>Write your answer for the following exercise and click Verify</li>
-          <li>Click Shuffle to generate new exercise</li>
-          <li>Customize exercise shuffle by clicking on dropmenus and selecting or unselecting checkboxes</li>
-          <li>Customize practice verbs at the bottom of page and select new set of verbs </li>
+        <p className="exercise__title">How to use:</p>
+        <ul className="exercise__list">
+          <li className="exercise__list-item"><span className="exercise__list-item--underlined">Write your answer</span> to the following exercise and click <span className="exercise__list-item--bold">Verify</span>.</li>
+          <li className="exercise__list-item">Click <span className="exercise__list-item--bold">Shuffle</span> to generate new exercise.</li>
+          <li className="exercise__list-item">To customize the next exercise, click on the <span className="exercise__list-item--bold">dropdown menus</span>, and <span className="exercise__list-item--bold">select</span>/<span className="exercise__list-item--bold">unselect</span> grammar elements for shuffle.</li>
+          <li className="exercise__list-item">Customize exercise verbs at the bottom of the page. Click <span className="exercise__list-item--bold">add</span>/<span className="exercise__list-item--bold">remove</span> to edit the list of Selected Verbs and click <span className="exercise__list-item--bold">Apply</span>.</li>
         </ul>
         <div className="exercise__wrapper">
           <div className="exercise__container">

@@ -44,6 +44,25 @@
         flex-wrap: wrap;
         justify-content: space-evenly;
     }
+    &__title{
+        margin-left: .5rem;
+    }
+    &__list{
+        list-style-type: decimal;
+        padding:   0 0 0 .5rem;
+        margin: 1rem .5rem 1rem 1rem;
+    }
+    &__list-item{
+        font-size: 14px;
+        line-height: 1.1rem;
+        padding: 0 0 .5rem .2rem;
+        &--bold{
+            font-weight: bold;
+        }
+        &--underlined{
+            text-decoration: underline;
+        }
+    }
 
 
     @include mid-mobile-tablet {
