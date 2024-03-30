@@ -141,7 +141,7 @@ export default function Exercise() {
           <li className="exercise__list-item"><span className="exercise__list-item--underlined">Write your answer</span> to the following exercise and click <span className="exercise__list-item--bold">Verify</span>.</li>
           <li className="exercise__list-item">Click <span className="exercise__list-item--bold">Shuffle</span> to generate new exercise.</li>
           <li className="exercise__list-item">To customize the next exercise, click on the <span className="exercise__list-item--bold">dropdown menus</span>, and <span className="exercise__list-item--bold">select</span>/<span className="exercise__list-item--bold">unselect</span> grammar elements for shuffle.</li>
-          <li className="exercise__list-item">Customize exercise verbs at the bottom of the page. Click <span className="exercise__list-item--bold">add</span>/<span className="exercise__list-item--bold">remove</span> to edit the list of Selected Verbs and click <span className="exercise__list-item--bold">Apply</span>.</li>
+          <li className="exercise__list-item">To edit the exercise verbs, scroll to the bottom of the page.</li>
         </ul>
         <div className="exercise__wrapper">
           <div className="exercise__container">
@@ -170,15 +170,11 @@ export default function Exercise() {
               option={tenseArray}
               type="tense"
             />
-            {/* <fieldset className="exercise__fieldset">
-              <legend className="exercise__legend">Default</legend> */}
-              <GrammarFeature
+            <GrammarFeature
                 shuffleState={moodState}
                 option={moodArray}
                 type="mood"
-              />
-
-            {/* </fieldset> */}
+            />
           </div>
           <div className="exercise__answer-container">
             <Answer answer={resultAnswer} />

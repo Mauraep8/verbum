@@ -67,7 +67,7 @@ export default function VerbLibrary(props) {
                     </div>
                 }            
                 {props.button === true &&
-                    <ButtonPrimary function={clickHandler} text={'Submit'} icon={'submit'}/>
+                    <ButtonPrimary function={clickHandler} text={'Apply'} icon={'submit'}/>
                 }
             </div>
         </div>
