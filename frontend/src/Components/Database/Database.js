@@ -67,12 +67,11 @@ export default function Database() {
   return (
     <div className="database">
       <div className="database__main-container">
-        <h2 className="database__header">Edit Verb List</h2>
-        <p>Add or remove verbs to change</p>
+        <h2 className="database__header">Edit Exercise Verbs</h2>
+        <p className="database__text"> Click add/remove to edit the list of selected verbs in the exercise and click Apply.</p>
         <div className="database__container">
           <VerbLibrary
             headerText={"Available Verbs"}
-            // text={'Add verbs from the library to your user list.'}
             searchInput={searchVerbInput}
             list={verbLibrary}
             search={searchVerbLibrary}
@@ -81,16 +80,12 @@ export default function Database() {
             button={false}
             popup={popupStateAdded}
           />
-          {/* <div className="database__icon-container database__icon-container--mobile">
-            <i className="bi-chevron-double-down"></i>       
-          </div> */}
           <div className="database__icon-container database__icon-container--tablet">
             <i className="bi-chevron-double-right"></i>     
             <i className="bi-chevron-double-left"></i>  
           </div>
           <VerbLibrary
             headerText={"Selected Verbs"}
-            // text={'Refine study list by removing verbs. Click submit to see changes in the exercise.'}
             searchInput={searchUserInput}
             list={userLibrary}
             search={searchUserLibrary}
