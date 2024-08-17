@@ -139,9 +139,9 @@ export default function Exercise() {
         <p className="exercise__title">How to use:</p>
         <ul className="exercise__list">
           <li className="exercise__list-item"><span className="exercise__list-item--underlined">Write your answer</span> to the following exercise and click <span className="exercise__list-item--bold">Verify</span>.</li>
-          <li className="exercise__list-item">Click <span className="exercise__list-item--bold">Shuffle</span> to generate new exercise.</li>
-          <li className="exercise__list-item">To customize the next exercise, click on the <span className="exercise__list-item--bold">dropdown menus</span>, and <span className="exercise__list-item--bold">select</span>/<span className="exercise__list-item--bold">unselect</span> grammar elements for shuffle.</li>
-          <li className="exercise__list-item">To edit the exercise verbs, scroll to the bottom of the page.</li>
+          <li className="exercise__list-item">Click <span className="exercise__list-item--bold">Shuffle</span> to generate new a exercise.</li>
+          <li className="exercise__list-item">To customize the next exercise, click on the <span className="exercise__list-item--bold">dropdown menus</span>, and <span className="exercise__list-item--bold">select</span>/<span className="exercise__list-item--bold">unselect</span> elements for shuffle.</li>
+          <li className="exercise__list-item">To edit the list of verbs, scroll to the bottom of the page.</li>
         </ul>
         <div className="exercise__wrapper">
           <div className="exercise__container">

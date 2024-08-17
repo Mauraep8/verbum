@@ -67,7 +67,7 @@ export default function Database() {
   return (
     <div className="database">
       <div className="database__main-container">
-        <h2 className="database__header">Edit Exercise Verbs</h2>
+        <h2 className="database__header">Edit Verb List</h2>
         <p className="database__text"> Click add/remove to edit the list of selected verbs in the exercise and click Apply.</p>
         <div className="database__container">
           <VerbLibrary
