@@ -91,14 +91,14 @@
         }
 
         &__container{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: space-evenly;
+            // display: flex;
+            // flex-direction: row;
+            // flex-wrap: nowrap;
+            // justify-content: space-evenly;
             height: 90%;
             width: 75%;
             position: relative;
-            align-items: center;
+            // align-items: center;
         }
 
         &__text{
@@ -109,7 +109,7 @@
         &__wrapper{
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center;
             margin: 0;
 
         }
@@ -142,8 +142,6 @@
         
         &__main-container{
             margin: 2rem 10%;
-
-
         }
 
         &__answer-container{

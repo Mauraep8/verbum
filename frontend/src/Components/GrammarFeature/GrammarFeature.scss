@@ -53,6 +53,11 @@
     @include tablet{
         margin-right: .2rem;
 
+        &__container{
+           margin-bottom: .5rem;
+    
+        }
+
         &__dropmenu-wrapper--hidden{
             visibility: hidden;
             display: block;
@@ -60,10 +65,14 @@
 
         &__dropmenu-wrapper--active{
             visibility: visible;
-            margin-bottom: 0;
+            // margin-bottom: 0;
 
         }
-
+        &__verb{
+            width: 50%;
+            margin: 0 20% 0;
+    
+        }  
         // &__mood{
         //     position: absolute;
         //     top: -2rem;
