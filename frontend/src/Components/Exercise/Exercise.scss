@@ -119,20 +119,19 @@
             flex-direction: row;          
             align-items: flex-end;
             justify-content: center;
+            width: 95%;
         }
     }
-
-    @include mid-tablet-desktop {
-        &__answer-container{
-            display: flex;
-            
-        }
-    }
-    
+ 
     @include mid-tablet-desktop {
         &__main-container{
             margin: 2rem 5%;
             padding: 1rem 2.5rem 2rem;
+            
+        }
+
+        &__answer-container{
+            display: flex;
             
         }
     }
