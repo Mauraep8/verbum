@@ -11,11 +11,8 @@
         width: 100%;
         height: fit-content;
         background-color: #ffffff;
-
-        // border: .3px solid lightgray;
-        // border: 1px solid #0052b689;
         border-radius: 5px;
-
+      
         &--tense{
             height: 9rem;
         }
@@ -31,14 +28,16 @@
     &__scroll{
         overflow-y: scroll;
         overflow-x: hidden;
+        border-radius: 5px;
 
         &::-webkit-scrollbar{
             width: .5rem;
             height: 1rem;
-
+            border-radius: 0 5px 5px 0;
         }
         &::-webkit-scrollbar-track{
             background-color: rgba(234, 234, 234, 0.848);
+            border-radius: 5px;
         }
         
         &::-webkit-scrollbar-thumb{
@@ -58,13 +57,9 @@
     @include tablet{
 
         width: 100%;
-        
+             
         &__container{
-            // margin-top: .3rem;
-            height: fit-content;
-            border: 1px solid #0052b689;
-            border-radius: inherit;
-
+            border-radius: 5px;
             &--tense{
                 height: 5.1rem;
             }
@@ -83,6 +78,8 @@
 
             &--active{
                 overflow-y: scroll;   
+            border-radius: 5px;
+
             }
 
             &::-webkit-scrollbar{
@@ -92,8 +89,6 @@
             }
             &::-webkit-scrollbar-track{
                 background-color: rgba(234, 234, 234, 0.848);
-                // border: 1px solid black;
-
             }
             &::-webkit-scrollbar-thumb{
                 background-color:darkgray;
