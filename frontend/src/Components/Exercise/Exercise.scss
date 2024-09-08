@@ -125,26 +125,31 @@
  
     @include mid-tablet-desktop {
         &__main-container{
-            margin: 2rem 5%;
-            padding: 1rem 2.5rem 2rem;
+            margin: 2rem 10%;
+            padding: 1rem 3rem 2rem;
             
         }
 
         &__answer-container{
             display: flex;
-            
+            width: 100%;
         }
     }
 
     
     @include desktop{
-        
+        border: 1px solid red;
+
         &__main-container{
             margin: 2rem 10%;
+            padding: 1rem 5rem 2rem;
+
+            border: 1px solid red;
         }
 
         &__answer-container{
             display: flex;
+            width: 100%;
         }
     }
 }
