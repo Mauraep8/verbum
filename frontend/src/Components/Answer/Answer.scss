@@ -155,8 +155,8 @@
     }
 
     @include mid-tablet-desktop {
-        width: 50%;
-        margin-top: 1rem;
+        width: 100%;
+        // margin-top: 1rem;
         &__form{
             justify-content: center;
             width:100%;
@@ -165,12 +165,16 @@
         &__text-container{
             display: flex;
             padding-left: .5rem;
-            justify-content: left;
-            width: 100%;
+            justify-content: center;
+            // width: 100%;
         }
 
         &__input-container{
-            width: 70%;
+            width: 71.6%;
+        }
+
+        &__main-button-container{
+            width: 71.9%;
         }
     }
 
