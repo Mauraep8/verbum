@@ -13,12 +13,12 @@ const initialState = {
     moodArrayChecked: moodArrayChecked,
     verbArrayChecked: [],
     shuffleState: [],
-    moodState:{result:{value: 'indicatif', status: true, category: 'mood', apiFormat: 'indicatif'}},
-    tenseState:{result:{value: 'présent', status: true, category: 'tense', apiFormat: 'présent'}},
-    personState:{result:{value: '1er', status: true, category: 'person', apiFormat: 1}},
-    numberState:{result:{value: 'singulier', status: true, category: 'number', apiFormat: 1}},
-    genderState:{result:{value: 'féminin', status: true, category: 'gender', apiFormat: null}},
-    verbState: {result:{apiFormat:null, auxiliaryVerb:"", verbID: 3, category: "verb", initialVerb: "t", primaryVerb:"t", specialVerb: "", status: true, value: "aimer", verbGroup: "group 1", label: "aimer"}},
+    moodState:{result:{value: 'indicatif', status: true, category: 'mood', apiFormat: 'indicatif'},colorChange: true},
+    tenseState:{result:{value: 'présent', status: true, category: 'tense', apiFormat: 'présent'},colorChange: true},
+    personState:{result:{value: '1er', status: true, category: 'person', apiFormat: 1},colorChange: true},
+    numberState:{result:{value: 'singulier', status: true, category: 'number', apiFormat: 1},colorChange: true},
+    genderState:{result:{value: 'féminin', status: true, category: 'gender', apiFormat: null},colorChange: true},
+    verbState: {result:{apiFormat:null, auxiliaryVerb:"", verbID: 3, category: "verb", initialVerb: "t", primaryVerb:"t", specialVerb: "", status: true, value: "aimer", verbGroup: "group 1", label: "aimer"},colorChange: true},
     messageState:[],
     shuffleAction:[],
     userSelectionMessage:[],
@@ -127,6 +127,7 @@ const exerciseSlice = createSlice({
     },
     shuffleApproved: (state, action) => {
       // remove shuffleState from dispatch getState
+      console.log ("shuffleApproved", action)
       const object = action.payload;
 
       const asArray = Object.entries(object);
@@ -137,6 +138,7 @@ const exerciseSlice = createSlice({
       state.shuffleAction = true;
     },
     shuffleCleared: (state, action) => {
+      // console.log(action)
       state.shuffleAction = false;
     },
     userSelectionDenied: (state, action) => {
