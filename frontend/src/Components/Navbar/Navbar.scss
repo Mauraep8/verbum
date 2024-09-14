@@ -2,15 +2,7 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .navbar{
-    // background-color: #254c8a;
-    // background-color: #038aff ;
-    // background-color: #0375ff;
-    // background-color: #0069e9;
-    background-color: #0052b6;
-    // background-color: #fcfcfc;
-    // background-color: #eeeeee;
-
-    
+    background-color: #0052b6;  
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -23,8 +15,6 @@
 
     &__header{
         color: white;
-        // color: #0052b6;
-
         padding: 1.5rem 0 1.5rem;
         margin: 0; 
         font-size: 1.5rem;
@@ -39,9 +29,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        // color: white;
         color: #fcfcfc;
-        // color: #0052b6;
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -59,32 +47,33 @@
     &__link{
         font-size: .75rem;
         text-decoration: none;
-        // color: #0052b6;
         color: white;
     }
 
     @include tablet{
         flex-direction: row;
         justify-content: space-between;
-
-        padding: 1rem 1.5rem;
+        padding: 1rem 2rem;
 
         &__header-container{
             align-items: center;
         }
 
         &__header{
-            padding: 0 1rem;
+            padding: 0 0;
         }
 
     }
     @include mid-tablet-desktop{
+
+        padding: 1.5rem 10%;
+
         &__list-item{
             font-size: 1rem;
         }
     }
 
     @include desktop{
-        padding: 0 10%;
+        padding: 1.5rem 10%;
     }
 }
