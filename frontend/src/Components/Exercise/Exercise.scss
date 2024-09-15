@@ -2,18 +2,11 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .exercise{
-    // background-color: #F5F5F5;
-    // background-color: #ebebeb;
     background-color: #eeeeee;
-    // background-color: #e4e4e4;
-    // padding: .1rem;
-
+    
     &__main-container{
-        // background-color: white;
         background-color: #fcfcfc;
-        // margin: 1rem;
-        padding: 0 .5rem 2rem;
-        // border: 1px solid red;
+        padding: 0 1rem 1.5rem;
     }
 
     &__text{
@@ -22,30 +15,25 @@
         padding: 0rem 0 1.5rem;
         margin: 0;
         line-height: 1.2rem;
-
     }
 
-    &__popup-container{
-        border: 1px solid blue;
-    }
     &__header{
         font-size: 1.2rem;
         line-height: 1.5rem;
         margin: 0; 
         padding: 1.5rem 0 1rem;
         text-align: center;
-        font-weight: normal;
-        // border-bottom: 1px solid lightgray;        
+        font-weight: normal;    
     }
     
     &__container{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
     &__title{
-        margin-left: .5rem;
+        margin: 0 .5rem 0 0;
     }
     &__list{
         list-style-type: decimal;
@@ -138,13 +126,10 @@
 
     
     @include desktop{
-        border: 1px solid red;
 
         &__main-container{
             margin: 2rem 10%;
             padding: 1rem 5rem 2rem;
-
-            border: 1px solid red;
         }
 
         &__answer-container{

@@ -4,21 +4,17 @@
 .answer{
 
     &__input-container{
-        position: relative;
-        // border: 1px red solid;
+        position: relative;    
         margin-bottom: .5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-
     }
 
     &__input{
         box-sizing: border-box;
-        width: 95%;
-        // border: 1px solid #0052b689;
+        width: 100%;
         border: 1px solid rgb(106, 106, 106);
-
         border-radius: 20px;
         height: 2rem;
         margin: 0;
@@ -75,11 +71,11 @@
     &__main-button-container{
         display: flex;
         width: 100%;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 
     &__button-container{
-        width: 45.7%;
+        width: 47.4%;
     }
     @include tablet{
         display: flex;
@@ -120,8 +116,7 @@
         &__text-container{
             height: 1.5rem;
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-end;
+            justify-content: center;
             width: 75%;
             height: 6rem;
         }
@@ -186,9 +181,7 @@
             flex-direction: row;
         }
 
-        &__input{
-            width: 9.5rem;
-        }        
+           
         &__text-container{
             width: 70%;
         }
