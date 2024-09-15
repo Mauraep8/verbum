@@ -4,15 +4,11 @@
 .grammarFeature{
 
     &__container{
-        // border: 1px solid red;
         width: 100%;
         position: relative;
-
     }
 
     &__dropmenu-wrapper--hidden{
-        // display: none;
-        border: 1px solid black;
         display: flex;
         justify-content: center;
     }
@@ -25,8 +21,7 @@
 
     &__verb{
         width: 50%;
-        margin: 0 20% 5%;
-
+        margin: 0 25% 5%;
     }        
     &__person{
         width: 30%;
@@ -35,15 +30,13 @@
         width: 30%;
     }
     &__tense{
-        width: 46%;
+        width: 47.4%;
     }
     &__mood{
-        width: 46%;
-        // width: 40%;
+        width: 47.4%;
     }
     &__gender{
         width: 30%;
-        // width: 30%;
     }
 
     @include mid-mobile-tablet {
@@ -86,6 +79,5 @@
 
     }
     @include desktop{
-        margin-right: .5rem;
     }
 }
