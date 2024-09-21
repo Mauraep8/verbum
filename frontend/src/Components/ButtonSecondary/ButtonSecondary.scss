@@ -13,26 +13,35 @@
         font-size: 10px;
         height: 1.3rem;
         width: 3rem;
+        background-color: white;
+        color: #0052b6;
+        text-decoration: underline;
 
-        &--add{
-            border: 1px solid $color-green;
-            background-color: $color-green-opacity;
+        &:hover{
+            cursor: pointer;
+            cursor: pointer;
 
-            &:hover{
-                background-color: $color-green-hover;
-                cursor: pointer;
-            }
         }
 
-        &--remove{
-            border: 1px solid $color-red;
-            background-color: $color-red-opacity;
+        // &--add{
+        //     border: 1px solid $color-green;
+        //     background-color: $color-green-opacity;
 
-            &:hover{
-                background-color: $color-red-hover;
-                cursor: pointer;
-            }
-        }
+        //     &:hover{
+        //         background-color: $color-green-hover;
+        //         cursor: pointer;
+        //     }
+        // }
+
+        // &--remove{
+        //     border: 1px solid $color-red;
+        //     background-color: $color-red-opacity;
+
+        //     &:hover{
+        //         background-color: $color-red-hover;
+        //         cursor: pointer;
+        //     }
+        // }
     }
 
     @include tablet {

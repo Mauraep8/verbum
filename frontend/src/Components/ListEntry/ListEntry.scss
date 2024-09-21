@@ -12,14 +12,10 @@
     &__container{
         display: flex;
         height: 1.5rem;
+        justify-content: space-between;
         // border-bottom: solid lightgray 1px;
-        padding: .15rem 0 .15rem .3rem;
-
-        &:hover{
-            // cursor: pointer;
-            // background-color: lightgray;
-            // background-color: #efefef;
-        }
+        // padding: .15rem 0 .15rem .3rem;
+        
     }
 
     &__text{
