@@ -25,7 +25,6 @@
         &::placeholder{
             text-align: center;
             font-size: 13px;
-            // padding: 41%;
         }
 
         &--error{
@@ -93,7 +92,7 @@
         &__input-container{
             display: flex;
             flex-direction: row;
-            width: 75%;
+            width: 76.9%;
             margin-bottom: 1rem;  
         }
 
@@ -114,11 +113,10 @@
         }
 
         &__text-container{
-            height: 1.5rem;
             display: flex;
             justify-content: center;
-            width: 75%;
-            height: 6rem;
+            width: 76.9%;
+            height: 2.5rem;
         }
 
         &__text{
@@ -138,7 +136,7 @@
 
         &__main-button-container{
             display: flex;
-            width: 75%;
+            width: 76.9%;
             justify-content: space-between;
         }
 
