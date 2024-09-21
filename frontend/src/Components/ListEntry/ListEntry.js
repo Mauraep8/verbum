@@ -8,7 +8,7 @@ export default function ListEntry(props)  {
     return (
         <div className="ListEntry">
             <div className="ListEntry__container">
-            <div className="ListEntry__text-container">
+                <div className="ListEntry__text-container">
                     <p className="ListEntry__text">{props.label}</p>
                 </div>
                 <ButtonSecondary 
