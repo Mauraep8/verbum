@@ -8,6 +8,9 @@ export default function ListEntry(props)  {
     return (
         <div className="ListEntry">
             <div className="ListEntry__container">
+            <div className="ListEntry__text-container">
+                    <p className="ListEntry__text">{props.label}</p>
+                </div>
                 <ButtonSecondary 
                 actionType={props.actionType}
                 id={props.id}
@@ -22,9 +25,7 @@ export default function ListEntry(props)  {
                 verbSearchList={props.verbSearchList}
                 userSearchList={props.verbSearchList}
                 />
-                <div className="ListEntry__text-container">
-                    <p className="ListEntry__text">{props.label}</p>
-                </div>
+                
             </div>
         </div>
     )
