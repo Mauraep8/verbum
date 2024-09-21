@@ -20,6 +20,15 @@
         background-color: white;
 
     }
+
+    @include tablet {
+        &__input {
+            height: 2rem;
+            font-size: 14px;
+            text-indent: 1.7rem;
+
+        }
+    }
 }
 
 .bi-search{
@@ -27,4 +36,10 @@
     top: .3rem;
     left: .5rem;
     font-size: 12px;
+
+    @include tablet {
+        top: .45rem;
+        font-size: 1rem;
+
+    }
 }

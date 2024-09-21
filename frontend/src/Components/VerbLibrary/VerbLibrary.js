@@ -6,8 +6,8 @@ import {useDispatch, useSelector} from "react-redux"
 import { verbListUpdateAction, verbListUpdated} from "../../Store/exerciseSlice";
 import { submitClicked } from "../../Store/databaseSlice";
 import { compareArray } from "../../Utils/compareArray";
-import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
 import {useState, useRef, useEffect} from "react"
+import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
 
 export default function VerbLibrary(props) {
 

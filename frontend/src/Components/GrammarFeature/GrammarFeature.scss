@@ -48,7 +48,6 @@
 
         &__container{
            margin-bottom: .5rem;
-    
         }
 
         &__dropmenu-wrapper--hidden{
@@ -58,24 +57,19 @@
 
         &__dropmenu-wrapper--active{
             visibility: visible;
-            // margin-bottom: 0;
-
         }
+
         &__verb{
             width: 50%;
             margin: 0 20% 0;
-    
         }  
-        // &__mood{
-        //     position: absolute;
-        //     top: -2rem;
-        //     right: -9rem;
-        // }
-        // &__gender{
-        //     position: absolute;
-        //     top: 2rem;
-        //     right: -8.5rem;
-        // }
+
+        &__tense{
+            width: 46.5%;
+        }
+        &__mood{
+            width: 46.5%;
+        }
 
     }
     @include desktop{

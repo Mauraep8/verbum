@@ -12,14 +12,18 @@ export default function ButtonPrimary(props) {
   useEffect(() => {
     if (props.icon === 'verify'){
       verifyIcon.current.classList.add(`bi-check2-circle--visible`)
-      button.current.classList.add(`buttonPrimary__button--grey`)
+      button.current.classList.add(`buttonPrimary__button--dark`)
 
 
     } else if (props.icon === 'shuffle') {
       shuffleIcon.current.classList.add('bi-shuffle--visible')
+      button.current.classList.add(`buttonPrimary__button--light`)
+
 
     } else if (props.icon === 'submit'){
       checkmarkIcon.current.classList.add('bi-check2--visible')
+      button.current.classList.add(`buttonPrimary__button--light`)
+
     } 
   })
 
