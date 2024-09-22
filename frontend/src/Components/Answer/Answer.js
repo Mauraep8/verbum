@@ -22,6 +22,7 @@ export default function Answer(props) {
   const correctAnswerText = useRef([])
   const correctCheckmark = useRef([])
   const falseX = useRef([])
+  const errorMark = useRef([])
 
   const [correctAnswer, setCorrectAnswer ] = useState([])
 
@@ -61,12 +62,17 @@ export default function Answer(props) {
   if (answerInput.current.value === ''){
     answerInput.current.classList.add('answer__input--error')
     inputWarning.current.classList.add('answer__text--visible')
+    errorMark.current.classList.add('bi-exclamation-circle-fill--visible')
+   
 
   } else {
 
     //remove error if it's there
     answerInput.current.classList.remove('answer__input--error')
     inputWarning.current.classList.remove('answer__text--visible')
+    errorMark.current.classList.remove('bi-exclamation-circle-fill--visible')
+    falseX.current.classList.remove('bi-x--visible')
+
 
     //dispatch user's answer
     dispatch(answerWritten(answerInput.current.value))
@@ -139,8 +145,9 @@ export default function Answer(props) {
         
         <div className='answer__input-container'>
           <input className='answer__input' type="text" placeholder="Answer e.g., j'aime"ref={answerInput}/>
-          <i className="bi bi-check" ref={correctCheckmark}></i>
-          <i className="bi bi-x" ref={falseX}></i>
+            <i className="bi bi-check" ref={correctCheckmark}></i>
+            <i className="bi bi-x" ref={falseX}></i>
+            <i class="bi bi-exclamation-circle-fill" ref={errorMark}></i>
         </div>
         <div className='answer__main-button-container'>
           <div className='answer__button-container'>
