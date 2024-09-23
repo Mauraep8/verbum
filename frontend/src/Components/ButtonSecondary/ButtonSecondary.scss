@@ -14,13 +14,22 @@
         height: 1.3rem;
         width: 3rem;
         background-color: white;
-        color: #0052b6;
+        // color: #0052b6;
+        color: #650DF2;
         text-decoration: underline;
 
         &:hover{
             cursor: pointer;
             cursor: pointer;
 
+        }
+
+        &--add{
+           color: $color-green;
+        }
+
+        &--remove{
+            color: #EC1351;
         }
 
         // &--add{
