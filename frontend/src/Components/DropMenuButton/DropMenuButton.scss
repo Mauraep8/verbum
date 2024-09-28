@@ -119,4 +119,30 @@
             right: 1rem;
         }
     }
+    .bi-pencil-square{
+        position: absolute;
+        top: 1.3rem;
+        right: -1.5rem;
+        &--visible{
+            display: block;
+           }
+        &--hidden{
+            display: none;
+        }
+        
+        @include tablet{
+            top: 2.2rem;     
+            right: -1.5rem;
+        }
+
+        @include mid-tablet-desktop{
+            top: 2.2rem;     
+            right: -2rem;
+        }
+
+        @include desktop{
+            top: 2.2rem;     
+            right: -2rem;
+        }
+    }
 }

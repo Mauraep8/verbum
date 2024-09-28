@@ -1,4 +1,4 @@
-import React, {forwardRef, useRef} from 'react'
+import React, {forwardRef, useRef, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 import './DropMenuButton.scss'
 
@@ -6,6 +6,19 @@ import './DropMenuButton.scss'
 const DropMenuButton = forwardRef(function DropMenuButton(props, ref) {
  
   const shuffleAction = useSelector(((state)=> state.exercise.shuffleAction))
+  const editIcon = useRef([])
+
+
+  useEffect(() => {
+    if (props.type === 'verb'){
+      console.log('hello')
+      editIcon.current.classList.add('bi-pencil-square--visible')
+    } else{
+      editIcon.current.classList.add('bi-pencil-square--hidden')
+      console.log('nay')
+    }
+
+  },[])
 
   const clickHandler = () =>{
     props.function()
@@ -25,8 +38,9 @@ const DropMenuButton = forwardRef(function DropMenuButton(props, ref) {
   }
 
   return (
-    <div className='dropmenuButton'>
+    <div className='dropmenuButton' >
         <label className='dropmenuButton__label'>{props.type}</label>
+        <i className="bi-pencil-square" ref={editIcon}></i>
         <button className={`dropmenuButton__button dropmenuButton__button--${props.type}`} ref={ref} onClick={clickHandler}>
           <label className={'dropmenuButton__button-label'}>{props.result}</label>
         </button>
