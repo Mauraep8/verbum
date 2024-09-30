@@ -114,6 +114,10 @@
         right: .5rem;
         top: 1.5rem;
 
+        &:hover{
+            cursor: pointer;
+        }
+
         @include tablet{
             top: 2.5rem;     
             right: 1rem;
@@ -123,6 +127,10 @@
         position: absolute;
         top: 1.3rem;
         right: -1.5rem;
+
+        &:hover{
+            cursor: pointer;
+        }
         &--visible{
             display: block;
            }
