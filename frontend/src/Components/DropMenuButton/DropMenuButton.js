@@ -40,7 +40,7 @@ const DropMenuButton = forwardRef(function DropMenuButton(props, ref) {
   return (
     <div className='dropmenuButton' >
         <label className='dropmenuButton__label'>{props.type}</label>
-        <i className="bi-pencil-square" ref={editIcon}></i>
+        <button className='dropmenuButton__icon-button' ref={editIcon}><i className="bi-pencil-square" ></i></button>
         <button className={`dropmenuButton__button dropmenuButton__button--${props.type}`} ref={ref} onClick={clickHandler}>
           <label className={'dropmenuButton__button-label'}>{props.result}</label>
         </button>

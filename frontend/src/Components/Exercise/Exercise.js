@@ -140,8 +140,8 @@ export default function Exercise() {
         <ul className="exercise__list">
           <li className="exercise__list-item"><span className="exercise__list-item--underlined">Write your answer</span> to the following exercise and click <span className="exercise__list-item--bold">Verify</span>.</li>
           <li className="exercise__list-item">Click <span className="exercise__list-item--bold">Shuffle</span> to generate new a exercise.</li>
-          <li className="exercise__list-item">To customize the next exercise, click on the <span className="exercise__list-item--bold">dropdown menus</span>, and <span className="exercise__list-item--bold">select</span>/<span className="exercise__list-item--bold">unselect</span> elements for shuffle.</li>
-          <li className="exercise__list-item">Click on edit icon <i className="bi-pencil-square"></i>, to change verb list.</li>
+          <li className="exercise__list-item">To customize the exercises, click on the <span className="exercise__list-item--bold">dropdown menus</span>, and <span className="exercise__list-item--bold">select</span>/<span className="exercise__list-item--bold">unselect</span> elements for shuffle.</li>
+          <li className="exercise__list-item">Click on edit icon <i className="bi bi-pencil-square"></i> to change verb list.</li>
         </ul>
         <div className="exercise__wrapper">
           <div className="exercise__container">
