@@ -127,7 +127,6 @@ const exerciseSlice = createSlice({
     },
     shuffleApproved: (state, action) => {
       // remove shuffleState from dispatch getState
-      console.log ("shuffleApproved", action)
       const object = action.payload;
 
       const asArray = Object.entries(object);
