@@ -16,7 +16,8 @@ const initialState = {
     searchVerbLibrary: [], 
     searchUserLibrary: [],
     searchVerbInput: [],
-    searchUserInput: []
+    searchUserInput: [],
+    databaseState:[]
 }
 
 // SORT LISTS ALPHABETICALLY AFTER VERB IS ADDED OR DELETED
@@ -154,9 +155,17 @@ const databaseSlice = createSlice({
             } else if (action.payload.popupType === "removed") {
                 state.popupActionRemoved = []
             }
+        },
+        openDatabase:(state, action)=>{
+            // console.log(action.payload)
+            state.databaseState = action.payload
+        },
+        closeDatabase:(state, action)=>{
+            // console.log(action.payload)
+            state.databaseState = action.payload
         }
     }
 })
 
-export const {popupClosed, submitClicked, verbAdded, verbDeleted, verbSearched} = databaseSlice.actions
+export const {popupClosed, submitClicked, verbAdded, verbDeleted, verbSearched, openDatabase, closeDatabase} = databaseSlice.actions
 export default databaseSlice.reducer

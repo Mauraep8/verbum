@@ -2,12 +2,9 @@ import "./Database.scss";
 import VerbLibrary from "../../Components/VerbLibrary/VerbLibrary";
 import {useSelector, useDispatch} from 'react-redux'
 import { useState, useEffect, useRef } from "react";
-import { popupClosed } from "../../Store/databaseSlice";
+import { popupClosed, closeDatabase } from "../../Store/databaseSlice";
 
-
-
-
-export default function Database() {
+export default function Database(props) {
 
   const [popupStateAdded, popupSetStateAdded] = useState([])
   const [popupStateRemoved, popupSetStateRemoved] = useState([])
@@ -21,12 +18,26 @@ export default function Database() {
   const searchVerbLibrary = useSelector((state)=> state.database.searchVerbLibrary)
   const popupActionAdded = useSelector((state)=> state.database.popupActionAdded) 
   const popupActionRemoved = useSelector((state)=> state.database.popupActionRemoved) 
+  const databaseState = useSelector((state) => state.database.databaseState)
+
 
   const dispatch = useDispatch()
 
   let prevPopupState = useRef([])
-
+  const databaseDiv = useRef([])
+console.log(databaseState)
   useEffect(() => {
+    if(databaseState.length === 0 || databaseState.value === false){
+      console.log('hello')
+      databaseDiv.current.classList.add('database--hidden')
+      databaseDiv.current.classList.remove('database--active')
+
+    } else if (databaseState.value === true){
+      console.log('goodbye')
+      console.log(databaseState)
+      databaseDiv.current.classList.remove('database--hidden')
+      databaseDiv.current.classList.add('database--active')
+    }
 
     if (popupActionAdded.length !== 0 || popupActionRemoved.length !== 0) {
       
@@ -61,12 +72,13 @@ export default function Database() {
       popupSetStateAdded(popupActionAdded)
       popupSetStateRemoved(popupActionAdded)
     }
-  }, [popupActionAdded, popupActionRemoved])
+  }, [databaseState, popupActionAdded, popupActionRemoved])
 
 
   return (
-    <div className="database">
+    <div className="database" ref={databaseDiv}>
       <div className="database__main-container">
+         <button className="database__button" onClick={()=>{dispatch(closeDatabase({value:false}))}}>X</button>
         <h2 className="database__header">Edit Verb List</h2>
         <p className="database__text">Click <span className="database__text--bold">add/remove</span> to edit the list of selected verbs in the exercise and click <span className="database__text--bold">Apply</span>.</p>
         <div className="database__container">

@@ -35,6 +35,8 @@ import shuffleIndicativeTenses from "../../Utils/grammarLogic/indicative/shuffle
 import shuffleImperativeTenses from "../../Utils/grammarLogic/imperative/shuffleImperativeTenses";
 import shuffleSubjunctiveTenses from "../../Utils/grammarLogic/subjunctive/shuffleSubjunctiveTenses";
 import shuffleConditionalTenses from "../../Utils/grammarLogic/conditional/shuffleConditionalTenses";
+import DatabaseButton from "../DatabaseButton/DatabaseButton";
+import Database from "../Database/Database";
 
 export default function Exercise() {
   const verbListState = useSelector((state) => state.exercise.verbListState);
@@ -143,8 +145,12 @@ export default function Exercise() {
           <li className="exercise__list-item">To customize the exercises, click on the <span className="exercise__list-item--bold">dropdown menus</span>, and <span className="exercise__list-item--bold">select</span>/<span className="exercise__list-item--bold">unselect</span> elements for shuffle.</li>
           <li className="exercise__list-item">Click on edit icon <i className="bi bi-pencil-square"></i> to change verb list.</li>
         </ul>
+        <div className="exercise__database-wrapper">
+         <Database/>
+        </div>
         <div className="exercise__wrapper">
           <div className="exercise__container">
+            <DatabaseButton/>
             <GrammarFeature
               shuffleState={verbState}
               option={verbListState}
