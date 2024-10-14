@@ -79,7 +79,7 @@ console.log(databaseState)
     <div className="database" ref={databaseDiv}>
       <div className="database__main-container">
          <button className="database__button" onClick={()=>{dispatch(closeDatabase({value:false}))}}>X</button>
-        <h2 className="database__header">Edit Verb List</h2>
+        {/* <h2 className="database__header">Edit Verb List</h2> */}
         <p className="database__text">Click <span className="database__text--bold">add/remove</span> to edit the list of selected verbs in the exercise and click <span className="database__text--bold">Apply</span>.</p>
         <div className="database__container">
           <VerbLibrary
