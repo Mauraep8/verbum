@@ -37,6 +37,7 @@ import shuffleSubjunctiveTenses from "../../Utils/grammarLogic/subjunctive/shuff
 import shuffleConditionalTenses from "../../Utils/grammarLogic/conditional/shuffleConditionalTenses";
 import DatabaseButton from "../DatabaseButton/DatabaseButton";
 import Database from "../Database/Database";
+import Instructions from "../Instructions/Instructions";
 
 export default function Exercise() {
   const verbListState = useSelector((state) => state.exercise.verbListState);
@@ -138,13 +139,7 @@ export default function Exercise() {
           messageWarning={messageWarning}
         />
         <h2 className="exercise__header">Practice French Conjugation</h2>
-        <p className="exercise__title">How to use:</p>
-        <ul className="exercise__list">
-          <li className="exercise__list-item"><span className="exercise__list-item--underlined">Write your answer</span> to the following exercise and click <span className="exercise__list-item--bold">Verify</span>.</li>
-          <li className="exercise__list-item">Click <span className="exercise__list-item--bold">Shuffle</span> to generate new a exercise.</li>
-          <li className="exercise__list-item">To customize the exercises, click on the <span className="exercise__list-item--bold">dropdown menus</span>, and <span className="exercise__list-item--bold">select</span>/<span className="exercise__list-item--bold">unselect</span> elements for shuffle.</li>
-          <li className="exercise__list-item">Click on edit icon <i className="bi bi-pencil-square"></i> to change verb list.</li>
-        </ul>
+        <Instructions/>
         <div className="exercise__database-wrapper">
          <Database/>
         </div>
