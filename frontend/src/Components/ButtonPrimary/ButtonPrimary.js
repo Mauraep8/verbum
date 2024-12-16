@@ -32,7 +32,6 @@ export default function ButtonPrimary(props) {
         <button className='buttonPrimary__button' ref={button} onClick={props.function}>{props.text}</button>
         <i className='bi-check2-circle' ref={verifyIcon}>{}</i>
         <i className="bi-shuffle" ref={shuffleIcon}></i>   
-        <i className="bi-check2" ref={checkmarkIcon}></i>
     </div>
     
   )
