@@ -7,6 +7,7 @@ import { verbListUpdateAction, verbListUpdated} from "../../Store/exerciseSlice"
 import { submitClicked } from "../../Store/databaseSlice";
 import { compareArray } from "../../Utils/compareArray";
 import {useState, useRef, useEffect} from "react"
+import {closeDatabase} from "../../Store/databaseSlice"
 import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
 
 export default function VerbLibrary(props) {
@@ -44,6 +45,10 @@ export default function VerbLibrary(props) {
                 setTimeout(() => {
                     dispatch(submitClicked({message: ''}))
                 }, 2000);
+                
+            }
+            if (props.list.length !== 0){
+            dispatch(closeDatabase({value:false}))
             }
     }
     
@@ -67,7 +72,7 @@ export default function VerbLibrary(props) {
                     </div>
                 }            
                 {props.button === true &&
-                    <ButtonPrimary function={clickHandler} text={'Save'} icon={'submit'}/>
+                    <ButtonPrimary function={clickHandler} text={'Save and close'}/>
                 }
             </div>
         </div>

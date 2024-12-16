@@ -54,17 +54,7 @@
             display: block;
         }
     }
-    .bi-check2{
-        display: none;
-        position: absolute;
-        top: .4rem;
-        left: 1rem;
-        color: white;
-        font-size: 1rem;
-        &--visible{
-            display: block;
-        }
-    }
+
     .bi-shuffle{
         display: none;
         position: absolute;
