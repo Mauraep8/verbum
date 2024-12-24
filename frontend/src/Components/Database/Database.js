@@ -25,18 +25,21 @@ export default function Database(props) {
 
   let prevPopupState = useRef([])
   const databaseDiv = useRef([])
+  const overlayDiv = useRef([])
+
 console.log(databaseState)
   useEffect(() => {
     if(databaseState.length === 0 || databaseState.value === false){
       console.log('hello')
-      databaseDiv.current.classList.add('database--hidden')
-      databaseDiv.current.classList.remove('database--active')
+      databaseDiv.current.classList.add('database__main-container--hidden')
+      databaseDiv.current.classList.remove('database__main-container--active')
+      overlayDiv.current.classList.remove('database__overlay--active')
 
     } else if (databaseState.value === true){
       console.log('goodbye')
-      console.log(databaseState)
-      databaseDiv.current.classList.remove('database--hidden')
-      databaseDiv.current.classList.add('database--active')
+      databaseDiv.current.classList.remove('database__main-container--hidden')
+      databaseDiv.current.classList.add('database__main-container--active')
+      overlayDiv.current.classList.add('database__overlay--active')
     }
 
     if (popupActionAdded.length !== 0 || popupActionRemoved.length !== 0) {
@@ -76,10 +79,12 @@ console.log(databaseState)
 
 
   return (
-    <div className="database" ref={databaseDiv}>
-      <div className="database__main-container">
-         {/* <button className="database__button" onClick={()=>{dispatch(closeDatabase({value:false}))}}>X</button> */}
-        {/* <h2 className="database__header">Edit Verb List</h2> */}
+    <div className="database" >
+      <div className="database__overlay"ref={overlayDiv}>
+      <div className="database__centered">
+
+      <div className="database__main-container" ref={databaseDiv}>
+        <h2 className="database__header">Verb List</h2>
         <p className="database__text"><span className="database__text--bold">add/remove</span> to change current verbs in the exercise and <span className="database__text--bold">Save</span> changes.</p>
         <div className="database__container">
           <VerbLibrary
@@ -91,7 +96,7 @@ console.log(databaseState)
             type={'verbLibrary'}
             button={false}
             popup={popupStateAdded}
-          />
+            />
           <div className="database__icon-container database__icon-container--tablet">
             <i className="bi-chevron-double-right"></i>     
             <i className="bi-chevron-double-left"></i>  
@@ -106,8 +111,10 @@ console.log(databaseState)
             type={'userLibrary'}
             button={true}
             popup={popupStateRemoved}
-          />
+            />
         </div>
+      </div>
+            </div>
       </div>
     </div>
   );

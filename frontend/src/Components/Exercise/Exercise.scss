@@ -36,8 +36,12 @@
     }
 
     &__database-wrapper{
-        position: relative;
+        position: absolute;
+        width: 90%  ;
+
     }
+
+
 
 
     @include mid-mobile-tablet {
