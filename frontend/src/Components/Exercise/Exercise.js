@@ -141,7 +141,9 @@ export default function Exercise() {
         <h2 className="exercise__header">Practice French Conjugation</h2>
         <Instructions/>
         <div className="exercise__database-wrapper">
-         <Database/>
+          {/* <div className="exercise__database-overlay">  */}
+            <Database/>
+          {/* </div> */}
         </div>
         <div className="exercise__wrapper">
           <div className="exercise__container">
