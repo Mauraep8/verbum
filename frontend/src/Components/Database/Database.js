@@ -27,7 +27,6 @@ export default function Database(props) {
   const databaseDiv = useRef([])
   const overlayDiv = useRef([])
 
-console.log(databaseState)
   useEffect(() => {
     if(databaseState.length === 0 || databaseState.value === false){
       databaseDiv.current.classList.add('database__main-container--hidden')

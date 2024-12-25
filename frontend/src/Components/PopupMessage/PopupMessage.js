@@ -28,8 +28,8 @@ export default function PopupMessage(props) {
             <div className='popup-message' ref={popupMessage}>
                 <i className="bi bi-exclamation-triangle-fill"></i>
                 <p className='popup-message__text'>Warning!</p>
-                <p className='popup-message__text'>{props.messageError}</p>
-                <button className='popup-message__button' onClick={clickHandler}>Close</button>
+                <p className='popup-message__text'>Select an option in the {props.messageError.charAt(0).toUpperCase() + props.messageError.slice(1)} dropdown.</p>
+                <button className='popup-message__button' onClick={clickHandler}><i className="bi bi-x"></i></button>
             </div>
         )
 
@@ -46,7 +46,7 @@ export default function PopupMessage(props) {
                         return <li className='popup-message__list-item'>{listItem}</li>
                     })}
                     </ul>
-                    <button className='popup-message__button' onClick={clickHandler}>x</button>
+                    <button className='popup-message__button' onClick={clickHandler}><i className="bi bi-x"></i></button>
                 
                 </div>
             )
@@ -62,7 +62,7 @@ export default function PopupMessage(props) {
                             return <li className='popup-message__list-item'>{listItem}</li>
                         })}
                     </ul>
-                    <button className='popup-message__button' onClick={clickHandler}>x</button>
+                    <button className='popup-message__button' onClick={clickHandler}><i className="bi bi-x"></i></button>
                 </div>
             )
         }
