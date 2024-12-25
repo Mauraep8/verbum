@@ -26,8 +26,10 @@ export default function PopupMessage(props) {
     if (props.messageError.length !==0) { 
         return (
             <div className='popup-message' ref={popupMessage}>
+                <i className="bi bi-exclamation-triangle-fill"></i>
+                <p className='popup-message__text'>Warning!</p>
                 <p className='popup-message__text'>{props.messageError}</p>
-                <button className='popup-message__button' onClick={clickHandler}>x</button>
+                <button className='popup-message__button' onClick={clickHandler}>Close</button>
             </div>
         )
 
@@ -36,6 +38,8 @@ export default function PopupMessage(props) {
         if(typeof props.messageWarning.element === 'string'){
             return (
                 <div className='popup-message' ref={popupMessage}>
+                    <i className="bi bi-exclamation-triangle-fill"></i>
+                    <p className='popup-message__text'>Warning!</p>
                     <p className='popup-message__text'>The {props.messageWarning.element} was selected, please check one of the missing {props.messageWarning.missingType}s:</p>
                     <ul className='popup-message__list'>
                     {props.messageWarning.missing.map((listItem) =>{
@@ -50,6 +54,8 @@ export default function PopupMessage(props) {
             // grammar rule, two elements missing other conditions
             return (
                 <div className='popup-message' ref={popupMessage}>
+                    <i className="bi bi-exclamation-triangle-fill"></i>
+                    <p className='popup-message__text'>Warning!</p>
                     <p className='popup-message__text'>The {props.messageWarning.element[0]} and {props.messageWarning.element[1]} were selected, please check one of the missing {props.messageWarning.missingType}s:</p>
                     <ul className='popup-message__list'>
                         {props.messageWarning.missing.map((listItem) =>{

@@ -30,13 +30,11 @@ export default function Database(props) {
 console.log(databaseState)
   useEffect(() => {
     if(databaseState.length === 0 || databaseState.value === false){
-      console.log('hello')
       databaseDiv.current.classList.add('database__main-container--hidden')
       databaseDiv.current.classList.remove('database__main-container--active')
       overlayDiv.current.classList.remove('database__overlay--active')
 
     } else if (databaseState.value === true){
-      console.log('goodbye')
       databaseDiv.current.classList.remove('database__main-container--hidden')
       databaseDiv.current.classList.add('database__main-container--active')
       overlayDiv.current.classList.add('database__overlay--active')
