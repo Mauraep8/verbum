@@ -120,8 +120,7 @@ const exerciseSlice = createSlice({
     },
     shuffleDenied: (state, action) => {
       const filteredText = action.payload.slice(0, -12);
-
-      state.messageState = `The ${filteredText.charAt(0).toUpperCase() + filteredText.slice(1)} drop-down menu is missing a checked option.`;
+      state.messageState = filteredText
       state.shuffleAction = false;
 
     },

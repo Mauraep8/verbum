@@ -157,11 +157,9 @@ const databaseSlice = createSlice({
             }
         },
         openDatabase:(state, action)=>{
-            console.log(action.payload)
             state.databaseState = action.payload
         },
         closeDatabase:(state, action)=>{
-            console.log(action.payload)
             state.databaseState = action.payload
         }
     }
