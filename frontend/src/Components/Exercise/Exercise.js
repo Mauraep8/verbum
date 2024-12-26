@@ -56,6 +56,8 @@ export default function Exercise() {
   const resultAnswer = useSelector((state) => state.exercise.resultAnswerState);
   const dispatch = useDispatch();
 
+  
+
   useEffect(() => {
     // AT INITIAL RENDER SHUFFLESTATE = [], BEFORE SHUFFLE CLICKED
     // ONLY RUN WHEN SHUFFLE ACTION IS APPROVED
@@ -141,9 +143,7 @@ export default function Exercise() {
         <h2 className="exercise__header">Practice French Conjugation</h2>
         <Instructions/>
         <div className="exercise__database-wrapper">
-          {/* <div className="exercise__database-overlay">  */}
-            <Database/>
-          {/* </div> */}
+          <Database/>
         </div>
         <div className="exercise__wrapper">
           <div className="exercise__container">
