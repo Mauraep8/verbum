@@ -19,6 +19,13 @@
         }
     }
 
+    @include mid-mobile-tablet{
+        &__button{
+            right: 18%;
+            top: 1.2rem;
+        }
+    }
+
     @include tablet{
      &__button{
         top: 2.1rem;

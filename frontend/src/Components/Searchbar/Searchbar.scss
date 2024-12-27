@@ -2,7 +2,8 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .searchbar{
-    width: 100%;
+    // width: 100%;
+    width: 8rem;
     display: flex;
     justify-content: center;
     margin-bottom: .5rem;
@@ -24,6 +25,10 @@
             border: 1px solid #FFC800;
         }
 
+    }
+
+    @include mid-mobile-tablet{
+        width: 100%;
     }
 
     @include tablet {
