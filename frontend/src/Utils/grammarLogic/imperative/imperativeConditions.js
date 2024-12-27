@@ -25,7 +25,7 @@ export default function imperativeConditions (tenseArray,numberArray,personArray
       ) {
         return{
             element: [imperative, 'first person'],
-            missingType: "elements",
+            missingType: "number",
             missing: [plural],
         }
       }

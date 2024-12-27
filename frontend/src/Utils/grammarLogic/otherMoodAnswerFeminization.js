@@ -84,11 +84,7 @@ export function otherMoodAnswerFeminization(array,arrayIndex,verbObject,tense,nu
         return feminizedAnswer;
       }
     } else if ((person === 1 || person === 2) && gender === feminin) {
-        console.log('number', number)
-        console.log('person', person)
-        console.log(verbObject)
-        console.log(tense)
-        console.log(passeCompose)
+  
       // aller add an es
       if (
         verbObject.auxiliaryVerb === "être" &&
@@ -98,7 +94,6 @@ export function otherMoodAnswerFeminization(array,arrayIndex,verbObject,tense,nu
           tense === passeAnterieur ||
           tense === futurAnterieur)
       ) {
-        console.log('etre')
         const feminizedAnswer = answer.slice(0, -1) + "es";
         return feminizedAnswer;
         // regular verbs

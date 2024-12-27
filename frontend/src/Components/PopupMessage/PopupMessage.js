@@ -56,7 +56,7 @@ export default function PopupMessage(props) {
                 <div className='popup-message' ref={popupMessage}>
                     <i className="bi bi-exclamation-circle-fill"></i>
                     <p className='popup-message__text'>Error!</p>
-                    <p className='popup-message__text'>The {props.messageWarning.element[0]} and {props.messageWarning.element[1]} were selected, please check one of the missing {props.messageWarning.missingType}s:</p>
+                    <p className='popup-message__text'>The {props.messageWarning.element[0]} and {props.messageWarning.element[1]} were selected, please check one of the missing {props.messageWarning.missingType}:</p>
                     <ul className='popup-message__list'>
                         {props.messageWarning.missing.map((listItem) =>{
                             return <li className='popup-message__list-item'>{listItem}</li>
