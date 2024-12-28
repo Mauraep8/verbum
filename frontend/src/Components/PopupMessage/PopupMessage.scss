@@ -65,14 +65,17 @@
         bottom: 58%;
     }
     @include tablet{
-        top: 36%;
-        left: 22%;
-        width: 50%;
 
-        &__text{
-            padding: 0 1rem; 
+        bottom: 53%;
+        width: 75%;
+        // top: 36%;
+        left: 12%;
+        // width: 50%;
 
-        }
+        // &__text{
+        //     padding: 0 1rem; 
+
+        // }
     }
 
     @include desktop{
