@@ -193,11 +193,22 @@
     @include mid-tablet-desktop {
         &__main-container{
             padding: 1rem 3rem 2rem;
+            margin: 0 20%;
+        }
+
+        &__centered{
+            top: 6%;
+        }
+
+        &__header{
+            padding: 1rem 0;            
         }
     }
 
     @include desktop{
-        
+        &__main-contianer{
+            
+        }
 
     }
 }

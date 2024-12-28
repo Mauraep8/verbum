@@ -68,20 +68,20 @@
 
         bottom: 53%;
         width: 75%;
-        // top: 36%;
         left: 12%;
-        // width: 50%;
 
-        // &__text{
-        //     padding: 0 1rem; 
+    }
 
-        // }
+    @include mid-tablet-desktop{
+        width: 65%;
+        left: 17%;
     }
 
     @include desktop{
-        top: 34%;
-        width: 35%;
-        right: 32%;
+      
+        width: 60%;
+        left: 19%;
+        
     }
 
     .bi-exclamation-circle-fill{

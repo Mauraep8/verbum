@@ -75,6 +75,13 @@
         }
     }
 
+    @include mid-tablet-desktop{
+        &__popup-container {
+            height: 1rem;
+        }
+        
+    }
+
     @include desktop{
         margin: 1rem 2.3rem;
         padding-right: 0;
