@@ -1,74 +1,56 @@
-import Option from '../Option/Option'
-import './DropMenu.scss'
-import React, {useRef, useEffect} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
+import DropMenuButton from '../DropMenuButton/DropMenuButton'
+import DropMenuList from '../DropMenuList/DropMenuList'
+import {useDispatch} from 'react-redux'
+import "./DropMenu.scss";
+import { shuffleCleared } from '../../Store/exerciseSlice';
+
 
 
 export default function DropMenu(props) {
 
-  // console.log(props)
-  const scroll = useRef([])
+    const [showDropmenu, setShowDropmenu] = useState(false)
+    const buttonRef = useRef(null)
+    const menuRef = useRef(null)
+    const dispatch = useDispatch()
 
-  useEffect(()=>{
-    if (props.type === 'tense' || props.type ==='verb'){
-      scroll.current.classList.add('dropmenu__scroll--active')
+    useEffect(() => {
+      const handler = (e) => {
+        if (buttonRef.current && !buttonRef.current.contains(e.target)) {
+          setShowDropmenu(false);
+          buttonRef.current.classList.remove("dropmenuButton__button--clicked");
+        } else {
+          buttonRef.current.classList.add("dropmenuButton__button--clicked");
+        }
+      };
+
+      if (showDropmenu === true) {
+        menuRef.current.classList.add("dropmenu__menu--visible");
+        menuRef.current.classList.remove("dropmenu__menu--hidden");
+        dispatch(shuffleCleared());
+      } else {
+        menuRef.current.classList.remove("dropmenu__menu--visible");
+        menuRef.current.classList.add("dropmenu__menu--hidden");
+        dispatch(shuffleCleared());
+      }
+
+      window.addEventListener("click", handler);
+
+      return () => {
+        window.removeEventListener("click", handler);
+      };
+    });
+
+    const handleInputClick = () => {
+        setShowDropmenu(!showDropmenu)
     }
-  })
-
-  if (props.verb === null){
-    return (  
-      <div className='dropmenu'>
-            <div className={`dropmenu__option-container dropmenu__option-container--${props.type}`}>
-              <div className='dropmenu__scroll' ref={scroll}>
-                {props.value.map((singleOption) =>{
-                  return <Option
-                  key={singleOption.id}
-                  optionType={'grammar'}
-                  value={singleOption.option}
-                  category={singleOption.category}
-                  verbName={null}
-                  verbGroup={null}
-                  specialVerb={null}
-                  primaryVerb={null}
-                  initialVerb={null}
-                  bescherelleId={null}
-                  auxiliaryVerb={null}
-                  apiFormat={singleOption.apiFormat}
-                  dropmenuType={props.type}
-                  />                
-                })}
-                </div>
-             </div>   
-      </div>
-    )
-  } else if (props.value === null){
-    // console.log(props)
-    return (  
-      <div className='dropmenu'>
-            <div className='dropmenu__option-container'>
-              <div className='dropmenu__scroll' ref={scroll}>
-                  {props.verbList.map((singleOption) =>{
-                    return <Option
-                    key={singleOption.id}
-                    optionType={'verb'}
-                    value={singleOption.verbName}
-                    category={'verb'}
-                    verbName={singleOption.verbName}
-                    verbGroup={singleOption.verbGroup}
-                    specialVerb={singleOption.specialVerb}
-                    primaryVerb={singleOption.primaryVerb}
-                    initialVerb={singleOption.initialVerb}
-                    bescherelleId={singleOption.bescherelleId}
-                    auxiliaryVerb={singleOption.auxiliaryVerb}
-                    apiFormat={null}
-                    dropmenuType={props.type}
-                    />
-                  })}
-                </div>
-             </div>   
-      </div>
-    )
-  }
-
-
+    
+    return (
+        <div className='dropmenu'>
+            <DropMenuButton type={props.type} result={props.result} ref={buttonRef} colorChange={props.colorChange} function={handleInputClick}/>
+            <div className='dropmenu__menu' ref={menuRef}>
+                <DropMenuList list={props.list} type={props.type}/>
+            </div>
+        </div>
+  )
 }
-

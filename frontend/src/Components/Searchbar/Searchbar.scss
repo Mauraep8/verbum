@@ -2,16 +2,51 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .searchbar{
-    width: 100%;
+    width: 8rem;
     display: flex;
     justify-content: center;
-    margin: .5rem 0;
+    margin-bottom: .5rem;
+    position: relative;
 
     &__input{
-        border: 1.5px lightgray solid;
+        border: 1px #1A8FE3 solid;
         width: 100%;
         border-radius: 20px;
-        padding-left: 1.5rem;
-        font-size: 16px;
+        text-indent: 1.5rem;
+        height: 1.5rem;
+        font-size: 12px;
+        background-color: white;
+
+        &:focus{
+            outline: none;
+            border: 1px solid #FFC800;
+        }
+
+    }
+
+    @include mid-mobile-tablet{
+        width: 100%;
+    }
+
+    @include tablet {
+        &__input {
+            height: 2rem;
+            font-size: 14px;
+            text-indent: 1.7rem;
+
+        }
+    }
+}
+
+.bi-search{
+    position: absolute;
+    top: .3rem;
+    left: .5rem;
+    font-size: 12px;
+
+    @include tablet {
+        top: .45rem;
+        font-size: 1rem;
+
     }
 }

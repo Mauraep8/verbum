@@ -2,18 +2,22 @@
 @use '../../Styles/Partials/mixins' as *;
 
 .option{
-    border: .3px solid lightgray;
     width: 100%;
     margin: 0;
     padding: 0;
     display: flex;   
-    font-size: .875rem;
+    height: 1.5rem;
+
 
     &:hover{
         cursor: pointer;
+        background-color: #eeeeee;
+
+
     }
 
     &__checkbox{
+        margin-left: .5rem;
         &:hover{
             cursor: pointer;
         }
@@ -23,31 +27,34 @@
     &__text{
         margin: 0;
         padding: 0;
+        font-size: .75rem;
+        line-height: 1.5rem;
+        &:hover{
+            cursor: pointer;
+        }
     }
 
-    @include tablet{
-        width: 5rem;
+    @include tablet {
+         
         margin: 0;
         font-size: .8rem;
         line-height: 19px;
 
-        &--person{
-            width: 3.5rem;
-        }
-        &--gender{
-            width: 4.8rem
-        }
-        &--number{
-            width: 4.7rem;
-        }
-        &--tense{
-            width: 7rem;
-        }
-        &--mood {
-            width: 5.9rem
-        }
+
     }
     @include mid-tablet-desktop{
-        // font-size: .9rem;
+        height: 1.5rem;
+
+        &__text{
+            font-size: 1rem;
+            line-height: 1.5rem;
+            margin-left: .3rem;
+        }
+
+        &__checkbox{
+
+            transform: scale(1.2);
+
+        }
     }
 }

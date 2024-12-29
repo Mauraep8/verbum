@@ -13,12 +13,12 @@ const initialState = {
     moodArrayChecked: moodArrayChecked,
     verbArrayChecked: [],
     shuffleState: [],
-    moodState:{result:{value: 'indicatif', status: true, category: 'mood', apiFormat: 'indicatif'}},
-    tenseState:{result:{value: 'présent', status: true, category: 'tense', apiFormat: 'présent'}},
-    personState:{result:{value: '1er', status: true, category: 'person', apiFormat: 1}},
-    numberState:{result:{value: 'singulier', status: true, category: 'number', apiFormat: 1}},
-    genderState:{result:{value: 'féminin', status: true, category: 'gender', apiFormat: null}},
-    verbState: {result:{apiFormat:null, auxiliaryVerb:"", bescherelleId: 6, category: "verb", initialVerb: "true", primaryVerb:"true", specialVerb: "", status: true, value: "aimer", verbGroup: "1er groupe", verbName: "aimer"}},
+    moodState:{result:{value: 'indicatif', status: true, category: 'mood', apiFormat: 'indicatif'},colorChange: true},
+    tenseState:{result:{value: 'présent', status: true, category: 'tense', apiFormat: 'présent'},colorChange: true},
+    personState:{result:{value: '1er', status: true, category: 'person', apiFormat: 1},colorChange: true},
+    numberState:{result:{value: 'singulier', status: true, category: 'number', apiFormat: 1},colorChange: true},
+    genderState:{result:{value: 'féminin', status: true, category: 'gender', apiFormat: null},colorChange: true},
+    verbState: {result:{apiFormat:null, auxiliaryVerb:"", verbID: 3, category: "verb", initialVerb: "t", primaryVerb:"t", specialVerb: "", status: true, value: "aimer", verbGroup: "group 1", label: "aimer"},colorChange: true},
     messageState:[],
     shuffleAction:[],
     userSelectionMessage:[],
@@ -36,7 +36,7 @@ const exerciseSlice = createSlice({
   initialState,
   extraReducers: {
     [fetchVerbs.fulfilled]: (state, action) => {
-      state.verbListState = action.payload.filter((verb) => verb.initialVerb === "true");
+      state.verbListState = action.payload.filter((verb) => verb.initialVerb === "t");
     },
   },
   reducers: {
@@ -120,13 +120,9 @@ const exerciseSlice = createSlice({
     },
     shuffleDenied: (state, action) => {
       const filteredText = action.payload.slice(0, -12);
-
-      state.messageState = {
-        action: true,
-        feature: filteredText.charAt(0).toUpperCase() + filteredText.slice(1),
-        mood: null,
-      };
+      state.messageState = filteredText
       state.shuffleAction = false;
+
     },
     shuffleApproved: (state, action) => {
       // remove shuffleState from dispatch getState
@@ -139,58 +135,51 @@ const exerciseSlice = createSlice({
       state.shuffleState = newObject;
       state.shuffleAction = true;
     },
+    shuffleCleared: (state, action) => {
+      state.shuffleAction = false;
+    },
     userSelectionDenied: (state, action) => {
       state.userSelectionMessage = action.payload;
       state.shuffleAction = false; 
     },
     moodShuffled: (state, action) => {
-      // console.log(action.payload)
       state.moodState = action.payload;
     },
     tenseShuffled: (state, action) => {
-      // console.log(action.payload)
       state.tenseState = action.payload;
     },
     personShuffled: (state, action) => {
-      // console.log(action.payload)
       state.personState = action.payload;
     },
     numberShuffled: (state, action) => {
-      // console.log(action.payload)
       state.numberState = action.payload;
     },
     genderShuffled: (state, action) => {
-      // console.log(action.payload)
       state.genderState = action.payload;
     },
     verbShuffled: (state, action) => {
-      // console.log(action.payload)
       state.verbState = action.payload;
     },
     verbListUpdated: (state, action) => {
       state.verbListState = action.payload;
-      state.verbArrayChecked = state.verbArrayChecked.filter(({ verbName: verb1 }) => action.payload.some(({ verbName: verb2 }) => verb1 === verb2))   
+      state.verbArrayChecked = state.verbArrayChecked.filter(({ value: verb1 }) => action.payload.some(({ value: verb2 }) => verb1 === verb2))   
       state.shuffleAction = false; 
     },
     verbListUpdateAction: (state, action) => {
       state.verbListApprovedUpdate = action.payload;
     },
     answerWritten: (state, action) => {
-      // console.log(action.payload,'exerciceSlice')
       state.shuffleAction = false; 
       state.userAnswerState = action.payload
     },
     answerFetched: (state, action) =>{
-      // console.log(action.payload, 'exerciceSlice')
       state.apiAnswerState = action.payload
       state.shuffleAction = false;
     },
     answerCompared: (state, action) =>{
-      // console.log(action.payload, 'exerciceSlice')
       state.resultAnswerState = action.payload
     },
     answerCleared: (state, action) =>{
-      // console.log(action.payload, 'exerciceSlice')
       state.resultAnswerState = action.payload
       state.apiAnswerState = action.payload
       state.userAnswerState = action.payload
@@ -198,5 +187,5 @@ const exerciseSlice = createSlice({
   },
 });
 
-export const { answerCleared, answerCompared, answerFetched, answerWritten,verbListUpdateAction, verbListUpdated, messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, verbShuffled, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
+export const { shuffleCleared,answerCleared, answerCompared, answerFetched, answerWritten,verbListUpdateAction, verbListUpdated, messageCleared, optionChecked, shuffleApproved, shuffleDenied, userSelectionDenied, verbShuffled, moodShuffled, tenseShuffled, personShuffled, numberShuffled, genderShuffled} = exerciseSlice.actions
 export default exerciseSlice.reducer

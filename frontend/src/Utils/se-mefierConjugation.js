@@ -6,4 +6,3 @@ export const seMefierConjugation = {
     }
 }
 
-console.log(seMefierConjugation)

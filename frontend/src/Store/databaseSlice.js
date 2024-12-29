@@ -10,16 +10,19 @@ import {fetchVerbs} from './verbAPI'
 const initialState = {
     verbLibrary: [],
     userLibrary: [],
-    popupAction: [],
+    submitMessage: [],
+    popupActionAdded: [],
+    popupActionRemoved: [],
     searchVerbLibrary: [], 
     searchUserLibrary: [],
     searchVerbInput: [],
-    searchUserInput: []
+    searchUserInput: [],
+    databaseState:[]
 }
 
 // SORT LISTS ALPHABETICALLY AFTER VERB IS ADDED OR DELETED
 const compare = (a,b) => {
-    return a.verbName.localeCompare(b.verbName)
+    return a.value.localeCompare(b.value)
 }
 
 
@@ -30,22 +33,10 @@ const databaseSlice = createSlice({
     extraReducers:{
         // //EXTRA REDUCER SETS STATE WITH API CALL
         // !!! SE MEFIER TAKEN OUT OF LIST, WILL BE ADDED LATER WITH POSTGRES
-        // !!! FAILLIR, ouir, gesir, choir, echoir, dechoir paître repaître TAKEN OUT
+        
         [fetchVerbs.fulfilled]: (state, action) => {
-            state.verbLibrary = action.payload.filter(
-              (verb) =>
-                verb.initialVerb === null &&
-                verb.verbName !== "se mefier" &&
-                verb.verbName !== "faillir" &&
-                verb.verbName !== "gésir" &&
-                verb.verbName !== "ouir" &&
-                verb.verbName !== "choir" &&
-                verb.verbName !== "échoir" &&
-                verb.verbName !== "déchoir" &&
-                verb.verbName !== "paître" &&
-                verb.verbName !== "repaître"
-            );
-            state.userLibrary = action.payload.filter((verb)=> verb.initialVerb === 'true')
+            state.verbLibrary = action.payload.filter((verb) => verb.initialVerb === 'f');
+            state.userLibrary = action.payload.filter((verb)=> verb.initialVerb === "t")
         },
     },
     reducers: {
@@ -58,15 +49,16 @@ const databaseSlice = createSlice({
             state.userLibrary.sort(compare)
 
             // REMOVE ADDED VERB FROM VERBLIBRARY
-            state.verbLibrary = state.verbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+            state.verbLibrary = state.verbLibrary.filter((verb) => verb.value !== action.payload.value)
 
             //POPUPACTION VERB ADDED
-            state.popupAction = {verbName:action.payload.verbName, popupAction: 'added'}
+            state.popupActionAdded = {value:action.payload.value, popupAction: 'added'}
+            state.popupActionRemoved = []
 
             // IF VERB IS ADDED WHILE ITS BEING SEARCHED, THEN REMOVE IT FROM SEARCH LIST
             if (state.searchVerbLibrary.length !==0){
-                state.verbLibrary = state.verbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
-                state.searchVerbLibrary = state.searchVerbLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+                state.verbLibrary = state.verbLibrary.filter((verb) => verb.value !== action.payload.value)
+                state.searchVerbLibrary = state.searchVerbLibrary.filter((verb) => verb.value !== action.payload.value)
             }
             
             //IF VERB IS LAST IN VERBSEARCHLIST AND IS DELETED THEN THE SEARCHBAR INPUT CLEARS
@@ -86,15 +78,16 @@ const databaseSlice = createSlice({
             state.verbLibrary.sort(compare)
 
             // REMOVE ADDED VERB FROM USERLIST
-            state.userLibrary = state.userLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+            state.userLibrary = state.userLibrary.filter((verb) => verb.value !== action.payload.value)
 
             //POPUPACTION VERB DELETED
-            state.popupAction = {verbName:action.payload.verbName, popupAction: 'deleted'}
+            state.popupActionRemoved = {value:action.payload.value, popupAction: 'removed'}
+            state.popupActionAdded = []
 
             // IF VERB IS DELETED WHILE ITS BEING SEARCHED, THEN REMOVE IT FROM SEARCH LIST
             if (state.searchUserLibrary.length !==0){
-                state.userLibrary = state.userLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
-                state.searchUserLibrary = state.searchUserLibrary.filter((verb) => verb.verbName !== action.payload.verbName)
+                state.userLibrary = state.userLibrary.filter((verb) => verb.value !== action.payload.value)
+                state.searchUserLibrary = state.searchUserLibrary.filter((verb) => verb.value !== action.payload.value)
             }
 
             //IF VERB IS LAST IN USERSEARCHLIST AND IS DELETED THEN THE SEARCHBAR INPUT CLEARS
@@ -107,6 +100,9 @@ const databaseSlice = createSlice({
 
         verbSearched: (state, action) =>{
 
+            state.popupActionAdded = []
+            state.popupActionRemoved = []
+
             //RESET SEARCHVERBINPUT STATE IF IT WAS PREVIOUSLY NULL
             if (state.searchVerbInput === null) {
                 state.searchVerbInput = []
@@ -117,11 +113,11 @@ const databaseSlice = createSlice({
                 if (action.payload.value === ''){
                     state.searchVerbLibrary = []
                 } else{
-                    const searchedVerb = state.verbLibrary.filter((verb) => verb.verbName.startsWith(action.payload.value))
+                    const searchedVerb = state.verbLibrary.filter((verb) => verb.value.startsWith(action.payload.value))
                     if (searchedVerb.length === 0 ){
                         state.searchVerbLibrary = null
                     } else{
-                        state.searchVerbLibrary = state.verbLibrary.filter((verb) => verb.verbName.startsWith(action.payload.value))
+                        state.searchVerbLibrary = state.verbLibrary.filter((verb) => verb.value.startsWith(action.payload.value))
                     }
                 }
             }
@@ -136,20 +132,38 @@ const databaseSlice = createSlice({
                 if (action.payload.value === ''){
                     state.searchUserLibrary = []
                 } else{
-                    const searchedVerb = state.userLibrary.filter((verb) => verb.verbName.startsWith(action.payload.value))
+                    const searchedVerb = state.userLibrary.filter((verb) => verb.value.startsWith(action.payload.value))
                     if (searchedVerb.length === 0 ){
                         state.searchUserLibrary = null
                     } else{
-                        state.searchUserLibrary = state.userLibrary.filter((verb) => verb.verbName.startsWith(action.payload.value))
+                        state.searchUserLibrary = state.userLibrary.filter((verb) => verb.value.startsWith(action.payload.value))
                     }
                 }
             }
         },
         submitClicked: (state, action)=>{
-            state.popupAction = action.payload
+            state.submitMessage = action.payload.message
+            state.popupActionAdded = []
+            state.popupActionRemoved = []
+
+        },
+        popupClosed: (state, action)=>{
+
+            if (action.payload.popupType === "added"){
+                state.popupActionAdded = []
+
+            } else if (action.payload.popupType === "removed") {
+                state.popupActionRemoved = []
+            }
+        },
+        openDatabase:(state, action)=>{
+            state.databaseState = action.payload
+        },
+        closeDatabase:(state, action)=>{
+            state.databaseState = action.payload
         }
     }
 })
 
-export const {submitClicked, verbAdded, verbDeleted, verbSearched} = databaseSlice.actions
+export const {popupClosed, submitClicked, verbAdded, verbDeleted, verbSearched, openDatabase, closeDatabase} = databaseSlice.actions
 export default databaseSlice.reducer

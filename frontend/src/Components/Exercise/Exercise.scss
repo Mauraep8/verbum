@@ -2,75 +2,130 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .exercise{
-    background-color: #F5F5F5;
-    padding: .1rem;
-
+    background-color: #eeeeee;
+    
     &__main-container{
-        background-color: white;
-        border-radius: .25rem;
-        box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-        margin: 1rem;
-        padding: 1rem;
-        // border: 1px solid red;
+        background-color: #fcfcfc;
+        padding: 0 1rem 1.5rem;
+        position: relative;
     }
 
-    &__popup-container{
-        border: 1px solid blue;
-    }
-    &__header{
-        margin: 0 0 1rem;
+    &__text{
+        font-size: 12px;
         text-align: center;
-        font-weight: normal;
+        padding: 0rem 0 1.5rem;
+        margin: 0;
+        line-height: 1.2rem;
     }
+
+    &__header{
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        margin: 0; 
+        padding: 1.5rem 0 1rem;
+        text-align: center;
+        font-weight: normal;    
+    }
+    
+    &__container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    &__database-wrapper{
+        position: absolute;
+        width: 90%  ;
+
+    }
+
+
+
 
     @include mid-mobile-tablet {
-        
+        padding: .1rem;
+     
+        &__header{
+            margin: 0;
+            padding: 1.5rem 0 1rem;
+        }
         &__main-container{
             margin: 2rem;
-            padding: 1rem 3rem 1.5rem;
-        }
-        &__header{
-            margin: .5rem 0 2rem;
+            padding: 1rem 2rem 2rem;
+            border-radius: .25rem;
+            box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
         }
     }
 
     @include tablet{
+        padding: .1rem;
 
+        &__header{
+            margin: 1rem 0 1.5rem;
+            padding: 0;
+            border: none;
+        }
         &__main-container{
             margin: 2rem;
-            padding: 1rem 1rem 1.3rem;
+            padding: 1rem 2rem 2rem;
+            border-radius: .25rem;
+            box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
         }
-        &__grammar-container{
-            display: flex;
+
+        &__container{
+            height: 90%;
+            width: 80%;
+            position: relative;
+        }
+
+        &__text{
+            font-size: .875rem;
+            padding: 0 0 2.5rem;
+      
         }
         &__wrapper{
             display: flex;
-            justify-content: center;
-        }
-    }
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
 
-    @include mid-tablet-desktop {
+        }
+
         &__answer-container{
             display: flex;
+            flex-direction: row;          
+            align-items: flex-end;
+            justify-content: center;
+            width: 80%;
         }
     }
-    
+ 
     @include mid-tablet-desktop {
         &__main-container{
-            margin: 2rem 5%;
+            margin: 2.5rem 10%;
+            padding: 1.5rem 3rem 3rem;
+            
+        }
+
+        &__answer-container{
+            display: flex;
+            width: 80%;
         }
     }
 
     
     @include desktop{
-        
-        &__main-container{
-            margin: 2rem 10%;
 
+        &__main-container{
+            margin: 3rem 10%;
+            padding: 2rem 5rem 3rem;
         }
 
         &__answer-container{
             display: flex;
+            width: 80%;
         }
     }
 }

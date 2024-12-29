@@ -1,12 +1,21 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import './Option.scss'
 import { useDispatch } from "react-redux";
 import { optionChecked} from "../../Store/exerciseSlice";
 
 export default function Option(props) {
 
+
   const [checked, setChecked] = useState(true)
+
   const dispatch = useDispatch()
+  const input = useRef([])
+
+  function clickHandler(e) {
+    e.stopPropagation()
+    setChecked(!checked)
+  }
+
 
   useEffect(()=>{
     dispatch(
@@ -15,31 +24,22 @@ export default function Option(props) {
         status: checked,
         category: props.category,
         apiFormat: props.apiFormat,
-        verbName: props.verbName,
+        label: props.label,
         verbGroup: props.verbGroup,
         specialVerb: props.specialVerb,
         primaryVerb: props.primaryVerb,
         initialVerb: props.initialVerb,
-        bescherelleId: props.bescherelleId,
+        verbID: props.verbID,
         auxiliaryVerb: props.auxiliaryVerb,
       })
     );
   },[checked])
 
-  if (props.optionType === 'grammar'){
+
   return (
-    <div className={`option option--${props.dropmenuType}`} onClick={()=>{setChecked(!checked)}}>
-      <input className='option__checkbox' type="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}} />
-      <p className='option__text'>{props.value}</p>
+    <div className={`option option--${props.dropmenuType}`} onClick={clickHandler}>
+      <input className='option__checkbox' type="checkbox" checked={checked}  onClick={clickHandler} onChange={()=>{setChecked(!checked)}} ref={input}/>
+      <label className='option__text'>{props.value}</label>
     </div>
   )
-} else if (props.optionType === 'verb'){
-  // console.log(props)
-  return (
-    <div className={`option option--${props.dropmenuType}`} onClick={()=>{setChecked(!checked)}}>
-      <input type="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}} />
-      <p className='option__text'>{props.value}</p>
-    </div>
-  )
-}
 }

@@ -1,0 +1,45 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.buttonSecondary{
+    display: flex;
+    align-items: center;
+
+    &__button{
+
+        border-radius: 15px;
+        border: none;
+        font-size: 10px;
+        height: 1.3rem;
+        width: 3rem;
+        background-color: white;
+        text-decoration: underline;
+
+        &:hover{
+            cursor: pointer;
+            cursor: pointer;
+
+        }
+
+        &--add{
+           color: $color-green;
+        }
+
+        &--remove{
+            color: #EC1351;
+        }    
+    }
+
+    @include tablet {
+
+        align-items: center;
+
+        &__button{
+            height: 1.5rem;
+            width: 5rem;
+            font-size: .75rem;
+
+        }
+    }
+    
+}

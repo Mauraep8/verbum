@@ -1,6 +1,9 @@
 @use './partials/variables' as *;
 @use './partials/mixins' as*;
 @use './partials/fonts' as *;
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
+
+
 
 body{
     box-sizing: border-box;

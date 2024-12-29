@@ -1,13 +1,12 @@
 
 export const personCheckedArray = [
   { value: "1er", status: true, category: "person" , apiFormat:1},
-  { value: "2ème", status: true, category: "person", apiFormat:2 },
-  { value: "3ème", status: true, category: "person", apiFormat:3 },
+  { value: "2ème", status: true, category: "person", apiFormat:2},
+  { value: "3ème", status: true, category: "person", apiFormat:3},
 ];
 export const genderArrayChecked = [
   { value: "féminin", status: true, category: "gender", apiFormat:null },
   { value: "masculin", status: true, category: "gender", apiFormat:null },
-  // { value: "-none-", status: true, category: "gender", apiFormat:null },
 ];
 export const numberArrayChecked = [
   { value: "singulier", status: true, category: "number", apiFormat:1 },

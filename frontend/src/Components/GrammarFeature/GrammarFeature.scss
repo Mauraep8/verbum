@@ -1,0 +1,77 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as*;
+
+.grammarFeature{
+
+    &__container{
+        width: 100%;
+        position: relative;
+    }
+
+    &__dropmenu-wrapper--hidden{
+        display: flex;
+        justify-content: center;
+    }
+
+    &__dropmenu-wrapper--active{
+        display: flex;
+        justify-content: center;
+        margin-bottom: .3rem;
+    }
+
+    &__verb{
+        width: 50%;
+        margin: 0 25% 5%;
+    }        
+    &__person{
+        width: 30%;
+    }
+    &__number{
+        width: 30%;
+    }
+    &__tense{
+        width: 47.4%;
+    }
+    &__mood{
+        width: 47.4%;
+    }
+    &__gender{
+        width: 30%;
+    }
+
+    @include mid-mobile-tablet {
+
+    }
+
+    @include tablet{
+        margin-right: .2rem;
+
+        &__container{
+           margin-bottom: .5rem;
+        }
+
+        &__dropmenu-wrapper--hidden{
+            visibility: hidden;
+            display: block;
+        }
+
+        &__dropmenu-wrapper--active{
+            visibility: visible;
+        }
+
+        &__verb{
+            width: 50%;
+            margin: 0 30% 2%;
+        }  
+
+        &__tense{
+            width: 46.5%;
+        }
+        &__mood{
+            width: 46.5%;
+        }
+
+    }
+    @include desktop{
+    }
+}

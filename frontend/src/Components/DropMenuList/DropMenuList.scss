@@ -1,0 +1,114 @@
+@use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/mixins' as *;
+
+.dropMenuList {
+
+    width: 100%;
+
+    &__container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: fit-content;
+        background-color: #ffffff;
+        border-radius: 5px;
+      
+        &--tense{
+            height: 9rem;
+        }
+        &--verb-long{
+            height: 9rem;
+        }
+        &--verb-short{
+            height: fit-content;
+        }
+
+    }
+
+    &__scroll{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        border-radius: 5px;
+
+        &::-webkit-scrollbar{
+            width: .5rem;
+            height: 1rem;
+            border-radius: 0 5px 5px 0;
+        }
+        &::-webkit-scrollbar-track{
+            background-color: rgba(234, 234, 234, 0.848);
+            border-radius: 5px;
+        }
+        
+        &::-webkit-scrollbar-thumb{
+            background-color:darkgray;
+            width: .3rem;
+            border-radius: 5px;
+            height: 10%;
+        }
+
+        &--hidden{
+            &::-webkit-scrollbar{
+                display: none;
+            }
+        }
+    }
+
+    @include tablet{
+
+        width: 100%;
+             
+        &__container{
+            border-radius: 5px;
+            &--tense{
+                height: 6rem;
+            }
+            &--verb-long{
+                height: 6rem;
+            }
+            &--verb-short{
+                height: fit-content;
+            }
+        }       
+
+        &__scroll{
+            overflow-y: hidden;
+            overflow-x: hidden;
+            background-color: #fcfcfc;
+
+            &--active{
+                overflow-y: scroll;   
+            border-radius: 5px;
+
+            }
+
+            &::-webkit-scrollbar{
+                width: .5rem;
+                height: 1rem;
+
+            }
+            &::-webkit-scrollbar-track{
+                background-color: rgba(234, 234, 234, 0.848);
+            }
+            &::-webkit-scrollbar-thumb{
+                background-color:darkgray;
+                width: .3rem;
+                border-radius: 5px;
+                height: 10%;
+            }
+        }
+    }
+
+    @include mid-tablet-desktop{
+
+        &__container{
+            &--tense{
+                height: 6rem;
+            }
+            &--verb-long{
+                height: 6rem;
+            }
+        }
+
+    }
+}
