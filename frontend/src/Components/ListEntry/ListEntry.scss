@@ -4,18 +4,12 @@
 .ListEntry{
 
     background-color: white;
-    // background-color: #f9f9f9;
-    // background-color: #fcfcfc;
-
-
 
     &__container{
         display: flex;
         height: 1.5rem;
         justify-content: space-between;
-        border-bottom: solid lightgray 1px;
-        // padding: .15rem 0 .15rem .3rem;
-        
+        border-bottom: solid lightgray 1px;        
     }
 
     &__text{

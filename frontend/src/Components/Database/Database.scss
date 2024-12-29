@@ -186,7 +186,7 @@
         }
         
         .bi-chevron-double-right{
-            margin-bottom: 1.7rem;
+            margin-bottom: 1rem;
         }
     }
 
@@ -206,10 +206,10 @@
     }
 
     @include desktop{
-        &__main-contianer{
-            
+    
+        &__centered{
+            top: 20%;
         }
-
     }
 }
 

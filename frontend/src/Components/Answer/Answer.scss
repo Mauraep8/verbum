@@ -14,10 +14,6 @@
     &__input{
         box-sizing: border-box;
         width: 100%;
-        border: 1px solid #FFC800;
-        border: 1px solid #F37933;
-        border: 1px solid #650DF2;
-        border: 1px solid #26D9C4;
         border: 1px solid #1A8FE3;
         border-radius: 20px;
         height: 2rem;
@@ -144,7 +140,7 @@
         }
 
         &__button-container{
-            width: 48.3%;
+            width: 47%;
         }
 
 
@@ -170,6 +166,10 @@
 
         &__main-button-container{
             width: 100%;
+        }
+
+        &__button-container{
+            width: 46.80%;
         }
     }
 

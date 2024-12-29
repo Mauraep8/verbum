@@ -63,7 +63,7 @@
         padding: .1rem;
 
         &__header{
-            margin: 1rem 0 1rem;
+            margin: 1rem 0 1.5rem;
             padding: 0;
             border: none;
         }
@@ -104,8 +104,8 @@
  
     @include mid-tablet-desktop {
         &__main-container{
-            margin: 2rem 10%;
-            padding: 1rem 3rem 2rem;
+            margin: 2.5rem 10%;
+            padding: 1.5rem 3rem 3rem;
             
         }
 
@@ -120,7 +120,7 @@
 
         &__main-container{
             margin: 3rem 10%;
-            padding: 1rem 5rem 2rem;
+            padding: 2rem 5rem 3rem;
         }
 
         &__answer-container{
