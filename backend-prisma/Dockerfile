@@ -5,4 +5,4 @@ RUN npm install
 COPY . .
 ENV API_URL=http://localhost:8085/
 EXPOSE 3000
-ENTRYPOINT [ "npm", "start" ]
+ENTRYPOINT [ "node", "server.js" ]

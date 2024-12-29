@@ -1,6 +1,7 @@
-@use './partials/variables' as *;
-@use './partials/mixins' as*;
-@use './partials/fonts' as *;
+@use './Partials/variables.scss' as*;
+@use './Partials/mixins.scss' as*;
+
+@use './Partials/fonts.scss' as*;
 @import "../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
 
 

@@ -1,15 +1,19 @@
 # currently a strange bug when docker-compose build
 
 version: '3.8'
-services: 
 
+services: 
   frontend:
     depends_on: 
+      - backend
       - opensource-api
     build: ./frontend
     ports:
       - 3000:3000
-         
+  backend:
+    build: ./backend-prisma
+    ports:
+      - 8085:8085         
   opensource-api:
     image: bretttolbert/verbecc-svc:latest
     ports:
