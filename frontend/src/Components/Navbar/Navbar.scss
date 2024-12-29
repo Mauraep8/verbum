@@ -2,9 +2,7 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .navbar{
-    // background-color: #0052b6;
     background-color: #1A8FE3;
-    // background-color: #650DF2;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -55,7 +53,7 @@
     @include tablet{
         flex-direction: row;
         justify-content: space-between;
-        padding: 1rem 2rem;
+        padding: 1.5rem 2rem;
 
         &__header-container{
             align-items: center;

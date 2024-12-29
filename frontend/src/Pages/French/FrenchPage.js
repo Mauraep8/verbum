@@ -16,7 +16,6 @@ useEffect(() => {
       <Provider store={store}>
         <Navbar/>
         <Exercice/>
-        {/* <Database/> */}
       </Provider>
   )
 }

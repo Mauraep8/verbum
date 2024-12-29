@@ -19,11 +19,25 @@
         }
     }
 
+    @include mid-mobile-tablet{
+        &__button{
+            right: 18%;
+            top: 1.2rem;
+        }
+    }
+
     @include tablet{
      &__button{
-        top: 2.1rem;
+        top: 2rem;
+        right: 23%;
      }
     } 
+
+    @include desktop {
+        &__button{
+            right: 25%;
+        }
+    }
     .bi-pencil-square{
         font-size: 1.2rem;
 

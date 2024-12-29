@@ -2,7 +2,7 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .searchbar{
-    width: 100%;
+    width: 8rem;
     display: flex;
     justify-content: center;
     margin-bottom: .5rem;
@@ -15,8 +15,6 @@
         text-indent: 1.5rem;
         height: 1.5rem;
         font-size: 12px;
-        // background-color: #f9f9f9;
-        // background-color: #fcfcfc;
         background-color: white;
 
         &:focus{
@@ -24,6 +22,10 @@
             border: 1px solid #FFC800;
         }
 
+    }
+
+    @include mid-mobile-tablet{
+        width: 100%;
     }
 
     @include tablet {

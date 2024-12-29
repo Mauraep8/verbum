@@ -2,7 +2,6 @@
 @use '../../Styles/Partials/mixins' as*;
 
 .buttonSecondary{
-    // border: 1px solid black;
     display: flex;
     align-items: center;
 
@@ -14,8 +13,6 @@
         height: 1.3rem;
         width: 3rem;
         background-color: white;
-        // color: #0052b6;
-        color: #650DF2;
         text-decoration: underline;
 
         &:hover{
@@ -30,27 +27,7 @@
 
         &--remove{
             color: #EC1351;
-        }
-
-        // &--add{
-        //     border: 1px solid $color-green;
-        //     background-color: $color-green-opacity;
-
-        //     &:hover{
-        //         background-color: $color-green-hover;
-        //         cursor: pointer;
-        //     }
-        // }
-
-        // &--remove{
-        //     border: 1px solid $color-red;
-        //     background-color: $color-red-opacity;
-
-        //     &:hover{
-        //         background-color: $color-red-hover;
-        //         cursor: pointer;
-        //     }
-        // }
+        }    
     }
 
     @include tablet {

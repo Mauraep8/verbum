@@ -136,7 +136,6 @@ const exerciseSlice = createSlice({
       state.shuffleAction = true;
     },
     shuffleCleared: (state, action) => {
-      // console.log(action)
       state.shuffleAction = false;
     },
     userSelectionDenied: (state, action) => {
@@ -144,27 +143,21 @@ const exerciseSlice = createSlice({
       state.shuffleAction = false; 
     },
     moodShuffled: (state, action) => {
-      // console.log(action.payload)
       state.moodState = action.payload;
     },
     tenseShuffled: (state, action) => {
-      // console.log(action.payload)
       state.tenseState = action.payload;
     },
     personShuffled: (state, action) => {
-      // console.log(action.payload)
       state.personState = action.payload;
     },
     numberShuffled: (state, action) => {
-      // console.log(action.payload)
       state.numberState = action.payload;
     },
     genderShuffled: (state, action) => {
-      // console.log(action.payload)
       state.genderState = action.payload;
     },
     verbShuffled: (state, action) => {
-      // console.log(action.payload)
       state.verbState = action.payload;
     },
     verbListUpdated: (state, action) => {
@@ -176,21 +169,17 @@ const exerciseSlice = createSlice({
       state.verbListApprovedUpdate = action.payload;
     },
     answerWritten: (state, action) => {
-      // console.log(action.payload,'exerciceSlice')
       state.shuffleAction = false; 
       state.userAnswerState = action.payload
     },
     answerFetched: (state, action) =>{
-      // console.log(action.payload, 'exerciceSlice')
       state.apiAnswerState = action.payload
       state.shuffleAction = false;
     },
     answerCompared: (state, action) =>{
-      // console.log(action.payload, 'exerciceSlice')
       state.resultAnswerState = action.payload
     },
     answerCleared: (state, action) =>{
-      // console.log(action.payload, 'exerciceSlice')
       state.resultAnswerState = action.payload
       state.apiAnswerState = action.payload
       state.userAnswerState = action.payload
