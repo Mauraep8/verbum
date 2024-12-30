@@ -10,6 +10,7 @@
     &__label{
         font-weight: 300;
         font-size: .6rem;
+
     }
     
     &__button{
@@ -49,6 +50,9 @@
 
     &__button-label{
         white-space: normal;
+        &:hover{
+            cursor: pointer;
+        }
     }
 
     @include mid-mobile-tablet{
