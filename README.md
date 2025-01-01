@@ -23,8 +23,8 @@ Verbum is a language app that generates conjugation exercices for students learn
 
 ## Updates
 
-Finished second draft of application, demo video of fisrt draft is available on my LinkedIn profile: https://www.linkedin.com/feed/update/urn:li:activity:7025190389129101312/
+Finished second draft of application, demo video of the first draft is available on my LinkedIn profile: https://www.linkedin.com/feed/update/urn:li:activity:7025190389129101312/
 
-Currently working on deploying the app.
+Currently working creating a second demo video and deploying the app.
 
 You can access my LinkedIn profile here as well: www.linkedin.com/in/mauraep
